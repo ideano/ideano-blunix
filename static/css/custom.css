@@ -6,3 +6,10 @@
 [dir="rtl"] .scroller[data-direction="right"] {
   --_animation-direction: forwards;
 }
+
+
+.partners-scroller__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}

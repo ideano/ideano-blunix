@@ -16,6 +16,7 @@ blocks:
     partners:
       - url: "#"
         img: "/images/partners/company-1.svg"
+        title: "Company 1"
         alt: "TechCo"
       - url: "#"
         img: "/images/partners/company-2.svg"

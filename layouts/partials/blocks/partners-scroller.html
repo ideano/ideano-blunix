@@ -2,7 +2,7 @@
   <div class="scroller bg-blue" data-direction="left" data-speed="fast">
     <div class="scroller__inner">
       {{ range .Params.partners }}
-      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
         {{ $imgSrc := .img }}
         {{ $imgAlt := .alt }}
         {{/* Strip leading slash for resources.GetMatch */}}
@@ -84,6 +84,9 @@
           {{ else }}
             <img src="{{ $imgSrc | relURL }}" alt="{{ $imgAlt }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" loading="lazy" />
           {{ end }}
+        {{ end }}
+        {{ with .title }}
+          <span class="partners-scroller__title">{{ . }}</span>
         {{ end }}
       </a>
       {{ end }}

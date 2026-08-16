@@ -2,10 +2,14 @@
     <div class="container relative">
         <a class="logo" href="{{ "/" | relLangURL }}">
             {{ $siteTitle := .Site.Title }}
-            {{ with resources.GetMatch "images/navbar/logo-dark.svg" }}
+            {{ $logoDark := .Site.Params.logo.dark | default "images/navbar/logo-dark.svg" }}
+            {{ $logoLight := .Site.Params.logo.light | default "images/navbar/logo-light.svg" }}
+
+            {{ with resources.GetMatch $logoDark }}
             <img src="{{ .RelPermalink }}" class="l-dark h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
             {{ end }}
-            {{ with resources.GetMatch "images/navbar/logo-light.svg" }}
+
+            {{ with resources.GetMatch $logoLight }}
             <img src="{{ .RelPermalink }}" class="l-light h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
             {{ end }}
         </a>

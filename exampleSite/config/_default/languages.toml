@@ -15,6 +15,10 @@ flag_image = "english"
 flag_alt = "English"
 label = "English"
 
+[en.params.logo]
+dark = "images/navbar/logo-dark-en.svg"
+light = "images/navbar/logo-light-en.svg"
+
 [[en.params.social_media]]
 name = "Twitter"
 url = "https://twitter.com/"

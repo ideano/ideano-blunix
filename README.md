@@ -1,3 +1,5 @@
+### This theme is modified to support Farsi language (right to left and proper font)
+
 # Hugo Theme Blunix
 
 A professional, clean Hugo theme designed for consulting and service-based businesses. Features a flexible block-based page layout system, multilingual support, and modern responsive design.

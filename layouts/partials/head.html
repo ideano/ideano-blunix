@@ -84,9 +84,15 @@
   {{ end }}
 
   {{/* Preload critical fonts to eliminate font discovery delay */}}
-  <link rel="preload" href="/fonts/Nunito-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/Nunito-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/Nunito-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  {{ if eq .Site.Language.Lang "fa" }}
+    <link rel="preload" href="/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/IRANSansX-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  {{ else }}
+    <link rel="preload" href="/fonts/Nunito-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Nunito-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Nunito-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  {{ end }}
 
   {{/* Cache key based on whether it's a blog single post */}}
   {{ $isBlogSingle := and (eq .Section "blog") .IsPage }}

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ .Site.Language.Lang }}" class="light overflow-x-hidden scroll-smooth" dir="{{ .Site.Language.Direction }}">
   {{- partial "head.html" . -}}
-  <body class="font-nunito overflow-x-hidden text-base text-black bg-white">
+  <body class="overflow-x-hidden text-base text-black bg-white">
     {{- partial "header.html" . -}}
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}

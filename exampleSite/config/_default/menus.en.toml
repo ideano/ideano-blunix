@@ -16,62 +16,62 @@ weight = 40
 
 [[main]]
 name = "Contact"
-url = "/#contact"
+pageRef = "/#contact"
 weight = 80
 
 [[footer]]
 identifier = "website"
 name = "Company"
-url = "#"
+pageRef = "#"
 weight = 10
 
 [[footer]]
 parent = "website"
 name = "Home"
-url = "/"
+pageRef = "/"
 weight = 10
 
 [[footer]]
 parent = "website"
 name = "Services"
-url = "/consulting/"
+pageRef = "/consulting/"
 weight = 20
 
 [[footer]]
 parent = "website"
 name = "Contact"
-url = "/#contact"
+pageRef = "/#contact"
 weight = 30
 
 [[footer]]
 identifier = "hosting"
 name = "Resources"
-url = "#"
+pageRef = "#"
 weight = 20
 
 [[footer]]
 parent = "hosting"
 name = "Blog"
-url = "/blog/"
+pageRef = "/blog/"
 weight = 10
 
 [[services]]
 name = "Consulting"
-url = "/consulting/"
+pageRef = "/consulting/"
 weight = 10
 [services.params]
 icon = "uil uil-chart-line"
 
 [[services]]
 name = "Development"
-url = "/#development"
+pageRef = "/#development"
 weight = 20
 [services.params]
 icon = "uil uil-desktop"
 
 [[services]]
 name = "Training"
-url = "/#training"
+pageRef = "/#training"
 weight = 30
 [services.params]
 icon = "uil uil-graduation-cap"

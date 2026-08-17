@@ -100,7 +100,7 @@ Minimum required in `config/_default/config.toml`:
 
 ```toml
 baseURL = 'https://example.com/'
-languageCode = 'en'
+locale = 'en'
 title = 'Your Company Name'
 ```
 
@@ -130,15 +130,15 @@ Configure languages in `config/_default/languages.toml`:
 
 ```toml
 [en]
-languageName = "English"
-languageCode = "en-us"
+label = "English"
+locale = "en-us"
 contentDir = "content/en"
 title = "Your Company"
 weight = 1
 
 [de]
-languageName = "Deutsch"
-languageCode = "de"
+label = "Deutsch"
+locale = "de"
 contentDir = "content/de"
 title = "Ihr Unternehmen"
 weight = 2

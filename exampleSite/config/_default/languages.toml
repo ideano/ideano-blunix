@@ -1,7 +1,7 @@
 [en]
-languageName = "English"
-languageCode = "en-us"
-languageDirection = "ltr"
+label = "English"
+locale = "en-us"
+direction = "ltr"
 contentDir = "content/en"
 title = "Hugo Theme Starter"
 weight = 1

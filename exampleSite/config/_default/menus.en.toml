@@ -1,17 +1,17 @@
 [[main]]
 name = "Home"
-url = "/"
+pageRef = "/"
 weight = 10
 
 [[main]]
 identifier = "services"
 name = "Services"
-url = "#"
+pageRef = "#"
 weight = 20
 
 [[main]]
 name = "Blog"
-url = "/blog/"
+pageRef = "/blog/"
 weight = 40
 
 [[main]]

@@ -62,7 +62,7 @@
                                   {{ $langFlag := "" }}
                                   {{ $flagAlt := "" }}
                                   {{/* Get language label - prefer params.label, then params.i18n_label_key, then languageName from config */}}
-                                  {{ $langLabel := .LanguageName }}
+                                  {{ $langLabel := .Label }}
                                   {{ if not $langLabel }}
                                     {{ $langLabel = .languageName }}
                                   {{ end }}

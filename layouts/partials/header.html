@@ -6,11 +6,11 @@
             {{ $logoLight := .Site.Params.logo.light | default "images/navbar/logo-light.svg" }}
 
             {{ with resources.GetMatch $logoDark }}
-            <img src="{{ .RelPermalink }}" class="l-dark h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
+              <img src="{{ .RelPermalink }}" class="l-dark h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
             {{ end }}
 
             {{ with resources.GetMatch $logoLight }}
-            <img src="{{ .RelPermalink }}" class="l-light h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
+              <img src="{{ .RelPermalink }}" class="l-light h-[54px] w-auto" width="200" height="50" fetchpriority="high" alt="{{ $siteTitle }} Logo">
             {{ end }}
         </a>
         <div class="menu-extras">

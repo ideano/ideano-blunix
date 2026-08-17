@@ -33,3 +33,12 @@ body {
 html[lang="fa"] body {
   font-family: "IRANSansX", sans-serif;
 }
+
+html[lang="fa"] h1,
+html[lang="fa"] h2,
+html[lang="fa"] h3,
+html[lang="fa"] h4,
+html[lang="fa"] h5,
+html[lang="fa"] h6 {
+    font-family: "IRANSansX", sans-serif;
+}

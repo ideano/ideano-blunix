@@ -16,7 +16,9 @@ blocks:
     text: |
       We provide comprehensive consulting services to help your business thrive. From strategic planning to hands-on implementation, our team delivers results.
 
+      {{< quote >}}
       Our consultants bring years of experience across multiple industries and disciplines.
+      {{< /quote >}}
     image:
       src: "images/golden-gate.jpg"
       alt: "Professional consulting"
@@ -156,7 +158,13 @@ blocks:
 
   - block: cta
     links:
-      - url: "/#contact"
-        title: "Contact us"
-        text: "Ready to get started? Contact our team today."
+      - url: "/#job-positions"
+        title: "Job positions"
+        text: "Want to know about job postions?"
+      - url: "/#contract-agreements"
+        title: "Contract agreements"
+        text: "About contract agreements"
+      - url: "/#procurement-procedures"
+        title: "Procurement-procedures"
+        text: "About procurement procedures"
 ---

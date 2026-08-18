@@ -16,7 +16,8 @@
     <div class="mt-6">
       {{ if .url }}
         <h3 class="text-3xl duration-500">
-          <a href="{{ relref $.Root .url }}" class="text-blue-600 hover:text-blue-700 transition-colors duration-300 no-underline">
+          {{- $url := partial "helpers/url.html" (dict "Root" $.Root "url" .url) -}}
+          <a href="{{ $url }}" class="text-blue-600 hover:text-blue-700 transition-colors duration-300 no-underline">
             {{ .title }}
           </a>
         </h3>

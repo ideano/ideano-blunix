@@ -1,0 +1,16 @@
+{{- $url := .url | default "" -}}
+
+{{- if not $url -}}
+  {{- "" -}}
+{{- else if or
+      (hasPrefix $url "http://")
+      (hasPrefix $url "https://")
+      (hasPrefix $url "//")
+      (hasPrefix $url "mailto:")
+      (hasPrefix $url "tel:")
+      (hasPrefix $url "#")
+  -}}
+  {{- $url | safeURL -}}
+{{- else -}}
+  {{- relref .Root $url -}}
+{{- end -}}

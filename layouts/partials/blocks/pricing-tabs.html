@@ -33,6 +33,9 @@
                 {{- $ctaLabel := .cta | default $defaultCtaLabel -}}
                 {{- $ctaTitle := .cta_title | default $defaultCtaTitle -}}
                 {{- $ctaURL := .url | default "/#contact" -}}
+                {{- if $ctaURL -}}
+                  {{- $ctaURL := partial "helpers/url.html" (dict "Root" $.Root "url" $ctaURL) -}}
+                {{- end -}}                
                 {{- $textColor := .text_color | default "text-white" -}}
                 {{- $btnClasses := "" -}}
                 {{- if eq .color "yellow" -}}
@@ -72,6 +75,9 @@
                 {{- $ctaLabel := .cta | default $defaultCtaLabel -}}
                 {{- $ctaTitle := .cta_title | default $defaultCtaTitle -}}
                 {{- $ctaURL := .url | default "/#contact" -}}
+                {{- if $ctaURL -}}
+                  {{- $ctaURL := partial "helpers/url.html" (dict "Root" $.Root "url" $ctaURL) -}}
+                {{- end -}}
                 {{- $textColor := .text_color | default "text-white" -}}
                 {{- $btnClasses := "" -}}
                 {{- if eq .color "yellow" -}}

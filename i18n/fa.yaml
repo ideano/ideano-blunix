@@ -1,0 +1,71 @@
+- id: address
+  translation: "آدرس"
+
+- id: contact_us
+  translation: "تماس با ما"
+
+- id: contact
+  translation: "تماس"
+
+- id: name
+  translation: "نام"
+
+- id: company
+  translation: "شرکت"
+
+- id: phone
+  translation: "تلفن"
+
+- id: message
+  translation: "پیام"
+
+- id: submit
+  translation: "ارسال"
+
+- id: email_address
+  translation: "آدرس ایمیل"
+
+- id: send_enquiry
+  translation: "ارسال درخواست"
+
+- id: book_appointment
+  translation: "رزرو وقت ملاقات"
+
+- id: form_success_title
+  translation: "از اینکه با ما تماس گرفتید، سپاسگزاریم."
+
+- id: form_success_message
+  translation: "تیم ما به‌زودی با شما تماس خواهد گرفت."
+
+- id: no_description_available
+  translation: "توضیحی در دسترس نیست."
+
+- id: read_the_post
+  translation: "خواندن مطلب"
+
+- id: cta_title
+  translation: "سؤال، درخواست یا پیشنهادی دارید؟"
+
+- id: cta_button
+  translation: "اکنون با ما تماس بگیرید!"
+
+- id: cta_subtitle
+  translation: "مشتاق شنیدن نظرات شما هستیم!"
+
+- id: cta_looking_for
+  translation: "بیشتر بدانید"
+
+- id: cta_or
+  translation: "یا"
+
+- id: cta_contact_url
+  translation: "/fa/contact-us/"
+
+- id: cta_contact_title
+  translation: "تماس"
+
+- id: reading_time_minute
+  translation: "دقیقه"
+
+- id: reading_time_minutes
+  translation: "دقیقه"

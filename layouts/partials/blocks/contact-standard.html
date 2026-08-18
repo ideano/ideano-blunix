@@ -20,12 +20,14 @@
           {{ if .icon }}
             <i class="{{ .icon }}"></i>
           {{ else if .logo }}
-            <a href="{{ .url | safeURL }}" title="{{ .url_title }}"{{ if .new_tab }} target="_blank" rel="noopener noreferrer"{{ end }}><img src="{{ .logo }}" alt="{{ .logo_alt }}" class="rounded-[16px]" loading="lazy"></a>
+            {{- $url := partial "helpers/url.html" (dict "Root" $.Root "url" .url) -}}          
+            <a href="{{ $url }}" title="{{ .url_title }}"{{ if .new_tab }} target="_blank" rel="noopener noreferrer"{{ end }}><img src="{{ .logo }}" alt="{{ .logo_alt }}" class="rounded-[16px]" loading="lazy"></a>
           {{ end }}
         </div>
         <div class="content mt-7">
           <h3 class="title text-xl font-medium">{{ .heading }}</h3>
-          <div class="mt-5"><a href="{{ .contact_url | safeURL }}" title="{{ .contact_title }}" class="text-blue-600 hover:text-blue-700 font-semibold underline hover:no-underline"{{ if .new_tab }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .contact }}</a></div>
+            {{- $contact_url := partial "helpers/url.html" (dict "Root" $.Root "url" .contact_url) -}}          
+          <div class="mt-5"><a href="{{ $contact_url }}" title="{{ .contact_title }}" class="text-blue-600 hover:text-blue-700 font-semibold underline hover:no-underline"{{ if .new_tab }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .contact }}</a></div>
           {{ if .description_html }}
             <p class="text-slate-000 mt-3 [&_a]:text-blue-600 [&_a:hover]:text-blue-700 [&_a]:font-semibold [&_a]:underline [&_a:hover]:no-underline">
               {{ .description_html | safeHTML }}
@@ -33,7 +35,8 @@
           {{ else }}
             <p class="font-bold uppercase mt-3">
               {{ if .description_link }}
-                <a href="{{ .description_link.url | safeURL }}" title="{{ .description_link.title }}" class="text-blue-600 hover:text-blue-700 font-semibold underline hover:no-underline">{{ .description_link.text }}</a>
+              {{- $description_link_url := partial "helpers/url.html" (dict "Root" $.Root "url" .description_link.url) -}}          
+                <a href="{{ $description_link_url }}" title="{{ .description_link.title }}" class="text-blue-600 hover:text-blue-700 font-semibold underline hover:no-underline">{{ .description_link.text }}</a>
               {{ else if .description_text }}
                 {{ .description_text }}
               {{ end }}

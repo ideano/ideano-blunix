@@ -26,7 +26,7 @@
           <div class="prose max-w-none prose-p:max-w-xl prose-p:text-2xl prose-p:text-slate-500 prose-h3:mt-6 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-normal prose-h3:md:leading-normal prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
             {{ .Params.text | markdownify }}
           </div>
-          {{ partial "components/buttons.html" .Params }}
+          {{ partial "components/buttons.html" (dict "Root" .Root "buttons" .Params.buttons) }}
         </div>
       </div>
 

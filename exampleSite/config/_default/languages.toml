@@ -15,6 +15,15 @@ flag_image = "english"
 flag_alt = "English"
 label = "English"
 
+[en.params.site]
+keywords = "linux, debian, ubuntu, consulting, hosting, training, classes, courses"
+author = "Blunix GmbH"
+website = "https://www.blunix.com"
+email = "info@blunix.com"
+version = "2.0.0"
+title = "Blunix GmbH Berlin: Linux Support, Consulting and Hosting"
+description = "Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings"
+
 [en.params.logo]
 dark = "images/navbar/logo-dark-en.svg"
 light = "images/navbar/logo-light-en.svg"

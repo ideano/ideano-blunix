@@ -1,11 +1,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="linux, debian, ubuntu, consulting, hosting, training, classes, courses" />
-  <meta name="author" content="Blunix GmbH" />
-  <meta name="website" content="https://www.blunix.com" />
-  <meta name="email" content="info@blunix.com" />
-  <meta name="version" content="2.0.0" />
+  {{ with .Site.Params.site.keywords }}
+    <meta name="keywords" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.site.author }}
+    <meta name="author" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.site.website }}
+    <meta name="website" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.site.email }}
+    <meta name="email" content="{{ . }}" />
+  {{ end }}
+  {{ with .Site.Params.site.version }}
+    <meta name="version" content="{{ . }}" />
+  {{ end }}
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   {{/* Canonical Link - Remove index.html from URLs */}}
@@ -30,8 +40,18 @@
   {{- end -}}
   {{- $xDefaultURL := $xDefaultPage.Permalink | replaceRE "/index\\.html$" "/" | replaceRE "/index\\.html#" "/#" -}}
   <link rel="alternate" hreflang="x-default" href="{{ $xDefaultURL }}" />
-  <title>{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else if .Title }}{{ .Title }}{{ else }}Blunix GmbH Berlin: Linux Support, Consulting and Hosting{{ end }}</title>
-  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings{{ end }}" />
+  {{ if .Params.seo_title }}
+    <title>{{ .Params.seo_title }}</title>
+  {{ else if .Title }}
+    <title>{{ .Title }}</title>
+  {{ else if .Site.Params.site.title }}
+    <title>{{ .Site.Params.site.title }}</title>
+  {{ end }}  
+  {{ if .Description }}
+    <meta name="description" content="{{ .Description }}" />
+  {{ else if .Site.Params.site.description }}
+    <meta name="description" content="{{ .Site.Params.site.description }}" />
+  {{ end }}
   {{/* Preload hero background image if present */}}
   {{ $backgroundSrc := "" }}
 

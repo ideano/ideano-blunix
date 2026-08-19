@@ -9,6 +9,8 @@ blocks:
     background: "images/village-sunset.jpg"
     alt: "Services background"
     breadcrumb: "Services"
+    breadcrumb_url: "/"
+
 
   - block: text-image-bg
     id: intro
@@ -16,9 +18,7 @@ blocks:
     text: |
       We provide comprehensive consulting services to help your business thrive. From strategic planning to hands-on implementation, our team delivers results.
 
-      {{< quote >}}
-      Our consultants bring years of experience across multiple industries and disciplines.
-      {{< /quote >}}
+      {{< quote >}}Our consultants bring years of experience across multiple industries and disciplines.{{< /quote >}}
     image:
       src: "images/golden-gate.jpg"
       alt: "Professional consulting"

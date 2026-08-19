@@ -1,0 +1,14 @@
+# Add following snippets for your convenience
+# to add snippets to vscode, open command pallete (shift+cmd+p in mac), choose Preferences: Open Keyboard Shortcuts (JSON) (it opens user's keybindings.json file, on mac ~/Library/Application Support/Code/User/keybindings.json),
+# and add snippets for each one
+
+# for quote shortcode
+    {
+        "key": "cmd+k 1",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+            "snippet": "{{< quote >}}$TM_SELECTED_TEXT{{< /quote >}}"
+        }
+    }
+# to use: select text, then press cmd+k , release keys and then 1 (press ⌘K, release it, then press 1), it would add {{< quote >}} {{< /quote >}} to beginning and end of selection

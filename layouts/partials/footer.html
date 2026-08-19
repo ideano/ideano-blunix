@@ -61,3 +61,19 @@
         </div>
     </div>
 </footer>
+<!-- This code changes dates indicated with time tag (like blog / articles list layout file to Jalali calendar only when language is farsi) -->
+{{ if eq site.Language.Lang "fa" }}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("time[data-jalali]").forEach(function (el) {
+        const date = new Date(el.dateTime + "T00:00:00");
+
+        el.textContent = new Intl.DateTimeFormat("fa-IR-u-ca-persian", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }).format(date);
+    });
+});
+</script>
+{{ end }}    

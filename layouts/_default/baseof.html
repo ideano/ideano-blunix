@@ -10,7 +10,7 @@
     <a href="#start" onclick="topFunction()" id="back-to-top" class="back-to-top fixed end-5 bottom-5 z-10 hidden size-9 rounded-full bg-blue-600 text-center text-lg leading-9 text-white"><i class="uil uil-arrow-up"></i></a>
 
     {{/* Prism.js - Only load for blog posts and ssh-public-keys page */}}
-    {{ $needsPrism := or (and (eq .Section "blog") .IsPage) (eq .Layout "ssh-public-keys") }}
+    {{ $needsPrism := or (and (or (eq .Section "blog") (eq .Section "articles")) .IsPage) (eq .Layout "ssh-public-keys") }}
     {{ if $needsPrism }}
     <script src="/js/prism.min.js"></script>
     {{ end }}

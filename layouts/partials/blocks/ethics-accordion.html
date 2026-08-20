@@ -1,3 +1,38 @@
+{{/*
+ethics-accordion
+
+Accordion section with a three-image visual and expandable text items.
+
+Usage:
+  - block: ethics-accordion
+    id: "ethics"
+    title: "Our Principles"
+    images:
+      left_top:
+        src: "images/a.webp"
+        alt: "Image A"
+      left_bottom:
+        src: "images/b.webp"
+        alt: "Image B"
+      right:
+        src: "images/c.webp"
+        alt: "Image C"
+    items:
+      - question: "Question one?"
+        answer: "Answer in **Markdown**."
+      - question: "Question two?"
+        answer: "Another answer."
+
+Parameters:
+  id       Optional section ID. Default: `ethics`.
+  title    Section heading.
+  images   Object containing `left_top`, `left_bottom`, and `right`;
+           each contains `src` and `alt`.
+  items    Array of `{ question, answer }` accordion entries.
+
+Notes:
+  The first item is initially expanded.
+*/}}
 <section class="relative overflow-hidden pt-0 pb-0 md:pt-0 md:pb-20" id="{{ .Params.id | default "ethics" }}">
   <div class="relative container mt-16 md:mt-24">
     <div class="grid grid-cols-1 pb-8 text-center">

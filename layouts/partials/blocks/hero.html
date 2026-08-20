@@ -1,3 +1,27 @@
+{{/*
+hero
+
+Full-height hero section with responsive background image and optional CTA.
+
+Usage:
+  - block: hero
+    title: "Storage Without Limits"
+    subtitle: "A short Markdown subtitle."
+    background: "images/hero.webp"
+    alt: "Storage racks"
+    cta:
+      label: "Contact us"
+      title: "Contact us"
+      url: "/#contact"
+
+Parameters:
+  title      Hero heading.
+  subtitle   Markdown subtitle.
+  background Optional background image. Default: `images/index/background.webp`.
+  alt        Optional image alt text. Defaults to `title`, then `Background`.
+  cta        Optional object with `label`, `title`, and `url`.
+
+*/}}
 <section class="relative flex h-[90vh] flex-col justify-center py-36 md:py-80" id="start">
   {{ $backgroundSrc := .Params.background | default "images/index/background.webp" }}
   {{ $altText := .Params.alt | default .Params.title | default "Background" }}

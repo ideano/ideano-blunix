@@ -1,3 +1,31 @@
+{{/*
+text-image
+
+Text-and-image section with optional CTA buttons and configurable image side.
+
+Usage:
+  - block: text-image
+    id: "intro"
+    title: "Our Solution"
+    text: "Markdown **content**."
+    image:
+      src: "images/solution.webp"
+      alt: "Our solution"
+    image_left: true
+    buttons:
+      - label: "Learn more"
+        url: "/about/"
+
+Parameters:
+  id         Optional section ID. Default: `text-image`.
+  title      Section heading.
+  text       Markdown content.
+  image      Object containing `src` and `alt`.
+  image_left Optional boolean. `true` places the image on the left;
+             otherwise it is placed on the right.
+  buttons    Optional button configuration passed to `components/buttons.html`.
+
+*/}}
 <section class="relative bg-gray-50 py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
   <div class="relative container">
     <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">

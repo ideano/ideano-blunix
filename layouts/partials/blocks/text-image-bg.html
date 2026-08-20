@@ -1,3 +1,31 @@
+{{/*
+text-image-bg
+
+Text-and-image section with a configurable image position and CTA buttons.
+
+Usage:
+  - block: text-image-bg
+    id: "solution"
+    title: "Our solution"
+    text: "Markdown **content**."
+    image_position: "right"
+    image:
+      src: "images/solution.webp"
+      alt: "Solution"
+    buttons:
+      - label: "Learn more"
+        url: "/about/"
+
+Parameters:
+  id             Optional section ID. Default: `text-image`.
+  title          Section heading.
+  text           Markdown content.
+  image          Object containing `src` and `alt`.
+  image_position Optional `right` or other value. `right` places the image
+                 on the right; any other value places it on the left.
+  buttons        Optional button configuration passed to `components/buttons.html`.
+
+*/}}
 <section class="relative z-10 overflow-hidden pb-16 md:pb-24" id="{{ .Params.id | default "text-image" }}">
   <div class="relative container mt-16 gap-[30px] md:mt-24">
     <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-[30px]">

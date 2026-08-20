@@ -1,3 +1,30 @@
+{{/*
+features-grid
+
+Responsive feature-card grid.
+
+Usage:
+  - block: features-grid
+    id: "features"
+    title: "Features"
+    subtitle: "Optional introduction."
+    items:
+      - icon: "uil uil-database"
+        title: "Unified storage"
+        details: "Markdown **description**."
+        url: "/features/storage/"
+
+Parameters:
+  id       Optional section ID. Default: `features`.
+  title    Section heading.
+  subtitle Optional subtitle.
+  items    Array of feature objects:
+           `icon`, `title`, `details`, and optional `url`.
+
+Notes:
+  `details` is processed as Markdown. `url`, when present, makes the title
+  clickable.
+*/}}
 <section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "features" }}">
   <div class="container relative">
     <div class="grid grid-cols-1 pb-8 items-end">

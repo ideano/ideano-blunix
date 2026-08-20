@@ -1,3 +1,54 @@
+{{/*
+pricing-tabs
+
+Tabbed pricing section for hourly and monthly plans.
+
+Usage:
+  - block: pricing-tabs
+    id: "pricing"
+    title: "Pricing"
+    subtitle: "Choose a plan."
+    tab_hourly_label: "By the Hour"
+    tab_monthly_label: "Monthly"
+    default_cta: "Contact"
+    default_cta_title: "Contact us"
+    hourly:
+      - title: "Starter"
+        price: "10"
+        unit: "hour"
+        cta: "Choose"
+        cta_title: "Choose Starter"
+        url: "/#contact"
+        color: "yellow"
+        intensity: "400"
+        text_color: "text-white"
+    monthly:
+      - title: "Business"
+        price: "100"
+        duration: "month"
+        features:
+          - "Feature one"
+          - "Feature two"
+
+Parameters:
+  id                  Optional section ID. Default: `pricing`.
+  title               Section heading.
+  subtitle            Section subtitle.
+  tab_hourly_label    Hourly tab label. Default: `By the Hour`.
+  tab_monthly_label   Monthly tab label. Default: `Monthly`.
+  default_cta         Default plan button label. Default: `Contact`.
+  default_cta_title   Default button title. Defaults to `default_cta`.
+  hourly              Array of hourly plan objects.
+  monthly             Array of monthly plan objects.
+
+Plan fields:
+  title, price, unit/duration, features, cta, cta_title, url, text_color,
+  color, hover_color, intensity, hoverIntensity.
+
+Notes:
+  `features` is displayed for monthly plans. Button styling uses the theme's
+  button helper; `color: yellow` has explicit yellow intensity handling.
+*/}}
 <section class="relative" id="{{ .Params.id | default "pricing" }}">
   {{- $hourlyTabLabel := .Params.tab_hourly_label | default "By the Hour" -}}
   {{- $monthlyTabLabel := .Params.tab_monthly_label | default "Monthly" -}}

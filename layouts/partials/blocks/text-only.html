@@ -1,3 +1,25 @@
+{{/*
+text-only
+
+Full-width text section with optional CTA buttons.
+
+Usage:
+  - block: text-only
+    id: "details"
+    title: "Details"
+    text: |
+      Markdown **content** with headings and links.
+    buttons:
+      - label: "Learn more"
+        url: "/about/"
+
+Parameters:
+  id      Optional section ID. Default: `text-only`.
+  title   Section heading.
+  text    Markdown content.
+  buttons Optional button configuration passed to `components/buttons.html`.
+
+*/}}
 <section class="relative bg-gray-50 py-16 md:py-24" id="{{ .Params.id | default "text-only" }}">
   <div class="container relative">
     <div class="w-full">

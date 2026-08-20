@@ -1,3 +1,28 @@
+{{/*
+partners-scroller
+
+Horizontally scrolling partner/logo list with responsive image handling.
+
+Usage:
+  - block: partners-scroller
+    partners:
+      - title: "Partner One"
+        img: "images/partner-one.svg"
+        alt: "Partner One"
+        url: "https://example.com"
+      - title: "Partner Two"
+        img: "images/partner-two.webp"
+        alt: "Partner Two"
+        url: "https://example.org"
+
+Parameters:
+  partners Array of partner objects:
+            `img`, `alt`, `url`, and optional `title`.
+
+Notes:
+  Local raster images are resized and given responsive `srcset`/WebP output.
+  SVG and remote images are handled without Hugo raster resizing.
+*/}}
 <section class="scroll-mt-[130px] w-full">
   <div class="scroller bg-blue" data-direction="left" data-speed="fast">
     <div class="scroller__inner">

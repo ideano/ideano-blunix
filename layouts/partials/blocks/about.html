@@ -1,3 +1,27 @@
+{{/*
+about
+
+Two-column about section with Markdown paragraphs and an image.
+
+Usage:
+  - block: about
+    id: "about"
+    title: "About us"
+    paragraphs:
+      - "First paragraph in **Markdown**."
+      - "Second paragraph."
+    image:
+      src: "images/about.webp"
+      alt: "Our team"
+      caption: "Our team"
+
+Parameters:
+  id         Optional section ID. Default: `section`.
+  title      Section heading.
+  paragraphs Array of Markdown paragraphs.
+  image      Object containing `src`, `alt`, and optional `caption`.
+
+*/}}
 <section class="relative py-16 md:py-24" id="{{ .Params.id | default "section" }}">
   <div class="relative container">
     <div class="mt-8 grid grid-cols-1 gap-[30px] md:grid-cols-2 lg:grid-cols-2">

@@ -1,3 +1,18 @@
+{{/*
+banner
+
+Simple full-width text banner.
+
+Usage:
+  - block: banner
+    id: "notice"
+    text: "Important information"
+
+Parameters:
+  id   Optional section ID. Default: `banner`.
+  text Banner text.
+
+*/}}
 <section class="bg-gray-800 text-white text-center py-10" id="{{ .Params.id | default "banner" }}">
   <p class="text-2xl md:text-3xl xl:text-4xl mx-auto">{{ .Params.text }}</p>
 </section>

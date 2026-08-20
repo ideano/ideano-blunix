@@ -1,3 +1,33 @@
+{{/*
+process-timeline
+
+Alternating process/steps timeline.
+
+Usage:
+  - block: process-timeline
+    id: "process"
+    title: "How it works"
+    subtitle: "Optional introduction."
+    steps:
+      - icon: "uil uil-server"
+        heading: "Step one"
+        text: "Markdown **description**."
+        right: false
+      - icon: "uil uil-check"
+        heading: "Step two"
+        text: "Another description."
+        right: true
+
+Parameters:
+  id       Optional section ID. Default: `process`.
+  title    Timeline heading.
+  subtitle Optional subtitle.
+  steps    Array of `{ icon, heading, text, right }` objects.
+
+Notes:
+  `text` is processed as Markdown. `right: true` alternates the content
+  alignment/order.
+*/}}
 <section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "process" }}">
   <div class="container relative md:mt-16 mt-16">
     <div class="grid grid-cols-1 pb-4 text-center">

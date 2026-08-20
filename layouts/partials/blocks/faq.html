@@ -1,3 +1,29 @@
+{{/*
+faq
+
+Two-column FAQ accordion.
+
+Usage:
+  - block: faq
+    id: "faq"
+    title: "Frequently Asked Questions"
+    subtitle: "Optional introduction."
+    items:
+      - q: "Question one?"
+        a: "Answer **in Markdown**."
+      - q: "Question two?"
+        a: "Another answer."
+
+Parameters:
+  id       Optional section ID. Default: `faq`.
+  title    FAQ heading.
+  subtitle Optional Markdown subtitle.
+  items    Array of `{ q, a }` question/answer objects.
+
+Notes:
+  The items are automatically split into two columns. The first item is
+  initially expanded.
+*/}}
 <section class="relative md:pb-24 pb-16 overflow-hidden" id="{{ .Params.id | default "faq" }}">
   <div class="container relative md:mt-16 mt-16">
     <div class="grid grid-cols-1 pb-4 text-center">

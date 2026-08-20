@@ -1,3 +1,38 @@
+{{/*
+contact-standard
+
+Contact-method grid with icons/logos and optional descriptions.
+
+Usage:
+  - block: contact-standard
+    id: "contact"
+    title: "Contact us"
+    notice: "Optional **Markdown** notice."
+    items:
+      - icon: "uil uil-envelope"
+        heading: "Email"
+        contact: "hello@example.com"
+        contact_url: "mailto:hello@example.com"
+        contact_title: "Email us"
+        new_tab: false
+        description_text: "Available during business hours."
+
+Parameters:
+  id       Optional section ID. Default: `unencrypted-contact`.
+  title    Section heading.
+  notice   Optional Markdown notice.
+  items    Array of contact objects.
+
+Item fields:
+  icon, logo, logo_alt, url, url_title, heading, contact, contact_url,
+  contact_title, new_tab, and one of:
+  `description_html`, `description_link` (`url`, `title`, `text`), or
+  `description_text`.
+
+Notes:
+  `description_html` is rendered with `safeHTML`; use it only with trusted
+  content.
+*/}}
 <section class="relative md:pb-24 pb-16" id="{{ .Params.id | default "unencrypted-contact" }}">
   <div class="container relative mt-4">
     <div class="grid grid-cols-1 pb-8 text-center">

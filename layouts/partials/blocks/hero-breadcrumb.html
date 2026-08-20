@@ -1,3 +1,29 @@
+{{/*
+hero-breadcrumb
+
+Hero section with background image, title/subtitle, and breadcrumb navigation.
+
+Usage:
+  - block: hero-breadcrumb
+    title: "About Us"
+    subtitle: "Learn more about our company."
+    background: "images/about-hero.webp"
+    alt: "Company office"
+    breadcrumb: "About"
+    breadcrumb_url: "/about/"
+
+Parameters:
+  title          Hero heading.
+  subtitle       Hero subtitle.
+  background     Background image path.
+  alt            Optional image alt text. Default: `background`.
+  breadcrumb     Optional breadcrumb label. Defaults to `title`.
+  breadcrumb_url Optional URL for the breadcrumb. If omitted, the breadcrumb
+                 is rendered as the current page.
+
+Notes:
+  `background` is processed by the responsive image component.
+*/}}
 <section class="relative table w-full py-36" id="start">
   <div class="absolute inset-0">
     {{ partial "components/image-responsive.html" (dict

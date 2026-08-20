@@ -1,3 +1,30 @@
+{{/*
+blocks
+
+Block renderer/dispatcher. Renders a page's `blocks` array by loading the
+partial named by each item's `block` field.
+
+Usage:
+  In page front matter:
+    blocks:
+      - block: hero
+        title: "Welcome"
+        subtitle: "Intro text"
+        background: "images/hero.webp"
+      - block: text-only
+        title: "About"
+        text: "Markdown content."
+
+Parameters:
+  .Params.blocks
+      Array of block objects. Each object must contain `block`, whose value
+      matches a file in `partials/blocks/` (without `.html`). All other
+      fields are passed to that block as `.Params`.
+
+Notes:
+  - Unknown block names are reported with `warnf` and skipped.
+  - Each block receives the original page context as `.Root`.
+*/}}
 {{- $root := . -}}
 
 {{- if .Params.blocks -}}

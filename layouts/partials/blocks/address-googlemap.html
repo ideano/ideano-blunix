@@ -1,0 +1,255 @@
+{{/*
+address-googlemap
+
+Displays an Google Maps map beside Markdown-rendered content.
+
+Usage:
+
+* block: address-googlemap
+  title: "Our Office"
+  location: "Tehran, Iran"
+  map_position: "left"
+  map_height: 500
+map_position
+Optional. Physical position of the map:
+"left"  - map on the left, content on the right.
+"right" - content on the left, map on the right.
+Default: "left".
+
+map_height
+Optional. Map height in pixels.
+Default: 500.
+
+text
+Markdown-rendered content displayed beside the map.
+
+zoom
+Optional initial map zoom level.
+Default: 14.
+
+Notes:
+
+* Uses a Google Maps iframe/embed URL. No Google Maps API key or Map ID is required.
+* map_position is physical and works independently of RTL.
+* The map occupies 2/3 of the available width on large screens.
+* The text occupies 1/3 of the available width on large screens.
+* The title is centered independently of RTL/LTR.
+* On small screens the map and content are stacked.
+  */}}
+
+{{- $location := .Params.location -}}
+{{- if not $location -}}
+{{- errorf "address-googlemap block requires the mandatory 'location' parameter. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+{{- $title := .Params.title -}}
+{{- $text := .Params.text -}}
+{{- $mapPosition := .Params.map_position | default "left" -}}
+{{- $mapHeight := .Params.map_height | default 500 -}}
+{{- $zoom := .Params.zoom | default 14 -}}
+
+{{- if not (in (slice "left" "right") $mapPosition) -}}
+{{- errorf "address-googlemap block: 'map_position' must be 'left' or 'right'. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+<section class="relative overflow-hidden pb-16 md:pb-24">
+
+  <div class="container relative">
+
+```
+{{ with $title }}
+  <div class="w-full pb-8 text-center">
+    <h2 class="mb-4 text-center text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">
+      {{ . }}
+    </h2>
+  </div>
+{{ end }}
+
+<!--
+  Keep the map/content grid LTR so map_position always means
+  physical left/right, regardless of the page's RTL direction.
+-->
+<div
+  class="grid grid-cols-1 overflow-hidden rounded-2xl bg-white shadow-xs lg:grid-cols-3"
+  dir="ltr"
+  data-address-googlemap
+  data-location="{{ $location }}"
+  data-zoom="{{ $zoom }}"
+>
+
+  {{ if eq $mapPosition "left" }}
+
+    <!-- MAP: physical left, 2/3 width -->
+    <div
+      class="relative order-1 min-h-80 w-full min-w-0 lg:order-1 lg:col-span-2"
+      style="height: {{ $mapHeight }}px;"
+    >
+      <div
+        class="absolute inset-0 h-full w-full bg-slate-100"
+        data-address-googlemap-map
+      ></div>
+
+      <div
+        class="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 text-slate-500"
+        data-address-googlemap-loading
+      >
+        Loading map…
+      </div>
+    </div>
+
+    <!-- CONTENT: physical right, 1/3 width -->
+    <div
+      class="order-2 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-2 lg:col-span-1"
+      dir="auto"
+    >
+      <div
+        class="w-full text-slate-500
+          [&_a]:font-semibold
+          [&_a]:text-blue-500
+          [&_a]:underline
+          [&_a]:transition-colors
+          [&_a]:duration-500
+          [&_a:hover]:text-blue-600
+          [&_a:hover]:no-underline"
+      >
+        {{ with $text }}
+          {{ . | markdownify }}
+        {{ end }}
+      </div>
+    </div>
+
+  {{ else }}
+
+    <!-- CONTENT: physical left, 1/3 width -->
+    <div
+      class="order-1 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-1 lg:col-span-1"
+      dir="auto"
+    >
+      <div
+        class="w-full text-slate-500
+          [&_a]:font-semibold
+          [&_a]:text-blue-500
+          [&_a]:underline
+          [&_a]:transition-colors
+          [&_a]:duration-500
+          [&_a:hover]:text-blue-600
+          [&_a:hover]:no-underline"
+      >
+        {{ with $text }}
+          {{ . | markdownify }}
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- MAP: physical right, 2/3 width -->
+    <div
+      class="relative order-2 min-h-80 w-full min-w-0 lg:order-2 lg:col-span-2"
+      style="height: {{ $mapHeight }}px;"
+    >
+      <div
+        class="absolute inset-0 h-full w-full bg-slate-100"
+        data-address-googlemap-map
+      ></div>
+
+      <div
+        class="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 text-slate-500"
+        data-address-googlemap-loading
+      >
+        Loading map…
+      </div>
+    </div>
+
+  {{ end }}
+
+</div>
+
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initializeAddressMaps = () => {
+      const blocks = document.querySelectorAll(
+        "[data-address-googlemap]"
+      );
+
+      if (!blocks.length) {
+        return;
+      }
+
+      blocks.forEach((block) => {
+        if (block.dataset.addressGooglemapInitialized === "true") {
+          return;
+        }
+
+        block.dataset.addressGooglemapInitialized = "true";
+
+        const mapElement = block.querySelector(
+          "[data-address-googlemap-map]"
+        );
+
+        const loadingElement = block.querySelector(
+          "[data-address-googlemap-loading]"
+        );
+
+        if (!mapElement) {
+          return;
+        }
+
+        const location = block.dataset.location;
+        const zoom = block.dataset.zoom || "14";
+
+        if (!location) {
+          if (loadingElement) {
+            loadingElement.textContent = "Unable to load map.";
+          }
+          return;
+        }
+
+        const encodedLocation = encodeURIComponent(location);
+
+        /*
+         * Google Maps Embed URL.
+         *
+         * This uses the public Google Maps iframe/embed URL rather than
+         * the Google Maps JavaScript API, so no API key or Map ID is needed.
+         */
+        const iframe = document.createElement("iframe");
+
+        iframe.src =
+          `https://www.google.com/maps?q=${encodedLocation}&z=${encodeURIComponent(zoom)}&output=embed`;
+
+        iframe.title = `Map showing ${location}`;
+        iframe.loading = "lazy";
+        iframe.referrerPolicy = "no-referrer-when-downgrade";
+        iframe.allowFullscreen = true;
+
+        iframe.className = "absolute inset-0 h-full w-full border-0";
+
+        iframe.addEventListener("load", () => {
+          if (loadingElement) {
+            loadingElement.remove();
+          }
+        });
+
+        iframe.addEventListener("error", () => {
+          if (loadingElement) {
+            loadingElement.textContent = "Unable to load map.";
+          }
+        });
+
+        mapElement.appendChild(iframe);
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener(
+        "DOMContentLoaded",
+        initializeAddressMaps,
+        { once: true }
+      );
+    } else {
+      initializeAddressMaps();
+    }
+  })();
+</script>

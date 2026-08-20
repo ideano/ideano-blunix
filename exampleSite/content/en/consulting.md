@@ -170,6 +170,16 @@ blocks:
           - "On-site available"
         primary: false
 
+  - block: address-googlemap
+    location: "35.699715, 51.338055"
+    map_position: left
+    map_height: 400
+    title: "Our Office"
+    text: |
+      **Our office**
+
+      Tehran, Iran
+
   - block: cta
     links:
       - url: "/#job-positions"

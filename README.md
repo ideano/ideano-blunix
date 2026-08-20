@@ -19,6 +19,7 @@ All blocks have their parameters and example usage documented on top of their so
 * text-only block, which creates a full width block only with text (no image), usefull for descriptions.
 * address-osm block, which fetches location from open street maps and shows it to user. for contact pages.
 * address-googlemap block, which fetches location from google map and shows it to user. for contact pages. It uses iframe style, embedding google map code, to prevent need for google apikey and apikey problems like expiration.
+* address-image block, which shows location from an image (may be screenshot of user location from a map service) and shows it to user. for contact pages. Used when no reliance on external map service and api is desired (much faster load, loads in case of external service outage).
 
 fixed for rtl
 * partner-scrollers could have optional title text, which if exits, shown beside logo when scrolling. (usefull for logos without title in them, or for translations.)

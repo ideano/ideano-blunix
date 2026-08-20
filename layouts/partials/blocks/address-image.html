@@ -1,0 +1,168 @@
+{{/*
+  address-image
+
+  Displays an image from the site's assets directory beside Markdown-rendered content.
+
+  Usage:
+
+  * block: address-image
+    title: "Our Office"
+    image: "/images/office.jpg"
+    map_position: "left"
+    map_height: 500
+    text: |
+      **123 Example Street**
+
+      Tehran, Iran
+
+  Parameters:
+  title
+    Optional section heading. It is always centered above the block.
+
+  image
+    Required. Path to the image in the site's assets directory.
+    The image is processed through Hugo resources.Get and can be
+    specified as a path relative to assets/.
+
+  map_position
+    Optional. Physical position of the image:
+    "left"  - image on the left, content on the right.
+    "right" - content on the left, image on the right.
+    Default: "left".
+
+  map_height
+    Optional. Image block height in pixels.
+    Default: 500.
+
+  text
+    Markdown-rendered content displayed beside the image.
+
+  Notes:
+  * No map API, JavaScript map library, geocoding, or external map service is used.
+  * The image is loaded from the Hugo site's assets directory.
+  * map_position is physical and works independently of RTL.
+  * The image occupies 2/3 of the available width on large screens.
+  * The text occupies 1/3 of the available width on large screens.
+  * The title is centered independently of RTL/LTR.
+  * On small screens the image and content are stacked.
+*/}}
+
+{{- $imagePath := .Params.image -}}
+{{- if not $imagePath -}}
+  {{- errorf "address-image block requires the mandatory 'image' parameter. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+{{- $image := resources.Get $imagePath -}}
+{{- if not $image -}}
+  {{- errorf "address-image block: image %q was not found in the assets directory. Page: %s" $imagePath .Page.File.Path -}}
+{{- end -}}
+
+{{- $title := .Params.title -}}
+{{- $text := .Params.text -}}
+{{- $mapPosition := .Params.map_position | default "left" -}}
+{{- $mapHeight := .Params.map_height | default 500 -}}
+
+{{- if not (in (slice "left" "right") $mapPosition) -}}
+  {{- errorf "address-image block: 'map_position' must be 'left' or 'right'. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+<section class="relative overflow-hidden pb-16 md:pb-24">
+
+  <div class="container relative">
+
+    {{ with $title }}
+      <div class="w-full pb-8 text-center">
+        <h2 class="mb-4 text-center text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">
+          {{ . }}
+        </h2>
+      </div>
+    {{ end }}
+
+    <!--
+      Keep the image/content grid LTR so map_position always means
+      physical left/right, regardless of the page's RTL direction.
+    -->
+    <div
+      class="grid grid-cols-1 overflow-hidden rounded-2xl bg-white shadow-xs lg:grid-cols-3"
+      dir="ltr"
+    >
+
+      {{ if eq $mapPosition "left" }}
+
+        <!-- IMAGE: physical left, 2/3 width -->
+        <div
+          class="relative order-1 min-h-80 w-full min-w-0 lg:order-1 lg:col-span-2"
+          style="height: {{ $mapHeight }}px;"
+        >
+          <img
+            src="{{ $image.RelPermalink }}"
+            alt="{{ $title | default "" }}"
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- CONTENT: physical right, 1/3 width -->
+        <div
+          class="order-2 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-2 lg:col-span-1"
+          dir="auto"
+        >
+          <div
+            class="w-full text-slate-500
+              [&_a]:font-semibold
+              [&_a]:text-blue-500
+              [&_a]:underline
+              [&_a]:transition-colors
+              [&_a]:duration-500
+              [&_a:hover]:text-blue-600
+              [&_a:hover]:no-underline"
+          >
+            {{ with $text }}
+              {{ . | markdownify }}
+            {{ end }}
+          </div>
+        </div>
+
+      {{ else }}
+
+        <!-- CONTENT: physical left, 1/3 width -->
+        <div
+          class="order-1 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-1 lg:col-span-1"
+          dir="auto"
+        >
+          <div
+            class="w-full text-slate-500
+              [&_a]:font-semibold
+              [&_a]:text-blue-500
+              [&_a]:underline
+              [&_a]:transition-colors
+              [&_a]:duration-500
+              [&_a:hover]:text-blue-600
+              [&_a:hover]:no-underline"
+          >
+            {{ with $text }}
+              {{ . | markdownify }}
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- IMAGE: physical right, 2/3 width -->
+        <div
+          class="relative order-2 min-h-80 w-full min-w-0 lg:order-2 lg:col-span-2"
+          style="height: {{ $mapHeight }}px;"
+        >
+          <img
+            src="{{ $image.RelPermalink }}"
+            alt="{{ $title | default "" }}"
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+      {{ end }}
+
+    </div>
+
+  </div>
+
+</section>

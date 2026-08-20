@@ -1,3 +1,41 @@
+{{/*
+list-columns
+
+Responsive Hugo shortcode for rendering multiple unordered-list columns.
+
+Usage:
+  {{< list-columns >}}
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <--->
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <--->
+  <li>Item 5</li>
+  {{< /list-columns >}}
+
+Parameters:
+  .Inner
+      The shortcode body. Required.
+
+  <--->
+      Column separator. Each occurrence starts a new column.
+
+Named/positional parameters:
+  None.
+
+Input:
+  Each column should contain one or more <li> elements.
+
+Output:
+  A responsive flex layout where each column is rendered as a <div>
+  containing a <ul>. The layout uses Tailwind CSS utility classes.
+
+Notes:
+  - The shortcode body is split literally on "<--->".
+  - The shortcode does not itself generate <li> elements.
+  - HTML inside .Inner is passed through as safe HTML.
+*/}}
 <div class="flex flex-wrap flex-col md:gap-8 md:flex-row -ml-4 -mr-4 -mt-8 [&>div]:flex-1 [&>div]:my-4 [&>div]:mx-0 [&>div]:min-w-[100px] [&>div]:max-w-full [&>div]:py-0 [&>div]:px-0">
   {{ range split .Inner "<--->" }}
   {{ printf "<div class=\"mt-0 mb-0\"><ul>" | htmlUnescape | safeHTML }}

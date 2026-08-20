@@ -1,3 +1,40 @@
+{{/*
+Columns Shortcode
+=================
+
+Usage:
+  {{< columns >}}
+  First column content
+  <--->
+  Second column content
+  {{< /columns >}}
+
+Parameters:
+  This shortcode has no named parameters.
+
+Content:
+  - Place each column's content inside the shortcode.
+  - Separate columns with the literal delimiter "<--->".
+  - Each separated section is rendered as one <div> inside the
+    responsive flex container.
+  - Column content is output as safe HTML.
+
+Layout:
+  - Uses a responsive flex layout.
+  - On small screens, columns are stacked vertically.
+  - From the md breakpoint upward, columns are displayed in a row.
+  - Each column is flexible and has a minimum width of 100px.
+
+Example:
+  {{< columns >}}
+  <p>Column 1</p>
+  <--->
+  <p>Column 2</p>
+  <--->
+  <p>Column 3</p>
+  {{< /columns >}}
+*/}}
+
 <div class="flex flex-wrap flex-col md:gap-8 md:flex-row -ml-4 -mr-4 [&>div]:flex-1 [&>div]:my-4 [&>div]:mx-0 [&>div]:min-w-[100px] [&>div]:max-w-full [&>div]:py-0 [&>div]:px-4">
   {{ range split .Inner "<--->" }}
   {{ printf "<div class=\"mt-0 mb-0\">" | htmlUnescape | safeHTML }}

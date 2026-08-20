@@ -1,3 +1,32 @@
+{{/*
+quote
+
+Hugo shortcode for rendering a styled quotation block.
+
+Usage:
+  {{< quote >}}
+  This is the quoted text.
+  {{< /quote >}}
+
+Parameters:
+  .Inner
+      The quotation content. Required.
+
+Named/positional parameters:
+  None.
+
+Input:
+  Markdown or text placed between the shortcode tags.
+
+Output:
+  A styled quotation block with quotation marks, using Tailwind CSS
+  utility classes.
+
+Notes:
+  - The shortcode processes .Inner with Hugo's markdownify function.
+  - No HTML list or column structure is generated.
+*/}}
+
 <div class="my-8 rounded-2xl bg-slate-200 px-6 py-6 md:px-8 md:py-8">
   <div class="prose prose-lg max-w-none text-slate-700">
     <p class="!mt-0 !mb-0">

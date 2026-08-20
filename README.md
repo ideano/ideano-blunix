@@ -23,8 +23,11 @@ To see how to use each feature, review content of exampleSite (config, menus, co
 * hero_breadcrumb uses explicit url specified by user. (not trying to inference it)
 
 ## Shortcodes
-* quote shortcode to box and bold some part of text. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.
-* imaged-paragraph shortcode to add image to a paragraph. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph for all possible parameters.) (Important: it seems original theme figure shortcode does not works correctly, so use figure with care)
+All shortcodes have their parameters and example usage documented on top of their source file.
+* quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.
+* imaged-paragraph shortcode to add image to a paragraph. text inside could be markdown. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph for all possible parameters.) 
+* download-box  shortcode to add a download link with icon and a box around part of text. text inside could be markdown. icon image should be inside site static dir, not assets dir, else it would not copy to build output. (see download-box for all possible parameters.) 
+original figure shortcode of theme images also should be in static dir of site, not assets, else they will not copy to build output.
 
 ## Tools
 * create_favicons.sh to create favicon set from a master logo.png file.

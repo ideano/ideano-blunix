@@ -20,6 +20,15 @@ tags: ["automation", "ansible", "terraform"]
 Infrastructure automation is the foundation of reliable, repeatable deployments. In this guide, we walk through the fundamentals of using Ansible and Terraform together to manage your server infrastructure.
 {{< /imaged-paragraph >}}
 
+{{< download-box
+    src="/images/icons/pdf.svg"
+    alt="Download linux cheatsheet"
+    url="https://cheatography.com/davechild/cheat-sheets/linux-command-line/pdf/?last=1582977076"
+    position="left"
+>}}
+__Download the Linux Command Line Cheat Sheet__
+{{< /download-box >}}
+
 
 ## Why Automate?
 
@@ -61,6 +70,8 @@ resource "hcloud_server" "web" {
   location    = "nbg1"
 }
 ```
+
+{{< figure src="/images/laptop-mobile.jpg" >}}
 
 ## Combining Both Tools
 

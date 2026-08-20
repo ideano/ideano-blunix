@@ -1,3 +1,34 @@
+{{/*
+Figure Shortcode
+================
+
+IMPORTANT: image should be in site static dir, not assests, else it would not copy to build output.
+
+Usage:
+  {{< figure src="/images/example.jpg" >}}
+  {{< figure src="/images/example.jpg" caption="Example image" alt="Example image" >}}
+
+Parameters:
+  src       Required. Image path. Paths beginning with "/" are resolved as absolute
+            URLs; other paths are resolved relative to the current page permalink.
+  alt       Optional. Image alt text. If omitted, the caption is used as alt text.
+  caption   Optional. Figure caption. If omitted, "alt" is used as the caption.
+  class     Optional. CSS class applied to the <figure> element.
+  width     Optional. CSS width applied to the <figure> element.
+  height    Optional. CSS height applied to the <figure> element.
+  align     Optional. Value passed to the image's align attribute.
+  lightbox  Optional. Lightbox group/name. Defaults to "image-<src>".
+  target    Optional. Value passed to the link's target attribute.
+  rel       Optional. Value passed to the link's rel attribute.
+  attr      Optional. Attribution text displayed after the caption.
+  attrlink  Optional. URL used to turn the attribution text into a link.
+
+Notes:
+  - The shortcode wraps the image in a link and supports lightbox attributes.
+  - Figure numbering is taken from the page's "fig" Scratch variable.
+  - Caption and alt text are processed with markdownify and plainify.
+*/}}
+
 {{ if .Get "caption" }}
   {{ $.Scratch.Set "caption" (.Get "caption") }}
 {{ else if .Get "alt" }}

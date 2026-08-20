@@ -1,0 +1,117 @@
+{{/*
+DOWNLOAD BOX SHORTCODE
+
+IMPORTANT: image should be in site static dir, not assests, else it would not copy to build output.
+
+Usage:
+
+{{< download-box
+    src="/images/file-icon.png"
+    alt="Download file"
+    url="/files/document.pdf"
+    position="left"
+>}}
+**Download the document**
+
+Click the image to download the file.
+{{< /download-box >}}
+
+Parameters:
+- src: image path
+- alt: image alternative text
+- url: download URL
+- position: left (default) or right
+
+Image max height: 150px.
+
+Place static images in:
+static/images/
+*/}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "Download" -}}
+{{- $url := .Get "url" -}}
+{{- $position := .Get "position" | default "left" -}}
+
+{{/* Set image/content order */}}
+{{- $imageOrder := "order-1" -}}
+{{- $contentOrder := "order-2" -}}
+
+{{- if eq $position "right" -}}
+  {{- $imageOrder = "order-2" -}}
+  {{- $contentOrder = "order-1" -}}
+{{- end -}}
+
+{{/* Build image URL */}}
+{{- $imageURL := "" -}}
+{{- if $src -}}
+  {{- $imageURL = $src | relURL -}}
+{{- end -}}
+
+<div class="my-6">
+
+  <div class="flex items-center gap-4 rounded-3xl border border-slate-300 bg-slate-100 px-5 py-4 shadow-md md:px-6 md:py-5">
+
+    {{/* Image / download link */}}
+    <div class="{{ $imageOrder }} shrink-0">
+
+      {{- if $url -}}
+        <a
+          href="{{ $url | relURL }}"
+          download
+          class="block"
+          aria-label="{{ $alt }}"
+          title="{{ $alt }}"
+        >
+      {{- end -}}
+
+      <div class="flex items-center justify-center overflow-hidden rounded-lg border border-slate-300 bg-slate-200 p-2 transition duration-200 {{ if $url }}cursor-pointer hover:scale-105 hover:shadow-lg{{ end }}">
+
+        {{- if $imageURL -}}
+
+          <img
+            src="{{ $imageURL }}"
+            alt="{{ $alt }}"
+            style="max-width: 50px; height: auto;"
+            class="object-contain"
+            loading="lazy"
+          >
+
+        {{- else -}}
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            class="h-10 w-10 text-slate-700"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v12m0 0 4-4m-4 4-4-4M5 15v3.75A2.25 2.25 0 0 0 7.25 21h9.5A2.25 2.25 0 0 0 19 18.75V15"
+            />
+          </svg>
+
+        {{- end -}}
+
+      </div>
+
+      {{- if $url -}}
+        </a>
+      {{- end -}}
+
+    </div>
+
+    {{/* Content */}}
+    <div class="{{ $contentOrder }} min-w-0 flex-1">
+      <div class="prose max-w-none text-slate-700">
+        {{ .Inner | markdownify }}
+      </div>
+    </div>
+
+  </div>
+
+</div>

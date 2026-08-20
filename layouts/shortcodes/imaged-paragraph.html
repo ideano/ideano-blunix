@@ -1,39 +1,94 @@
 {{/*
   imaged-paragraph
 
-  Parameters:
-    src       - image source (required)
-    alt       - image alt text
-    title     - optional title displayed centered at the bottom of the image
-    side      - left or right; defaults to left
-    width     - image width; defaults to 35%
-    rounded   - optional border radius:
-                none, sm, md, lg, xl, 2xl, 3xl, full
-    class     - additional image classes
-    sizes     - responsive image sizes
-    loading   - image loading mode; defaults to lazy
-    quality   - responsive image quality; defaults to 85
+  Displays an image floated beside a paragraph, with optional title,
+  rounded corners, and border.
 
-  Example:
+  Parameters:
+    src             - image source (required)
+    alt             - image alt text
+    title           - optional title displayed over the image
+    title-position  - title position: top or bottom; defaults to bottom
+    side            - image side: left or right; defaults to left
+    width           - image width; defaults to 35%
+    rounded         - border radius:
+                      none, sm, md, lg, xl, 2xl, 3xl, full
+                      defaults to none
+    border          - border width:
+                      none, 1, 2, 4, 8
+                      defaults to none
+    border-color    - Tailwind border color without the "border-" prefix
+                      defaults to slate-300
+    class           - additional image classes
+    sizes           - responsive image sizes; defaults to 100vw
+    loading         - image loading mode; defaults to lazy
+    quality         - responsive image quality; defaults to 85
+
+
+  Complete usage example:
 
     {{< imaged-paragraph
         src="/images/example.webp"
         alt="Example image"
         title="Example image title"
+        title-position="bottom"
         side="left"
         width="35%"
         rounded="xl"
+        border="2"
+        border-color="slate-400"
+        sizes="(max-width: 768px) 100vw, 35vw"
+        loading="lazy"
+        quality="85"
+    >}}
+    This is the paragraph text displayed beside the image.
+
+    The image is floated to the left and the text flows naturally
+    around it. The image has rounded corners, a two-pixel border,
+    and a semi-transparent dark title strip at the bottom.
+    {{< /imaged-paragraph >}}
+
+  Minimal usage:
+
+    {{< imaged-paragraph
+        src="/images/example.webp"
+        alt="Example image"
     >}}
     This is the paragraph text beside the image.
+    {{< /imaged-paragraph >}}
+
+  Right-side image:
+
+    {{< imaged-paragraph
+        src="/images/example.webp"
+        alt="Example image"
+        side="right"
+        width="40%"
+    >}}
+    This paragraph flows around an image positioned on the right.
+    {{< /imaged-paragraph >}}
+
+  Top title:
+
+    {{< imaged-paragraph
+        src="/images/example.webp"
+        alt="Example image"
+        title="Image title"
+        title-position="top"
+    >}}
+    This paragraph has an image with its title at the top.
     {{< /imaged-paragraph >}}
 */}}
 
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" | default "" -}}
 {{- $title := .Get "title" | default "" -}}
+{{- $titlePosition := lower (.Get "title-position" | default "bottom") -}}
 {{- $side := lower (.Get "side" | default "left") -}}
 {{- $width := .Get "width" | default "35%" -}}
 {{- $rounded := lower (.Get "rounded" | default "none") -}}
+{{- $border := lower (.Get "border" | default "none") -}}
+{{- $borderColor := .Get "border-color" | default "slate-300" -}}
 {{- $loading := .Get "loading" | default "lazy" -}}
 {{- $sizes := .Get "sizes" | default "100vw" -}}
 {{- $quality := .Get "quality" | default 85 -}}
@@ -47,8 +102,16 @@
   {{- errorf "imaged-paragraph: side must be either left or right, got %q" $side -}}
 {{- end -}}
 
+{{- if not (in (slice "top" "bottom") $titlePosition) -}}
+  {{- errorf "imaged-paragraph: title-position must be either top or bottom, got %q" $titlePosition -}}
+{{- end -}}
+
 {{- if not (in (slice "none" "sm" "md" "lg" "xl" "2xl" "3xl" "full") $rounded) -}}
   {{- errorf "imaged-paragraph: rounded must be one of none, sm, md, lg, xl, 2xl, 3xl, full; got %q" $rounded -}}
+{{- end -}}
+
+{{- if not (in (slice "none" "1" "2" "4" "8") $border) -}}
+  {{- errorf "imaged-paragraph: border must be one of none, 1, 2, 4, 8; got %q" $border -}}
 {{- end -}}
 
 {{- $roundedClass := "" -}}
@@ -69,6 +132,26 @@
   {{- $roundedClass = "rounded-full" -}}
 {{- end -}}
 
+{{- $borderClass := "" -}}
+
+{{- if eq $border "1" -}}
+  {{- $borderClass = "border" -}}
+{{- else if eq $border "2" -}}
+  {{- $borderClass = "border-2" -}}
+{{- else if eq $border "4" -}}
+  {{- $borderClass = "border-4" -}}
+{{- else if eq $border "8" -}}
+  {{- $borderClass = "border-8" -}}
+{{- end -}}
+
+{{- $borderColorClass := "" -}}
+
+{{- if ne $border "none" -}}
+  {{- $borderColorClass = printf "border-%s" $borderColor -}}
+{{- end -}}
+
+{{- $imageContainerClass := printf "%s %s %s" $roundedClass $borderClass $borderColorClass -}}
+
 <div class="imaged-paragraph flow-root">
 
   <div
@@ -83,24 +166,47 @@
       {{ end }}
     "
   >
-    <div class="relative overflow-hidden {{ $roundedClass }}">
+
+    <div
+      class="relative overflow-hidden {{ $imageContainerClass }}"
+      style="position: relative; overflow: hidden;"
+    >
 
       {{ partial "components/image-responsive.html" (dict
         "src" $src
         "alt" $alt
-        "class" (printf "w-full h-auto %s %s" $roundedClass $class)
+        "class" (printf "w-full h-auto %s" $roundedClass $class)
         "loading" $loading
         "sizes" $sizes
         "quality" $quality
       ) }}
 
       {{- if $title -}}
-        <div class="absolute bottom-0 left-0 right-0 text-center px-2 py-2 bg-black/50 text-white">
+        <div
+          style="
+            position: absolute;
+            left: 0;
+            right: 0;
+            {{ if eq $titlePosition "top" }}
+              top: 0;
+            {{ else }}
+              bottom: 0;
+            {{ end }}
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.60);
+            color: white;
+            text-align: center;
+            padding: 0.5rem 0.75rem;
+          "
+        >
           {{ $title }}
         </div>
       {{- end -}}
 
     </div>
+
   </div>
 
   <p>

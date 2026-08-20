@@ -24,6 +24,7 @@ To see how to use each feature, review content of exampleSite (config, menus, co
 
 ## Shortcodes
 * quote shortcode to box and bold some part of text. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.
+* imaged-paragraph shortcode to add image to a paragraph. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph for all possible parameters.) (Important: it seems original theme figure shortcode does not works correctly, so use figure with care)
 
 ## Tools
 * create_favicons.sh to create favicon set from a master logo.png file.
@@ -31,7 +32,7 @@ To see how to use each feature, review content of exampleSite (config, menus, co
 
 ## writing syle content (blog, articles, posts)
 Orignial theme had a blog layout, but this theme has a writing layout which could be used for blog, articles, and other writing style content. This makes creating different sections, but with same layout simple.
-If you want to create a new writing style section, create a directory for it, and in _index.md of that dir, define cascade type writing to cascade type to all writings in that section, and sectionTitle you want. (for example create posts dir, and adjust _index.md inside it). See blog or articles in exampleSite.
+If you want to create a new writing style section, create a directory for it, and in _index.md of that dir, define cascade type writing to cascade type to all writings in that section, and sectionTitle you want. (for example create posts dir, and adjust _index.md inside it). See blog or articles in exampleSite. We use .Type variable (which should be "writing") to detect is content type. (Original theme used .Section to detect only "blog")
 * if writing section header image is absent, image/writing-list-background.png would be used as default.
 * if writing header image is absent, image/writing-single-background.png would be used as default.
 

@@ -6,7 +6,20 @@ image: "images/office-desk.jpg"
 tags: ["automation", "ansible", "terraform"]
 ---
 
+{{< imaged-paragraph
+    src="/images/nature-path"
+    alt="A beautiful sunset"
+    title="Automate and live happy!"
+    side="left"
+    width="50%"
+    title-position="top"
+    border="2"
+    border-color="slate-400"
+    rounded="xl"
+>}}
 Infrastructure automation is the foundation of reliable, repeatable deployments. In this guide, we walk through the fundamentals of using Ansible and Terraform together to manage your server infrastructure.
+{{< /imaged-paragraph >}}
+
 
 ## Why Automate?
 

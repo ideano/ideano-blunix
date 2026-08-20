@@ -15,9 +15,13 @@ To see how to use each feature, review content of exampleSite (config, menus, co
 * Site meta (like keywords, author, ...) could be set for each language seperately. 
 
 ## Blocks
+All blocks have their parameters and example usage documented on top of their source file.
+* text-only block, which creates a full width block only with text (no image), usefull for descriptions.
+* address-osm block, which fetches location from open street maps and shows it to user. for contact pages.
+
+fixed for rtl
 * partner-scrollers could have optional title text, which if exits, shown beside logo when scrolling. (usefull for logos without title in them, or for translations.)
 * feature-grid items could have optional url, which links feature title to another page.
-* Added text-only block, which creates a full width block only with text (no image), usefull for descriptions.
 * contacts are arranged in middle of page, so if they are less or more than 4, it would be visually more beautiful.
 * cta block fixed to show (looking for) element if actually more data is exist to show.
 * hero_breadcrumb uses explicit url specified by user. (not trying to inference it)

@@ -1,0 +1,453 @@
+{{/*
+address-osm
+
+Displays an OpenStreetMap map beside Markdown-rendered content.
+
+Usage:
+
+* block: address-osm
+  title: "Our Office"
+  location: "Tehran, Iran"
+  map_position: "left"
+  map_height: 500
+  text: |
+  **123 Example Street**
+
+  Tehran, Iran
+
+Parameters:
+title
+Optional section heading. It is always centered above the block.
+
+location
+Required. Address, place name, or coordinates to display on
+the map. The location is geocoded using OpenStreetMap Nominatim. (or lat/long numbers)
+
+map_position
+Optional. Physical position of the map:
+"left"  - map on the left, content on the right.
+"right" - content on the left, map on the right.
+Default: "left".
+
+map_height
+Optional. Map height in pixels.
+Default: 500.
+
+text
+Markdown-rendered content displayed beside the map.
+
+zoom
+Optional initial map zoom level.
+Default: 14.
+
+Notes:
+
+* Uses Leaflet and OpenStreetMap tiles.
+* OpenStreetMap attribution is displayed on the map.
+* map_position is physical and works independently of RTL.
+* The map occupies 2/3 of the available width on large screens.
+* The text occupies 1/3 of the available width on large screens.
+* The title is centered independently of RTL/LTR.
+* On small screens the map and content are stacked.
+  */}}
+
+{{- $location := .Params.location -}}
+{{- if not $location -}}
+{{- errorf "address-osm block requires the mandatory 'location' parameter. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+{{- $title := .Params.title -}}
+{{- $text := .Params.text -}}
+{{- $mapPosition := .Params.map_position | default "left" -}}
+{{- $mapHeight := .Params.map_height | default 500 -}}
+{{- $zoom := .Params.zoom | default 14 -}}
+
+{{- if not (in (slice "left" "right") $mapPosition) -}}
+{{- errorf "address-osm block: 'map_position' must be 'left' or 'right'. Page: %s" .Page.File.Path -}}
+{{- end -}}
+
+<section class="relative overflow-hidden pb-16 md:pb-24">
+
+  <div class="container relative">
+
+```
+{{ with $title }}
+  <div class="w-full pb-8 text-center">
+    <h2 class="mb-4 text-center text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">
+      {{ . }}
+    </h2>
+  </div>
+{{ end }}
+
+<!--
+  Keep the map/content grid LTR so map_position always means
+  physical left/right, regardless of the page's RTL direction.
+-->
+<div
+  class="grid grid-cols-1 overflow-hidden rounded-2xl bg-white shadow-xs lg:grid-cols-3"
+  dir="ltr"
+  data-address-osm
+  data-location="{{ $location }}"
+  data-zoom="{{ $zoom }}"
+>
+
+  {{ if eq $mapPosition "left" }}
+
+    <!-- MAP: physical left, 2/3 width -->
+    <div
+      class="relative order-1 min-h-80 w-full min-w-0 lg:order-1 lg:col-span-2"
+      style="height: {{ $mapHeight }}px;"
+    >
+      <div
+        class="absolute inset-0 h-full w-full bg-slate-100"
+        data-address-osm-map
+      ></div>
+
+      <div
+        class="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 text-slate-500"
+        data-address-osm-loading
+      >
+        Loading map…
+      </div>
+    </div>
+
+    <!-- CONTENT: physical right, 1/3 width -->
+    <div
+      class="order-2 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-2 lg:col-span-1"
+      dir="auto"
+    >
+      <div
+        class="w-full text-slate-500
+          [&_a]:font-semibold
+          [&_a]:text-blue-500
+          [&_a]:underline
+          [&_a]:transition-colors
+          [&_a]:duration-500
+          [&_a:hover]:text-blue-600
+          [&_a:hover]:no-underline"
+      >
+        {{ with $text }}
+          {{ . | markdownify }}
+        {{ end }}
+      </div>
+    </div>
+
+  {{ else }}
+
+    <!-- CONTENT: physical left, 1/3 width -->
+    <div
+      class="order-1 flex w-full min-w-0 items-center p-6 md:p-10 lg:order-1 lg:col-span-1"
+      dir="auto"
+    >
+      <div
+        class="w-full text-slate-500
+          [&_a]:font-semibold
+          [&_a]:text-blue-500
+          [&_a]:underline
+          [&_a]:transition-colors
+          [&_a]:duration-500
+          [&_a:hover]:text-blue-600
+          [&_a:hover]:no-underline"
+      >
+        {{ with $text }}
+          {{ . | markdownify }}
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- MAP: physical right, 2/3 width -->
+    <div
+      class="relative order-2 min-h-80 w-full min-w-0 lg:order-2 lg:col-span-2"
+      style="height: {{ $mapHeight }}px;"
+    >
+      <div
+        class="absolute inset-0 h-full w-full bg-slate-100"
+        data-address-osm-map
+      ></div>
+
+      <div
+        class="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 text-slate-500"
+        data-address-osm-loading
+      >
+        Loading map…
+      </div>
+    </div>
+
+  {{ end }}
+
+</div>
+
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initializeAddressMaps = () => {
+      const blocks = document.querySelectorAll(
+        "[data-address-osm]"
+      );
+
+      if (!blocks.length) {
+        return;
+      }
+
+      const leafletCss =
+        "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
+      const leafletJs =
+        "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+
+      if (
+        !document.querySelector(
+          "[data-address-osm-leaflet-css]"
+        )
+      ) {
+        const link = document.createElement("link");
+
+        link.rel = "stylesheet";
+        link.href = leafletCss;
+        link.dataset.addressOsmLeafletCss = "true";
+
+        document.head.appendChild(link);
+      }
+
+      const loadLeaflet = () => {
+        if (window.L) {
+          return Promise.resolve(window.L);
+        }
+
+        const existingScript =
+          document.querySelector(
+            "[data-address-osm-leaflet-js]"
+          );
+
+        if (existingScript) {
+          return new Promise((resolve, reject) => {
+            existingScript.addEventListener(
+              "load",
+              () => resolve(window.L),
+              { once: true }
+            );
+
+            existingScript.addEventListener(
+              "error",
+              reject,
+              { once: true }
+            );
+          });
+        }
+
+        return new Promise((resolve, reject) => {
+          const script =
+            document.createElement("script");
+
+          script.src = leafletJs;
+          script.defer = true;
+          script.dataset.addressOsmLeafletJs = "true";
+
+          script.addEventListener(
+            "load",
+            () => {
+              if (window.L) {
+                resolve(window.L);
+              } else {
+                reject(
+                  new Error(
+                    "Leaflet failed to initialize."
+                  )
+                );
+              }
+            },
+            { once: true }
+          );
+
+          script.addEventListener(
+            "error",
+            () => {
+              reject(
+                new Error(
+                  "Unable to load Leaflet."
+                )
+              );
+            },
+            { once: true }
+          );
+
+          document.head.appendChild(script);
+        });
+      };
+
+      const geocode = async (location) => {
+        const url = new URL(
+          "https://nominatim.openstreetmap.org/search"
+        );
+
+        url.searchParams.set("q", location);
+        url.searchParams.set("format", "jsonv2");
+        url.searchParams.set("limit", "1");
+
+        const response = await fetch(
+          url.toString(),
+          {
+            headers: {
+              Accept: "application/json"
+            }
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Location service returned HTTP ${response.status}.`
+          );
+        }
+
+        const results =
+          await response.json();
+
+        if (!results.length) {
+          throw new Error(
+            `Location "${location}" was not found.`
+          );
+        }
+
+        return {
+          latitude:
+            Number.parseFloat(results[0].lat),
+
+          longitude:
+            Number.parseFloat(results[0].lon),
+
+          label:
+            results[0].display_name ||
+            location
+        };
+      };
+
+      const createMap = async (block, L) => {
+        const mapElement =
+          block.querySelector(
+            "[data-address-osm-map]"
+          );
+
+        const loadingElement =
+          block.querySelector(
+            "[data-address-osm-loading]"
+          );
+
+        const location =
+          block.dataset.location;
+
+        const zoom =
+          Number.parseInt(
+            block.dataset.zoom || "14",
+            10
+          );
+
+        if (!mapElement) {
+          return;
+        }
+
+        try {
+          const result =
+            await geocode(location);
+
+          const map =
+            L.map(mapElement, {
+              scrollWheelZoom: false
+            }).setView(
+              [
+                result.latitude,
+                result.longitude
+              ],
+              zoom
+            );
+
+          L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+              maxZoom: 19,
+
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
+            }
+          ).addTo(map);
+
+          L.marker([
+            result.latitude,
+            result.longitude
+          ])
+            .addTo(map)
+            .bindPopup(result.label)
+            .openPopup();
+
+          if (loadingElement) {
+            loadingElement.remove();
+          }
+
+          window.setTimeout(() => {
+            map.invalidateSize();
+          }, 100);
+
+        } catch (error) {
+          console.error(
+            "address-osm:",
+            error
+          );
+
+          if (loadingElement) {
+            loadingElement.textContent =
+              "Unable to load map.";
+          }
+        }
+      };
+
+      loadLeaflet()
+        .then((L) => {
+          blocks.forEach((block) => {
+            if (
+              block.dataset.addressOsmInitialized ===
+              "true"
+            ) {
+              return;
+            }
+
+            block.dataset.addressOsmInitialized =
+              "true";
+
+            createMap(block, L);
+          });
+        })
+        .catch((error) => {
+          console.error(
+            "address-osm:",
+            error
+          );
+
+          blocks.forEach((block) => {
+            const loadingElement =
+              block.querySelector(
+                "[data-address-osm-loading]"
+              );
+
+            if (loadingElement) {
+              loadingElement.textContent =
+                "Unable to load map.";
+            }
+          });
+        });
+    };
+
+    if (
+      document.readyState === "loading"
+    ) {
+      document.addEventListener(
+        "DOMContentLoaded",
+        initializeAddressMaps,
+        { once: true }
+      );
+    } else {
+      initializeAddressMaps();
+    }
+  })();
+</script>
+

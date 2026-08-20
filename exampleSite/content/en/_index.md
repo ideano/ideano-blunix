@@ -180,4 +180,15 @@ blocks:
         contact: "Follow us"
         contact_url: "https://instagram.com"
         contact_title: "Instagram"
+  - block: address-osm
+    location: "35.699715, 51.338055"
+    map_position: left
+    map_height: 400
+    title: "Our Office"
+    text: |
+      **Our office**
+
+      Tehran, Iran
+
+      [Get directions](https://www.openstreetmap.org/)
 ---

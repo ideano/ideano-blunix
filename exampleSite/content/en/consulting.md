@@ -23,6 +23,18 @@ blocks:
       src: "images/golden-gate.jpg"
       alt: "Professional consulting"
 
+  - block: text-only
+    id: process-description
+    title: "Process Description"
+    text: |
+      Our strategy consultation begins with a discovery phase, where we assess your organization's current position, goals, and challenges through stakeholder interviews and data analysis. 
+      
+      Next, we conduct a market and competitive review to identify opportunities and risks. Based on these insights, we co-create a tailored strategic roadmap, outlining clear priorities, initiatives, and measurable milestones. 
+      
+      {{< quote >}}We then facilitate alignment sessions with key decision-makers to ensure buy-in and feasibility.{{< /quote >}}
+      
+      Finally, we support implementation planning, defining ownership, timelines, and success metrics. Throughout the process, we maintain close collaboration, ensuring the strategy remains practical, adaptable, and grounded in your organization's unique context and objectives.
+
   - block: process-timeline
     id: process
     title: "Our Process"
@@ -60,9 +72,11 @@ blocks:
       - icon: "uil uil-chart-line"
         title: "Strategy"
         details: "Business strategy, market analysis, and growth planning"
+        url: "/#business-strategy/"
       - icon: "uil uil-desktop"
         title: "Technology"
         details: "Digital transformation and technology solutions"
+        url: "/#business-technology/"
       - icon: "uil uil-users-alt"
         title: "Operations"
         details: "Process optimization and operational efficiency"

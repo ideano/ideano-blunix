@@ -1,6 +1,43 @@
-### This theme is modified to support Farsi language (right to left and proper font)
+# Modifications 
+This theme is modified to support Farsi language (right to left and proper font), with added functionalities.
+To see how to use each feature, review content of exampleSite (config, menus, content, ...)
 
-# Hugo Theme Blunix
+## Farsi, Arabic and RTL
+* Added Iran flag, and IranSansX font.
+* Fixing different parts to support rtl (text arrangement, menus, scrollers, feature-grids, ...)
+* Fixing all menu url to pageRef, and all urls in layouts to use a url.html helper. If url starts with httpL//, ... this helper keeps url untouched, but if url is internal url (like /features/) translates path to be compatible with language. (so /features/ would be /fa/features/ in farsi and /ar/features in arabic automatically).
+* Displayed time for writing style content (blog, article, ...) converted to Jalali with a help of js function as page loads end, if language is farsi.
+
+
+## Configurations
+* modified for hugo Hugo v0.156.0 deprecations. See https://discourse.gohugo.io/t/56732 . (like fixing languageName to label in config)
+* Site logo could be selected for each language seperately. 
+* Site meta (like keywords, author, ...) could be set for each language seperately. 
+
+## Blocks
+* partner-scrollers could have optional title text, which if exits, shown beside logo when scrolling. (usefull for logos without title in them, or for translations.)
+* feature-grid items could have optional url, which links feature title to another page.
+* Added text-only block, which creates a full width block only with text (no image), usefull for descriptions.
+* contacts are arranged in middle of page, so if they are less or more than 4, it would be visually more beautiful.
+* cta block fixed to show (looking for) element if actually more data is exist to show.
+* hero_breadcrumb uses explicit url specified by user. (not trying to inference it)
+
+## Shortcodes
+* quote shortcode to box and bold some part of text. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.
+
+## Tools
+* create_favicons.sh to create favicon set from a master logo.png file.
+* vscode_snippets could be installed in vscode, to do repeated actions easier. For example, if quote shortcode shortcut key installed, user could select text and press key combination to quote text.
+
+## writing syle content (blog, articles, posts)
+Orignial theme had a blog layout, but this theme has a writing layout which could be used for blog, articles, and other writing style content. This makes creating different sections, but with same layout simple.
+If you want to create a new writing style section, create a directory for it, and in _index.md of that dir, define cascade type writing to cascade type to all writings in that section, and sectionTitle you want. (for example create posts dir, and adjust _index.md inside it). See blog or articles in exampleSite.
+* if writing section header image is absent, image/writing-list-background.png would be used as default.
+* if writing header image is absent, image/writing-single-background.png would be used as default.
+
+
+
+# Hugo Theme Blunix (Original Readme)
 
 A professional, clean Hugo theme designed for consulting and service-based businesses. Features a flexible block-based page layout system, multilingual support, and modern responsive design.
 

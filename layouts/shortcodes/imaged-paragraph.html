@@ -1,0 +1,110 @@
+{{/*
+  imaged-paragraph
+
+  Parameters:
+    src       - image source (required)
+    alt       - image alt text
+    title     - optional title displayed centered at the bottom of the image
+    side      - left or right; defaults to left
+    width     - image width; defaults to 35%
+    rounded   - optional border radius:
+                none, sm, md, lg, xl, 2xl, 3xl, full
+    class     - additional image classes
+    sizes     - responsive image sizes
+    loading   - image loading mode; defaults to lazy
+    quality   - responsive image quality; defaults to 85
+
+  Example:
+
+    {{< imaged-paragraph
+        src="/images/example.webp"
+        alt="Example image"
+        title="Example image title"
+        side="left"
+        width="35%"
+        rounded="xl"
+    >}}
+    This is the paragraph text beside the image.
+    {{< /imaged-paragraph >}}
+*/}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $side := lower (.Get "side" | default "left") -}}
+{{- $width := .Get "width" | default "35%" -}}
+{{- $rounded := lower (.Get "rounded" | default "none") -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+{{- $sizes := .Get "sizes" | default "100vw" -}}
+{{- $quality := .Get "quality" | default 85 -}}
+{{- $class := .Get "class" | default "" -}}
+
+{{- if not $src -}}
+  {{- errorf "imaged-paragraph shortcode requires a src parameter" -}}
+{{- end -}}
+
+{{- if not (in (slice "left" "right") $side) -}}
+  {{- errorf "imaged-paragraph: side must be either left or right, got %q" $side -}}
+{{- end -}}
+
+{{- if not (in (slice "none" "sm" "md" "lg" "xl" "2xl" "3xl" "full") $rounded) -}}
+  {{- errorf "imaged-paragraph: rounded must be one of none, sm, md, lg, xl, 2xl, 3xl, full; got %q" $rounded -}}
+{{- end -}}
+
+{{- $roundedClass := "" -}}
+
+{{- if eq $rounded "sm" -}}
+  {{- $roundedClass = "rounded-sm" -}}
+{{- else if eq $rounded "md" -}}
+  {{- $roundedClass = "rounded-md" -}}
+{{- else if eq $rounded "lg" -}}
+  {{- $roundedClass = "rounded-lg" -}}
+{{- else if eq $rounded "xl" -}}
+  {{- $roundedClass = "rounded-xl" -}}
+{{- else if eq $rounded "2xl" -}}
+  {{- $roundedClass = "rounded-2xl" -}}
+{{- else if eq $rounded "3xl" -}}
+  {{- $roundedClass = "rounded-3xl" -}}
+{{- else if eq $rounded "full" -}}
+  {{- $roundedClass = "rounded-full" -}}
+{{- end -}}
+
+<div class="imaged-paragraph flow-root">
+
+  <div
+    style="
+      float: {{ $side }};
+      width: {{ $width }};
+      margin-bottom: 1rem;
+      {{ if eq $side "left" }}
+        margin-right: 1.5rem;
+      {{ else }}
+        margin-left: 1.5rem;
+      {{ end }}
+    "
+  >
+    <div class="relative overflow-hidden {{ $roundedClass }}">
+
+      {{ partial "components/image-responsive.html" (dict
+        "src" $src
+        "alt" $alt
+        "class" (printf "w-full h-auto %s %s" $roundedClass $class)
+        "loading" $loading
+        "sizes" $sizes
+        "quality" $quality
+      ) }}
+
+      {{- if $title -}}
+        <div class="absolute bottom-0 left-0 right-0 text-center px-2 py-2 bg-black/50 text-white">
+          {{ $title }}
+        </div>
+      {{- end -}}
+
+    </div>
+  </div>
+
+  <p>
+    {{ .Inner | markdownify }}
+  </p>
+
+</div>

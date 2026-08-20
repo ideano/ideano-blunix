@@ -20,6 +20,7 @@ blocks:
         alt: "TechCo"
       - url: "#"
         img: "/images/partners/company-2.svg"
+        title: "DataHub"
         alt: "DataHub"
       - url: "#"
         img: "/images/partners/company-3.svg"

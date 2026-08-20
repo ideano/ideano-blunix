@@ -1,3 +1,9 @@
+- id: breadcrumb_home
+  translation: "خانه"
+
+- id: writing_translation_notice
+  translation: "ترجمه خودکار نوشته"
+
 - id: address
   translation: "آدرس"
 

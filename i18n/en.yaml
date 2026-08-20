@@ -1,3 +1,9 @@
+- id: breadcrumb_home
+  translation: "Home"
+
+- id: writing_translation_notice
+  translation: "Automatic writing translation"
+
 - id: address
   translation: "Address"
 

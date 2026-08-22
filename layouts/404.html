@@ -1,18 +1,15 @@
 {{ define "main" }}
 <!-- Start Hero -->
-{{ $homeURL := .Site.Home.RelPermalink }}
+{{- $homeUrl := partial "helpers/url.html" (dict "Root" $ "url" "/") -}}          
 <section class="relative table w-full py-36" id="start">
     <div class="absolute inset-0">
-      {{ partial "components/image-responsive.html" (dict
-        "src" .Site.Params.background_404
-        "alt" "404 page background"
-        "class" "w-full h-full object-cover object-center"
-        "loading" "eager"
-        "fetchpriority" "high"
-        "sizes" "(max-width: 1920px) 100vw, 1920px"
-        "maxDisplayWidth" 1920
-        "quality" 98
-      ) }}
+    <img
+        src="{{ .Site.Params.background_404 | relURL }}"
+        alt="404 page background"
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high">
+    </div>
     </div>
     <div class="absolute inset-0 bg-black opacity-75"></div>
     <div class="container relative">
@@ -23,7 +20,7 @@
 
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
-           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ $homeURL }}">{{ i18n "404_breadcrumb_home" }}</a></li>
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ $homeUrl }}">{{ i18n "404_breadcrumb_home" }}</a></li>
            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="bi bi-chevron-right"></i></li>
            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">404</li>
         </ul>
@@ -49,8 +46,7 @@
                     <p class="text-slate-500 text-3xl mt-8">{{ i18n "404_main_paragraph" }}</p>
                 </div>
                 <div class="content mt-8">
-                <a href="{{ $homeURL }}" title="{{ i18n "404_home_button_title" }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">{{ i18n "404_home_button_label" }}</a>
-                <a href="https://www.internetwache-polizei-berlin.de/index_121.html" target="_blank" rel="noopener noreferrer" title="{{ i18n "404_police_button_title" }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-red-600 hover:bg-blue-700 border-red-600 hover:border-blue-700 text-white rounded-md">{{ i18n "404_police_button_label" }}</a>
+                <a href="{{ $homeUrl }}" title="{{ i18n "404_home_button_title" }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-green-700 hover:bg-blue-700 border-green-700 hover:border-blue-700 text-white rounded-md">{{ i18n "404_home_button_label" }}</a>
                 </div>
             </div>
 

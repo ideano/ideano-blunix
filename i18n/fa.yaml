@@ -75,3 +75,21 @@
 
 - id: reading_time_minutes
   translation: "دقیقه"
+
+- id: 404_hero_heading
+  translation: "یافت نشد"
+
+- id: 404_breadcrumb_home
+  translation: "خانه"
+
+- id: 404_main_heading
+  translation: "صفحه‌ای که شما به دنبال آن هستید پیدا نشد"
+
+- id: 404_main_paragraph
+  translation: "ممکن است این یک آدرس قدیمی که صفحه آن حذف شده است باشد، یا اینکه در تایپ آدرس چیزی را غلط تایپ کرده باشید"
+
+- id: 404_home_button_title
+  translation: "خانه"
+
+- id: 404_home_button_label
+  translation: "خانه"

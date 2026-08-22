@@ -23,6 +23,7 @@ email = "info@ideano.com"
 version = "2.0.0"
 title = "Ideano Corp Tehran: Embedded systesm design, Consulting and TV Monitoring solutions"
 description = "Embedded systesm design, Consulting and TV Monitoring solutions, Project based Linux Embedded Design as well as Embedded Linux Design Workshops and Trainings"
+background_404 = "/images/404/background.webp"
 
 [en.params.logo]
 dark = "images/navbar/logo-dark-en.svg"

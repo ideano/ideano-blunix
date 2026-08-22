@@ -75,3 +75,21 @@
 
 - id: reading_time_minutes
   translation: "Minutes"
+
+- id: 404_hero_heading
+  translation: "Not Found"
+
+- id: 404_breadcrumb_home
+  translation: "home"
+
+- id: 404_main_heading
+  translation: "The page you are looking for not found"
+
+- id: 404_main_paragraph
+  translation: "You may have an old bookmark, but page not exist anymore, or you have typo in url link"
+
+- id: 404_home_button_title
+  translation: "Go Home"
+
+- id: 404_home_button_label
+  translation: "Go Home"

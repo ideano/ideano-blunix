@@ -1,13 +1,13 @@
-name        = "hugo-theme-blunix"
+name        = "ideano-blunix"
 license     = "MIT"
 licenselink = "https://opensource.org/licenses/MIT"
 description = "Professional business theme for consulting and services"
-homepage    = "https://github.com/Blunix-GmbH/hugo-theme-blunix"
-demosite    = "https://www.blunix.com/"
-tags        = ["business", "consulting", "multilingual", "responsive", "clean"]
-features    = ["responsive", "multilingual", "seo", "tailwind"]
-min_version = "0.120.0"
+homepage    = "https://github.com/ideano/ideano-blunix"
+demosite    = ""
+tags        = ["business", "consulting", "multilingual", "responsive", "clean", "rtl", "farsi", "arabic"]
+features    = ["responsive", "multilingual", "seo", "tailwind", "rtl"]
+min_version = "0.156.0"
 
 [author]
-  name = "Blunix GmbH"
-  homepage = "https://www.blunix.com"
+  name = "Ideano Corp modified from original theme from Blunix GmbH"
+  homepage = "https://www.ideano.com"

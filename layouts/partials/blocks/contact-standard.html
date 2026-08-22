@@ -9,7 +9,7 @@ Usage:
     title: "Contact us"
     notice: "Optional **Markdown** notice."
     items:
-      - icon: "uil uil-envelope"
+      - icon: "bi bi-envelope"
         heading: "Email"
         contact: "hello@example.com"
         contact_url: "mailto:hello@example.com"
@@ -40,7 +40,7 @@ Notes:
       {{ with .Params.notice }}
         <div class="flex justify-center mt-6">
           <div class="inline-flex items-start gap-3 rounded-lg bg-blue-50 border border-blue-200 py-4 px-6 md:py-5 md:px-8 shadow-sm max-w-3xl">
-            <i class="uil uil-info-circle mt-0.5 shrink-0 text-xl md:text-2xl text-blue-500"></i>
+            <i class="bi bi-info-circle mt-0.5 shrink-0 text-xl md:text-2xl text-blue-500"></i>
             <p class="text-sm md:text-base leading-relaxed text-slate-800 m-0 text-left">{{ . | markdownify }}</p>
           </div>
         </div>

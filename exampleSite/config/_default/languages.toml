@@ -17,12 +17,12 @@ label = "English"
 
 [en.params.site]
 keywords = "linux, debian, ubuntu, consulting, hosting, training, classes, courses"
-author = "Blunix GmbH"
-website = "https://www.blunix.com"
-email = "info@blunix.com"
+author = "Ideano corp"
+website = "https://www.ideano.com"
+email = "info@ideano.com"
 version = "2.0.0"
-title = "Blunix GmbH Berlin: Linux Support, Consulting and Hosting"
-description = "Linux Support 24/7, Project based Linux Consulting, Managed Hosting with FOSS Configuration Management as well as Linux Workshops and Trainings"
+title = "Ideano Corp Tehran: Embedded systesm design, Consulting and TV Monitoring solutions"
+description = "Embedded systesm design, Consulting and TV Monitoring solutions, Project based Linux Embedded Design as well as Embedded Linux Design Workshops and Trainings"
 
 [en.params.logo]
 dark = "images/navbar/logo-dark-en.svg"
@@ -32,25 +32,25 @@ light = "images/navbar/logo-light-en.svg"
 name = "Twitter"
 url = "https://twitter.com/"
 title = "Follow us on Twitter"
-icon = "uil uil-twitter"
+icon = "bi bi-twitter"
 
 [[en.params.social_media]]
 name = "LinkedIn"
 url = "https://www.linkedin.com/"
 title = "Connect on LinkedIn"
-icon = "uil uil-linkedin"
+icon = "bi bi-linkedin"
 
 [[en.params.social_media]]
 name = "GitHub"
 url = "https://github.com/"
 title = "View our GitHub"
-icon = "uil uil-github"
+icon = "bi bi-github"
 
 [[en.params.social_media]]
 name = "Instagram"
 url = "https://instagram.com/"
 title = "Follow on Instagram"
-icon = "uil uil-instagram"
+icon = "bi bi-instagram"
 
 [[en.params.debian_links]]
 name = "Hugo Themes"

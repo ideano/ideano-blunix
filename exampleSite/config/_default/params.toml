@@ -2,20 +2,20 @@ featured_image = 'featured.webp'
 
 [[contact]]
 name = "contact@example.com"
-icon = "fa-solid fa-envelope"
+icon = "bi bi-envelope"
 link = "mailto:contact@example.com"
 
 [[contact]]
 name = "+1 234 567 890"
-icon = "fa-solid fa-phone"
+icon = "bi bi-telephone"
 link = "tel:+1234567890"
 
 [[banner_link]]
 name = "+1 234 567 890"
-icon = "fa-solid fa-mobile-screen-button"
+icon = "bi bi-phone"
 link = "tel:+1234567890"
 
 [[banner_link]]
 name = "contact@example.com"
-icon = "fa-solid fa-envelope"
+icon = "bi bi-envelope"
 link = "mailto:contact@example.com"

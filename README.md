@@ -2,6 +2,10 @@
 This theme is modified to support Farsi language (right to left and proper font), with added functionalities.
 To see how to use each feature, review content of exampleSite (config, menus, content, ...)
 
+## General
+* all references to iconscout and fontawsome uil- and fa- icons are removed to remove need for external dependencies. There is a local version of bootstrap-icons wich could be used with bi- .
+
+
 ## Farsi, Arabic and RTL
 * Added Iran flag, and IranSansX font.
 * Fixing different parts to support rtl (text arrangement, menus, scrollers, feature-grids, ...)

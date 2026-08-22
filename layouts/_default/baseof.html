@@ -7,7 +7,7 @@
     {{- partial "footer.html" . -}}
     {{- partial "lightbox.html" . -}}
 
-    <a href="#start" onclick="topFunction()" id="back-to-top" class="back-to-top fixed end-5 bottom-5 z-10 hidden size-9 rounded-full bg-blue-600 text-center text-lg leading-9 text-white"><i class="uil uil-arrow-up"></i></a>
+    <a href="#start" onclick="topFunction()" id="back-to-top" class="back-to-top fixed end-5 bottom-5 z-10 hidden size-9 rounded-full bg-blue-600 text-center text-lg leading-9 text-white"><i class="bi bi-arrow-up"></i></a>
 
     {{/* Prism.js - Only load for writing posts and ssh-public-keys page */}}
     {{ $needsPrism := or (and (eq .Section "writing") .IsPage) (eq .Layout "ssh-public-keys") }}

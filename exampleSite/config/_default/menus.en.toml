@@ -60,18 +60,18 @@ name = "Consulting"
 pageRef = "/consulting/"
 weight = 10
 [services.params]
-icon = "uil uil-chart-line"
+icon = "bi bi-graph-up"
 
 [[services]]
 name = "Development"
 pageRef = "/#development"
 weight = 20
 [services.params]
-icon = "uil uil-desktop"
+icon = "bi bi-display"
 
 [[services]]
 name = "Training"
 pageRef = "/#training"
 weight = 30
 [services.params]
-icon = "uil uil-graduation-cap"
+icon = "bi bi-mortarboard"

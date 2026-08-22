@@ -15,7 +15,7 @@
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $websiteMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
                                 {{ range $index, $item := $websiteMenu.Children }}
-                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> {{ $item.Name }}</a></li>
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
                                 {{ end }}
                             </ul>
                             {{ end }}
@@ -27,7 +27,7 @@
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $hostingMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
                                 {{ range $index, $item := $hostingMenu.Children }}
-                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b"></i> {{ $item.Name }}</a></li>
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-sky-400 duration-500 ease-in-out"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
                                 {{ end }}
                             </ul>
                             {{ end }}

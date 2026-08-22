@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 text-center">
       <h2 class="mb-2 text-4xl font-bold">{{ i18n "cta_title" }}</h2>
       <div class="my-6">
-        <a href="{{ i18n "cta_contact_url" }}" title="{{ i18n "cta_contact_title" }}" class="mt-2 mb-2 inline-block rounded-md border border-blue-600 bg-blue-600 px-5 py-2 text-center align-middle text-xl font-semibold tracking-wide text-white duration-500 hover:border-green-700 hover:bg-green-700 md:px-6 md:py-3 md:text-3xl"><i class="uil uil-phone"></i> {{ i18n "cta_button" }}</a>
+        <a href="{{ i18n "cta_contact_url" }}" title="{{ i18n "cta_contact_title" }}" class="mt-2 mb-2 inline-block rounded-md border border-blue-600 bg-blue-600 px-5 py-2 text-center align-middle text-xl font-semibold tracking-wide text-white duration-500 hover:border-green-700 hover:bg-green-700 md:px-6 md:py-3 md:text-3xl"><i class="bi bi-telephone"></i> {{ i18n "cta_button" }}</a>
       </div>
       <h3 class="mb-4 text-2xl leading-normal font-semibold md:text-3xl md:leading-normal">{{ i18n "cta_subtitle" }}</h3>
       {{ $dataKey := printf "writing-cta-links.%s" .Site.Language.Lang }}

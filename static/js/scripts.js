@@ -1,7 +1,7 @@
 /* Template Name: Techwind - Tailwind CSS Multipurpose Landing & Admin Dashboard Template
    Author: Shreethemes
    Website: https://shreethemes.in
-   Version: 2.2.0 (Optimized for blunix.com)
+   Version: 2.2.0 
    File Description: Consolidated JS file with only used features
 */
 

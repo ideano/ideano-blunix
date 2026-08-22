@@ -103,17 +103,8 @@
     {{ end }}
   {{ end }}
 
-  {{/* Preload critical fonts to eliminate font discovery delay */}}
-  {{ if eq .Site.Language.Lang "fa" }}
-    <link rel="preload" href="/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/IRANSansX-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  {{ else }}
-    <link rel="preload" href="/fonts/Nunito-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Nunito-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Nunito-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-  {{ end }}
-
+  {{ partial "fonts.html" . }}
+  
   {{/* Cache key based on whether it's a writing single post */}}
   {{ $isWritingSingle := and (eq .Type "writing") .IsPage }}
 
@@ -122,7 +113,7 @@
 
   {{ $cssContext := dict "isWritingSingle" $isWritingSingle "needsPrism" $needsPrism }}
   {{ partialCached "css.html" $cssContext $isWritingSingle $needsPrism }}
-
+  
   {{ partial "opengraph.html" . }}
   {{ partial "twitter_cards.html" . }}
 

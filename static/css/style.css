@@ -5512,37 +5512,39 @@ html[dir="rtl"] .tns-visually-hidden {
 
 /* ================================================================
    ideano-blunix semantic visual themes
-   Color/font selection: <html data-theme-colors="ocean" data-theme-fonts="default">
+   Color/font selection: <html data-theme-colors="aquamarine" data-theme-fonts="default">
    ================================================================ */
 
 /*
- * ideano-blunix visual sub-themes.
+ * ideano-blunix ColorStone color themes.
  *
- * Select with:
- *   params:
- *     theme:
- *       name: ocean
+ * Select independently per language:
+ *   theme-color = "sapphire"
  *
- * The theme is intentionally independent from language direction.
+ * Supported: default, ruby, garnet, amethyst, tanzanite, sapphire,
+ * aquamarine, emerald, peridot, citrine, topaz, amber, spinel, mono.
  */
+:root {
+  --theme-primary: #3a82f6;
+  --theme-primary-dark: #1d4ed8;
+  --theme-primary-light: #60a5fa;
+  --theme-primary-soft: color-mix(in oklab, #3a82f6 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #0ea5e9;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f8fafc;
+  --theme-text: #1e293b;
+  --theme-text-muted: #64748b;
+  --theme-border: #e2e8f0;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
 
-/*
- * ideano-blunix color themes.
- * Select independently from fonts with params:
- *   theme-colors = "ocean"
- *
- * Supported: default, ocean, green, purple, mono, caspian
- */
-
-/*
- * ideano-blunix color themes.
- * Select independently from fonts with params:
- *   theme-colors = "ocean"
- *
- * Supported: default, ocean, green, purple, mono, caspian
- */
-
-:root,
 [data-theme-colors="default"] {
   --theme-primary: #3a82f6;
   --theme-primary-dark: #1d4ed8;
@@ -5564,11 +5566,95 @@ html[dir="rtl"] .tns-visually-hidden {
   --theme-button-radius: 0.375rem;
 }
 
-[data-theme-colors="ocean"] {
-  --theme-primary: #087ea4;
-  --theme-primary-dark: #066784;
-  --theme-primary-light: #22b8d6;
-  --theme-primary-soft: color-mix(in oklab, #087ea4 8%, transparent);
+[data-theme-colors="ruby"] {
+  --theme-primary: #c41e3a;
+  --theme-primary-dark: #9f1239;
+  --theme-primary-light: #e85d75;
+  --theme-primary-soft: color-mix(in oklab, #c41e3a 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #7c3aed;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #fff7f8;
+  --theme-text: #35151d;
+  --theme-text-muted: #79515a;
+  --theme-border: #f0d9de;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="garnet"] {
+  --theme-primary: #8b1e3f;
+  --theme-primary-dark: #64152f;
+  --theme-primary-light: #b94a6b;
+  --theme-primary-soft: color-mix(in oklab, #8b1e3f 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #c2415d;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #fff7f9;
+  --theme-text: #32141f;
+  --theme-text-muted: #76515e;
+  --theme-border: #eed9e1;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="amethyst"] {
+  --theme-primary: #7b2cbf;
+  --theme-primary-dark: #5a189a;
+  --theme-primary-light: #a65bd4;
+  --theme-primary-soft: color-mix(in oklab, #7b2cbf 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #d946ef;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #fbf7ff;
+  --theme-text: #291638;
+  --theme-text-muted: #705b7d;
+  --theme-border: #e9ddf1;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="tanzanite"] {
+  --theme-primary: #3949ab;
+  --theme-primary-dark: #283593;
+  --theme-primary-light: #6573c7;
+  --theme-primary-soft: color-mix(in oklab, #3949ab 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #8b5cf6;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f7f8ff;
+  --theme-text: #1b2140;
+  --theme-text-muted: #606987;
+  --theme-border: #dfe2f2;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="sapphire"] {
+  --theme-primary: #2563eb;
+  --theme-primary-dark: #1d4ed8;
+  --theme-primary-light: #60a5fa;
+  --theme-primary-soft: color-mix(in oklab, #2563eb 8%, transparent);
   --theme-on-primary: #ffffff;
   --theme-accent: #06b6d4;
   --theme-danger: #dc2626;
@@ -5577,48 +5663,159 @@ html[dir="rtl"] .tns-visually-hidden {
   --theme-warning: #facc15;
   --theme-warning-dark: #eab308;
   --theme-background: #ffffff;
-  --theme-surface: #f4fbfd;
-  --theme-text: #173042;
-  --theme-text-muted: #607786;
-  --theme-border: #d9e8ed;
+  --theme-surface: #f6f9ff;
+  --theme-text: #172642;
+  --theme-text-muted: #5e6f8b;
+  --theme-border: #dbe5f5;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
 }
 
-[data-theme-colors="green"] {
-  --theme-primary: #16803c;
-  --theme-primary-dark: #126b32;
-  --theme-primary-light: #22c55e;
-  --theme-primary-soft: color-mix(in oklab, #16803c 8%, transparent);
+[data-theme-colors="aquamarine"] {
+  --theme-primary: #0891b2;
+  --theme-primary-dark: #0e7490;
+  --theme-primary-light: #22d3ee;
+  --theme-primary-soft: color-mix(in oklab, #0891b2 8%, transparent);
   --theme-on-primary: #ffffff;
-  --theme-accent: #22c55e;
+  --theme-accent: #10b981;
   --theme-danger: #dc2626;
   --theme-danger-dark: #b91c1c;
   --theme-warning-light: #fcd34d;
   --theme-warning: #facc15;
   --theme-warning-dark: #eab308;
   --theme-background: #ffffff;
-  --theme-surface: #f5faf7;
-  --theme-text: #17251c;
-  --theme-text-muted: #65766b;
-  --theme-border: #dce8df;
+  --theme-surface: #f3fbfc;
+  --theme-text: #14323a;
+  --theme-text-muted: #5d767c;
+  --theme-border: #d7e9ed;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
 }
 
-[data-theme-colors="purple"] {
-  --theme-primary: #7c3aed;
-  --theme-primary-dark: #5b21b6;
-  --theme-primary-light: #a78bfa;
-  --theme-primary-soft: color-mix(in oklab, #7c3aed 8%, transparent);
+[data-theme-colors="emerald"] {
+  --theme-primary: #059669;
+  --theme-primary-dark: #047857;
+  --theme-primary-light: #34d399;
+  --theme-primary-soft: color-mix(in oklab, #059669 8%, transparent);
   --theme-on-primary: #ffffff;
-  --theme-accent: #a78bfa;
+  --theme-accent: #14b8a6;
   --theme-danger: #dc2626;
   --theme-danger-dark: #b91c1c;
   --theme-warning-light: #fcd34d;
   --theme-warning: #facc15;
   --theme-warning-dark: #eab308;
   --theme-background: #ffffff;
-  --theme-surface: #faf8ff;
-  --theme-text: #261d3a;
-  --theme-text-muted: #756c86;
-  --theme-border: #e7e0f1;
+  --theme-surface: #f4fbf8;
+  --theme-text: #153229;
+  --theme-text-muted: #5f766c;
+  --theme-border: #d8e9e0;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="peridot"] {
+  --theme-primary: #84a000;
+  --theme-primary-dark: #687f00;
+  --theme-primary-light: #abc43a;
+  --theme-primary-soft: color-mix(in oklab, #84a000 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #65a30d;
+  --theme-danger: #b91c1c;
+  --theme-danger-dark: #991b1b;
+  --theme-warning-light: #fef08a;
+  --theme-warning: #eab308;
+  --theme-warning-dark: #ca8a04;
+  --theme-background: #ffffff;
+  --theme-surface: #fafcf3;
+  --theme-text: #293014;
+  --theme-text-muted: #6d7650;
+  --theme-border: #e4e9cf;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="citrine"] {
+  --theme-primary: #d4a72c;
+  --theme-primary-dark: #a77d18;
+  --theme-primary-light: #e7c75c;
+  --theme-primary-soft: color-mix(in oklab, #d4a72c 8%, transparent);
+  --theme-on-primary: #201b08;
+  --theme-accent: #ca8a04;
+  --theme-danger: #b45309;
+  --theme-danger-dark: #92400e;
+  --theme-warning-light: #fde68a;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #ca8a04;
+  --theme-background: #ffffff;
+  --theme-surface: #fffdf4;
+  --theme-text: #332b12;
+  --theme-text-muted: #766d4d;
+  --theme-border: #eee5c8;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="topaz"] {
+  --theme-primary: #d97706;
+  --theme-primary-dark: #b45309;
+  --theme-primary-light: #f59e0b;
+  --theme-primary-soft: color-mix(in oklab, #d97706 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #eab308;
+  --theme-danger: #c2410c;
+  --theme-danger-dark: #9a3412;
+  --theme-warning-light: #fde68a;
+  --theme-warning: #f59e0b;
+  --theme-warning-dark: #d97706;
+  --theme-background: #ffffff;
+  --theme-surface: #fffaf3;
+  --theme-text: #35220f;
+  --theme-text-muted: #7b684f;
+  --theme-border: #efdfca;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="amber"] {
+  --theme-primary: #ea580c;
+  --theme-primary-dark: #c2410c;
+  --theme-primary-light: #fb923c;
+  --theme-primary-soft: color-mix(in oklab, #ea580c 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #f59e0b;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fed7aa;
+  --theme-warning: #f97316;
+  --theme-warning-dark: #ea580c;
+  --theme-background: #ffffff;
+  --theme-surface: #fff8f3;
+  --theme-text: #351b10;
+  --theme-text-muted: #7c5d4b;
+  --theme-border: #efddd2;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="spinel"] {
+  --theme-primary: #c2412d;
+  --theme-primary-dark: #9f2f20;
+  --theme-primary-light: #df6a57;
+  --theme-primary-soft: color-mix(in oklab, #c2412d 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #e11d48;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fecdd3;
+  --theme-warning: #f43f5e;
+  --theme-warning-dark: #e11d48;
+  --theme-background: #ffffff;
+  --theme-surface: #fff8f6;
+  --theme-text: #351b17;
+  --theme-text-muted: #7b5c57;
+  --theme-border: #efdcd8;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
 }
 
 [data-theme-colors="mono"] {
@@ -5638,26 +5835,10 @@ html[dir="rtl"] .tns-visually-hidden {
   --theme-text: #171717;
   --theme-text-muted: #737373;
   --theme-border: #e5e5e5;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
 }
 
-[data-theme-colors="caspian"] {
-  --theme-primary: #087ea4;
-  --theme-primary-dark: #066784;
-  --theme-primary-light: #22b8d6;
-  --theme-primary-soft: color-mix(in oklab, #087ea4 8%, transparent);
-  --theme-on-primary: #ffffff;
-  --theme-accent: #22b8d6;
-  --theme-danger: #dc2626;
-  --theme-danger-dark: #b91c1c;
-  --theme-warning-light: #fcd34d;
-  --theme-warning: #facc15;
-  --theme-warning-dark: #eab308;
-  --theme-background: #ffffff;
-  --theme-surface: #f7fafb;
-  --theme-text: #172a33;
-  --theme-text-muted: #65757d;
-  --theme-border: #dce7eb;
-}
 
 /*
  * ideano-blunix font themes.

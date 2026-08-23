@@ -58,15 +58,15 @@ Color and font themes are selected independently per language. In `config/_defau
 
 ```toml
 [en.params]
-theme-colors = "green"
+theme-colors = "ruby"
 theme-fonts = "default"
 
 [fa.params]
-theme-colors = "ocean"
+theme-colors = "aquamarine"
 theme-fonts = "iran-sans-x"
 ```
 
-If either value is omitted, it defaults to `default`. Some of upported color themes are `default`, `ocean`, `green`, `purple`, `mono`. Supported font themes are `default`, `iran-sans-x`, `work-sans`, and `elegant`.
+If either value is omitted, it defaults to `default`. Some of upported color themes are `default`, `tanzanite`, and others. Supported font themes are `default`, `iran-sans-x`, `work-sans`, and `elegant`.
 
 The generated HTML exposes the selections independently as `data-theme-colors` and `data-theme-fonts`. Color definitions live in `assets/css/themes/theme-colorss.css`; font definitions live in `assets/css/themes/theme-fonts.css`.
 

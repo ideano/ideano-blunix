@@ -58,32 +58,32 @@
             <div class="text-center px-6 mt-6">
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.provider.title }}</h2>
-                    <p class="text-slate-000 mt-3">
+                    <p class="text-theme mt-3">
                         {{ range .Params.content.provider.lines }}{{ . }}<br>{{ end }}
                     </p>
                 </div>
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.ceo.title }}</h2>
-                    <p class="text-slate-000 mt-3">{{ .Params.content.ceo.text }}</p>
+                    <p class="text-theme mt-3">{{ .Params.content.ceo.text }}</p>
                 </div>
             </div>
 
             <div class="text-center px-6 mt-6">
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.register.title }}</h2>
-                    <p class="text-slate-000 mt-3">
+                    <p class="text-theme mt-3">
                         {{ range .Params.content.register.lines }}{{ . }}<br>{{ end }}
                     </p>
                 </div>
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.taxid.title }}</h2>
-                    <p class="text-slate-000 mt-3">{{ .Params.content.taxid.text }}</p>
+                    <p class="text-theme mt-3">{{ .Params.content.taxid.text }}</p>
                 </div>
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.contact.title }}</h2>
-                    <p class="text-slate-000 mt-3">
-                        {{ i18n "email_label" }}: <a href="mailto:{{ .Params.content.contact.email }}" title="Send email to {{ .Params.content.contact.email }}" class="text-primary hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.email }}</a></br>
-                        {{ i18n "telephone_label" }}: <a href="tel:{{ .Params.content.contact.phone | replaceRE " " "" | replaceRE "/" "" }}" title="Call us" class="text-primary hover:text-blue-700 font-semibold underline hover:no-underline"> {{ .Params.content.contact.phone }}</a>
+                    <p class="text-theme mt-3">
+                        {{ i18n "email_label" }}: <a href="mailto:{{ .Params.content.contact.email }}" title="Send email to {{ .Params.content.contact.email }}" class="text-primary hover:text-primary-dark font-semibold underline hover:no-underline"> {{ .Params.content.contact.email }}</a></br>
+                        {{ i18n "telephone_label" }}: <a href="tel:{{ .Params.content.contact.phone | replaceRE " " "" | replaceRE "/" "" }}" title="Call us" class="text-primary hover:text-primary-dark font-semibold underline hover:no-underline"> {{ .Params.content.contact.phone }}</a>
                     </p>
                 </div>
             </div>
@@ -100,14 +100,14 @@
             <div class="text-center px-6 mt-6">
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.privacy.title }}</h2>
-                    <p class="text-slate-000 mt-3">{{ .Params.content.privacy.text | markdownify }}</p>
+                    <p class="text-theme mt-3">{{ .Params.content.privacy.text | markdownify }}</p>
                 </div>
             </div>
 
             <div class="text-center px-6 mt-6">
                 <div class="content mt-7">
                     <h2 class="title h5 text-xl font-medium">{{ .Params.content.disclaimer.title }}</h2>
-                    <p class="text-slate-000 mt-3">{{ .Params.content.disclaimer.text }}</p>
+                    <p class="text-theme mt-3">{{ .Params.content.disclaimer.text }}</p>
                 </div>
             </div>
 

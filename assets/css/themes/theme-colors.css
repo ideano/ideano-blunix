@@ -1,0 +1,124 @@
+/*
+ * ideano-blunix color themes.
+ * Select independently from fonts with params:
+ *   theme-colors = "ocean"
+ *
+ * Supported: default, ocean, green, purple, mono, caspian
+ */
+
+:root,
+[data-theme-colors="default"] {
+  --theme-primary: #3a82f6;
+  --theme-primary-dark: #1d4ed8;
+  --theme-primary-light: #60a5fa;
+  --theme-primary-soft: color-mix(in oklab, #3a82f6 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #0ea5e9;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f8fafc;
+  --theme-text: #1e293b;
+  --theme-text-muted: #64748b;
+  --theme-border: #e2e8f0;
+  --theme-radius: 0.5rem;
+  --theme-button-radius: 0.375rem;
+}
+
+[data-theme-colors="ocean"] {
+  --theme-primary: #087ea4;
+  --theme-primary-dark: #066784;
+  --theme-primary-light: #22b8d6;
+  --theme-primary-soft: color-mix(in oklab, #087ea4 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #06b6d4;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f4fbfd;
+  --theme-text: #173042;
+  --theme-text-muted: #607786;
+  --theme-border: #d9e8ed;
+}
+
+[data-theme-colors="green"] {
+  --theme-primary: #16803c;
+  --theme-primary-dark: #126b32;
+  --theme-primary-light: #22c55e;
+  --theme-primary-soft: color-mix(in oklab, #16803c 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #22c55e;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f5faf7;
+  --theme-text: #17251c;
+  --theme-text-muted: #65766b;
+  --theme-border: #dce8df;
+}
+
+[data-theme-colors="purple"] {
+  --theme-primary: #7c3aed;
+  --theme-primary-dark: #5b21b6;
+  --theme-primary-light: #a78bfa;
+  --theme-primary-soft: color-mix(in oklab, #7c3aed 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #a78bfa;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #faf8ff;
+  --theme-text: #261d3a;
+  --theme-text-muted: #756c86;
+  --theme-border: #e7e0f1;
+}
+
+[data-theme-colors="mono"] {
+  --theme-primary: #262626;
+  --theme-primary-dark: #111111;
+  --theme-primary-light: #525252;
+  --theme-primary-soft: color-mix(in oklab, #262626 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #525252;
+  --theme-danger: #525252;
+  --theme-danger-dark: #262626;
+  --theme-warning-light: #a3a3a3;
+  --theme-warning: #737373;
+  --theme-warning-dark: #525252;
+  --theme-background: #ffffff;
+  --theme-surface: #fafafa;
+  --theme-text: #171717;
+  --theme-text-muted: #737373;
+  --theme-border: #e5e5e5;
+}
+
+[data-theme-colors="caspian"] {
+  --theme-primary: #087ea4;
+  --theme-primary-dark: #066784;
+  --theme-primary-light: #22b8d6;
+  --theme-primary-soft: color-mix(in oklab, #087ea4 8%, transparent);
+  --theme-on-primary: #ffffff;
+  --theme-accent: #22b8d6;
+  --theme-danger: #dc2626;
+  --theme-danger-dark: #b91c1c;
+  --theme-warning-light: #fcd34d;
+  --theme-warning: #facc15;
+  --theme-warning-dark: #eab308;
+  --theme-background: #ffffff;
+  --theme-surface: #f7fafb;
+  --theme-text: #172a33;
+  --theme-text-muted: #65757d;
+  --theme-border: #dce7eb;
+}

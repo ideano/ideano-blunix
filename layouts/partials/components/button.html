@@ -9,19 +9,19 @@
 {{- $sizeClasses := "" -}}
 
 {{- if eq $style "blue" -}}
-  {{- $styleClasses = "bg-blue-600 border-blue-600 text-white" -}}
+  {{- $styleClasses = "bg-primary border-primary text-white" -}}
 {{- else if eq $style "green" -}}
-  {{- $styleClasses = "bg-green-600 border-green-600 text-white" -}}
+  {{- $styleClasses = "bg-primary border-primary text-white" -}}
 {{- else if eq $style "red" -}}
-  {{- $styleClasses = "bg-red-600 border-red-600 text-white" -}}
+  {{- $styleClasses = "bg-danger border-danger text-white" -}}
 {{- end -}}
 
 {{- if eq $hover "blue" -}}
-  {{- $hoverClasses = "hover:bg-blue-700 hover:border-blue-700" -}}
+  {{- $hoverClasses = "hover:bg-primary-dark hover:border-primary-dark" -}}
 {{- else if eq $hover "green" -}}
-  {{- $hoverClasses = "hover:bg-green-700 hover:border-green-700" -}}
+  {{- $hoverClasses = "hover:bg-primary-dark hover:border-primary-dark" -}}
 {{- else if eq $hover "red" -}}
-  {{- $hoverClasses = "hover:bg-red-700 hover:border-red-700" -}}
+  {{- $hoverClasses = "hover:bg-danger-dark hover:border-danger-dark" -}}
 {{- end -}}
 
 {{- if eq $size "large" -}}

@@ -41,10 +41,10 @@
         <div class="lg:-mt-[330px] -mt-[200px] sticky top-20">
           {{ with .Params.company }}
           <div class="rounded-md bg-white shadow-sm">
-            <div class="text-center py-8 p-6 border-b border-gray-100">
+            <div class="text-center py-8 p-6 border-b border-theme">
               <img src="{{ .logo }}" class="size-24 p-4 shadow-md mx-auto rounded-full block" alt="{{ .name }} Logo">
               <h2 class="mt-5 text-xl font-semibold mb-0">{{ .name }}</h2>
-              <p class="text-slate-500 mb-0">{{ .type }}</p>
+              <p class="text-theme-muted mb-0">{{ .type }}</p>
             </div>
             <div class="p-6">
               <h3 class="font-semibold">Company Details:</h3>
@@ -52,11 +52,11 @@
                 {{ range .details }}
                 <li class="flex mt-2 items-center font-medium">
                   <i class="{{ .icon }} text-primary me-3"></i>
-                  <span class="text-slate-500 me-3">{{ .label }}:</span> {{ .value }}
+                  <span class="text-theme-muted me-3">{{ .label }}:</span> {{ .value }}
                 </li>
                 {{ end }}
               </ul>
-              <a href="/#contact" title="Contact" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md mt-6">Apply now!</a>
+              <a href="/#contact" title="Contact" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary hover:bg-primary-dark border-primary hover:border-primary-dark text-white rounded-md mt-6">Apply now!</a>
             </div>
           </div>
           {{ with .map }}
@@ -84,7 +84,7 @@
         {{ $paragraphs := split $content "<p>" }}
         {{ range $paragraphs }}
         {{ if . }}
-        <p class="text-2xl text-slate-500 max-w-xl">{{ . | replaceRE "</p>" "" | safeHTML }}</p>
+        <p class="text-2xl text-theme-muted max-w-xl">{{ . | replaceRE "</p>" "" | safeHTML }}</p>
         {{ end }}
         {{ end }}
         {{ end }}

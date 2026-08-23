@@ -29,7 +29,7 @@ Notes:
   <div class="container relative">
     <div class="grid grid-cols-1 pb-8 items-end">
       <h2 class="mb-4 md:text-4xl md:leading-normal text-2xl leading-normal font-semibold">{{ .Params.title }}</h2>
-      {{ with .Params.subtitle }}<p class="text-slate-500 text-2xl duration-500 mt-3">{{ . }}</p>{{ end }}
+      {{ with .Params.subtitle }}<p class="text-theme-muted text-2xl duration-500 mt-3">{{ . }}</p>{{ end }}
     </div>
     <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
       {{ range .Params.items }}
@@ -44,7 +44,7 @@ Notes:
       {{ if .url }}
         <h3 class="text-3xl duration-500">
           {{- $url := partial "helpers/url.html" (dict "Root" $.Root "url" .url) -}}
-          <a href="{{ $url }}" class="text-blue-600 hover:text-blue-700 transition-colors duration-300 no-underline">
+          <a href="{{ $url }}" class="text-primary hover:text-primary-dark transition-colors duration-300 no-underline">
             {{ .title }}
           </a>
         </h3>
@@ -52,7 +52,7 @@ Notes:
         <h3 class="text-3xl duration-500">{{ .title }}</h3>
       {{ end }}
 
-          <p class="text-slate-500 text-2xl duration-500 mt-3 [&_a]:text-blue-500 [&_a]:font-semibold [&_a]:underline [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-blue-600 [&_a:hover]:no-underline">
+          <p class="text-theme-muted text-2xl duration-500 mt-3 [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-primary [&_a:hover]:no-underline">
             {{ .details | markdownify }}
           </p>
         </div>

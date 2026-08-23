@@ -49,6 +49,39 @@ If you want to create a new writing style section, create a directory for it, an
 * if writing section header image is absent, image/writing-list-background.png would be used as default.
 * if writing header image is absent, image/writing-single-background.png would be used as default.
 
+## Visual sub-themes
+
+The theme includes a Tailwind CSS 4 design-token based sub-theme system. The visual theme is independent of RTL/LTR language direction.
+
+Set the theme in the language/site parameters:
+Color and font themes are selected independently per language. In `config/_default/languages.toml`:
+
+```toml
+[en.params]
+theme-colors = "green"
+theme-fonts = "default"
+
+[fa.params]
+theme-colors = "ocean"
+theme-fonts = "iran-sans-x"
+```
+
+If either value is omitted, it defaults to `default`. Some of upported color themes are `default`, `ocean`, `green`, `purple`, `mono`. Supported font themes are `default`, `iran-sans-x`, `work-sans`, and `elegant`.
+
+The generated HTML exposes the selections independently as `data-theme-colors` and `data-theme-fonts`. Color definitions live in `assets/css/themes/theme-colorss.css`; font definitions live in `assets/css/themes/theme-fonts.css`.
+
+Theme colors and fonts selection is emitted as `data-theme-colors` and `data-theme-fonts` on the `<html>` element. Colors and fonts are CSS custom properties, so templates use semantic utilities such as `bg-primary`, `text-primary`, `text-theme`, `bg-surface`, `border-primary`, `font-sans`, and `font-heading`.
+
+To create a new theme, add a `[data-theme-colors="your-name"]` `[data-theme-fonts="your-name"]` block to `assets/css/themes/themes.css` and define the `--theme-*` variables. The distributed `static/css/style.css` already contains the compiled Tailwind CSS and theme utilities, so site users do not need Node.js or npm.
+
+For maintainers, `assets/css/tailwind.css` is the Tailwind CSS 4 source. Recompile the committed stylesheet with:
+
+```sh
+npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./static/css/style.css --minify
+```
+
+The repository's existing `static/css/style.css` remains precompiled for zero-build theme consumption.
+
 
 
 # Hugo Theme Blunix (Original Readme)
@@ -397,3 +430,5 @@ MIT License - See [LICENSE](LICENSE) file for details.
 ## Credits
 
 Developed and maintained by [Blunix GmbH](https://www.blunix.com)
+
+

@@ -50,7 +50,7 @@ static/images/
 
 <div class="my-6">
 
-  <div class="flex items-center gap-4 rounded-3xl border border-slate-300 bg-slate-100 px-5 py-4 shadow-md md:px-6 md:py-5">
+  <div class="flex items-center gap-4 rounded-3xl border border-theme bg-surface px-5 py-4 shadow-md md:px-6 md:py-5">
 
     {{/* Image / download link */}}
     <div class="{{ $imageOrder }} shrink-0">
@@ -65,7 +65,7 @@ static/images/
         >
       {{- end -}}
 
-      <div class="flex items-center justify-center overflow-hidden rounded-lg border border-slate-300 bg-slate-200 p-2 transition duration-200 {{ if $url }}cursor-pointer hover:scale-105 hover:shadow-lg{{ end }}">
+      <div class="flex items-center justify-center overflow-hidden rounded-lg border border-theme bg-surface p-2 transition duration-200 {{ if $url }}cursor-pointer hover:scale-105 hover:shadow-lg{{ end }}">
 
         {{- if $imageURL -}}
 
@@ -85,7 +85,7 @@ static/images/
             fill="none"
             stroke="currentColor"
             stroke-width="1.5"
-            class="h-10 w-10 text-slate-700"
+            class="h-10 w-10 text-theme"
             aria-hidden="true"
           >
             <path
@@ -107,7 +107,7 @@ static/images/
 
     {{/* Content */}}
     <div class="{{ $contentOrder }} min-w-0 flex-1">
-      <div class="prose max-w-none text-slate-700">
+      <div class="prose max-w-none text-theme">
         {{ .Inner | markdownify }}
       </div>
     </div>

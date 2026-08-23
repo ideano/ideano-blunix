@@ -29,8 +29,8 @@ Parameters:
         <div class="grid grid-cols-1 pb-8 text-center">
           <h2 class="mb-4 text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
           {{ range .Params.paragraphs }}
-            <div class="prose prose-a:text-primary prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
-              <p class="mx-auto max-w-xl text-2xl text-slate-500">{{ . | markdownify }}<br /><br /></p>
+            <div class="prose prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+              <p class="mx-auto max-w-xl text-2xl text-theme-muted">{{ . | markdownify }}<br /><br /></p>
             </div>
           {{ end }}
         </div>

@@ -20,7 +20,7 @@
     <div class="container relative">
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
             <h1 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-7xl mb-5 text-white">{{ .Params.sectionLabel | default .Section }}</h1>
-            <div class="text-2xl text-slate-500 max-w-xl mx-auto text-white prose prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+            <div class="text-2xl text-theme-muted max-w-xl mx-auto text-white prose prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
                 {{ .Content | markdownify }}
             </div>
         </div><!--end grid-->
@@ -51,7 +51,7 @@
             {{ range .Pages.ByDate.Reverse }}
             {{ $isExternal := .Params.external_link }}
             {{ $link := cond $isExternal .Params.external_link .RelPermalink }}
-            <div class="group relative rounded-md border border-gray-200 shadow-sm hover:shadow-md duration-500 ease-in-out overflow-hidden flex flex-col h-full">
+            <div class="group relative rounded-md border border-theme shadow-sm hover:shadow-md duration-500 ease-in-out overflow-hidden flex flex-col h-full">
                 <div class="grow">
                     <div class="relative overflow-hidden">
                         <a href="{{ $link }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }} aria-label="{{ if $isExternal }}Visit external link: {{ .Title }}{{ else }}Read the writing: {{ .Title }}{{ end }}" class="block overflow-hidden">
@@ -74,22 +74,22 @@
                     </div>
                     <div class="content p-6">
                         <a href="{{ $link }}" {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}>
-                            <h2 class="text-blue-500 hover:text-blue-700 underline hover:no-underline md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ .Title }}</h2>
+                            <h2 class="text-primary hover:text-primary-dark underline hover:no-underline md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ .Title }}</h2>
                         </a>
-                        <p class="text-2xl text-slate-500 max-w-xl mx-auto">{{ .Description | default .Summary }}</p>
+                        <p class="text-2xl text-theme-muted max-w-xl mx-auto">{{ .Description | default .Summary }}</p>
                     </div>
                 </div>
-                <ul class="pt-4 border-t border-gray-200 flex items-center list-none text-slate-500 px-6 pb-6">
+                <ul class="pt-4 border-t border-theme flex items-center list-none text-theme-muted px-6 pb-6">
                     {{ if not $isExternal }}
                     <li class="flex items-center me-4">
-                        <span class="inline-flex me-2 text-slate-500">
+                        <span class="inline-flex me-2 text-theme-muted">
                             {{ partial "components/icon.html" (dict "name" "clock" "class" "w-5 h-5") }}
                         </span>
                         <span>{{ .ReadingTime }} {{ if eq .ReadingTime 1 }}{{ i18n "reading_time_minute" }}{{ else }}{{ i18n "reading_time_minutes" }}{{ end }}</span>
                     </li>
                     {{ end }}
                     <li class="flex items-center me-4">
-                        <span class="inline-flex me-2 text-slate-500">
+                        <span class="inline-flex me-2 text-theme-muted">
                             {{ partial "components/icon.html" (dict "name" "calendar" "class" "w-5 h-5") }}
                         </span>
                         <!-- convert time to Jalali calendar if language is farsi at end of footer.html -->

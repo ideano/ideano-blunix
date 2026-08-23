@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
             <h1 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-7xl mb-5 text-white">{{ .Params.hero_title | default .Title }}</h1>
             {{ if .Params.hero_subtitle }}
-            <p class="text-2xl text-slate-500 text-white"><b>{{ .Params.hero_subtitle }}</b></p>
+            <p class="text-2xl text-theme-muted text-white"><b>{{ .Params.hero_subtitle }}</b></p>
             {{ end }}
         </div><!--end grid-->
     </div><!--end container-->

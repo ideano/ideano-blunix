@@ -57,12 +57,12 @@ Notes:
   <div class="relative container max-w-7xl">
     <div class="grid grid-cols-1 pb-8 text-center">
       <h2 class="mb-4 text-4xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
-      <p class="mx-auto max-w-2xl text-2xl text-slate-500">{{ .Params.subtitle }}</p>
+      <p class="mx-auto max-w-2xl text-2xl text-theme-muted">{{ .Params.subtitle }}</p>
     </div>
     <div class="grid grid-cols-1">
       <ul class="mx-auto inline-flex w-fit items-center justify-center gap-1 rounded-full bg-white p-2.5 text-center shadow-sm" id="myTab" data-tabs-toggle="#StarterContent" role="tablist">
         <li role="presentation" class="inline-block">
-          <button class="w-full rounded-full px-6 py-2 text-base font-semibold duration-500 hover:text-blue-600 md:px-8 md:py-2.5" id="start-month-tab" data-tabs-target="#start-month" type="button" role="tab" aria-controls="start-month" aria-selected="true">{{ $hourlyTabLabel }}</button>
+          <button class="w-full rounded-full px-6 py-2 text-base font-semibold duration-500 hover:text-primary md:px-8 md:py-2.5" id="start-month-tab" data-tabs-target="#start-month" type="button" role="tab" aria-controls="start-month" aria-selected="true">{{ $hourlyTabLabel }}</button>
         </li>
         <li role="presentation" class="inline-block">
           <button class="w-full rounded-full px-6 py-2 text-base font-semibold duration-500 md:px-8 md:py-2.5" id="start-year-tab" data-tabs-target="#start-year" type="button" role="tab" aria-controls="start-year" aria-selected="false">{{ $monthlyTabLabel }}</button>
@@ -72,14 +72,14 @@ Notes:
         <div class="" id="start-month" role="tabpanel" aria-labelledby="start-month-tab">
           <div class="mt-8 grid gap-[30px] md:grid-cols-2 lg:grid-cols-3 place-items-center md:place-items-stretch">
             {{ range .Params.hourly }}
-              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow-sm border-gray-200 duration-500 hover:scale-105 hover:border-blue-600 hover:bg-white">
+              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow-sm border-theme duration-500 hover:scale-105 hover:border-primary hover:bg-surface">
                 <h6 class="mb-5 font-bold text-primary uppercase">{{ .title }}</h6>
                 <div class="mb-5">
                   <div class="flex items-end gap-1">
                   {{ if and .price (findRE "^[0-9]" .price) }}<span class="mb-1 text-xl font-semibold">€</span>{{ end }}
                   <span class="price mb-0 text-4xl font-semibold">{{ .price }}</span>
                   </div>
-                  {{ with (.unit | default .duration) }}<p class="mt-1 text-xl font-semibold text-slate-500">{{ . }}</p>{{ end }}
+                  {{ with (.unit | default .duration) }}<p class="mt-1 text-xl font-semibold text-theme-muted">{{ . }}</p>{{ end }}
                 </div>
                 {{- $ctaLabel := .cta | default $defaultCtaLabel -}}
                 {{- $ctaTitle := .cta_title | default $defaultCtaTitle -}}
@@ -92,13 +92,13 @@ Notes:
                 {{- if eq .color "yellow" -}}
                   {{- $intensity := .intensity | default "400" -}}
                   {{- if eq $intensity "300" -}}
-                    {{- $btnClasses = "bg-yellow-300 border-yellow-300 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning-light border-warning-light hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else if eq $intensity "400" -}}
-                    {{- $btnClasses = "bg-yellow-400 border-yellow-400 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else if eq $intensity "500" -}}
-                    {{- $btnClasses = "bg-yellow-500 border-yellow-500 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning-dark border-warning-dark hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else -}}
-                    {{- $btnClasses = "bg-yellow-400 border-yellow-400 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- end -}}
                 {{- else -}}
                   {{- $btnClasses = partial "helpers/button-classes.html" (dict "color" .color "hover_color" .hover_color "intensity" .intensity "hoverIntensity" .hoverIntensity) -}}
@@ -111,17 +111,17 @@ Notes:
         <div class="hidden" id="start-year" role="tabpanel" aria-labelledby="start-year-tab">
           <div class="mt-8 grid gap-[30px] md:grid-cols-2 lg:grid-cols-3 place-items-center md:place-items-stretch">
             {{ range .Params.monthly }}
-              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow-xs border-gray-200 duration-500 hover:scale-105 hover:border-blue-600 hover:bg-white">
+              <div class="group relative h-fit overflow-hidden rounded-md border-b-[3px] p-6 py-8 shadow-xs border-theme duration-500 hover:scale-105 hover:border-primary hover:bg-surface">
                 <h6 class="mb-5 font-bold text-primary uppercase">{{ .title }}</h6>
                 <div class="mb-5">
                   <div class="flex items-end gap-1">
                   {{ if and .price (findRE "^[0-9]" .price) }}<span class="mb-1 text-xl font-semibold">€</span>{{ end }}
                   <span class="price mb-0 text-4xl font-semibold">{{ .price }}</span>
                   </div>
-                  {{ with (.unit | default .duration) }}<p class="mt-1 text-xl font-semibold text-slate-500">{{ . }}</p>{{ end }}
+                  {{ with (.unit | default .duration) }}<p class="mt-1 text-xl font-semibold text-theme-muted">{{ . }}</p>{{ end }}
                 </div>
                 <ul class="mb-0 list-none">
-                  {{ range .features }}<li class="py-1 text-slate-500">{{ . }}</li>{{ end }}
+                  {{ range .features }}<li class="py-1 text-theme-muted">{{ . }}</li>{{ end }}
                 </ul>
                 {{- $ctaLabel := .cta | default $defaultCtaLabel -}}
                 {{- $ctaTitle := .cta_title | default $defaultCtaTitle -}}
@@ -134,13 +134,13 @@ Notes:
                 {{- if eq .color "yellow" -}}
                   {{- $intensity := .intensity | default "400" -}}
                   {{- if eq $intensity "300" -}}
-                    {{- $btnClasses = "bg-yellow-300 border-yellow-300 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning-light border-warning-light hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else if eq $intensity "400" -}}
-                    {{- $btnClasses = "bg-yellow-400 border-yellow-400 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else if eq $intensity "500" -}}
-                    {{- $btnClasses = "bg-yellow-500 border-yellow-500 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning-dark border-warning-dark hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- else -}}
-                    {{- $btnClasses = "bg-yellow-400 border-yellow-400 hover:bg-green-700 hover:border-green-700" -}}
+                    {{- $btnClasses = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
                   {{- end -}}
                 {{- else -}}
                   {{- $btnClasses = partial "helpers/button-classes.html" (dict "color" .color "hover_color" .hover_color "intensity" .intensity "hoverIntensity" .hoverIntensity) -}}

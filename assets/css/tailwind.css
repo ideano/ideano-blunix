@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "./themes/theme-colorss.css";
+@import "./themes/theme-fonts.css";
+
+/*
+ * ideano-blunix Tailwind CSS 4 source.
+ *
+ * The generated static/css/style.css is committed to the theme so that
+ * theme users do not need Node.js or Tailwind installed.
+ */
+
+@source "../../layouts";
+@source "../../exampleSite";
+@source "../../assets";
+
+@theme {
+  --color-primary: var(--theme-primary);
+  --color-primary-dark: var(--theme-primary-dark);
+  --color-primary-light: var(--theme-primary-light);
+  --color-primary-soft: var(--theme-primary-soft);
+  --color-on-primary: var(--theme-on-primary);
+
+  --color-background: var(--theme-background);
+  --color-surface: var(--theme-surface);
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --color-border: var(--theme-border);
+
+  --font-sans: var(--theme-font-sans);
+  --font-heading: var(--theme-font-heading);
+  --font-mono: var(--theme-font-mono);
+
+  --radius-theme: var(--theme-radius);
+  --radius-button: var(--theme-button-radius);
+}
+
+
+/* Semantic theme utilities. These are intentionally unlayered so they
+   remain authoritative over generated utilities with the same names. */
+.bg-primary { background-color: var(--theme-primary); }
+.bg-primary-dark { background-color: var(--theme-primary-dark); }
+.bg-primary-light { background-color: var(--theme-primary-light); }
+.bg-primary-soft { background-color: var(--theme-primary-soft); }
+.bg-background { background-color: var(--theme-background); }
+.bg-surface { background-color: var(--theme-surface); }
+.text-primary { color: var(--theme-primary); }
+.text-primary-dark { color: var(--theme-primary-dark); }
+.text-primary-light { color: var(--theme-primary-light); }
+.text-on-primary { color: var(--theme-on-primary); }
+.text-theme { color: var(--theme-text); }
+.text-theme-muted { color: var(--theme-text-muted); }
+.border-primary { border-color: var(--theme-primary); }
+.border-primary-light { border-color: var(--theme-primary-light); }
+.border-theme { border-color: var(--theme-border); }
+.font-sans { font-family: var(--theme-font-sans) !important; }
+.font-heading { font-family: var(--theme-font-heading) !important; }
+.font-mono { font-family: var(--theme-font-mono) !important; }
+/* Keep legacy font-nunito markup theme-aware. */
+.font-nunito { font-family: var(--theme-font-sans) !important; }
+.rounded-theme { border-radius: var(--theme-radius); }
+.rounded-button { border-radius: var(--theme-button-radius); }
+.hover\:bg-primary-dark:hover { background-color: var(--theme-primary-dark); }
+.hover\:text-primary-dark:hover { color: var(--theme-primary-dark); }
+.hover\:border-primary-dark:hover { border-color: var(--theme-primary-dark); }
+.bg-accent { background-color: var(--theme-accent); }
+.text-accent { color: var(--theme-accent); }
+.border-accent { border-color: var(--theme-accent); }
+.bg-danger { background-color: var(--theme-danger); }
+.bg-danger-dark { background-color: var(--theme-danger-dark); }
+.text-danger { color: var(--theme-danger); }
+.border-danger { border-color: var(--theme-danger); }
+.border-danger-dark { border-color: var(--theme-danger-dark); }
+.bg-warning-light { background-color: var(--theme-warning-light); }
+.bg-warning { background-color: var(--theme-warning); }
+.bg-warning-dark { background-color: var(--theme-warning-dark); }
+.border-warning-light { border-color: var(--theme-warning-light); }
+.border-warning { border-color: var(--theme-warning); }
+.border-warning-dark { border-color: var(--theme-warning-dark); }
+.hover\:bg-danger-dark:hover { background-color: var(--theme-danger-dark); }
+.hover\:border-danger-dark:hover { border-color: var(--theme-danger-dark); }
+.bg-theme-gradient { background-image: linear-gradient(to top left, color-mix(in oklab, var(--theme-primary) 20%, transparent), color-mix(in oklab, var(--theme-primary) 70%, transparent), var(--theme-primary)); }
+.hover\:bg-surface:hover { background-color: var(--theme-surface); }
+body {
+  font-family: var(--theme-font-sans) !important;
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--theme-font-heading) !important;
+}

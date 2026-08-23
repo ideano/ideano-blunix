@@ -26,7 +26,7 @@ Parameters:
   buttons    Optional button configuration passed to `components/buttons.html`.
 
 */}}
-<section class="relative bg-gray-50 py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
+<section class="relative bg-surface py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
   <div class="relative container">
     <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">
       {{ if .Params.image_left }}
@@ -51,7 +51,7 @@ Parameters:
       <div class="{{ if not .Params.image_left }}order-2 md:order-1{{ end }} md:col-span-6 lg:col-span-7">
         <div class="lg:ms-5">
           <h2 class="text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
-          <div class="prose max-w-none prose-p:max-w-xl prose-p:text-2xl prose-p:text-slate-500 prose-h3:mt-6 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-normal prose-h3:md:leading-normal prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
+          <div class="prose max-w-none prose-p:max-w-xl prose-p:text-2xl prose-p:text-theme-muted prose-h3:mt-6 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-normal prose-h3:md:leading-normal prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
             {{ .Params.text | markdownify }}
           </div>
           {{ partial "components/buttons.html" (dict "Root" .Root "buttons" .Params.buttons) }}

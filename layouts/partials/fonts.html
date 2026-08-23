@@ -1,12 +1,20 @@
-{{/* Preload critical fonts to eliminate font discovery delay */}}
-  {{ if eq .Site.Language.Lang "fa" }}
-    <link rel="preload" href="/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/IRANSansX-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  {{ else }}
-    <link rel="preload" href="/fonts/Nunito-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Nunito-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Nunito-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-  {{ end }}
+{{/* Preload fonts selected by the current language's theme-fonts setting. */}}
+{{- $themeFonts := index .Language.Params "theme-fonts" | default (index .Site.Params "theme-fonts") | default "default" -}}
 
-  
+{{- if eq $themeFonts "iran-sans-x" -}}
+  <link rel="preload" href="/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/IRANSansX-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/IRANSansX-Bold.woff2" as="font" type="font/woff2" crossorigin>
+{{- else if eq $themeFonts "work-sans" -}}
+  <link rel="preload" href="/fonts/WorkSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/WorkSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/WorkSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+{{- else if eq $themeFonts "elegant" -}}
+  <link rel="preload" href="/fonts/WorkSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/EBGaramond-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/EBGaramond-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+{{- else -}}
+  <link rel="preload" href="/fonts/Nunito-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Nunito-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Nunito-Bold.woff2" as="font" type="font/woff2" crossorigin>
+{{- end -}}

@@ -41,7 +41,7 @@ Parameters:
       </div>
       <div class="order-2 {{ if eq .Params.image_position "right" }}lg:me-8 md:order-1{{ else }}lg:ms-8 md:order-2{{ end }}">
         <h3 class="mb-4 text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h3>
-        <div class="prose max-w-none prose-p:mb-4 prose-p:max-w-xl prose-p:text-2xl prose-p:leading-8 prose-p:text-slate-500 prose-h3:mb-4 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-8 prose-h3:md:leading-9 prose-h3:font-semibold prose-a:text-blue-500 prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
+        <div class="prose max-w-none prose-p:mb-4 prose-p:max-w-xl prose-p:text-2xl prose-p:leading-8 prose-p:text-theme-muted prose-h3:mb-4 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-8 prose-h3:md:leading-9 prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
           {{ .Params.text | markdownify }}
         </div>
         {{ partial "components/buttons.html" (dict "Root" .Root "buttons" .Params.buttons) }}

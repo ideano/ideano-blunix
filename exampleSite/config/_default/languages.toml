@@ -59,7 +59,12 @@ url = "https://instagram.com/"
 title = "Follow on Instagram"
 icon = "bi bi-instagram"
 
-[[en.params.debian_links]]
+[[en.params.affiliation_links]]
 name = "Hugo Themes"
 url = "https://themes.gohugo.io/"
 title = "Hugo Themes Directory"
+
+[[en.params.affiliation_links]]
+name = "Hugo"
+url = "https://gohugo.io/"
+title = "Hugo Main Site"

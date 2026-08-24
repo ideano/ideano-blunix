@@ -4,6 +4,9 @@
 - id: writing_translation_notice
   translation: "Automatic writing translation"
 
+- id: and
+  translation: "and"
+
 - id: address
   translation: "Address"
 

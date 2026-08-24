@@ -4,6 +4,9 @@
 - id: writing_translation_notice
   translation: "ترجمه خودکار نوشته"
 
+- id: and
+  translation: "و"
+
 - id: address
   translation: "آدرس"
 
@@ -94,6 +97,4 @@
 - id: 404_home_button_label
   translation: "خانه"
 
-- id: copyright_notice
-  translation: "حق بازنشر"
 

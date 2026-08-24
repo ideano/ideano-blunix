@@ -46,26 +46,30 @@
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4 min-w-0">
-                            <h2 class="tracking-[1px] text-white font-semibold">{{ .Site.Params.footer_social_media }}</h2>
-                            <ul class="list-none mt-6 space-x-2">
-                                {{ range .Site.Params.social_media }}
-                                  <li class="inline"><a href="{{ .url }}" title="{{ .title }}" target="_blank" rel="noopener noreferrer" class="text-theme-muted hover:text-accent duration-500 text-2xl">
-                                    <i class="{{ .icon }}"></i>
-                                  </a></li>
-                                {{ end }}
-                            </ul>
-                            {{ $listedWithLabel := strings.TrimSpace (.Site.Params.footer_listed_with | default "") }}
-                            {{ $showListedWithHeading := and $listedWithLabel (ne (lower $listedWithLabel) "affiliations") }}
-                            {{ if $showListedWithHeading }}
-                            <h2 class="mt-8 tracking-[1px] text-white font-semibold">{{ $listedWithLabel }}</h2>
+                            {{ with .Site.Params.social_media }}
+                                <h2 class="tracking-[1px] text-white font-semibold">{{ $.Site.Params.footer_social_media }}</h2>
+                                <ul class="list-none mt-6 space-x-2">
+                                    {{ range . }}
+                                        <li class="inline"><a href="{{ .url }}" title="{{ .title }}" target="_blank" rel="noopener noreferrer" class="text-theme-muted hover:text-accent duration-500 text-2xl">
+                                            <i class="{{ .icon }}"></i>
+                                        </a></li>
+                                    {{ end }}
+                                </ul>
                             {{ end }}
-                            <p class="{{ if $showListedWithHeading }}mt-6{{ else }}mt-8{{ end }} text-white">
-                              {{ if .Site.Params.footer_listed_with_text_middle }}
-                                {{ .Site.Params.footer_listed_with_text }}{{ range $index, $link := .Site.Params.debian_links }}{{ if eq $index 0 }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ else }}{{ $.Site.Params.footer_listed_with_text_middle }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ $.Site.Params.footer_listed_with_text_end }}{{ end }}{{ end }}
-                              {{ else }}
-                                {{ .Site.Params.footer_listed_with_text }} {{ range $index, $link := .Site.Params.debian_links }}{{ if $index }} and {{ end }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ end }}
-                              {{ end }}
-                            </p>
+                            {{ with .Site.Params.affiliation_links }}
+                                {{ $listedWithLabel := strings.TrimSpace ($.Site.Params.footer_listed_with | default "") }}
+                                {{ $showListedWithHeading := and $listedWithLabel (ne (lower $listedWithLabel) "affiliations") }}
+                                {{ if $showListedWithHeading }}
+                                <h2 class="mt-8 tracking-[1px] text-white font-semibold">{{ $listedWithLabel }}</h2>
+                                {{ end }}
+                                <p class="{{ if $showListedWithHeading }}mt-6{{ else }}mt-8{{ end }} text-white">
+                                {{ if $.Site.Params.footer_listed_with_text_middle }}
+                                    {{ $.Site.Params.footer_listed_with_text }}{{ range $index, $link := $.Site.Params.affiliation_links }}{{ if eq $index 0 }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ else }}{{ $.Site.Params.footer_listed_with_text_middle }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ $.Site.Params.footer_listed_with_text_end }}{{ end }}{{ end }}
+                                {{ else }}
+                                    {{ $.Site.Params.footer_listed_with_text }} {{ range $index, $link := $.Site.Params.affiliation_links }}{{ if $index }} {{ i18n "and" }} {{ end }}<a class="hover:text-accent font-semibold underline hover:no-underline" style="color:var(--theme-primary);" href="{{ $link.url }}" rel="noopener noreferrer" target="_blank" title="{{ $link.title }}">{{ $link.name }}</a>{{ end }}
+                                {{ end }}
+                                </p>
+                            {{ end }}
                         </div>
                     </div>
                 </div>

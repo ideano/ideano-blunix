@@ -10,7 +10,7 @@
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            {{ $websiteMenu := index (where .Site.Menus.footer "Identifier" "website") 0 }}
+                            {{ $websiteMenu := index (where .Site.Menus.footer "Identifier" "footer_first_column") 0 }}
                             {{ if $websiteMenu }}
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $websiteMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="lg:col-span-3 md:col-span-4">
-                            {{ $hostingMenu := index (where .Site.Menus.footer "Identifier" "hosting") 0 }}
+                            {{ $hostingMenu := index (where .Site.Menus.footer "Identifier" "footer_2nd_column") 0 }}
                             {{ if $hostingMenu }}
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $hostingMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">

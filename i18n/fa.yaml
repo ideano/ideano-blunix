@@ -93,3 +93,7 @@
 
 - id: 404_home_button_label
   translation: "خانه"
+
+- id: copyright_notice
+  translation: "حق بازنشر"
+

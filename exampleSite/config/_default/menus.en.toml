@@ -20,37 +20,37 @@ pageRef = "/#contact"
 weight = 80
 
 [[footer]]
-identifier = "website"
+identifier = "footer_first_column"
 name = "Company"
 pageRef = "#"
 weight = 10
 
 [[footer]]
-parent = "website"
+parent = "footer_first_column"
 name = "Home"
 pageRef = "/"
 weight = 10
 
 [[footer]]
-parent = "website"
+parent = "footer_first_column"
 name = "Services"
 pageRef = "/consulting/"
 weight = 20
 
 [[footer]]
-parent = "website"
+parent = "footer_first_column"
 name = "Contact"
 pageRef = "/#contact"
 weight = 30
 
 [[footer]]
-identifier = "hosting"
+identifier = "footer_2nd_column"
 name = "Resources"
 pageRef = "#"
 weight = 20
 
 [[footer]]
-parent = "hosting"
+parent = "footer_2nd_column"
 name = "Blog"
 pageRef = "/blog/"
 weight = 10

@@ -1,0 +1,85 @@
+{{/*
+  Error page partial
+
+  Parameters:
+    page             - current Hugo page context
+    header-image     - header/background image URL
+    heading          - header heading
+    breadcrumb_home  - home breadcrumb text
+    breadcrumb_current - current error breadcrumb text
+    title            - main error title
+    message          - main error message
+    home_url         - home button URL
+    home_title       - home button title/aria label
+    home_text        - home button caption (optional)
+    support_url      - support/contact URL (optional)
+    support_title    - support button title (optional)
+    support_text     - support button caption (optional)
+*/}}
+{{- $p := .page | default . -}}
+{{- $headerImage := .header_image -}}
+{{- $heading := .heading -}}
+{{- $breadcrumbHome := .breadcrumb_home -}}
+{{- $breadcrumbCurrent := .breadcrumb_current -}}
+{{- $title := .title -}}
+{{- $message := .message -}}
+{{- $homeURL := .home_url -}}
+{{- $homeTitle := .home_title -}}
+{{- $homeText := .home_text -}}
+{{- $supportURL := .support_url -}}
+{{- $supportTitle := .support_title -}}
+{{- $supportText := .support_text -}}
+
+<!-- Start Hero -->
+<section class="relative table w-full py-36" id="start">
+    <div class="absolute inset-0">
+    <img
+        src="{{ $headerImage | relURL }}"
+        alt="404 page background"
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high">
+    </div>
+    <div class="absolute inset-0 bg-black opacity-75"></div>
+    <div class="container relative">
+        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+            <h3 class="md:text-4xl text-4xl md:leading-normal tracking-wide leading-normal font-medium text-white">{{ $heading }}</h3>
+        </div>
+    </div>
+
+    <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
+        <ul class="tracking-[0.5px] mb-0 inline-block">
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ $homeURL }}">{{ $breadcrumbHome }}</a></li>
+           <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="bi bi-chevron-right"></i></li>
+           <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">{{ $breadcrumbCurrent }}</li>
+        </ul>
+    </div>
+</section>
+<div class="relative">
+    <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white">
+        <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!-- End Hero -->
+
+<!-- Start Section-->
+<section class="relative mt-36 mb-36 z-10">
+    <div class="container relative">
+        <div class="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1">
+            <div class="text-center">
+                <div class="content">
+                    <h2 class="title h5 text-4xl font-medium">{{ $title }}</h2>
+                    <p class="text-theme-muted text-3xl mt-8">{{ $message }}</p>
+                </div>
+                <div class="content mt-8">
+                    <a href="{{ $homeURL }}" title="{{ $homeTitle }}" aria-label="{{ $homeTitle }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary-dark hover:bg-primary-dark border-primary-dark hover:border-primary-dark text-white rounded-md">{{ $homeText }}</a>
+                    {{ if $supportURL }}
+                    <a href="{{ $supportURL }}" title="{{ $supportTitle }}" aria-label="{{ $supportTitle }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-danger hover:bg-danger-dark border-danger hover:border-danger-dark text-white rounded-md">{{ $supportText }}</a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

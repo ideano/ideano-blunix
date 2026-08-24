@@ -1,18 +1,5 @@
 {{ define "main" }}
 {{- $homeURL := partial "helpers/url.html" (dict "Root" $ "url" "/") -}}
-<script>
-(function () {
-    var path = window.location.pathname;
-    var segments = path.split('/').filter(Boolean);
-    var languageCodes = ['en', 'fa', 'ar'];
-    var language = segments.length && languageCodes.indexOf(segments[0].toLowerCase()) !== -1
-        ? segments[0].toLowerCase() : '';
-
-    if (language && path !== '/' + language + '/404.html') {
-        window.location.replace('/' + language + '/404.html');
-    }
-})();
-</script>
 {{ partial "error.html" (dict
     "page" .
     "header_image" (.Site.Params.background_404 | relURL)
@@ -24,5 +11,6 @@
     "home_url" $homeURL
     "home_title" (i18n "404_home_button_title")
     "home_text" (i18n "404_home_button_title")
+    "error_path" "/404.html"
 ) }}
 {{ end }}

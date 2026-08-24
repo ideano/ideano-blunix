@@ -19,3 +19,28 @@ link = "tel:+1234567890"
 name = "contact@example.com"
 icon = "bi bi-envelope"
 link = "mailto:contact@example.com"
+
+[services.google_analytics]
+id = ""
+
+[services.microsoft_clarity]
+id = ""
+
+[services.cloudflare_web_analytics]
+token = ""
+
+[services.plausible]
+domain = ""
+url = ""
+
+[services.matomo]
+id = ""
+url = ""
+
+[services.umami]
+id = ""
+url = ""
+
+[services.open_web_analytics]
+id = ""
+url = ""

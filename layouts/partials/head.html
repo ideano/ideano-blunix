@@ -110,13 +110,13 @@
 
   {{/* Auto-detect if page needs Prism.js for code highlighting */}}
   {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
-
+  
   {{ $cssContext := dict "isWritingSingle" $isWritingSingle "needsPrism" $needsPrism }}
   {{ partialCached "css.html" $cssContext $isWritingSingle $needsPrism }}
   
   {{ partial "opengraph.html" . }}
   {{ partial "twitter_cards.html" . }}
-
+  
   <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
   <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
@@ -125,4 +125,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-57x57.ico" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-72x72.ico" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-114x114.ico" />
+  
+  {{/* include trackers partial */}}
+  {{ partial "trackers.html" . }}
 </head>

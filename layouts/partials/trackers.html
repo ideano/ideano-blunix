@@ -1,0 +1,127 @@
+{{/* Google Analytics 4
+     services.google_analytics.id = "G-XXXXXXXXXX"
+*/}}
+{{- with .Site.Params.services.google_analytics.id }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ . }}');
+</script>
+{{- end }}
+
+
+{{/* Microsoft Clarity
+     services.microsoft_clarity.id = "xxxxxxxxxx"
+*/}}
+{{- with .Site.Params.services.microsoft_clarity.id }}
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);
+    t.async=1;
+    t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "{{ . }}");
+</script>
+{{- end }}
+
+
+{{/* Cloudflare Web Analytics
+     services.cloudflare_web_analytics.token = "xxxxxxxxxxxxxxxx"
+*/}}
+{{- with .Site.Params.services.cloudflare_web_analytics.token }}
+<script
+  defer
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token":"{{ . }}"}'>
+</script>
+{{- end }}
+
+
+{{/* Plausible
+     services.plausible.domain = "example.com"
+     services.plausible.url = ""                       // optional
+     services.plausible.url = "https://plausible.example.com"
+*/}}
+{{- with .Site.Params.services.plausible.domain }}
+  {{- $url := $.Site.Params.services.plausible.url | default "https://plausible.io" }}
+<script
+  defer
+  data-domain="{{ . }}"
+  src="{{ strings.TrimRight "/" $url }}/js/script.js">
+</script>
+{{- end }}
+
+
+{{/* Matomo
+     services.matomo.id = "1"
+     services.matomo.url = ""                          // optional
+     services.matomo.url = "https://matomo.example.com"
+*/}}
+{{- with .Site.Params.services.matomo.id }}
+  {{- $url := $.Site.Params.services.matomo.url | default "https://matomo.org" }}
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+
+  (function() {
+    var u = '{{ strings.TrimRight "/" $url }}/';
+    _paq.push(['setTrackerUrl', u + 'matomo.php']);
+    _paq.push(['setSiteId', '{{ . }}']);
+
+    var d = document;
+    var g = d.createElement('script');
+    var s = d.getElementsByTagName('script')[0];
+
+    g.async = true;
+    g.src = u + 'matomo.js';
+    s.parentNode.insertBefore(g, s);
+  })();
+</script>
+{{- end }}
+
+
+{{/* Umami
+     services.umami.id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+     services.umami.url = ""                           // optional
+     services.umami.url = "https://umami.example.com"
+*/}}
+{{- with .Site.Params.services.umami.id }}
+  {{- $url := $.Site.Params.services.umami.url | default "https://analytics.umami.is" }}
+<script
+  async
+  src="{{ strings.TrimRight "/" $url }}/script.js"
+  data-website-id="{{ . }}">
+</script>
+{{- end }}
+
+
+{{/* Open Web Analytics
+     services.open_web_analytics.id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     services.open_web_analytics.url = ""              // optional
+     services.open_web_analytics.url = "https://owa.example.com"
+*/}}
+{{- with .Site.Params.services.open_web_analytics.id }}
+  {{- $url := $.Site.Params.services.open_web_analytics.url | default "https://openwebanalytics.com" }}
+<script>
+  var owa_baseUrl = '{{ strings.TrimRight "/" $url }}/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', '{{ . }}']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+
+  (function() {
+    var _owa = document.createElement('script');
+    _owa.type = 'text/javascript';
+    _owa.async = true;
+    _owa.src = owa_baseUrl + '/modules/base/js/owa.tracker.js';
+
+    var _owa_s = document.getElementsByTagName('script')[0];
+    _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  })();
+</script>
+{{- end }}

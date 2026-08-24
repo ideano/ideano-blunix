@@ -82,6 +82,122 @@ npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./static/css/style.css --mi
 
 The repository's existing `static/css/style.css` remains precompiled for zero-build theme consumption.
 
+## Analytics Trackers
+
+The theme supports several optional analytics trackers. Each tracker is enabled independently by providing its required identifier or token. If the required field is empty or omitted, that tracker is not included in the generated pages.
+
+All tracker configuration is placed under `[services]`.
+
+### Supported trackers
+
+| Tracker | Required field | Optional field | Default server |
+|---|---|---|---|
+| Google Analytics 4 | `id` | — | Google |
+| Microsoft Clarity | `id` | — | Microsoft |
+| Cloudflare Web Analytics | `token` | — | Cloudflare |
+| Plausible | `domain` | `url` | `plausible.io` |
+| Matomo | `id` | `url` | Provider/server URL |
+| Umami | `id` | `url` | `analytics.umami.is` |
+| Open Web Analytics | `id` | `url` | — |
+
+### Configuration
+
+Add the required tracker configuration to your site's `params.toml`.
+
+```toml
+[services.google_analytics]
+id = "G-XXXXXXXXXX"
+
+[services.microsoft_clarity]
+id = "XXXXXXXXXX"
+
+[services.cloudflare_web_analytics]
+token = "XXXXXXXXXX"
+
+[services.plausible]
+domain = "example.com"
+url = ""
+
+[services.matomo]
+id = "1"
+url = ""
+
+[services.umami]
+id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+url = ""
+
+[services.open_web_analytics]
+id = "XXXXXXXXXX"
+url = ""
+```
+
+### Optional trackers
+
+Every tracker is optional. You can enable any combination of trackers, or none of them.
+
+For example, to use only Google Analytics:
+
+```toml
+[services.google_analytics]
+id = "G-XXXXXXXXXX"
+```
+
+All other trackers remain disabled.
+
+### Self-hosted / on-premise servers
+
+**Plausible, Matomo, Umami, and Open Web Analytics** support an optional `url` parameter.
+
+When `url` is provided, the theme uses that URL as the analytics server instead of the service's default hosted/cloud server.
+
+For example:
+
+```toml
+[services.umami]
+id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+url = "https://analytics.example.com"
+```
+
+If `url` is empty or omitted, the configured default hosted service is used.
+
+The `url` value should be the **base URL of the analytics server**, without the tracker script filename or trailing path.
+
+For example:
+
+```toml
+url = "https://analytics.example.com"
+```
+
+not:
+
+```toml
+url = "https://analytics.example.com/script.js"
+```
+
+### Trackers without server URL configuration
+
+Google Analytics, Microsoft Clarity, and Cloudflare Web Analytics do not have a configurable `url` parameter. Their tracking scripts are loaded from the providers' official hosted endpoints.
+
+### Disabling a tracker
+
+To disable a tracker, simply remove its configuration or leave its required field empty:
+
+```toml
+[services.google_analytics]
+id = ""
+```
+
+An empty required field causes Hugo to omit the corresponding tracking code entirely.
+
+### Tracker implementation
+
+All analytics tracking code is centralized in:
+
+```text
+layouts/partials/trackers.html
+```
+
+The partial is included from the site's `<head>`. Each integration is conditionally rendered, so disabled trackers add no tracking JavaScript to the generated pages.
 
 
 # Hugo Theme Blunix (Original Readme)

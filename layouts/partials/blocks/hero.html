@@ -45,7 +45,7 @@ Parameters:
       {{ with .Params.cta }}
       <div class="mt-8">
         {{- $url := partial "helpers/url.html" (dict "Root" $.Root "url" .url) -}}
-        <a href="{{ $url }}" title="{{ .title }}" class="inline-block rounded-md border border-danger bg-danger px-5 py-2 text-center align-middle text-base font-semibold tracking-wide text-white duration-500 hover:border-primary-dark hover:bg-primary-dark">{{ .label }}</a>
+        <a href="{{ $url }}" title="{{ .title }}" class="inline-block rounded-md border border-danger bg-danger px-5 py-2 text-center align-middle text-base font-semibold tracking-wide text-white duration-500 hover:border-danger-dark hover:bg-danger-dark">{{ .label }}</a>
       </div>
       {{ end }}
     </div>

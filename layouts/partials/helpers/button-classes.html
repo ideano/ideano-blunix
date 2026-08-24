@@ -1,12 +1,12 @@
-{{- $color := .color | default "blue" -}}
-{{- $hoverColor := .hover_color | default "blue" -}}
+{{- $color := .color | default "primary" -}}
+{{- $hoverColor := .hover_color | default "primary" -}}
 
 {{- $class := "bg-primary hover:bg-primary-dark border-primary hover:border-primary-dark" -}}
-{{- if eq $color "red" -}}
+{{- if eq $color "danger" -}}
   {{- $class = "bg-danger hover:bg-danger-dark border-danger hover:border-danger-dark" -}}
-{{- else if eq $color "yellow" -}}
+{{- else if eq $color "accent" -}}
   {{- $class = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
-{{- else if or (eq $color "blue") (eq $color "green") -}}
+{{- else if or (eq $color "primary") (eq $color "accent") -}}
   {{- if eq $hoverColor "red" -}}
     {{- $class = "bg-primary hover:bg-danger-dark border-primary hover:border-danger-dark" -}}
   {{- else -}}

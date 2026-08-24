@@ -53,11 +53,11 @@
                 </div>
                 <div class="content mt-8">
                 {{ if eq .Site.Language.Lang "de" }}
-                <a href="/de/" title="{{ .Params.breadcrumb_home }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary-dark hover:bg-primary-dark border-primary-dark hover:border-primary-dark text-white rounded-md">{{ .Params.button_home_text }}</a>
-                <a href="/de/#contact" title="Kontakt" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-danger hover:bg-primary-dark border-danger hover:border-primary-dark text-white rounded-md">{{ .Params.button_support_text }}</a>
+                <a href="/de/" title="{{ .Params.breadcrumb_home }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary-dark hover:bg-danger-dark border-primary-dark hover:border-danger-dark text-white rounded-md">{{ .Params.button_home_text }}</a>
+                <a href="/de/#contact" title="Kontakt" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-danger hover:bg-danger-dark border-danger hover:border-danger-dark text-white rounded-md">{{ .Params.button_support_text }}</a>
                 {{ else }}
-                <a href="/" title="{{ .Params.breadcrumb_home }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary-dark hover:bg-primary-dark border-primary-dark hover:border-primary-dark text-white rounded-md">{{ .Params.button_home_text }}</a>
-                <a href="/#contact" title="Contact" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-danger hover:bg-primary-dark border-danger hover:border-primary-dark text-white rounded-md">{{ .Params.button_support_text }}</a>
+                <a href="/" title="{{ .Params.breadcrumb_home }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary-dark hover:bg-danger-dark border-primary-dark hover:border-danger-dark text-white rounded-md">{{ .Params.button_home_text }}</a>
+                <a href="/#contact" title="Contact" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-danger hover:bg-danger-dark border-danger hover:border-danger-dark text-white rounded-md">{{ .Params.button_support_text }}</a>
                 {{ end }}
                 </div>
             </div>

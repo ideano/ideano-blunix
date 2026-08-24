@@ -19,7 +19,7 @@ Usage:
         cta: "Choose"
         cta_title: "Choose Starter"
         url: "/#contact"
-        color: "yellow"
+        color: "accent"
         intensity: "400"
         text_color: "text-white"
     monthly:
@@ -89,7 +89,7 @@ Notes:
                 {{- end -}}                
                 {{- $textColor := .text_color | default "text-white" -}}
                 {{- $btnClasses := "" -}}
-                {{- if eq .color "yellow" -}}
+                {{- if eq .color "accent" -}}
                   {{- $intensity := .intensity | default "400" -}}
                   {{- if eq $intensity "300" -}}
                     {{- $btnClasses = "bg-warning-light border-warning-light hover:bg-primary-dark hover:border-primary-dark" -}}
@@ -131,7 +131,7 @@ Notes:
                 {{- end -}}
                 {{- $textColor := .text_color | default "text-white" -}}
                 {{- $btnClasses := "" -}}
-                {{- if eq .color "yellow" -}}
+                {{- if eq .color "accent" -}}
                   {{- $intensity := .intensity | default "400" -}}
                   {{- if eq $intensity "300" -}}
                     {{- $btnClasses = "bg-warning-light border-warning-light hover:bg-primary-dark hover:border-primary-dark" -}}

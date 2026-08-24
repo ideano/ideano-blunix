@@ -1,18 +1,18 @@
 {{- $text := .text -}}
 {{- $url := .url -}}
-{{- $style := .style | default "blue" -}}
-{{- $hover := .hover | default "green" -}}
+{{- $style := .style | default "primary" -}}
+{{- $hover := .hover | default "primary-dark" -}}
 {{- $size := .size | default "standard" -}}
 
 {{- $styleClasses := "" -}}
 {{- $hoverClasses := "" -}}
 {{- $sizeClasses := "" -}}
 
-{{- if eq $style "blue" -}}
+{{- if eq $style "primary" -}}
   {{- $styleClasses = "bg-primary border-primary text-white" -}}
-{{- else if eq $style "green" -}}
+{{- else if eq $style "accent" -}}
   {{- $styleClasses = "bg-primary border-primary text-white" -}}
-{{- else if eq $style "red" -}}
+{{- else if eq $style "danger" -}}
   {{- $styleClasses = "bg-danger border-danger text-white" -}}
 {{- end -}}
 

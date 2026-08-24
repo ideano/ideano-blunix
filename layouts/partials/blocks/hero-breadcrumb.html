@@ -25,7 +25,7 @@ Notes:
   `background` is processed by the responsive image component.
 */}}
 <section class="relative table w-full py-36" id="start">
-  <div class="absolute inset-0">
+  <div class="absolute inset-0 z-0">
     {{ partial "components/image-responsive.html" (dict
       "src" .Params.background
       "alt" (.Params.alt | default "background")
@@ -36,18 +36,27 @@ Notes:
       "widths" (slice 480 640 768 960 1024 1280 1536 1920 2560 3072 3840)
       "maxDisplayWidth" 1920
     ) }}
+
+    {{/* Contrast layer applies only to the hero image. */}}
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-color: color-mix(in srgb, var(--theme-text) 30%, transparent);"
+      aria-hidden="true">
+    </div>
   </div>
-  <div class="absolute inset-0 bg-theme-text/75"></div>
-  <div class="container relative">
+
+  <div class="container relative z-10">
     <div class="grid grid-cols-1 pb-8 text-center mt-10">
       <h1 class="font-extrabold lg:leading-normal leading-normal text-4xl lg:text-7xl mb-5 text-white">{{ .Params.title }}</h1>
       <p class="font-extrabold text-2xl max-w-xl mx-auto text-white">{{ .Params.subtitle }}</p>
     </div>
   </div>
+
   <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
     <ul class="tracking-[0.5px] mb-0 inline-block">
       <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a></li>
       <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="bi bi-chevron-right"></i></li>
+
       {{ if .Params.breadcrumb_url }}
         <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white">
           {{- $breadcrumb_url := partial "helpers/url.html" (dict "Root" $.Root "url" .Params.breadcrumb_url) -}}
@@ -63,6 +72,7 @@ Notes:
     </ul>
   </div>
 </section>
+
 <div class="relative">
   <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white">
     <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,4 +80,3 @@ Notes:
     </svg>
   </div>
 </div>
-

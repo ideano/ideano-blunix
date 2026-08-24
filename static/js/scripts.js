@@ -405,8 +405,8 @@ try {
 try {
   const AccordionDefault = {
     alwaysOpen: false,
-    activeClasses: "bg-[var(--theme-surface)] text-[var(--theme-primary)]",
-    inactiveClasses: "text-[var(--theme-text)]",
+    activeClasses: "bg-primary-soft text-primary",
+    inactiveClasses: "text-theme",
     onOpen: () => {},
     onClose: () => {},
     onToggle: () => {},

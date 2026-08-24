@@ -292,8 +292,8 @@ document.addEventListener("DOMContentLoaded", function () {
 try {
   const TabsDefault = {
     defaultTabId: null,
-    activeClasses: "text-white bg-blue-600",
-    inactiveClasses: "hover:text-blue-600 hover:bg-gray-50",
+    activeClasses: "text-[var(--theme-on-primary)] bg-[var(--theme-primary)]",
+    inactiveClasses: "hover:text-[var(--theme-primary)] hover:bg-[var(--theme-surface)]",
     onShow: () => {},
   };
 
@@ -405,8 +405,8 @@ try {
 try {
   const AccordionDefault = {
     alwaysOpen: false,
-    activeClasses: "bg-gray-50 text-blue-600",
-    inactiveClasses: "text-dark",
+    activeClasses: "bg-[var(--theme-surface)] text-[var(--theme-primary)]",
+    inactiveClasses: "text-[var(--theme-text)]",
     onOpen: () => {},
     onClose: () => {},
     onToggle: () => {},

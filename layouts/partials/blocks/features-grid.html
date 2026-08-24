@@ -33,9 +33,9 @@ Notes:
     </div>
     <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
       {{ range .Params.items }}
-      <div class="group relative p-6 shadow-xs rounded-xl bg-white overflow-hidden">
+      <div class="group relative p-6 shadow-xs rounded-xl bg-[var(--theme-background)] overflow-hidden">
         <div class="relative overflow-hidden text-transparent -m-3">
-          {{ partial "components/icon.html" (dict "name" "hexagon" "class" "size-24 fill-blue-600/5") }}
+          {{ partial "components/icon.html" (dict "name" "hexagon" "class" "size-24 fill-[var(--theme-primary-soft)]") }}
           <div class="absolute top-0 start-0 w-24 h-24 text-primary rounded-xl duration-500 text-3xl flex items-center justify-center">
             <i class="{{ .icon }} leading-none inline-flex items-center justify-center"></i>
           </div>

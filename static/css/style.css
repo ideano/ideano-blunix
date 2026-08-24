@@ -5998,3 +5998,57 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: var(--theme-
 
 .bg-theme-surface{background-color:var(--theme-surface)}
 .text-theme{color:var(--theme-text)}
+
+/* Custom styles merged from custom.css */
+/* RTL: mirror horizontal scroller direction */
+[dir="rtl"] .scroller[data-direction="left"] {
+  --_animation-direction: reverse;
+}
+
+[dir="rtl"] .scroller[data-direction="right"] {
+  --_animation-direction: forwards;
+}
+
+.partners-scroller__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+/* Header contrast strip */
+#topnav {
+  background-color: color-mix(in srgb, var(--theme-text) 88%, transparent);
+  box-shadow: none;
+}
+#topnav .navigation-menu > li > a { color: rgb(255 255 255) !important; }
+#topnav .navigation-menu .has-submenu .menu-arrow { border-color: rgb(255 255 255); }
+#topnav .navbar-toggle span { background-color: rgb(255 255 255); }
+#topnav .logo .l-dark { display: none; }
+#topnav .logo .l-light { display: inline-block; }
+#topnav .navigation-menu > li:hover > a,
+#topnav .navigation-menu > li.active > a { color: var(--theme-primary) !important; }
+
+#topnav.scroll,
+#topnav.nav-sticky {
+  background-color: var(--theme-background, rgb(255 255 255));
+  box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
+}
+#topnav.scroll .navigation-menu > li > a,
+#topnav.nav-sticky .navigation-menu.nav-light > li > a {
+  color: var(--theme-text) !important;
+}
+#topnav.scroll .navigation-menu .has-submenu .menu-arrow,
+#topnav.nav-sticky .navigation-menu .has-submenu .menu-arrow {
+  border-color: var(--theme-text);
+}
+#topnav.scroll .navbar-toggle span,
+#topnav.nav-sticky .navbar-toggle span { background-color: var(--theme-text); }
+#topnav.nav-sticky .logo .l-dark { display: inline-block; }
+#topnav.nav-sticky .logo .l-light { display: none; }
+
+@media (max-width: 991px) {
+  #navigation { background-color: var(--theme-background, rgb(255 255 255)); }
+  #topnav .navigation-menu > li > a { color: var(--theme-text) !important; }
+  #topnav .navigation-menu .has-submenu .menu-arrow { border-color: var(--theme-text); }
+}

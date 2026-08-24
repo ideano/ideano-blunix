@@ -1,0 +1,15 @@
+/* Footer navigation chevrons follow the text direction. */
+[dir="rtl"] .footer-list .bi-chevron-right {
+    display: inline-block;
+    transform: rotate(180deg);
+}
+
+/* RTL: mirror horizontal scroller direction */
+[dir="rtl"] .scroller[data-direction="left"] {
+  --_animation-direction: reverse;
+}
+
+[dir="rtl"] .scroller[data-direction="right"] {
+  --_animation-direction: forwards;
+}
+

@@ -3,37 +3,49 @@
         <div class="grid grid-cols-12">
             <div class="col-span-12">
                 <div class="py-[60px] px-0">
-                    <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
-                        <div class="lg:col-span-3 md:col-span-12">
+                    <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px] items-start">
+                        <div class="lg:col-span-3 md:col-span-12 min-w-0">
                             <h2 class="tracking-[1px] text-white font-semibold">{{ i18n "copyright_notice" }}</h2>
                             <div class="mt-6 text-white [&_*]:text-white">{{ replace .Site.Params.footer_copyright "{year}" (dateFormat "2006" now) | markdownify | safeHTML }}</div>
                         </div>
 
-                        <div class="lg:col-span-3 md:col-span-4">
+                        <div class="lg:col-span-2 md:col-span-4 min-w-0">
                             {{ $websiteMenu := index (where .Site.Menus.footer "Identifier" "footer_first_column") 0 }}
                             {{ if $websiteMenu }}
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $websiteMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
                                 {{ range $index, $item := $websiteMenu.Children }}
-                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-accent duration-500 ease-in-out"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-accent duration-500 ease-in-out whitespace-nowrap"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
                                 {{ end }}
                             </ul>
                             {{ end }}
                         </div>
 
-                        <div class="lg:col-span-3 md:col-span-4">
+                        <div class="lg:col-span-2 md:col-span-4 min-w-0">
                             {{ $hostingMenu := index (where .Site.Menus.footer "Identifier" "footer_2nd_column") 0 }}
                             {{ if $hostingMenu }}
                             <h2 class="tracking-[1px] text-white font-semibold">{{ $hostingMenu.Name }}</h2>
                             <ul class="list-none footer-list mt-6">
                                 {{ range $index, $item := $hostingMenu.Children }}
-                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-accent duration-500 ease-in-out"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-accent duration-500 ease-in-out whitespace-nowrap"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
                                 {{ end }}
                             </ul>
                             {{ end }}
                         </div>
 
-                        <div class="lg:col-span-3 md:col-span-4">
+                        <div class="lg:col-span-2 md:col-span-4 min-w-0">
+                            {{ $thirdMenu := index (where .Site.Menus.footer "Identifier" "footer_3rd_column") 0 }}
+                            {{ if $thirdMenu }}
+                            <h2 class="tracking-[1px] text-white font-semibold">{{ $thirdMenu.Name }}</h2>
+                            <ul class="list-none footer-list mt-6">
+                                {{ range $index, $item := $thirdMenu.Children }}
+                                  <li{{ if ne $index 0 }} class="mt-[10px]"{{ end }}><a href="{{ $item.URL }}" title="{{ $item.Name }}" class="text-white hover:text-accent duration-500 ease-in-out whitespace-nowrap"><i class="bi bi-chevron-right"></i> {{ $item.Name }}</a></li>
+                                {{ end }}
+                            </ul>
+                            {{ end }}
+                        </div>
+
+                        <div class="lg:col-span-3 md:col-span-4 min-w-0">
                             <h2 class="tracking-[1px] text-white font-semibold">{{ .Site.Params.footer_social_media }}</h2>
                             <ul class="list-none mt-6 space-x-2">
                                 {{ range .Site.Params.social_media }}

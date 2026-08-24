@@ -5999,22 +5999,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: var(--theme-
 .bg-theme-surface{background-color:var(--theme-surface)}
 .text-theme{color:var(--theme-text)}
 
-/* Custom styles merged from custom.css */
-/* RTL: mirror horizontal scroller direction */
-[dir="rtl"] .scroller[data-direction="left"] {
-  --_animation-direction: reverse;
-}
-
-[dir="rtl"] .scroller[data-direction="right"] {
-  --_animation-direction: forwards;
-}
-
 .partners-scroller__title {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
 }
-
 
 /* Header contrast strip */
 #topnav {
@@ -6051,4 +6040,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: var(--theme-
   #navigation { background-color: var(--theme-background, rgb(255 255 255)); }
   #topnav .navigation-menu > li > a { color: var(--theme-text) !important; }
   #topnav .navigation-menu .has-submenu .menu-arrow { border-color: var(--theme-text); }
+}
+
+/* Keep footer navigation labels on one line when there is enough space. */
+.footer-list li,
+.footer-list a {
+    white-space: nowrap;
 }

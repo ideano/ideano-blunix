@@ -55,6 +55,18 @@ name = "Blog"
 pageRef = "/blog/"
 weight = 10
 
+[[footer]]
+identifier = "footer_3rd_column"
+name = "External"
+pageRef = "#"
+weight = 30
+
+[[footer]]
+parent = "footer_3rd_column"
+name = "google"
+url = "https://google.com/"
+weight = 10
+
 [[services]]
 name = "Consulting"
 pageRef = "/consulting/"

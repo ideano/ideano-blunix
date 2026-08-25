@@ -2,7 +2,7 @@
 
 <!-- Start Hero -->
 <section class="relative table w-full py-36">
-    {{ $backgroundSrc := .Params.image | default "images/writing-list-background.png" }}
+    {{ $backgroundSrc := .Params.image | default "/images/writing-list-background.png" }}
     {{ $altText := .Params.image_alt | default (printf "%s background" (.Section | humanize)) }}
     <div class="absolute inset-0">
         {{ partial "components/image-responsive.html" (dict

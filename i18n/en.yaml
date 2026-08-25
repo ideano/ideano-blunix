@@ -100,3 +100,6 @@
 - id: copyright_notice
   translation: "Copyright"
 
+- id: table_of_contents
+  translation: "Table of Contents"
+

@@ -97,4 +97,7 @@
 - id: 404_home_button_label
   translation: "خانه"
 
+- id: table_of_contents
+  translation: "فهرست"
+
 

@@ -45,7 +45,7 @@
     </div>
 </div>
 <!-- End Hero -->
-
+ 
 {{/*
   Show the English translation notice according to the current language's
   configuration.
@@ -56,7 +56,8 @@
   If the parameter is omitted, the notice is shown by default to preserve
   the existing behavior.
 */}}
-{{ $showEnglishTranslation := false }}
+
+{{ $showEnglishTranslation := true }}
 {{ if isset .Site.Language.Params "show_english_translation_notice" }}
     {{ $showEnglishTranslation = .Site.Language.Params.show_english_translation_notice }}
 {{ end }}
@@ -84,13 +85,36 @@
 <!-- Start Section-->
 <section class="relative md:py-24 py-16 template-sec">
     <div class="container relative">
-        <div class="grid grid-cols-1 gap-4 md:gap-5 lg:gap-[30px]">
 
-{{ .Content }}
-
+        {{ if .Params.toc }}
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-[30px]">
+            <!-- Table of Contents -->
+            <aside class="lg:col-span-1">
+                <div class="lg:sticky lg:top-24 border border-theme rounded-md bg-surface p-6">
+<div class="flex items-center gap-2 mb-4 h-8">
+    <i class="bi bi-list text-primary text-2xl flex-none"></i>
+    <h4 class="text-lg font-semibold text-theme m-0 p-0 leading-8">
+        {{ i18n "table_of_contents" | default "Table of Contents" }}
+    </h4>
+</div>
+                    <nav class="text-theme-muted prose prose-sm max-w-none prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-medium">
+                        {{ .TableOfContents }}
+                    </nav>
+                </div>
+            </aside>
+            <!-- Article Content -->
+            <article class="lg:col-span-3 min-w-0">
+                {{ .Content }}
+            </article>
         </div>
+        {{ else }}
+        <article class="min-w-0">
+            {{ .Content }}
+        </article>
+        {{ end }}
+
     </div><!--end container-->
 </section><!--end section-->
 
-  {{ partial "cta-writing" . }}
+{{ partial "cta-writing" . }}
 {{ end }}

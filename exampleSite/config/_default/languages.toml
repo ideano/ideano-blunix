@@ -7,12 +7,6 @@ title = "Hugo Theme Starter"
 weight = 1
 
 [en.params]
-# Independent visual theme selections.
-# Colors: default, aquamarine, ...
-# Fonts: default, iran-sans-x, work-sans, elegant
-theme-colors = "default"
-theme-fonts = "default"
-
 footer_copyright = "Copyright {year} Your Company.\n\nAll rights reserved."
 footer_social_media = "Follow Us"
 footer_listed_with = "Affiliations"
@@ -20,6 +14,13 @@ footer_listed_with_text = "Proud member of"
 flag_image = "english"
 flag_alt = "English"
 label = "English"
+background_404 = "/images/404/background.webp"
+show_english_translation_notice = true
+# Independent visual theme selections.
+# Supported: default, ruby, garnet, amethyst, tanzanite, sapphire, aquamarine, emerald, peridot, citrine, topaz, amber, spinel, mono.
+theme-colors = "default"
+# Supported: default, iran-sans-x, work-sans, elegant
+theme-fonts = "default"
 
 [en.params.site]
 keywords = "linux, debian, ubuntu, consulting, hosting, training, classes, courses"
@@ -29,7 +30,6 @@ email = "info@ideano.com"
 version = "2.0.0"
 title = "Ideano Corp Tehran: Embedded systesm design, Consulting and TV Monitoring solutions"
 description = "Embedded systesm design, Consulting and TV Monitoring solutions, Project based Linux Embedded Design as well as Embedded Linux Design Workshops and Trainings"
-background_404 = "/images/404/background.webp"
 
 [en.params.logo]
 dark = "images/navbar/logo-dark-en.svg"

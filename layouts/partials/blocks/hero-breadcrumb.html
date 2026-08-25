@@ -63,7 +63,7 @@ Examples:
       </li>
 
       {{ if .Params.breadcrumb_url }}
-        <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white">
+        <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
           {{- $breadcrumb_url := partial "helpers/url.html" (dict "Root" $.Root "url" .Params.breadcrumb_url) -}}
           <a href="{{ $breadcrumb_url }}">
             {{ .Params.breadcrumb | default .Params.title }}

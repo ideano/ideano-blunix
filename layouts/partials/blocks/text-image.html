@@ -26,7 +26,7 @@ Parameters:
   buttons    Optional button configuration passed to `components/buttons.html`.
 
 */}}
-<section class="relative bg-surface py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
+<section class="relative py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
   <div class="relative container">
     <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">
       {{ if .Params.image_left }}

@@ -20,7 +20,7 @@
     <div class="container relative">
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
             <h1 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-7xl mb-5 text-white">{{ .Params.sectionLabel | default .Section }}</h1>
-            <div class="text-2xl text-theme-muted max-w-xl mx-auto text-white prose prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
+            <div class="text-2xl max-w-xl mx-auto text-white prose prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline max-w-none">
                 {{ .Content | markdownify }}
             </div>
         </div><!--end grid-->

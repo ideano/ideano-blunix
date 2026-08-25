@@ -10,6 +10,7 @@ blocks:
     alt: "Services background"
     breadcrumb: "Services"
     breadcrumb_url: "/"
+    contrast: "10%"
 
 
   - block: text-image-bg

@@ -32,6 +32,9 @@ fixed for rtl
 * cta block fixed to show (looking for) element if actually more data is exist to show.
 * hero_breadcrumb uses explicit url specified by user. (not trying to inference it)
 
+modified for added features
+* hero-breadcrumb accepts contrast parameter, which sets opacity level of contrast drop over picture, which makes reading texts easier on light images.
+
 ## Shortcodes
 All shortcodes have their parameters and example usage documented on top of their source file.
 * quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.

@@ -3,27 +3,26 @@ hero-breadcrumb
 
 Hero section with background image, title/subtitle, and breadcrumb navigation.
 
-Usage:
-  - block: hero-breadcrumb
-    title: "About Us"
-    subtitle: "Learn more about our company."
-    background: "images/about-hero.webp"
-    alt: "Company office"
-    breadcrumb: "About"
-    breadcrumb_url: "/about/"
-
 Parameters:
   title          Hero heading.
   subtitle       Hero subtitle.
   background     Background image path.
-  alt            Optional image alt text. Default: `background`.
-  breadcrumb     Optional breadcrumb label. Defaults to `title`.
-  breadcrumb_url Optional URL for the breadcrumb. If omitted, the breadcrumb
-                 is rendered as the current page.
+  alt            Optional image alt text. Default: "background".
+  breadcrumb     Optional breadcrumb label. Defaults to title.
+  breadcrumb_url Optional URL for the breadcrumb.
+  contrast       Optional image contrast overlay strength.
+                 Default: "25%".
+                 Set to "0%" to disable the contrast overlay.
 
-Notes:
-  `background` is processed by the responsive image component.
+Examples:
+  contrast: "10%"
+  contrast: "25%"
+  contrast: "40%"
+  contrast: "0%"
 */}}
+
+{{ $contrast := .Params.contrast | default "25%" }}
+
 <section class="relative table w-full py-36" id="start">
   <div class="absolute inset-0 z-0">
     {{ partial "components/image-responsive.html" (dict
@@ -37,12 +36,13 @@ Notes:
       "maxDisplayWidth" 1920
     ) }}
 
-    {{/* Contrast layer applies only to the hero image. */}}
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-color: color-mix(in srgb, var(--theme-text) 30%, transparent);"
-      aria-hidden="true">
-    </div>
+    {{ if ne $contrast "0%" }}
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background-color: color-mix(in srgb, var(--theme-text) {{ $contrast }}, transparent);"
+        aria-hidden="true">
+      </div>
+    {{ end }}
   </div>
 
   <div class="container relative z-10">
@@ -54,8 +54,13 @@ Notes:
 
   <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
     <ul class="tracking-[0.5px] mb-0 inline-block">
-      <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a></li>
-      <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="bi bi-chevron-right"></i></li>
+      <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
+        <a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a>
+      </li>
+
+      <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180">
+        <i class="bi bi-chevron-right"></i>
+      </li>
 
       {{ if .Params.breadcrumb_url }}
         <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white">

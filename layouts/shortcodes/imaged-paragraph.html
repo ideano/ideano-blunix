@@ -125,16 +125,8 @@
 <div class="imaged-paragraph flow-root">
 
   <div
-    style="
-      float: {{ $side }};
-      width: {{ $width }};
-      margin-bottom: 1rem;
-      {{ if eq $side "left" }}
-        margin-right: 1.5rem;
-      {{ else }}
-        margin-left: 1.5rem;
-      {{ end }}
-    "
+    class="imaged-paragraph__image"
+    style="--imaged-paragraph-image-width: {{ $width }}; --imaged-paragraph-image-side: {{ $side }};"
   >
 
     <div

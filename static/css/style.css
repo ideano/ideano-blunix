@@ -4778,12 +4778,6 @@ strong {
     background-color: rgb(255 255 255);
     box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
   }
-  #topnav .logo .l-dark {
-    display: inline-block !important;
-  }
-  #topnav .logo .l-light {
-    display: none !important;
-  }
   #topnav .container {
     width: auto;
   }

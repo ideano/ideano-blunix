@@ -37,9 +37,10 @@ modified for added features
 
 ## Shortcodes
 All shortcodes have their parameters and example usage documented on top of their source file.
-* quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text.
-* imaged-paragraph shortcode to add image to a paragraph. text inside could be markdown. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph for all possible parameters.) 
-* download-box  shortcode to add a download link with icon and a box around part of text. text inside could be markdown. icon image should be inside site static dir, not assets dir, else it would not copy to build output. (see download-box for all possible parameters.) 
+* quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text. (see quote.html for all possible parameters.)
+* imaged-paragraph shortcode to add image to a paragraph. text inside could be markdown. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph.html for all possible parameters.) 
+* download-box shortcode to add a download link with icon and a box around part of text. text inside could be markdown. icon image should be inside site static dir, not assets dir, else it would not copy to build output. (see download-box.html for all possible parameters.) 
+* summary shortcode to create a summary box with optional title and icon, and content between shortcode tags. Used usually at top of writings. (see summary.html for all possible parameters.)
 original figure shortcode of theme images also should be in static dir of site, not assets, else they will not copy to build output.
 
 ## Tools

@@ -1,0 +1,40 @@
+{{/*
+Summary Shortcode
+=================
+
+Highlights a section of content as an executive summary.
+
+Usage:
+  {{< summary >}}
+  Your summary text goes here.
+  {{< /summary >}}
+
+Optional parameters:
+  title: Custom title. Defaults to the translated "executive_summary" string.
+  icon: Bootstrap Icon class (default: bi bi-lightbulb-fill) or an image path/URL.
+
+The body is Markdown and is rendered with markdownify.
+*/}}
+
+{{- $title := .Get "title" | default (i18n "executive_summary") -}}
+{{- $icon := .Get "icon" | default "bi bi-lightbulb-fill" -}}
+{{- $isImage := findRE `(?i)\.(svg|png|webp|jpe?g|gif)(\?.*)?$` $icon -}}
+
+<div class="my-8 mb-12 rounded-2xl border-2 border-primary bg-primary-soft px-5 py-5 shadow-sm md:px-6 md:py-6">
+  <div class="mt-4 flex gap-3">
+    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary shadow-sm" aria-hidden="true">
+      {{- if $isImage -}}
+        <img src="{{ $icon | relURL }}" alt="" class="h-6 w-6 object-contain">
+      {{- else -}}
+        <i class="{{ $icon }} text-lg"></i>
+      {{- end -}}
+    </span>
+    <h2 class="m-0 h-10 flex-1 flex items-center text-xl font-semibold text-primary md:text-2xl">
+      {{ $title }}
+    </h2>
+  </div>
+
+  <div class="prose max-w-none text-theme">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

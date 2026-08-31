@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./orig-style.css";
+@import "./topnav.css";
 @import "./themes/theme-colors.css";
 @import "./themes/theme-fonts.css";
 

@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@import "./orig-style.css";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "tailwindcss-animate";
+@import "./general.css";
 @import "./topnav.css";
 @import "./themes/theme-colors.css";
 @import "./themes/theme-fonts.css";

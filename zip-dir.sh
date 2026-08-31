@@ -28,6 +28,13 @@ cd "$DIR"
 zip -r "$OUTPUT" . \
     -x "static/images/*" \
        "static/fonts/*" \
-       "exampleSite/*"
+       "static/icons/*" \
+       "static/libs/*" \
+       "assets/icons/*" \
+       "exampleSite/*" \
+       "assets/images/*" \
+       "node_modules/*" \
+       "public/*" \
+       "images/*" \
 
 echo "Created: $OUTPUT"

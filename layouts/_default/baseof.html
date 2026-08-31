@@ -12,7 +12,7 @@
     <a href="#start" onclick="topFunction()" id="back-to-top" class="fixed end-5 bottom-5 z-10 hidden size-9 rounded-full bg-primary text-center text-lg leading-9 text-on-primary"><i class="bi bi-arrow-up"></i></a>
 
     {{/* Prism.js - Only load for writing posts and ssh-public-keys page */}}
-    {{ $needsPrism := or (and (eq .Section "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
+    {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
     {{ if $needsPrism }}
     <script src="/js/prism.min.js"></script>
     {{ end }}

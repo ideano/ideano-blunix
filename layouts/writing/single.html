@@ -91,24 +91,25 @@
             <!-- Table of Contents -->
             <aside class="lg:col-span-1">
                 <div class="lg:sticky lg:top-24 border border-theme rounded-md bg-surface p-6">
-<div class="flex items-center gap-2 mb-4 h-8">
-    <i class="bi bi-list text-primary text-2xl flex-none"></i>
-    <h4 class="text-lg font-semibold text-theme m-0 p-0 leading-8">
-        {{ i18n "table_of_contents" | default "Table of Contents" }}
-    </h4>
-</div>
-                    <nav class="text-theme-muted prose prose-sm max-w-none prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-medium">
-                        {{ .TableOfContents }}
-                    </nav>
+                <div class="flex items-center gap-2 mb-4 h-8">
+                    <i class="bi bi-list text-primary text-2xl flex-none"></i>
+                    <h4 class="text-lg font-semibold text-theme m-0 p-0 leading-8">
+                        {{ i18n "table_of_contents" | default "Table of Contents" }}
+                    </h4>
+                </div>
+                <nav class="text-theme-muted prose prose-sm max-w-none prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-medium">
+                    {{ .TableOfContents }}
+                </nav>
                 </div>
             </aside>
             <!-- Article Content -->
-            <article class="lg:col-span-3 min-w-0">
+            <article class="lg:col-span-3 min-w-0 writing-content">
                 {{ .Content }}
             </article>
         </div>
         {{ else }}
-        <article class="min-w-0">
+        <!-- Article Content -->
+        <article class="min-w-0 writing-content">
             {{ .Content }}
         </article>
         {{ end }}

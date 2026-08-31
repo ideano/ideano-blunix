@@ -107,8 +107,7 @@
 
   {{ partial "fonts.html" . }}
 
-  {{ partialCached "css.html" . }}
-  
+  {{ partialCached "css.html" . (printf "%t-%t" (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys")) }}  
   {{ partial "opengraph.html" . }}
   {{ partial "twitter_cards.html" . }}
   

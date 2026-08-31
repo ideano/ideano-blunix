@@ -22,6 +22,11 @@
     margin-bottom: 1rem !important
 }
 
+.template-sec h1 {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+}
+
 .template-sec h2 {
     font-size: 1.35rem !important;
     line-height: 1.5rem !important
@@ -169,4 +174,13 @@
         font-size: 1.5rem !important;
         line-height: 2rem !important
     }
+}
+
+.writing-content h1,
+.writing-content h2,
+.writing-content h3,
+.writing-content h4,
+.writing-content h5,
+.writing-content h6 {
+  padding-top: 2rem;
 }

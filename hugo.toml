@@ -2,3 +2,10 @@
   [module.hugoVersion]
     extended = true
     min = "0.156.0"
+
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$', '^node$']
+
+[build]
+  writeStats = true

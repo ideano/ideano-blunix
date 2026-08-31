@@ -70,6 +70,13 @@
   font-display: swap;
 }
 
+:root,
+[data-theme-fonts="default"] {
+  --theme-font-sans: "Nunito", sans-serif;
+  --theme-font-heading: "Nunito", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 [data-theme-fonts="iran-sans-x"] {
   --theme-font-sans: "IRANSansX", sans-serif;
   --theme-font-heading: "IRANSansX", sans-serif;
@@ -88,9 +95,3 @@
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-:root,
-[data-theme-fonts="default"] {
-  --theme-font-sans: "Nunito", sans-serif;
-  --theme-font-heading: "Nunito", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}

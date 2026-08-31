@@ -64,9 +64,11 @@
     {{ $backgroundSrc = .Params.background }}
   {{ else if .IsHome }}
     {{/* For homepage, read from first hero block if present */}}
-    {{ range first 1 .Params.blocks }}
-      {{ if and (eq .block "hero") .background }}
-        {{ $backgroundSrc = .background }}
+    {{ with .Params.blocks }}
+      {{ range first 1 . }}
+        {{ if and (eq .block "hero") .background }}
+          {{ $backgroundSrc = .background }}
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -104,15 +106,8 @@
   {{ end }}
 
   {{ partial "fonts.html" . }}
-  
-  {{/* Cache key based on whether it's a writing single post */}}
-  {{ $isWritingSingle := and (eq .Type "writing") .IsPage }}
 
-  {{/* Auto-detect if page needs Prism.js for code highlighting */}}
-  {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
-  
-  {{ $cssContext := dict "isWritingSingle" $isWritingSingle "needsPrism" $needsPrism }}
-  {{ partialCached "css.html" $cssContext $isWritingSingle $needsPrism }}
+  {{ partialCached "css.html" . }}
   
   {{ partial "opengraph.html" . }}
   {{ partial "twitter_cards.html" . }}

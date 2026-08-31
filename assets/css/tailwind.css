@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./orig-style.css";
 @import "./themes/theme-colors.css";
 @import "./themes/theme-fonts.css";
 
@@ -91,3 +92,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 /* Semantic surface utility */
 .bg-theme-surface { background-color: var(--theme-surface); }
+
+
+@import "./rtl.css";

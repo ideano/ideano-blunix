@@ -1,21 +1,52 @@
 {{/* Context is a dict with isWritingSingle and needsPrism flags */}}
-{{ $isWritingSingle := .isWritingSingle }}
-{{ $needsPrism := .needsPrism }}
 
-<link rel="stylesheet" href="/css/style.css" />
-<!-- custom and rtl overrides -->
-<link rel="stylesheet" href="/css/custom.css" />
-<link rel="stylesheet" href="/css/rtl.css" />
+  {{/* Cache key based on whether it's a writing single post */}}
+  {{ $isWritingSingle := and (eq .Type "writing") .IsPage }}
+
+  {{/* Auto-detect if page needs Prism.js for code highlighting */}}
+  {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
 
 
-<link rel="stylesheet" href="{{ "/libs/bootstrap-icons/bootstrap-icons.min.css" | relURL }}">
+{{/* Main Tailwind stylesheet */}}
+{{ if .Site.Params.compileTailwind }}
+  {{ $css := resources.Get "css/tailwind.css" }}
 
-{{/* Writing Styles - Only load for single writing posts */}}
-{{ if $isWritingSingle }}
-<link rel="stylesheet" href="/css/writing-styles.css" />
+  {{ if hugo.IsProduction }}
+    {{ $css = $css | css.TailwindCSS | minify | fingerprint }}
+  {{ else }}
+    {{ $css = $css | css.TailwindCSS }}
+  {{ end }}
+
+  <link
+    rel="stylesheet"
+    href="{{ $css.RelPermalink }}"
+    {{ with $css.Data.Integrity }}
+      integrity="{{ . }}"
+    {{ end }}
+  />
+
+{{ else }}
+
+  {{/* Precompiled fallback for users without Node.js */}}
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
+
 {{ end }}
 
-{{/* Prism Code Highlighting - Only load for writing posts and ssh-public-keys page */}}
+{{/* Site overrides */}}
+<link rel="stylesheet" href="{{ "/css/custom.css" | relURL }}" />
+
+{{/* Icons */}}
+<link
+  rel="stylesheet"
+  href="{{ "/libs/bootstrap-icons/bootstrap-icons.min.css" | relURL }}"
+/>
+
+{{/* Writing styles */}}
+{{ if $isWritingSingle }}
+  <link rel="stylesheet" href="{{ "/css/writing-styles.css" | relURL }}" />
+{{ end }}
+
+{{/* Prism */}}
 {{ if $needsPrism }}
-<link rel="stylesheet" href="/css/prism.min.css" />
+  <link rel="stylesheet" href="{{ "/css/prism.min.css" | relURL }}" />
 {{ end }}

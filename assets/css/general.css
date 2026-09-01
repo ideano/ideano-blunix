@@ -1,74 +1,62 @@
 /* Custom project CSS — Tailwind-generated utility classes, theme tokens, base reset, and @property registrations removed. Compile with Tailwind to regenerate those. */
 
 .container {
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 12px !important;
-  padding-right: 12px !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 @media (min-width: 540px) {
   .container {
-    max-width: 540px !important;
+    max-width: 540px;
   }
 }
 @media (min-width: 640px) {
   .container {
-    max-width: 640px !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    max-width: 640px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 840px !important;
+    max-width: 840px;
   }
 }
 @media (min-width: 1024px) {
   .container {
-    max-width: 1024px !important;
-    padding-left: 45px !important;
-    padding-right: 45px !important;
+    max-width: 1024px;
+    padding-left: 45px;
+    padding-right: 45px;
   }
 }
 @media (min-width: 1280px) {
   .container {
-    max-width: 1280px !important;
-    padding-left: 5rem !important;
-    padding-right: 5rem !important;
+    max-width: 1280px;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 @media (min-width: 1536px) {
   .container {
-    max-width: 1536px !important;
-    padding-left: 13rem !important;
-    padding-right: 13rem !important;
+    max-width: 1536px;
+    padding-left: 13rem;
+    padding-right: 13rem;
   }
 }
 .bg-dark-footer {
-  background-color: rgb(25 33 50) !important;
-}
-.font-nunito {
-  font-family: "Nunito", sans-serif !important;
+  background-color: rgb(25 33 50);
 }
 [x-cloak] {
-  display: none !important;
+  display: none;
 }
 html {
   scroll-behavior: smooth;
 }
-body {
-  font-family: "Nunito", sans-serif;
-  font-weight: 400;
-  background-color: rgb(255 255 255) !important;
-}
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Nunito", sans-serif;
-  line-height: 1.5;
-}
 strong {
-  color: inherit !important;
-  font-weight: 700 !important;
+  color: inherit;
+  font-weight: 700;
 }
 ::selection {
   background-color: var(--theme-primary);
@@ -173,10 +161,10 @@ strong {
   inset-inline-end: 0px;
 }
 html[dir="rtl"] .tns-inner, html[dir="rtl"] .tns-nav, html[dir="rtl"] .slider, html[dir="rtl"] .slider2, html[dir="rtl"] .swiper-slider-hero {
-  direction: ltr !important;
+  direction: ltr;
 }
 html[dir="rtl"] .tns-visually-hidden {
-  left: 0 !important;
+  left: 0;
   visibility: hidden;
 }
 .scroller {
@@ -224,20 +212,20 @@ html[dir="rtl"] .tns-visually-hidden {
   scroll-margin-top: 78px;
 }
 .prose a {
-  color: var(--theme-primary) !important;
-  font-weight: 600 !important;
-  text-decoration: underline !important;
-  transition: color 0.3s ease !important;
+  color: var(--theme-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
 }
 .prose a:hover {
-  color: rgb(29 78 216) !important;
-  text-decoration: none !important;
+  color: rgb(29 78 216);
+  text-decoration: none;
 }
 
 /* imaged-paragraph: full content width through md, configured width from lg */
 .imaged-paragraph__image {
   float: none;
-  width: 100% !important;
+  width: 100%;
   margin-bottom: 1rem;
   margin-left: 0;
   margin-right: 0;
@@ -246,7 +234,7 @@ html[dir="rtl"] .tns-visually-hidden {
 @media (min-width: 64rem) {
   .imaged-paragraph__image {
     float: var(--imaged-paragraph-image-side);
-    width: var(--imaged-paragraph-image-width) !important;
+    width: var(--imaged-paragraph-image-width);
   }
 
   .imaged-paragraph__image[style*="--imaged-paragraph-image-side: left"] {

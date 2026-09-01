@@ -9,13 +9,13 @@
   transition-duration: 500ms;
 }
 #topnav .logo {
-  color: var(--theme-text) !important;
+  color: var(--theme-text);
 }
 #topnav .logo:where([dir="ltr"], [dir="ltr"] *) {
-  float: left !important;
+  float: left;
 }
 #topnav .logo:where([dir="rtl"], [dir="rtl"] *) {
-  float: right !important;
+  float: right;
 }
 #topnav .logo .l-dark {
   display: none;
@@ -161,14 +161,14 @@
   float: right;
 }
 #topnav .navigation-menu > li > a {
-  display: block !important;
-  background-color: transparent !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  line-height: 1.5rem !important;
-  letter-spacing: 1px !important;
-  color: rgb(22 28 45) !important;
+  display: block;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  color: rgb(22 28 45);
 }
 @media (min-width: 768px) {
   #topnav .navigation-menu > li > a {
@@ -192,20 +192,20 @@
   color: var(--theme-primary);
 }
 #topnav .navigation-menu > li:hover > a, #topnav .navigation-menu > li.active > a {
-  color: var(--theme-primary) !important;
+  color: var(--theme-primary);
 }
 #topnav .navigation-menu > li .submenu.megamenu li .megamenu-head {
-  white-space: nowrap !important;
+  white-space: nowrap;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   padding-left: 1.25rem !important;
   padding-right: 1.25rem !important;
-  font-size: 0.75rem !important;
-  line-height: 1rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
-  color: rgb(148 163 184) !important;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(148 163 184);
 }
 #topnav .navigation-menu .has-submenu .menu-arrow {
   border-width: 0 2px 2px 0;
@@ -263,23 +263,23 @@
   box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
 }
 #topnav.nav-sticky .navigation-menu.nav-light > li > a {
-  color: rgb(22 28 45) !important;
+  color: rgb(22 28 45);
 }
 #topnav.nav-sticky .navigation-menu.nav-light > li.active > a {
-  color: var(--theme-primary) !important;
+  color: var(--theme-primary);
 }
 #topnav.nav-sticky .navigation-menu.nav-light > li:hover > .menu-arrow, #topnav.nav-sticky .navigation-menu.nav-light > li.active > .menu-arrow {
-  border-color: var(--theme-primary) !important;
-  transform: rotate(225deg) !important;
+  border-color: var(--theme-primary);
+  transform: rotate(225deg);
 }
 #topnav.nav-sticky .navigation-menu.nav-light > li:hover > a, #topnav.nav-sticky .navigation-menu.nav-light > li.active > a {
-  color: var(--theme-primary) !important;
+  color: var(--theme-primary);
 }
 #topnav.nav-sticky .navigation-menu.nav-light .has-submenu .menu-arrow {
   border-color: rgb(22 28 45);
 }
 #topnav.nav-sticky.tagline-height {
-  top: 0px !important;
+  top: 0px;
 }
 #topnav.nav-sticky .buy-button .login-btn-primary, #topnav.nav-sticky .buy-button .btn-icon-dark {
   display: inline-block;
@@ -297,12 +297,12 @@
 }
 @media (min-width: 1025px) {
   #topnav .navigation-menu > li .submenu.megamenu {
-    width: 1120px !important;
+    width: 1120px;
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 992px) {
   #topnav .navigation-menu > li .submenu.megamenu {
-    width: 936px !important;
+    width: 936px;
   }
 }
 @media (min-width: 992px) {
@@ -315,16 +315,16 @@
     margin-inline-end: 0px;
   }
   #topnav .navigation-menu.justify-end li:last-child .sub-menu-item {
-    padding-inline-end: 0px !important;
+    padding-inline-end: 0px;
   }
   #topnav .navigation-menu.justify-start > li:first-child {
     margin-inline-start: 0px;
   }
   #topnav .navigation-menu.justify-start > li:first-child .sub-menu-item {
-    padding-inline-start: 0px !important;
+    padding-inline-start: 0px;
   }
   #topnav .navigation-menu > .has-submenu:hover .menu-arrow {
-    top: 34px !important;
+    top: 34px;
   }
   #topnav .navigation-menu > .has-submenu.active .menu-arrow {
     top: 2rem;
@@ -417,7 +417,7 @@
     transform: rotate(225deg);
   }
   #topnav .navigation-menu > li:hover > a, #topnav .navigation-menu > li.active > a {
-    color: var(--theme-primary) !important;
+    color: var(--theme-primary);
   }
   #topnav .navigation-menu > li.last-elements .submenu {
     inset-inline-start: auto;
@@ -435,21 +435,21 @@
     margin-inline-end: 10px;
   }
   #topnav .navigation-menu.nav-light > li > a {
-    color: rgb(255 255 255 / 0.5) !important;
+    color: rgb(255 255 255 / 0.5);
   }
   #topnav .navigation-menu.nav-light > li:hover > .menu-arrow {
-    border-color: rgb(255 255 255) !important;
-    transform: rotate(225deg) !important;
+    border-color: rgb(255 255 255);
+    transform: rotate(225deg);
   }
   #topnav .navigation-menu.nav-light > li:hover > a {
-    color: rgb(255 255 255) !important;
+    color: rgb(255 255 255);
   }
   #topnav .navigation-menu.nav-light .has-submenu .menu-arrow {
     border-color: rgb(255 255 255 / 0.5);
   }
   #topnav .navigation-menu.nav-light .has-submenu.active .menu-arrow {
-    border-color: rgb(255 255 255) !important;
-    transform: rotate(225deg) !important;
+    border-color: rgb(255 255 255);
+    transform: rotate(225deg);
   }
   #topnav .buy-button {
     margin-inline-start: 15px;
@@ -459,7 +459,7 @@
     display: none;
   }
   #topnav #navigation {
-    display: block !important;
+    display: block;
   }
   #topnav.scroll {
     top: 0px;
@@ -486,10 +486,10 @@
     box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
   }
   #topnav .navigation-menu {
-    float: none !important;
+    float: none;
   }
   #topnav .navigation-menu > li {
-    float: none !important;
+    float: none;
   }
   #topnav .navigation-menu > li .submenu {
     margin: 0px;
@@ -499,17 +499,17 @@
   }
   #topnav .navigation-menu > li .submenu li a {
     transition: all 0.3s;
-    position: relative !important;
-    display: flex !important;
-    padding-top: 7px !important;
-    padding-bottom: 7px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.04em !important;
-    color: rgb(22 28 45) !important;
+    position: relative;
+    display: flex;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgb(22 28 45);
   }
   #topnav .navigation-menu > li .submenu.megamenu li .megamenu-head {
     padding-top: 7px;
@@ -569,7 +569,7 @@
     float: right;
   }
   #topnav .buy-button .login-btn-primary, #topnav .buy-button .btn-icon-dark {
-    display: inline-block !important;
+    display: inline-block;
   }
   #topnav .buy-button .login-btn-light, #topnav .buy-button .btn-icon-light {
     display: none;
@@ -625,7 +625,7 @@
   color: var(--theme-primary);
 }
 .sidebar-nav li.account-menu.active .navbar-link, .sidebar-nav li.account-menu:hover .navbar-link {
-  color: var(--theme-primary) !important;
+  color: var(--theme-primary);
 }
 .submenu.submenu-active {
   display: block !important;
@@ -639,21 +639,21 @@
 }
 @media only screen and (max-width: 991px) {
   #topnav .navigation-menu > .has-submenu > a, #topnav .navigation-menu > .has-submenu > span {
-    display: none !important;
+    display: none;
   }
   #topnav .navigation-menu > li .submenu {
-    display: block !important;
-    padding-inline-start: 0 !important;
+    display: block;
+    padding-inline-start: 0;
   }
   #topnav .navigation-menu > .has-submenu .submenu li a {
-    font-size: 13px !important;
-    padding-inline: 0.625rem !important;
-    padding-block: 10px !important;
+    font-size: 13px;
+    padding-inline: 0.625rem;
+    padding-block: 10px;
   }
 }
 @media only screen and (max-width: 768px) {
   #topnav .navigation-menu > .has-submenu .submenu li a {
-    padding-inline: 20px !important;
+    padding-inline: 20px;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -664,35 +664,35 @@
     display: none;
   }
   #topnav #languageMenu {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    column-gap: 1rem !important;
-    row-gap: 1rem !important;
-    justify-content: flex-start !important;
-    padding-left: 8px !important;
-    padding-top: 1rem !important;
-    padding-bottom: 16px !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    justify-content: flex-start;
+    padding-left: 8px;
+    padding-top: 1rem;
+    padding-bottom: 16px;
     border-top: #f3f4f5 1px solid;
     margin-top: 6px;
   }
   @media only screen and (max-width: 768px) {
     #topnav #languageMenu {
-      padding-left: 20px !important;
+      padding-left: 20px;
     }
   }
   #topnav #languageMenu > li {
-    display: inline-flex !important;
-    width: auto !important;
+    display: inline-flex;
+    width: auto;
   }
   #topnav #languageMenu > li > a {
-    display: flex !important;
-    align-items: center !important;
-    padding: 0.25rem !important;
-    gap: 0.25rem !important;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    gap: 0.25rem;
   }
   #topnav #languageMenu .hidden {
-    display: none !important;
+    display: none;
   }
 }
 #topnav .services-submenu, #topnav .services-submenu > li > ul {
@@ -701,36 +701,36 @@
 }
 @media (min-width: 992px) {
   #topnav #languageMenu {
-    row-gap: 0.25rem !important;
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    padding-top: 0.375rem !important;
-    padding-bottom: 0.375rem !important;
+    row-gap: 0.25rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
   }
   #topnav #languageMenu > li > a {
-    display: flex !important;
-    align-items: center !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    gap: 0.5rem !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   #topnav #languageMenu .hidden {
-    display: inline !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
+    display: inline;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
   #topnav .services-submenu .sub-menu-item {
-    font-size: 14px !important;
-    line-height: 1.5rem !important;
+    font-size: 14px;
+    line-height: 1.5rem;
   }
   #topnav .services-submenu .sub-menu-item i {
-    font-size: 1.125rem !important;
+    font-size: 1.125rem;
     margin-right: 0.5rem;
     vertical-align: middle;
   }
@@ -757,13 +757,13 @@
   background-color: color-mix(in srgb, var(--theme-text) 88%, transparent);
   box-shadow: none;
 }
-#topnav .navigation-menu > li > a { color: rgb(255 255 255) !important; }
+#topnav .navigation-menu > li > a { color: rgb(255 255 255); }
 #topnav .navigation-menu .has-submenu .menu-arrow { border-color: rgb(255 255 255); }
 #topnav .navbar-toggle span { background-color: rgb(255 255 255); }
 #topnav .logo .l-dark { display: none; }
 #topnav .logo .l-light { display: inline-block; }
 #topnav .navigation-menu > li:hover > a,
-#topnav .navigation-menu > li.active > a { color: var(--theme-primary) !important; }
+#topnav .navigation-menu > li.active > a { color: var(--theme-primary); }
 
 #topnav.scroll,
 #topnav.nav-sticky {
@@ -772,7 +772,7 @@
 }
 #topnav.scroll .navigation-menu > li > a,
 #topnav.nav-sticky .navigation-menu.nav-light > li > a {
-  color: var(--theme-text) !important;
+  color: var(--theme-text);
 }
 #topnav.scroll .navigation-menu .has-submenu .menu-arrow,
 #topnav.nav-sticky .navigation-menu .has-submenu .menu-arrow {
@@ -785,7 +785,7 @@
 
 @media (max-width: 991px) {
   #navigation { background-color: var(--theme-background, rgb(255 255 255)); }
-  #topnav .navigation-menu > li > a { color: var(--theme-text) !important; }
+  #topnav .navigation-menu > li > a { color: var(--theme-text); }
   #topnav .navigation-menu .has-submenu .menu-arrow { border-color: var(--theme-text); }
 }
 

@@ -37,11 +37,9 @@
 .border-primary { border-color: var(--theme-primary); }
 .border-primary-light { border-color: var(--theme-primary-light); }
 .border-theme { border-color: var(--theme-border); }
-.font-sans { font-family: var(--theme-font-sans) !important; }
-.font-heading { font-family: var(--theme-font-heading) !important; }
-.font-mono { font-family: var(--theme-font-mono) !important; }
-/* Keep legacy font-nunito markup theme-aware. */
-.font-nunito { font-family: var(--theme-font-sans) !important; }
+.font-sans { font-family: var(--theme-font-sans); }
+.font-heading { font-family: var(--theme-font-heading); }
+.font-mono { font-family: var(--theme-font-mono); }
 .rounded-theme { border-radius: var(--theme-radius); }
 .rounded-button { border-radius: var(--theme-button-radius); }
 .hover\:bg-primary-dark:hover { background-color: var(--theme-primary-dark); }
@@ -66,12 +64,14 @@
 .bg-theme-gradient { background-image: linear-gradient(to top left, color-mix(in oklab, var(--theme-primary) 20%, transparent), color-mix(in oklab, var(--theme-primary) 70%, transparent), var(--theme-primary)); }
 .hover\:bg-surface:hover { background-color: var(--theme-surface); }
 body {
-  font-family: var(--theme-font-sans) !important;
+  font-family: var(--theme-font-sans);
   color: var(--theme-text);
+  font-weight: 400;
   background-color: var(--theme-background);
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: var(--theme-font-heading) !important;
+  font-family: var(--theme-font-heading);
+  line-height: 1.5;
 }
 
 /* Semantic surface utility */

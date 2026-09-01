@@ -1,5 +1,9 @@
-{{/* Auto-detect if page needs Prism.js for code highlighting */}}
-{{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
+{{/* Context is a dict with needsPrism flags */}}
+
+
+  {{/* Auto-detect if page needs Prism.js for code highlighting */}}
+  {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
+
 
 {{/* Main Tailwind stylesheet */}}
 {{ if .Site.Params.compileTailwind }}
@@ -32,5 +36,5 @@
 
 {{/* Prism */}}
 {{ if $needsPrism }}
-  <link rel="stylesheet" href="{{ "/css/prism.min.css" | relURL }}" />
+  <link rel="stylesheet" href="{{ "/libs/prism/prism.min.css" | relURL }}" />
 {{ end }}

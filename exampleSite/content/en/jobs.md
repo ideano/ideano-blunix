@@ -1,7 +1,7 @@
 ---
-title: "Available Linux Engineering Jobs"
-
 layout: jobs
+
+title: "Available Linux Engineering Jobs"
 
 hero:
   title: "Available Linux Engineering Jobs"

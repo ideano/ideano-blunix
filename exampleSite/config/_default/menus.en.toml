@@ -45,6 +45,12 @@ weight = 60
 
 [[footer]]
 parent = "footer_first_column"
+name = "Legal & Privacy"
+pageRef = "/legal-and-privacy/"
+weight = 70
+
+[[footer]]
+parent = "footer_first_column"
 name = "Contact"
 pageRef = "/#contact"
 weight = 80

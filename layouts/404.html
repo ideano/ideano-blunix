@@ -2,7 +2,7 @@
 {{- $homeURL := partial "helpers/url.html" (dict "Root" $ "url" "/") -}}
 {{ partial "error.html" (dict
     "page" .
-    "header_image" (.Site.Params.background_404 | relURL)
+    "header_image" .Site.Params.background_404
     "heading" (i18n "404_hero_heading")
     "breadcrumb_home" (i18n "404_breadcrumb_home")
     "breadcrumb_current" "404"

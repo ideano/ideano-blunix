@@ -2,7 +2,7 @@
 {{- $homeURL := partial "helpers/url.html" (dict "Root" $ "url" "/") -}}
 {{ partial "error.html" (dict
     "page" .
-    "header_image" (.Params.background | relURL)
+    "header_image" .Params.background 
     "heading" .Params.heading
     "breadcrumb_home" .Params.breadcrumb_home
     "breadcrumb_current" .Params.breadcrumb_current

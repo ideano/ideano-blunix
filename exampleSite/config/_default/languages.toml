@@ -14,7 +14,7 @@ footer_listed_with_text = "Proud member of"
 flag_image = "english"
 flag_alt = "English"
 label = "English"
-background_404 = "/images/404/background.webp"
+background_404 = "images/404/background.webp"
 show_english_translation_notice = true
 # Independent visual theme selections.
 # Supported: default, ruby, garnet, amethyst, tanzanite, sapphire, aquamarine, emerald, peridot, citrine, topaz, amber, spinel, mono.

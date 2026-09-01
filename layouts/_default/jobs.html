@@ -2,7 +2,7 @@
 <section class="relative table w-full py-36" id="start">
   <div class="absolute inset-0">
   {{ partial "components/image-responsive.html" (dict
-    "src" (.Params.hero.background | default "/images/index/background.webp")
+    "src" (.Params.hero.background | default "images/index/background.webp")
     "alt" "background"
     "class" "w-full h-full object-cover object-center"
     "loading" "eager"
@@ -42,7 +42,32 @@
           {{ with .Params.company }}
           <div class="rounded-md bg-white shadow-sm">
             <div class="text-center py-8 p-6 border-b border-theme">
-              <img src="{{ .logo }}" class="size-24 p-4 shadow-md mx-auto rounded-full block" alt="{{ .name }} Logo">
+              {{/* Resolve logo via resources.Get: page resources first, then global assets, falling back to a raw URL (e.g. remote/absolute path) if neither resolves */}}
+              {{- $logo := "" -}}
+              {{- if .logo -}}
+                {{- with $.Page.Resources.Get .logo -}}
+                  {{- $logo = . -}}
+                {{- else -}}
+                  {{- with resources.Get .logo -}}
+                    {{- $logo = . -}}
+                  {{- end -}}
+                {{- end -}}
+              {{- end -}}
+              {{- if $logo -}}
+              <img
+                src="{{ $logo.RelPermalink }}"
+                class="size-24 p-4 shadow-md mx-auto rounded-full block"
+                alt="{{ .name }} Logo"
+                loading="lazy"
+              >
+              {{- else -}}
+              <img
+                src="{{ .logo }}"
+                class="size-24 p-4 shadow-md mx-auto rounded-full block"
+                alt="{{ .name }} Logo"
+                loading="lazy"
+              >
+              {{- end }}
               <h2 class="mt-5 text-xl font-semibold mb-0">{{ .name }}</h2>
               <p class="text-theme-muted mb-0">{{ .type }}</p>
             </div>

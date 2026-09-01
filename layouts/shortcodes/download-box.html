@@ -1,12 +1,13 @@
 {{/*
 DOWNLOAD BOX SHORTCODE
 
-IMPORTANT: image should be in site static dir, not assests, else it would not copy to build output.
+IMPORTANT: image must be a page/site resource under assets/ (or a page bundle),
+not the static dir, since we now use resources.Get to process it.
 
 Usage:
 
 {{< download-box
-    src="/images/file-icon.png"
+    src="images/file-icon.png"
     alt="Download file"
     url="/files/document.pdf"
     position="left"
@@ -17,15 +18,16 @@ Click the image to download the file.
 {{< /download-box >}}
 
 Parameters:
-- src: image path
+- src: image path relative to assets/ (or the page bundle)
 - alt: image alternative text
 - url: download URL
 - position: left (default) or right
 
 Image max height: 150px.
 
-Place static images in:
-static/images/
+Place images in:
+assets/images/
+(or alongside the page if using a page bundle)
 */}}
 
 {{- $src := .Get "src" -}}
@@ -42,10 +44,16 @@ static/images/
   {{- $contentOrder = "order-1" -}}
 {{- end -}}
 
-{{/* Build image URL */}}
-{{- $imageURL := "" -}}
+{{/* Resolve image resource via resources.Get (checks page resources first, then global assets) */}}
+{{- $image := "" -}}
 {{- if $src -}}
-  {{- $imageURL = $src | relURL -}}
+  {{- with .Page.Resources.Get $src -}}
+    {{- $image = . -}}
+  {{- else -}}
+    {{- with resources.Get $src -}}
+      {{- $image = . -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 <div class="my-6">
@@ -67,10 +75,10 @@ static/images/
 
       <div class="flex items-center justify-center overflow-hidden rounded-lg border border-theme bg-surface p-2 transition duration-200 {{ if $url }}cursor-pointer hover:scale-105 hover:shadow-lg{{ end }}">
 
-        {{- if $imageURL -}}
+        {{- if $image -}}
 
           <img
-            src="{{ $imageURL }}"
+            src="{{ $image.RelPermalink }}"
             alt="{{ $alt }}"
             style="max-width: 50px; height: auto;"
             class="object-contain"

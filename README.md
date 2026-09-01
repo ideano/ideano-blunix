@@ -373,14 +373,14 @@ blocks:
   - block: hero-breadcrumb
     title: "Services"
     subtitle: "Expert Solutions for Your Business"
-    background: "/images/services/hero.webp"
+    background: "images/services/hero.webp"
     breadcrumb: "Services"
 
   - block: text-image
     title: "Custom Solutions"
     text: "We provide tailored consulting services..."
     image:
-      src: "/images/services/consulting.webp"
+      src: "images/services/consulting.webp"
       alt: "Consulting services"
     reverse: false
 

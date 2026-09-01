@@ -7,7 +7,7 @@ tags: ["automation", "ansible", "terraform"]
 ---
 
 {{< imaged-paragraph
-    src="/images/nature-path"
+    src="images/nature-path"
     alt="A beautiful sunset"
     title="Automate and live happy!"
     side="left"
@@ -21,7 +21,7 @@ Infrastructure automation is the foundation of reliable, repeatable deployments.
 {{< /imaged-paragraph >}}
 
 {{< download-box
-    src="/images/icons/pdf.svg"
+    src="images/icons/pdf.svg"
     alt="Download linux cheatsheet"
     url="https://cheatography.com/davechild/cheat-sheets/linux-command-line/pdf/?last=1582977076"
     position="left"
@@ -74,7 +74,7 @@ resource "hcloud_server" "web" {
 }
 ```
 
-{{< figure src="/images/laptop-mobile.jpg" >}}
+{{< figure src="images/laptop-mobile.jpg" >}}
 
 ## Combining Both Tools
 

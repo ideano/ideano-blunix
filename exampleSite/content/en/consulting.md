@@ -182,7 +182,7 @@ blocks:
       Tehran, Iran
 
   - block: address-image
-    image: "/images/office-location.png"
+    image: "images/office-location.png"
     map_position: left
     map_height: 400
     title: "Our Office"

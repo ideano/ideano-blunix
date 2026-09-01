@@ -5,12 +5,12 @@ layout: jobs
 
 hero:
   title: "Available Linux Engineering Jobs"
-  background: "/images/404/lost-404.png"
+  background: "images/jobs/workspace.jpg"
 
 company:
   name: "Example Infrastructure GmbH1"
   type: "Linux Infrastructure Company"
-  logo: "/images/logo.png"
+  logo: "images/jobs/rocket.svg"
 
   details:
     - label: "Location"
@@ -30,7 +30,7 @@ company:
       icon: "bi bi-clock"
 
   map:
-    image: "/images/jobs/map.webp"
+    image: "images/jobs/office-location.png"
     url: "https://maps.google.com/"
     alt: "Example Infrastructure GmbH location"
 

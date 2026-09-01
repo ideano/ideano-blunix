@@ -39,13 +39,10 @@ Notes:
           <img src="{{ $imgSrc }}" alt="{{ $imgAlt }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" loading="lazy" />
         {{ else if $isSvg }}
           {{ with resources.GetMatch $imgPath }}
-            {{/* Calculate display dimensions for h-10 (40px) */}}
-            {{ $displayHeight := 40 }}
-            {{ $aspectRatio := div (float .Width) (float .Height) }}
-            {{ $displayWidth := int (mul $displayHeight $aspectRatio) }}
-            <img src="{{ .RelPermalink }}" alt="{{ $imgAlt }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" loading="lazy" />
+            {{/* SVG resources cannot use .Width/.Height in Hugo templates. Let CSS preserve the SVG aspect ratio. */}}
+            <img src="{{ .RelPermalink }}" alt="{{ $imgAlt }}" class="h-10 w-auto transition-all 200ms ease-in hover:grayscale-0" loading="lazy" decoding="async" />
           {{ else }}
-            <img src="{{ $imgSrc | relURL }}" alt="{{ $imgAlt }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" loading="lazy" />
+            <img src="{{ $imgSrc | relURL }}" alt="{{ $imgAlt }}" class="h-10 w-auto transition-all 200ms ease-in hover:grayscale-0" loading="lazy" decoding="async" />
           {{ end }}
         {{ else }}
           {{ with resources.GetMatch $imgPath }}

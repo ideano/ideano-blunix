@@ -4,7 +4,7 @@
 */}}
 {{ $name := .name }}
 {{ $class := .class | default "" }}
-{{ $iconPath := printf "icons/%s.svg" $name }}
+{{ $iconPath := printf "feather-icons/%s.svg" $name }}
 
 {{ with resources.Get $iconPath }}
   {{ $svg := .Content }}

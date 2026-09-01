@@ -177,7 +177,7 @@
 }
 
 .writing-content h1,
-.writing-content h2,
+.writing-content h2:not(.summary-title),
 .writing-content h3,
 .writing-content h4,
 .writing-content h5,

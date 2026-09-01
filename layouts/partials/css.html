@@ -1,11 +1,5 @@
-{{/* Context is a dict with isWritingSingle and needsPrism flags */}}
-
-  {{/* Cache key based on whether it's a writing single post */}}
-  {{ $isWritingSingle := and (eq .Type "writing") .IsPage }}
-
-  {{/* Auto-detect if page needs Prism.js for code highlighting */}}
-  {{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
-
+{{/* Auto-detect if page needs Prism.js for code highlighting */}}
+{{ $needsPrism := or (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys") }}
 
 {{/* Main Tailwind stylesheet */}}
 {{ if .Site.Params.compileTailwind }}
@@ -34,17 +28,7 @@
 
 {{/* Site overrides */}}
 <link rel="stylesheet" href="{{ "/css/custom.css" | relURL }}" />
-
-{{/* Icons */}}
-<link
-  rel="stylesheet"
-  href="{{ "/libs/bootstrap-icons/bootstrap-icons.min.css" | relURL }}"
-/>
-
-{{/* Writing styles */}}
-{{ if $isWritingSingle }}
-  <link rel="stylesheet" href="{{ "/css/writing-styles.css" | relURL }}" />
-{{ end }}
+<link rel="stylesheet" href="{{ "/libs/bootstrap-icons/bootstrap-icons.min.css" | relURL }}" />
 
 {{/* Prism */}}
 {{ if $needsPrism }}

@@ -110,16 +110,37 @@
   {{ partialCached "css.html" . (printf "%t-%t" (and (eq .Type "writing") .IsPage) (eq .Layout "ssh-public-keys")) }}  
   {{ partial "opengraph.html" . }}
   {{ partial "twitter_cards.html" . }}
-  
-  <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-  <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/gif" href="/images/favicon/favicon.gif" />
-  <link rel="icon" type="image/png" href="/images/favicon/favicon.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-57x57.ico" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-72x72.ico" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-114x114.ico" />
-  
+
+  {{/*
+    Favicons via resources.Get.
+    Each entry's "path" is resolved as an asset (checking the page bundle
+    first, then global /assets) so Hugo fingerprints/serves it properly.
+    Falls back to the original static "/images/favicon/..." path if the
+    asset isn't found, so this doesn't break sites that still keep
+    favicons under /static/images/favicon/.
+  */}}
+  {{- $favicons := slice
+    (dict "path" "images/favicon/favicon.ico" "static" "/images/favicon/favicon.ico" "rel" "shortcut icon" "type" "")
+    (dict "path" "images/favicon/favicon.ico" "static" "/images/favicon/favicon.ico" "rel" "icon" "type" "image/x-icon")
+    (dict "path" "images/favicon/favicon.ico" "static" "/images/favicon/favicon.ico" "rel" "shortcut icon" "type" "image/x-icon")
+    (dict "path" "images/favicon/favicon.gif" "static" "/images/favicon/favicon.gif" "rel" "icon" "type" "image/gif")
+    (dict "path" "images/favicon/favicon.png" "static" "/images/favicon/favicon.png" "rel" "icon" "type" "image/png")
+    (dict "path" "images/favicon/apple-touch-57x57.ico" "static" "/images/favicon/apple-touch-57x57.ico" "rel" "apple-touch-icon-precomposed" "sizes" "57x57")
+    (dict "path" "images/favicon/apple-touch-72x72.ico" "static" "/images/favicon/apple-touch-72x72.ico" "rel" "apple-touch-icon-precomposed" "sizes" "72x72")
+    (dict "path" "images/favicon/apple-touch-114x114.ico" "static" "/images/favicon/apple-touch-114x114.ico" "rel" "apple-touch-icon-precomposed" "sizes" "114x114")
+  -}}
+  {{- range $favicons }}
+    {{- $href := .static -}}
+    {{- with $.Page.Resources.Get .path -}}
+      {{- $href = .RelPermalink -}}
+    {{- else -}}
+      {{- with resources.Get .path -}}
+        {{- $href = .RelPermalink -}}
+      {{- end -}}
+    {{- end }}
+    <link rel="{{ .rel }}" href="{{ $href }}"{{ with .type }} type="{{ . }}"{{ end }}{{ with .sizes }} sizes="{{ . }}"{{ end }} />
+  {{- end }}
+
   {{/* include trackers partial */}}
   {{ partial "trackers.html" . }}
 </head>

@@ -5,7 +5,7 @@ To see how to use each feature, review content of exampleSite (config, menus, co
 ## General
 * all references to iconscout and fontawsome uil- and fa- icons are removed to remove need for external dependencies. There is a local version of bootstrap-icons wich could be used with bi- .
 * Original theme used a pre-compiled style.css theme. This is good for end user, but because many tailwind classes and utilities are not inclueded in pre-compiled file, in layout and theme modifications many problems arises. So this theme is modified to use compileTailwind variable in params.toml file. If false (which is default), theme usese precompiled style.css file, but if true (for theme development), it uses tailwind and hugo to compile a tailwind.css class each time and uses it. To enable tailwind compilation, install nodejs and then use npm install command to install pre-requirements. Also use hugo --minify to build the production content for release.
-
+__IMPORTANT:__ always use: npm run build:css to create a new compiled version of style.css, if you had any modification to theme, so fixed version of style.css be available to end user.
 
 ## Farsi, Arabic and RTL
 * Added Iran flag, and IranSansX font.

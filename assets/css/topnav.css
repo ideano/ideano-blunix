@@ -114,7 +114,7 @@
   background-color: transparent;
 }
 #topnav .buy-button {
-  line-height: 74px;
+  line-height: 4.625rem;
 }
 #topnav .buy-button:where([dir="ltr"], [dir="ltr"] *) {
   float: right;
@@ -167,7 +167,7 @@
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.5rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
   color: rgb(22 28 45);
 }
 @media (min-width: 768px) {
@@ -253,10 +253,10 @@
   transform: rotate(225deg);
 }
 #topnav.defaultscroll.dark-menubar .logo {
-  line-height: 70px;
+  line-height: 4.375rem;
 }
 #topnav.defaultscroll.scroll .logo {
-  line-height: 62px;
+  line-height: 3.875rem;
 }
 #topnav.nav-sticky {
   background-color: rgb(255 255 255);
@@ -290,10 +290,10 @@
 .logo {
   padding-top: 0px;
   padding-bottom: 0px;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 68px;
-  letter-spacing: 1px;
+  line-height: 4.25rem;
+  letter-spacing: 0.0625rem;
 }
 @media (min-width: 1025px) {
   #topnav .navigation-menu > li .submenu.megamenu {
@@ -360,10 +360,10 @@
     padding-bottom: 10px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
-    line-height: 17px;
+    line-height: 1.0625rem;
     letter-spacing: 0.04em;
     color: rgb(22 28 45);
   }
@@ -505,7 +505,7 @@
     padding-bottom: 7px;
     padding-left: 15px;
     padding-right: 15px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -531,7 +531,7 @@
     font-size: 0.75rem;
     line-height: 1rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.125rem;
     color: rgb(226 232 240);
   }
   #topnav .navigation-menu > li .submenu.open {
@@ -646,7 +646,7 @@
     padding-inline-start: 0;
   }
   #topnav .navigation-menu > .has-submenu .submenu li a {
-    font-size: 13px;
+    font-size: 0.8125rem;
     padding-inline: 0.625rem;
     padding-block: 10px;
   }
@@ -710,7 +710,7 @@
   #topnav #languageMenu > li > a {
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     gap: 0.5rem;
@@ -721,12 +721,12 @@
   }
   #topnav #languageMenu .hidden {
     display: inline;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
   }
   #topnav .services-submenu .sub-menu-item {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5rem;
   }
   #topnav .services-submenu .sub-menu-item i {

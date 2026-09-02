@@ -1,6 +1,6 @@
 .writing-content p {
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
     margin-bottom: 8px
 }
 
@@ -56,8 +56,8 @@
 
 .writing-content li {
     margin-bottom: 2px;
-    font-size: 16px;
-    line-height: 18px
+    font-size: 1rem;
+    line-height: 1.125rem
 }
 
 .writing-content li p {
@@ -93,13 +93,13 @@
 
 @media(min-width:640px) {
     .writing-content p {
-        font-size: 20px;
-        line-height: 24px
+        font-size: 1.25rem;
+        line-height: 1.5rem
     }
 
     .writing-content li {
-        font-size: 18px;
-        line-height: 22px
+        font-size: 1.125rem;
+        line-height: 1.375rem
     }
 }
 

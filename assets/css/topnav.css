@@ -163,7 +163,7 @@
 #topnav .navigation-menu > li > a {
   display: block;
   background-color: transparent;
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.5rem;

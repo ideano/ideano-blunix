@@ -3,406 +3,1552 @@
  * Select independently from colors with params:
  *   theme-fonts = "iran-sans-x"
  *
- * Supported: default, iran-sans-x, work-sans, elegant,
- *   almarai, cairo, ibm-plex-sans-arabic, noto-kufi-arabic,
- *   noto-naskh-arabic, vazirmatn, sahel, kaushan-script, alex-brush
+ * Supported:
+ *   Latin: default, work-sans, elegant, alex-brush, kaushan-script
+ *   Arabic: almarai, cairo, ibm-plex-sans-arabic, noto-kufi-arabic,
+ *     noto-naskh-arabic
+ * IMPORTANT: Licensable fonts from farsi-licensable font dir are removed for copyright protection, user should purchase and copy them in its directory to be able to use them.
+ *   Persian needs license purchase: anjoman, iran-sans, iran-sans-x,
+ *     dana, iransharp, iranyekan
+ *   Persian open source: aq-normal-sans, arad, arad-dots-2, arad-dots-3,
+ *     ario-dots-1, ario-dots-2, ario-dots-3, ario-dots-4, dast-nevis,
+ *     gandom, nahid, parastoo, samim, shabnam, tanha, vazir-code,
+ *     vazirmatn, yekan, sahel
+ *
+ * Font files are organized by directory under /fonts/, one directory
+ * per category:
+ *
+ *   latin/
+ *     Latin-script UI fonts (English and other Latin-alphabet languages).
+ *     Files live in /fonts/latin/.
+ *   arabic/
+ *     Arabic-script fonts covering Modern Standard Arabic. Files live in
+ *     /fonts/arabic/.
+ *   farsi-opensource/
+ *     Persian/Farsi fonts released under open-source licenses (SIL OFL and
+ *     similar), safe to bundle and redistribute. Files live in /fonts/farsi-
+ *     opensource/.
+ *   farsi-licensable/
+ *     Persian/Farsi fonts that require a commercial license from their
+ *     foundry before production use. Files live in /fonts/farsi-licensable/.
+ *     Confirm licensing before shipping a theme that relies on one of these.
  */
+
+/*
+ * Latin  (latin/)
+ * ------------------------------------------------------------
+ * Latin-script UI fonts (English and other Latin-alphabet languages). Files
+ * live in /fonts/latin/.
+ */
+
+/* Alex Brush */
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Black.woff2") format("woff2");
-  font-weight: 900;
+  font-family: "Alex Brush";
+  src: url("/fonts/latin/AlexBrush-Regular.woff2") format("woff2"),
+       url("/fonts/latin/AlexBrush-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* EB Garamond */
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-Regular.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Bold.woff2") format("woff2");
-  font-weight: bold;
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-Italic.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-Medium.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraBold.woff2") format("woff2");
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-MediumItalic.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-SemiBold.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-SemiBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-Bold.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-BoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-ExtraBold.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/latin/EBGaramond-ExtraBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/EBGaramond-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Kaushan Script */
+@font-face {
+  font-family: "Kaushan Script";
+  src: url("/fonts/latin/KaushanScript-Regular.woff2") format("woff2"),
+       url("/fonts/latin/KaushanScript-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nunito */
+@font-face {
   font-family: "Nunito";
-  src: url("/fonts/Nunito-ExtraLight.woff2") format("woff2");
+  src: url("/fonts/latin/Nunito-ExtraLight.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-ExtraLight.woff") format("woff");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/Nunito-Light.woff2") format("woff2");
+  src: url("/fonts/latin/Nunito-ExtraLightItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-ExtraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Light.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/Nunito-Medium.woff2") format("woff2");
+  src: url("/fonts/latin/Nunito-LightItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Regular.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Italic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Medium.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/Nunito-Regular.woff2") format("woff2");
-  font-weight: normal;
+  src: url("/fonts/latin/Nunito-MediumItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-SemiBold.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nunito";
-  src: url("/fonts/Nunito-SemiBold.woff2") format("woff2");
+  src: url("/fonts/latin/Nunito-SemiBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-SemiBoldItalic.woff") format("woff");
   font-weight: 600;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "IRANSansX";
-  src: url("/fonts/IRANSansX-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IRANSansX";
-  src: url("/fonts/IRANSansX-Medium.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IRANSansX";
-  src: url("/fonts/IRANSansX-Bold.woff2") format("woff2");
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Bold.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Work Sans";
-  src: url("/fonts/WorkSans-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Work Sans";
-  src: url("/fonts/WorkSans-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Work Sans";
-  src: url("/fonts/WorkSans-Bold.woff2") format("woff2");
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-BoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-BoldItalic.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "EB Garamond";
-  src: url("/fonts/EBGaramond-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "EB Garamond";
-  src: url("/fonts/EBGaramond-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "EB Garamond";
-  src: url("/fonts/EBGaramond-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Almarai";
-  src: url("/fonts/Almarai-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Almarai";
-  src: url("/fonts/Almarai-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Almarai";
-  src: url("/fonts/Almarai-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Almarai";
-  src: url("/fonts/Almarai-ExtraBold.woff2") format("woff2");
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-ExtraBold.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("/fonts/Cairo-ExtraBold.woff2") format("woff2");
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-ExtraBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-ExtraBoldItalic.woff") format("woff");
   font-weight: 800;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Sans Arabic";
-  src: url("/fonts/IBMPlexSansArabic-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Arabic";
-  src: url("/fonts/IBMPlexSansArabic-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Arabic";
-  src: url("/fonts/IBMPlexSansArabic-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Arabic";
-  src: url("/fonts/IBMPlexSansArabic-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Arabic";
-  src: url("/fonts/IBMPlexSansArabic-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Kufi Arabic";
-  src: url("/fonts/NotoKufiArabic-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Naskh Arabic";
-  src: url("/fonts/NotoNaskhArabic-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Naskh Arabic";
-  src: url("/fonts/NotoNaskhArabic-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Naskh Arabic";
-  src: url("/fonts/NotoNaskhArabic-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Noto Naskh Arabic";
-  src: url("/fonts/NotoNaskhArabic-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/fonts/Vazirmatn-Black.woff2") format("woff2");
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-Black.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
+  font-family: "Nunito";
+  src: url("/fonts/latin/Nunito-BlackItalic.woff2") format("woff2"),
+       url("/fonts/latin/Nunito-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Work Sans */
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Thin.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-ThinItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-ExtraLight.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-ExtraLightItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-ExtraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Light.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-LightItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Regular.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Italic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Medium.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-MediumItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-SemiBold.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-SemiBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Bold.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-BoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-ExtraBold.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-ExtraBoldItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-Black.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/latin/WorkSans-BlackItalic.woff2") format("woff2"),
+       url("/fonts/latin/WorkSans-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/*
+ * Arabic  (arabic/)
+ * ------------------------------------------------------------
+ * Arabic-script fonts covering Modern Standard Arabic. Files live in
+ * /fonts/arabic/.
+ */
+
+/* Almarai */
+@font-face {
+  font-family: "Almarai";
+  src: url("/fonts/arabic/Almarai-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Almarai";
+  src: url("/fonts/arabic/Almarai-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Almarai";
+  src: url("/fonts/arabic/Almarai-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Almarai";
+  src: url("/fonts/arabic/Almarai-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cairo */
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/arabic/Cairo-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IBM Plex Sans Arabic */
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/arabic/IBMPlexSansArabic-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/arabic/IBMPlexSansArabic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/arabic/IBMPlexSansArabic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/arabic/IBMPlexSansArabic-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/arabic/IBMPlexSansArabic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Noto Kufi Arabic */
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/arabic/NotoKufiArabic-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Noto Naskh Arabic */
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url("/fonts/arabic/NotoNaskhArabic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url("/fonts/arabic/NotoNaskhArabic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url("/fonts/arabic/NotoNaskhArabic-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url("/fonts/arabic/NotoNaskhArabic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Farsi — open source  (farsi-opensource/)
+ * ------------------------------------------------------------
+ * Persian/Farsi fonts released under open-source licenses (SIL OFL and
+ * similar), safe to bundle and redistribute. Files live in /fonts/farsi-
+ * opensource/.
+ */
+
+/* AQ Normal Sans */
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "AQ Normal Sans";
+  src: url("/fonts/farsi-opensource/AQNormalSans-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arad */
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBlack.woff2") format("woff2");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arad Dots2 */
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-ThinDots2.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-ExtraLightDots2.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-LightDots2.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-RegularDots2.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-MediumDots2.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-SemiBoldDots2.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-BoldDots2.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBoldDots2.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-BlackDots2.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots2";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBlackDots2.woff2") format("woff2");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arad Dots3 */
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-ThinDots3.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-ExtraLightDots3.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-LightDots3.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-RegularDots3.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-MediumDots3.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-SemiBoldDots3.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-BoldDots3.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBoldDots3.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-BlackDots3.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arad Dots3";
+  src: url("/fonts/farsi-opensource/Arad-ExtraBlackDots3.woff2") format("woff2");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ario Dots1 */
+@font-face {
+  font-family: "Ario Dots1";
+  src: url("/fonts/farsi-opensource/Ario-Dots1.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ario Dots2 */
+@font-face {
+  font-family: "Ario Dots2";
+  src: url("/fonts/farsi-opensource/Ario-Dots2.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ario Dots3 */
+@font-face {
+  font-family: "Ario Dots3";
+  src: url("/fonts/farsi-opensource/Ario-Dots3.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ario Dots4 */
+@font-face {
+  font-family: "Ario Dots4";
+  src: url("/fonts/farsi-opensource/Ario-Dots4.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Dast Nevis */
+@font-face {
+  font-family: "Dast Nevis";
+  src: url("/fonts/farsi-opensource/DastNevis.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Gandom */
+@font-face {
+  font-family: "Gandom";
+  src: url("/fonts/farsi-opensource/Gandom.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nahid */
+@font-face {
+  font-family: "Nahid";
+  src: url("/fonts/farsi-opensource/Nahid.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Parastoo */
+@font-face {
+  font-family: "Parastoo";
+  src: url("/fonts/farsi-opensource/Parastoo.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Parastoo";
+  src: url("/fonts/farsi-opensource/Parastoo-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Sahel */
+@font-face {
   font-family: "Sahel";
-  src: url("/fonts/Sahel-Light.woff2") format("woff2");
+  src: url("/fonts/farsi-opensource/Sahel-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Sahel";
-  src: url("/fonts/Sahel.woff2") format("woff2");
+  src: url("/fonts/farsi-opensource/Sahel.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Sahel";
-  src: url("/fonts/Sahel-SemiBold.woff2") format("woff2");
+  src: url("/fonts/farsi-opensource/Sahel-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Sahel";
-  src: url("/fonts/Sahel-Bold.woff2") format("woff2");
+  src: url("/fonts/farsi-opensource/Sahel-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Sahel";
-  src: url("/fonts/Sahel-Black.woff2") format("woff2");
+  src: url("/fonts/farsi-opensource/Sahel-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
+
+/* Samim */
 @font-face {
-  font-family: "Kaushan Script";
-  src: url("/fonts/KaushanScript-Regular.woff2") format("woff2"),
-       url("/fonts/KaushanScript-Regular.woff") format("woff");
+  font-family: "Samim";
+  src: url("/fonts/farsi-opensource/Samim.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Alex Brush";
-  src: url("/fonts/AlexBrush-Regular.woff2") format("woff2"),
-       url("/fonts/AlexBrush-Regular.woff") format("woff");
+  font-family: "Samim";
+  src: url("/fonts/farsi-opensource/Samim-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Samim";
+  src: url("/fonts/farsi-opensource/Samim-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Shabnam */
+@font-face {
+  font-family: "Shabnam";
+  src: url("/fonts/farsi-opensource/Shabnam-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shabnam";
+  src: url("/fonts/farsi-opensource/Shabnam-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shabnam";
+  src: url("/fonts/farsi-opensource/Shabnam.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shabnam";
+  src: url("/fonts/farsi-opensource/Shabnam-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shabnam";
+  src: url("/fonts/farsi-opensource/Shabnam-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tanha */
+@font-face {
+  font-family: "Tanha";
+  src: url("/fonts/farsi-opensource/Tanha.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+/* Vazir Code */
+@font-face {
+  font-family: "Vazir Code";
+  src: url("/fonts/farsi-opensource/Vazir-Code.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vazir Code Hack */
+@font-face {
+  font-family: "Vazir Code Hack";
+  src: url("/fonts/farsi-opensource/Vazir-Code-Hack.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vazir Code Extra Height */
+@font-face {
+  font-family: "Vazir Code Extra Height";
+  src: url("/fonts/farsi-opensource/Vazir-Code-Extra-Height.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vazir Code Hack Extra Height */
+@font-face {
+  font-family: "Vazir Code Hack Extra Height";
+  src: url("/fonts/farsi-opensource/Vazir-Code-Hack-Extra-Height.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vazirmatn */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/farsi-opensource/Vazirmatn-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Yekan */
+@font-face {
+  font-family: "Yekan";
+  src: url("/fonts/farsi-opensource/Yekan.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Farsi — licensable  (farsi-licensable/)
+ * ------------------------------------------------------------
+ * Persian/Farsi fonts that require a commercial license from their foundry
+ * before production use. Files live in /fonts/farsi-licensable/. Confirm
+ * licensing before shipping a theme that relies on one of these.
+ */
+
+/* Anjoman */
+@font-face {
+  font-family: "Anjoman";
+  src: url("/fonts/farsi-licensable/Anjoman-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Anjoman";
+  src: url("/fonts/farsi-licensable/Anjoman-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Anjoman";
+  src: url("/fonts/farsi-licensable/Anjoman-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IRANSans */
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans-UltraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSans";
+  src: url("/fonts/farsi-licensable/IRANSans-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IRANSansX */
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-UltraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-DemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/farsi-licensable/IRANSansX-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Dana */
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-thinitalic.woff2") format("woff2");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-extralight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-extralightitalic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-lightitalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-regularitalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-mediumitalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-demibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-demibolditalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-bolditalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-extrabolditalic.woff2") format("woff2");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-blackitalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-ultrabold.woff2") format("woff2");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/farsi-licensable/dana-ultrabolditalic.woff2") format("woff2");
+  font-weight: 950;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* IranSharp */
+@font-face {
+  font-family: "IranSharp";
+  src: url("/fonts/farsi-licensable/iransharp-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IranSharp";
+  src: url("/fonts/farsi-licensable/iransharp-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IranSharp";
+  src: url("/fonts/farsi-licensable/iransharp-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* IRANYekan */
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/farsi-licensable/iranyekan-extrablack.woff2") format("woff2");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================================================== */
+/* Theme selectors */
+/* ========================================================================== */
+
+/* Default UI theme: Nunito for both body text and headings. */
 :root,
 [data-theme-fonts="default"] {
   --theme-font-sans: "Nunito", sans-serif;
@@ -410,75 +1556,240 @@
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-[data-theme-fonts="iran-sans-x"] {
-  --theme-font-sans: "IRANSansX", sans-serif;
-  --theme-font-heading: "IRANSansX", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
+/* Work Sans for both body text and headings. */
 [data-theme-fonts="work-sans"] {
   --theme-font-sans: "Work Sans", sans-serif;
   --theme-font-heading: "Work Sans", sans-serif;
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* Work Sans body text paired with EB Garamond serif headings. */
 [data-theme-fonts="elegant"] {
   --theme-font-sans: "Work Sans", sans-serif;
   --theme-font-heading: "EB Garamond", serif;
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-[data-theme-fonts="almarai"] {
-  --theme-font-sans: "Almarai", sans-serif;
-  --theme-font-heading: "Almarai", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="cairo"] {
-  --theme-font-sans: "Cairo", sans-serif;
-  --theme-font-heading: "Cairo", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="ibm-plex-sans-arabic"] {
-  --theme-font-sans: "IBM Plex Sans Arabic", sans-serif;
-  --theme-font-heading: "IBM Plex Sans Arabic", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="noto-kufi-arabic"] {
-  --theme-font-sans: "Noto Kufi Arabic", sans-serif;
-  --theme-font-heading: "Noto Kufi Arabic", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="noto-naskh-arabic"] {
-  --theme-font-sans: "Noto Naskh Arabic", serif;
-  --theme-font-heading: "Noto Naskh Arabic", serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="vazirmatn"] {
-  --theme-font-sans: "Vazirmatn", sans-serif;
-  --theme-font-heading: "Vazirmatn", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme-fonts="sahel"] {
-  --theme-font-sans: "Sahel", sans-serif;
-  --theme-font-heading: "Sahel", sans-serif;
-  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
+/* Work Sans body text paired with the Kaushan Script cursive display face for headings. */
 [data-theme-fonts="kaushan-script"] {
   --theme-font-sans: "Work Sans", sans-serif;
   --theme-font-heading: "Kaushan Script", cursive;
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* Work Sans body text paired with the Alex Brush cursive display face for headings. */
 [data-theme-fonts="alex-brush"] {
   --theme-font-sans: "Work Sans", sans-serif;
   --theme-font-heading: "Alex Brush", cursive;
   --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* Almarai for both body text and headings. */
+[data-theme-fonts="almarai"] {
+  --theme-font-sans: "Almarai", sans-serif;
+  --theme-font-heading: "Almarai", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Cairo for both body text and headings. */
+[data-theme-fonts="cairo"] {
+  --theme-font-sans: "Cairo", sans-serif;
+  --theme-font-heading: "Cairo", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* IBM Plex Sans Arabic for both body text and headings. */
+[data-theme-fonts="ibm-plex-sans-arabic"] {
+  --theme-font-sans: "IBM Plex Sans Arabic", sans-serif;
+  --theme-font-heading: "IBM Plex Sans Arabic", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Noto Kufi Arabic for both body text and headings. */
+[data-theme-fonts="noto-kufi-arabic"] {
+  --theme-font-sans: "Noto Kufi Arabic", sans-serif;
+  --theme-font-heading: "Noto Kufi Arabic", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Noto Naskh Arabic for both body text and headings. */
+[data-theme-fonts="noto-naskh-arabic"] {
+  --theme-font-sans: "Noto Naskh Arabic", serif;
+  --theme-font-heading: "Noto Naskh Arabic", serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* AQ Normal Sans for both body text and headings. */
+[data-theme-fonts="aq-normal-sans"] {
+  --theme-font-sans: "AQ Normal Sans", sans-serif;
+  --theme-font-heading: "AQ Normal Sans", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Arad (default dot style) for both body text and headings. */
+[data-theme-fonts="arad"] {
+  --theme-font-sans: "Arad", sans-serif;
+  --theme-font-heading: "Arad", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Arad, alternate dot style 2, for both body text and headings. */
+[data-theme-fonts="arad-dots-2"] {
+  --theme-font-sans: "Arad Dots2", sans-serif;
+  --theme-font-heading: "Arad Dots2", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Arad, alternate dot style 3, for both body text and headings. */
+[data-theme-fonts="arad-dots-3"] {
+  --theme-font-sans: "Arad Dots3", sans-serif;
+  --theme-font-heading: "Arad Dots3", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Ario, dot style 1, for both body text and headings. */
+[data-theme-fonts="ario-dots-1"] {
+  --theme-font-sans: "Ario Dots1", sans-serif;
+  --theme-font-heading: "Ario Dots1", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Ario, dot style 2, for both body text and headings. */
+[data-theme-fonts="ario-dots-2"] {
+  --theme-font-sans: "Ario Dots2", sans-serif;
+  --theme-font-heading: "Ario Dots2", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Ario, dot style 3, for both body text and headings. */
+[data-theme-fonts="ario-dots-3"] {
+  --theme-font-sans: "Ario Dots3", sans-serif;
+  --theme-font-heading: "Ario Dots3", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Ario, dot style 4, for both body text and headings. */
+[data-theme-fonts="ario-dots-4"] {
+  --theme-font-sans: "Ario Dots4", sans-serif;
+  --theme-font-heading: "Ario Dots4", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Dast Nevis handwriting/calligraphic face for both body text and headings. */
+[data-theme-fonts="dast-nevis"] {
+  --theme-font-sans: "Dast Nevis", cursive;
+  --theme-font-heading: "Dast Nevis", cursive;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Gandom for both body text and headings. */
+[data-theme-fonts="gandom"] {
+  --theme-font-sans: "Gandom", sans-serif;
+  --theme-font-heading: "Gandom", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Nahid for both body text and headings. */
+[data-theme-fonts="nahid"] {
+  --theme-font-sans: "Nahid", sans-serif;
+  --theme-font-heading: "Nahid", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Parastoo for both body text and headings. */
+[data-theme-fonts="parastoo"] {
+  --theme-font-sans: "Parastoo", sans-serif;
+  --theme-font-heading: "Parastoo", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Sahel for both body text and headings. */
+[data-theme-fonts="sahel"] {
+  --theme-font-sans: "Sahel", sans-serif;
+  --theme-font-heading: "Sahel", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Samim for both body text and headings. */
+[data-theme-fonts="samim"] {
+  --theme-font-sans: "Samim", sans-serif;
+  --theme-font-heading: "Samim", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Shabnam for both body text and headings. */
+[data-theme-fonts="shabnam"] {
+  --theme-font-sans: "Shabnam", sans-serif;
+  --theme-font-heading: "Shabnam", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Tanha for both body text and headings. */
+[data-theme-fonts="tanha"] {
+  --theme-font-sans: "Tanha", sans-serif;
+  --theme-font-heading: "Tanha", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Default Nunito body/heading fonts with Vazir Code swapped in as the monospace font, for code-heavy pages. */
+[data-theme-fonts="vazir-code"] {
+  --theme-font-sans: "Nunito", sans-serif;
+  --theme-font-heading: "Nunito", sans-serif;
+  --theme-font-mono: "Vazir Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Vazirmatn for both body text and headings. */
+[data-theme-fonts="vazirmatn"] {
+  --theme-font-sans: "Vazirmatn", sans-serif;
+  --theme-font-heading: "Vazirmatn", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Yekan for both body text and headings. */
+[data-theme-fonts="yekan"] {
+  --theme-font-sans: "Yekan", sans-serif;
+  --theme-font-heading: "Yekan", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Anjoman for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="anjoman"] {
+  --theme-font-sans: "Anjoman", sans-serif;
+  --theme-font-heading: "Anjoman", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* IRANSans for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="iran-sans"] {
+  --theme-font-sans: "IRANSans", sans-serif;
+  --theme-font-heading: "IRANSans", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* IRANSansX for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="iran-sans-x"] {
+  --theme-font-sans: "IRANSansX", sans-serif;
+  --theme-font-heading: "IRANSansX", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Dana for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="dana"] {
+  --theme-font-sans: "Dana", sans-serif;
+  --theme-font-heading: "Dana", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* IranSharp for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="iransharp"] {
+  --theme-font-sans: "IranSharp", sans-serif;
+  --theme-font-heading: "IranSharp", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* IRANYekan for both body text and headings. Licensable font — confirm licensing before production use. */
+[data-theme-fonts="iranyekan"] {
+  --theme-font-sans: "IRANYekan", sans-serif;
+  --theme-font-heading: "IRANYekan", sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}

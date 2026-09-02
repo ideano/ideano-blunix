@@ -19,8 +19,17 @@ show_english_translation_notice = true
 # Independent visual theme selections.
 # Supported: default, ruby, garnet, amethyst, tanzanite, sapphire, aquamarine, emerald, peridot, citrine, topaz, amber, spinel, mono.
 theme-colors = "default"
-# Supported: default, iran-sans-x, work-sans, elegant
-theme-fonts = "default"
+# Supported:
+#   Latin: default, work-sans, elegant, alex-brush, kaushan-script
+#   Arabic: almarai, cairo, ibm-plex-sans-arabic, noto-kufi-arabic,
+#     noto-naskh-arabic
+#   Persian needs license purchase: anjoman, iran-sans, iran-sans-x,
+#     dana, iransharp, iranyekan
+#   Persian open source: aq-normal-sans, arad, arad-dots-2, arad-dots-3,
+#     ario-dots-1, ario-dots-2, ario-dots-3, ario-dots-4, dast-nevis,
+#     gandom, nahid, parastoo, samim, shabnam, tanha, vazir-code,
+#     vazirmatn, yekan, sahel
+ theme-fonts = "default"
 
 [en.params.site]
 keywords = "linux, debian, ubuntu, consulting, hosting, training, classes, courses"

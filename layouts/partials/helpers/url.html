@@ -1,7 +1,8 @@
 {{- $url := .url | default "" -}}
+{{- $result := "" -}}
 
 {{- if not $url -}}
-  {{- "" -}}
+  {{- $result = "" -}}
 {{- else if or
       (hasPrefix $url "http://")
       (hasPrefix $url "https://")
@@ -10,7 +11,9 @@
       (hasPrefix $url "tel:")
       (hasPrefix $url "#")
   -}}
-  {{- $url | safeURL -}}
+  {{- $result = ($url | safeURL) -}}
 {{- else -}}
-  {{- relref .Root $url -}}
+  {{- $result = (relref .Root $url) -}}
 {{- end -}}
+
+{{- return $result -}}

@@ -1,16 +1,88 @@
-{{- $color := .color | default "primary" -}}
-{{- $hoverColor := .hover_color | default "primary" -}}
+{{- /*
+  Button color classes.
 
-{{- $class := "bg-primary hover:bg-primary-dark border-primary hover:border-primary-dark" -}}
-{{- if eq $color "danger" -}}
-  {{- $class = "bg-danger hover:bg-danger-dark border-danger hover:border-danger-dark" -}}
-{{- else if eq $color "accent" -}}
-  {{- $class = "bg-warning border-warning hover:bg-primary-dark hover:border-primary-dark" -}}
-{{- else if or (eq $color "primary") (eq $color "accent") -}}
-  {{- if eq $hoverColor "red" -}}
-    {{- $class = "bg-primary hover:bg-danger-dark border-primary hover:border-danger-dark" -}}
-  {{- else -}}
-    {{- $class = "bg-primary hover:bg-primary-dark border-primary hover:border-primary-dark" -}}
-  {{- end -}}
+  Params:
+    color        - "primary" | "danger" | "warning" (theme colors, theme-colors.css)
+                    or any fixed color name (theme-fixed-colors.css). Available
+                    fixed colors:
+                      aliceblue, antiquewhite, aqua, aquamarine, azure, beige,
+                      bisque, black, blanchedalmond, blue, blueviolet, brown,
+                      burlywood, cadetblue, chartreuse, chocolate, coral,
+                      cornflowerblue, cornsilk, crimson, cyan, darkblue,
+                      darkcyan, darkgoldenrod, darkgray, darkgreen, darkkhaki,
+                      darkmagenta, darkolivegreen, darkorange, darkorchid,
+                      darkred, darksalmon, darkseagreen, darkslateblue,
+                      darkslategray, darkturquoise, darkviolet, deeppink,
+                      deepskyblue, dimgray, dodgerblue, firebrick,
+                      floralwhite, forestgreen, fuchsia, gainsboro,
+                      ghostwhite, gold, goldenrod, gray, green, greenyellow,
+                      honeydew, hotpink, indianred, indigo, ivory, khaki,
+                      lavender, lavenderblush, lawngreen, lemonchiffon,
+                      lightblue, lightcoral, lightcyan, lightgoldenrodyellow,
+                      lightgray, lightgreen, lightpink, lightsalmon,
+                      lightseagreen, lightskyblue, lightslategray,
+                      lightsteelblue, lightyellow, lime, limegreen, linen,
+                      magenta, maroon, mediumaquamarine, mediumblue,
+                      mediumorchid, mediumpurple, mediumseagreen,
+                      mediumslateblue, mediumspringgreen, mediumturquoise,
+                      mediumvioletred, midnightblue, mintcream, mistyrose,
+                      moccasin, navajowhite, navy, oldlace, olive, olivedrab,
+                      orange, orangered, orchid, palegoldenrod, palegreen,
+                      paleturquoise, palevioletred, papayawhip, peachpuff,
+                      peru, pink, plum, powderblue, purple, rebeccapurple,
+                      red, rosybrown, royalblue, saddlebrown, salmon,
+                      sandybrown, seagreen, seashell, sienna, silver,
+                      skyblue, slateblue, slategray, snow, springgreen,
+                      steelblue, tan, teal, thistle, tomato, turquoise,
+                      violet, wheat, white, whitesmoke, yellow, yellowgreen
+    hover_color  - same set of allowed values, optional
+
+  Rules:
+    - color defaults to "primary" when absent.
+    - If color was NOT explicitly passed, hover_color is ignored entirely
+      (it is meaningless without an explicit color).
+    - If only color is set: normal state uses <color>, hover state uses
+      <color>-dark, text uses <color>'s -on shade in both states.
+    - If color AND hover_color are both explicitly set: normal state uses
+      <color> with <color>-on text, hover state uses <hover_color> with
+      <hover_color>-on text (independent colors, independent text colors).
+
+  Theme colors only expose a single "-on" token (--theme-on-primary), so any
+  theme color (primary/danger/warning) uses the "text-on-primary" class.
+  Fixed colors each expose their own "-on" token (--color-<name>-on), so they
+  use "text-<name>-on".
+*/ -}}
+{{- $themeColors := slice "primary" "danger" "warning" -}}
+
+{{- $rawColor := .color -}}
+{{- $color := $rawColor | default "primary" -}}
+{{- $hoverColor := .hover_color -}}
+
+{{- /* hover_color only counts if color was explicitly given */ -}}
+{{- $useHoverColor := and $rawColor $hoverColor -}}
+
+{{- $isThemeColor := in $themeColors $color -}}
+{{- $onClass := cond $isThemeColor "text-on-primary" (printf "text-%s-on" $color) -}}
+
+{{- $classes := slice
+  (printf "bg-%s" $color)
+  (printf "border-%s" $color)
+  $onClass
+-}}
+
+{{- if $useHoverColor -}}
+  {{- $isHoverThemeColor := in $themeColors $hoverColor -}}
+  {{- $hoverOnClass := cond $isHoverThemeColor "hover:text-on-primary" (printf "hover:text-%s-on" $hoverColor) -}}
+  {{- $classes = $classes
+    | append (printf "hover:bg-%s" $hoverColor)
+    | append (printf "hover:border-%s" $hoverColor)
+    | append $hoverOnClass
+  -}}
+{{- else -}}
+  {{- $classes = $classes
+    | append (printf "hover:bg-%s-dark" $color)
+    | append (printf "hover:border-%s-dark" $color)
+  -}}
 {{- end -}}
-{{- $class -}}
+
+{{- delimit $classes " " -}}

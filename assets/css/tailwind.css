@@ -12,6 +12,7 @@
 @plugin "tailwindcss-animate";
 @import "./themes/theme-colors.css";
 @import "./themes/theme-fixed-colors.css";
+@import "./themes/fixed-colors-safelist.css";
 @import "./themes/theme-fonts.css";
 @import "./themes/theming.css";
 @import "./general.css";

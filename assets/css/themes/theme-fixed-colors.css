@@ -15,7 +15,7 @@
  *   0.18 / 0.95    -> clamped near-black / near-white lightness targets
  *   c * 0.15       -> how much of the base chroma bleeds into -on
  */
-:root {
+@theme {
   --color-aliceblue: #F0F8FF;
   --color-aliceblue-light: oklch(from var(--color-aliceblue) calc(l + 0.06) c h);
   --color-aliceblue-dark: oklch(from var(--color-aliceblue) calc(l - 0.06) c h);

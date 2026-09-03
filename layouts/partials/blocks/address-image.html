@@ -34,6 +34,11 @@
     Optional. Image block height in pixels.
     Default: 500.
 
+  url
+    Optional. If set, the image becomes a clickable link that opens this
+    URL. External URLs (http/https, absolute) open in a new tab; internal
+    URLs open in the same tab.
+
   text
     Markdown-rendered content displayed beside the image.
 
@@ -61,6 +66,8 @@
 {{- $text := .Params.text -}}
 {{- $mapPosition := .Params.map_position | default "left" -}}
 {{- $mapHeight := .Params.map_height | default 500 -}}
+{{- $url := .Params.url -}}
+{{- $isExternal := $url | default "" | strings.HasPrefix "http" -}}
 
 {{- if not (in (slice "left" "right") $mapPosition) -}}
   {{- errorf "address-image block: 'map_position' must be 'left' or 'right'. Page: %s" .Page.File.Path -}}
@@ -94,12 +101,22 @@
           class="relative order-1 min-h-80 w-full min-w-0 lg:order-1 lg:col-span-2"
           style="height: {{ $mapHeight }}px;"
         >
+          {{ with $url }}
+            <a
+              href="{{ . }}"
+              class="absolute inset-0 block h-full w-full"
+              {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+            >
+          {{ end }}
           <img
             src="{{ $image.RelPermalink }}"
             alt="{{ $title | default "" }}"
             class="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
+          {{ with $url }}
+            </a>
+          {{ end }}
         </div>
 
         <!-- CONTENT: physical right, 1/3 width -->
@@ -151,12 +168,22 @@
           class="relative order-2 min-h-80 w-full min-w-0 lg:order-2 lg:col-span-2"
           style="height: {{ $mapHeight }}px;"
         >
+          {{ with $url }}
+            <a
+              href="{{ . }}"
+              class="absolute inset-0 block h-full w-full"
+              {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+            >
+          {{ end }}
           <img
             src="{{ $image.RelPermalink }}"
             alt="{{ $title | default "" }}"
             class="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
+          {{ with $url }}
+            </a>
+          {{ end }}
         </div>
 
       {{ end }}

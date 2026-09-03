@@ -1,0 +1,107 @@
+- id: executive_summary
+  translation: "الملخص التنفيذي"
+
+- id: breadcrumb_home
+  translation: "الرئيسية"
+
+- id: writing_translation_notice
+  translation: "الترجمة العربية"
+
+- id: and
+  translation: "و"
+
+- id: address
+  translation: "العنوان"
+
+- id: contact_us
+  translation: "اتصل بنا"
+
+- id: contact
+  translation: "اتصل"
+
+- id: name
+  translation: "الاسم"
+
+- id: company
+  translation: "الشركة"
+
+- id: phone
+  translation: "الهاتف"
+
+- id: message
+  translation: "الرسالة"
+
+- id: submit
+  translation: "إرسال"
+
+- id: email_address
+  translation: "البريد الإلكتروني"
+
+- id: send_enquiry
+  translation: "إرسال استفسار"
+
+- id: book_appointment
+  translation: "حجز موعد"
+
+- id: form_success_title
+  translation: "شكرًا لتواصلك معنا."
+
+- id: form_success_message
+  translation: "سيتواصل معك فريقنا قريبًا."
+
+- id: no_description_available
+  translation: "لا يوجد وصف متاح."
+
+- id: read_the_post
+  translation: "اقرأ المقال"
+
+- id: cta_title
+  translation: "أسئلة؟ طلبات؟ اقتراحات؟"
+
+- id: cta_button
+  translation: "تواصل معنا اليوم!"
+
+- id: cta_subtitle
+  translation: "نتطلع إلى التواصل معك!"
+
+- id: cta_looking_for
+  translation: "هل تبحث عن"
+
+- id: cta_or
+  translation: "أو"
+
+- id: cta_contact_url
+  translation: "/#contact"
+
+- id: cta_contact_title
+  translation: "اتصل"
+
+- id: reading_time_minute
+  translation: "دقيقة"
+
+- id: reading_time_minutes
+  translation: "دقائق"
+
+- id: 404_hero_heading
+  translation: "غير موجودة"
+
+- id: 404_breadcrumb_home
+  translation: "الرئيسية"
+
+- id: 404_main_heading
+  translation: "الصفحة التي تبحث عنها غير موجودة"
+
+- id: 404_main_paragraph
+  translation: "ربما لديك إشارة مرجعية قديمة، لكن الصفحة لم تعد موجودة، أو يوجد خطأ إملائي في رابط URL"
+
+- id: 404_home_button_title
+  translation: "العودة إلى الرئيسية"
+
+- id: 404_home_button_label
+  translation: "العودة إلى الرئيسية"
+
+- id: copyright_notice
+  translation: "حقوق النشر"
+
+- id: table_of_contents
+  translation: "جدول المحتويات"

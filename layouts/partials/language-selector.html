@@ -21,8 +21,6 @@
                   {{ $langCode := .Lang }}
                   {{/* Get language-specific params from config */}}
                   {{ $langParams := index $langParamsMap $langCode }}
-                  {{ $langFlag := "" }}
-                  {{ $flagAlt := "" }}
                   {{/* Get language label - prefer params.label, then params.i18n_label_key, then languageName from config */}}
                   {{ $langLabel := .Label }}
                   {{ if not $langLabel }}
@@ -32,8 +30,6 @@
                     {{ $langLabel = $langCode }}
                   {{ end }}
                   {{ if $langParams }}
-                    {{ $langFlag = $langParams.flag_image }}
-                    {{ $flagAlt = $langParams.flag_alt }}
                     {{/* Override with label from params if specified */}}
                     {{ if $langParams.label }}
                       {{ $langLabel = $langParams.label }}
@@ -70,20 +66,7 @@
                   
                 <li>
                   <a href="{{ $targetURL }}" class="sub-menu-item" data-lang="{{ $langCode }}" {{ if $isActive }}aria-current="true"{{ end }}>
-                    {{ if $langFlag }}
-                      {{ $altText := $flagAlt }}
-                      {{ if not $altText }}
-                        {{ $altText = printf "%s flag" $langLabel }}
-                      {{ end }}
-                      {{ $flagPath := printf "images/navbar/flags/%s.webp" $langFlag }}
-                      {{ with resources.GetMatch $flagPath }}
-                        <img src="{{ .RelPermalink }}" alt="{{ $altText }}" width="{{ .Width }}" height="{{ .Height }}" class="h-5 w-auto lg:w-5 lg:h-5 object-contain flex-shrink-0">
-                      {{ else }}
-                        <img src="images/navbar/flags/{{ $langFlag }}.webp" alt="{{ $altText }}" class="h-5 w-auto lg:w-5 lg:h-5 object-contain flex-shrink-0">
-                      {{ end }}
-                    {{ else }}
-                      <span class="inline-flex w-auto h-5 lg:w-5 lg:h-5 items-center justify-center rounded-xs bg-surface text-sm lg:text-[0.65rem] font-semibold uppercase text-theme flex-shrink-0 px-2">{{ $langCode }}</span>
-                    {{ end }}
+                    <span class="inline-flex w-auto h-5 lg:w-5 lg:h-5 items-center justify-center rounded-xs bg-surface text-sm lg:text-[0.65rem] font-semibold uppercase text-theme flex-shrink-0 px-2">{{ $langCode }}</span>
                     <span class="hidden lg:inline">{{ $langLabel }}</span>
                   </a>
                 </li>

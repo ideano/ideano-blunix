@@ -11,6 +11,7 @@
 @plugin "@tailwindcss/forms";
 @plugin "tailwindcss-animate";
 @import "./themes/theme-colors.css";
+@import "./themes/theme-fixed-colors.css";
 @import "./themes/theme-fonts.css";
 @import "./themes/theming.css";
 @import "./general.css";

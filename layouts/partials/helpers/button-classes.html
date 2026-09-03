@@ -2,9 +2,10 @@
   Button color classes.
 
   Params:
-    color        - "primary" | "danger" | "warning" (theme colors, theme-colors.css)
-                    or any fixed color name (theme-fixed-colors.css). Available
-                    fixed colors:
+    color        - "primary" | "secondary" | "success" | "info" | "danger" |
+                    "warning" | "light" | "dark" (theme colors, theme-colors.css) or any fixed
+                    color name (theme-fixed-colors.css). Available fixed
+                    colors:
                       aliceblue, antiquewhite, aqua, aquamarine, azure, beige,
                       bisque, black, blanchedalmond, blue, blueviolet, brown,
                       burlywood, cadetblue, chartreuse, chocolate, coral,
@@ -48,11 +49,11 @@
       <hover_color>-on text (independent colors, independent text colors).
 
   Theme colors only expose a single "-on" token (--theme-on-primary), so any
-  theme color (primary/danger/warning) uses the "text-on-primary" class.
-  Fixed colors each expose their own "-on" token (--color-<name>-on), so they
-  use "text-<name>-on".
+  theme color (primary/secondary/success/info/danger/warning) uses the
+  "text-on-primary" class. Fixed colors each expose their own "-on" token
+  (--color-<name>-on), so they use "text-<name>-on".
 */ -}}
-{{- $themeColors := slice "primary" "danger" "warning" -}}
+{{- $themeColors := slice "primary" "secondary" "success" "info" "danger" "warning" -}}
 
 {{- $rawColor := .color -}}
 {{- $color := $rawColor | default "primary" -}}

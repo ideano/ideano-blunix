@@ -37,8 +37,8 @@ modified for added features
 * hero-breadcrumb accepts contrast parameter, which sets opacity level of contrast drop over picture, which makes reading texts easier on light images.
 
 ### Fixed Colors
-buttons now accept many more colors. for understanding button color behavior, see button-classes.html
-The `color` and `hover_color` parameters accept any of the following fixed color names (in addition to the theme colors `primary`, `danger`, and `warning`):
+
+The `color` and `hover_color` parameters for button accept any of the following fixed color names (in addition to the theme colors `primary`, `secondary`, `success`, `info`, `danger`, `warning`, `light`, and `dark`):
 
 ```
 aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black,
@@ -66,6 +66,9 @@ tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen
 ```
 
 **Note:** Each fixed color exposes its own `--color-<name>`, `--color-<name>-dark`, and `--color-<name>-on` CSS custom properties (defined in `theme-fixed-colors.css`), unlike theme colors which share a single `--theme-on-primary` token.
+
+**Caveat:** `light` and `dark` are flat theme colors with no `-dark`/`-light` variants of their own (e.g. there's no `--theme-light-dark` token). Using `color="light"` or `color="dark"` without an explicit `hover_color` will produce a broken `hover:bg-light-dark` / `hover:bg-dark-dark` class — always pair them with an explicit `hover_color` when used as a button color.
+
 ## Shortcodes
 All shortcodes have their parameters and example usage documented on top of their source file.
 * quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text. (see quote.html for all possible parameters.)

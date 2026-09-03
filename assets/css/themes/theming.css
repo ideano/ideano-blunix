@@ -5,6 +5,33 @@
   --color-primary-soft: var(--theme-primary-soft);
   --color-on-primary: var(--theme-on-primary);
 
+  --color-secondary: var(--theme-secondary);
+  --color-secondary-dark: var(--theme-secondary-dark);
+  --color-secondary-light: var(--theme-secondary-light);
+
+  --color-accent: var(--theme-accent);
+  --color-accent-dark: var(--theme-accent-dark);
+  --color-accent-light: var(--theme-accent-light);
+
+  --color-success: var(--theme-success);
+  --color-success-dark: var(--theme-success-dark);
+  --color-success-light: var(--theme-success-light);
+
+  --color-info: var(--theme-info);
+  --color-info-dark: var(--theme-info-dark);
+  --color-info-light: var(--theme-info-light);
+
+  --color-danger: var(--theme-danger);
+  --color-danger-dark: var(--theme-danger-dark);
+  --color-danger-light: var(--theme-danger-light);
+
+  --color-warning: var(--theme-warning);
+  --color-warning-dark: var(--theme-warning-dark);
+  --color-warning-light: var(--theme-warning-light);
+
+  --color-light: var(--theme-light);
+  --color-dark: var(--theme-dark);
+
   --color-background: var(--theme-background);
   --color-surface: var(--theme-surface);
   --color-text: var(--theme-text);
@@ -45,22 +72,93 @@
 .hover\:bg-primary-dark:hover { background-color: var(--theme-primary-dark); }
 .hover\:text-primary-dark:hover { color: var(--theme-primary-dark); }
 .hover\:border-primary-dark:hover { border-color: var(--theme-primary-dark); }
+
+/* Secondary */
+.bg-secondary { background-color: var(--theme-secondary); }
+.bg-secondary-dark { background-color: var(--theme-secondary-dark); }
+.bg-secondary-light { background-color: var(--theme-secondary-light); }
+.text-secondary { color: var(--theme-secondary); }
+.text-secondary-dark { color: var(--theme-secondary-dark); }
+.text-secondary-light { color: var(--theme-secondary-light); }
+.border-secondary { border-color: var(--theme-secondary); }
+.border-secondary-dark { border-color: var(--theme-secondary-dark); }
+.border-secondary-light { border-color: var(--theme-secondary-light); }
+.hover\:bg-secondary-dark:hover { background-color: var(--theme-secondary-dark); }
+.hover\:text-secondary-dark:hover { color: var(--theme-secondary-dark); }
+.hover\:border-secondary-dark:hover { border-color: var(--theme-secondary-dark); }
+
+/* Accent */
 .bg-accent { background-color: var(--theme-accent); }
+.bg-accent-dark { background-color: var(--theme-accent-dark); }
+.bg-accent-light { background-color: var(--theme-accent-light); }
 .text-accent { color: var(--theme-accent); }
+.text-accent-dark { color: var(--theme-accent-dark); }
+.text-accent-light { color: var(--theme-accent-light); }
 .border-accent { border-color: var(--theme-accent); }
+.border-accent-dark { border-color: var(--theme-accent-dark); }
+.border-accent-light { border-color: var(--theme-accent-light); }
+.hover\:bg-accent-dark:hover { background-color: var(--theme-accent-dark); }
+.hover\:text-accent-dark:hover { color: var(--theme-accent-dark); }
+.hover\:border-accent-dark:hover { border-color: var(--theme-accent-dark); }
+
+/* Success */
+.bg-success { background-color: var(--theme-success); }
+.bg-success-dark { background-color: var(--theme-success-dark); }
+.bg-success-light { background-color: var(--theme-success-light); }
+.text-success { color: var(--theme-success); }
+.text-success-dark { color: var(--theme-success-dark); }
+.text-success-light { color: var(--theme-success-light); }
+.border-success { border-color: var(--theme-success); }
+.border-success-dark { border-color: var(--theme-success-dark); }
+.border-success-light { border-color: var(--theme-success-light); }
+.hover\:bg-success-dark:hover { background-color: var(--theme-success-dark); }
+.hover\:text-success-dark:hover { color: var(--theme-success-dark); }
+.hover\:border-success-dark:hover { border-color: var(--theme-success-dark); }
+
+/* Info */
+.bg-info { background-color: var(--theme-info); }
+.bg-info-dark { background-color: var(--theme-info-dark); }
+.bg-info-light { background-color: var(--theme-info-light); }
+.text-info { color: var(--theme-info); }
+.text-info-dark { color: var(--theme-info-dark); }
+.text-info-light { color: var(--theme-info-light); }
+.border-info { border-color: var(--theme-info); }
+.border-info-dark { border-color: var(--theme-info-dark); }
+.border-info-light { border-color: var(--theme-info-light); }
+.hover\:bg-info-dark:hover { background-color: var(--theme-info-dark); }
+.hover\:text-info-dark:hover { color: var(--theme-info-dark); }
+.hover\:border-info-dark:hover { border-color: var(--theme-info-dark); }
+
+/* Danger */
 .bg-danger { background-color: var(--theme-danger); }
 .bg-danger-dark { background-color: var(--theme-danger-dark); }
+.bg-danger-light { background-color: var(--theme-danger-light); }
 .text-danger { color: var(--theme-danger); }
+.text-danger-light { color: var(--theme-danger-light); }
 .border-danger { border-color: var(--theme-danger); }
 .border-danger-dark { border-color: var(--theme-danger-dark); }
+.border-danger-light { border-color: var(--theme-danger-light); }
+.hover\:bg-danger-dark:hover { background-color: var(--theme-danger-dark); }
+.hover\:border-danger-dark:hover { border-color: var(--theme-danger-dark); }
+
+/* Warning */
 .bg-warning-light { background-color: var(--theme-warning-light); }
 .bg-warning { background-color: var(--theme-warning); }
 .bg-warning-dark { background-color: var(--theme-warning-dark); }
 .border-warning-light { border-color: var(--theme-warning-light); }
 .border-warning { border-color: var(--theme-warning); }
 .border-warning-dark { border-color: var(--theme-warning-dark); }
-.hover\:bg-danger-dark:hover { background-color: var(--theme-danger-dark); }
-.hover\:border-danger-dark:hover { border-color: var(--theme-danger-dark); }
+.hover\:bg-warning-dark:hover { background-color: var(--theme-warning-dark); }
+.hover\:border-warning-dark:hover { border-color: var(--theme-warning-dark); }
+
+/* Light / Dark (flat colors, no light/dark variations of their own) */
+.bg-light { background-color: var(--theme-light); }
+.text-light { color: var(--theme-light); }
+.border-light { border-color: var(--theme-light); }
+.bg-dark { background-color: var(--theme-dark); }
+.text-dark { color: var(--theme-dark); }
+.border-dark { border-color: var(--theme-dark); }
+
 .bg-theme-gradient { background-image: linear-gradient(to top left, color-mix(in oklab, var(--theme-primary) 20%, transparent), color-mix(in oklab, var(--theme-primary) 70%, transparent), var(--theme-primary)); }
 .hover\:bg-surface:hover { background-color: var(--theme-surface); }
 body {

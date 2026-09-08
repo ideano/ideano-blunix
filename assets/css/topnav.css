@@ -789,3 +789,9 @@
   #topnav .navigation-menu .has-submenu .menu-arrow { border-color: var(--theme-text); }
 }
 
+/* fixing display of language codes on menu for medium and small screens */
+@media only screen and (max-width: 991px) {
+  #topnav #languageMenu > li > a span:not(.hidden) {
+    display: inline-flex;
+  }
+}

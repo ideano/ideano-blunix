@@ -237,11 +237,11 @@ html[dir="rtl"] .tns-visually-hidden {
     width: var(--imaged-paragraph-image-width);
   }
 
-  .imaged-paragraph__image[style*="--imaged-paragraph-image-side: left"] {
+  .imaged-paragraph__image[data-image-side="left"] {
     margin-right: 1.5rem;
   }
 
-  .imaged-paragraph__image[style*="--imaged-paragraph-image-side: right"] {
+  .imaged-paragraph__image[data-image-side="right"] {
     margin-left: 1.5rem;
   }
 }

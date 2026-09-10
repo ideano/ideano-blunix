@@ -1,0 +1,62 @@
+{{- /*
+  Shared gradient resolver.
+
+  Params:
+    color             - Theme-aware or fixed color name. Defaults to "primary".
+    gradient_direction - "vertical" | "horizontal" | "all". Defaults to "horizontal".
+    gradient          - false | "dark-to-light" | "light-to-dark" |
+                        "center-dark" | "center-light". Defaults to "center-dark".
+
+  Returns a dict containing:
+    enabled  - whether a gradient should be rendered
+    style    - complete CSS background declaration, marked safe for Hugo output
+*/ -}}
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" .color) -}}
+{{- $direction := .gradient_direction | default "horizontal" -}}
+{{- $gradient := .gradient -}}
+{{- if not (isset . "gradient") -}}
+  {{- $gradient = "center-dark" -}}
+{{- end -}}
+
+{{- $dark := printf "var(%s)" $colorLogic.dark_var -}}
+{{- $light := printf "var(%s)" $colorLogic.light_var -}}
+{{- $style := "" -}}
+
+{{- if ne $gradient false -}}
+  {{- if eq $direction "all" -}}
+    {{- if eq $gradient "dark-to-light" -}}
+      {{- $style = printf "background: radial-gradient(circle at center, %s, %s);" $dark $light -}}
+    {{- else if eq $gradient "light-to-dark" -}}
+      {{- $style = printf "background: radial-gradient(circle at center, %s, %s);" $light $dark -}}
+    {{- else if eq $gradient "center-light" -}}
+      {{- $style = printf "background: radial-gradient(circle at center, %s, %s);" $light $dark -}}
+    {{- else -}}
+      {{- $style = printf "background: radial-gradient(circle at center, %s, %s);" $dark $light -}}
+    {{- end -}}
+  {{- else if eq $direction "vertical" -}}
+    {{- if eq $gradient "dark-to-light" -}}
+      {{- $style = printf "background: linear-gradient(to bottom, %s, %s);" $dark $light -}}
+    {{- else if eq $gradient "light-to-dark" -}}
+      {{- $style = printf "background: linear-gradient(to bottom, %s, %s);" $light $dark -}}
+    {{- else if eq $gradient "center-light" -}}
+      {{- $style = printf "background: linear-gradient(to bottom, %s, %s, %s);" $dark $light $dark -}}
+    {{- else -}}
+      {{- $style = printf "background: linear-gradient(to bottom, %s, %s, %s);" $light $dark $light -}}
+    {{- end -}}
+  {{- else -}}
+    {{- if eq $gradient "dark-to-light" -}}
+      {{- $style = printf "background: linear-gradient(to right, %s, %s);" $dark $light -}}
+    {{- else if eq $gradient "light-to-dark" -}}
+      {{- $style = printf "background: linear-gradient(to right, %s, %s);" $light $dark -}}
+    {{- else if eq $gradient "center-light" -}}
+      {{- $style = printf "background: linear-gradient(to right, %s, %s, %s);" $dark $light $dark -}}
+    {{- else -}}
+      {{- $style = printf "background: linear-gradient(to right, %s, %s, %s);" $light $dark $light -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict
+  "enabled" (ne $style "")
+  "style" ($style | safeCSS)
+) -}}

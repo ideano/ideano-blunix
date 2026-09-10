@@ -13,6 +13,9 @@ blocks:
       label: "Get Started Today"
 
   - block: partners-scroller
+    color: darkblue
+    gradient: center-light
+    gradient_direction: vertical
     partners:
       - url: "#"
         img: "images/partners/company-1.svg"
@@ -162,6 +165,9 @@ blocks:
   - block: banner
     id: contact
     text: "$ mail --compose"
+    color: brown
+    gradient: center-light
+    gradient_direction: all
 
   - block: contact-standard
     id: unencrypted-contact

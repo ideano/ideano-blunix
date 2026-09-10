@@ -8,13 +8,15 @@ Usage:
     id: "notice"
     text: "Important information"
     color: "primary"
-    gradient: true
+    gradient: "center-dark"
+    gradient_direction: "horizontal"
 
 Parameters:
   id       Optional section ID. Default: `banner`.
   text     Banner text.
   color    Optional theme-aware or fixed color. Default: `primary`.
-  gradient Optional horizontal dark-to-light gradient. Default: `true`.
+  gradient Optional gradient mode: `false`, `dark-to-light`, `light-to-dark`, `center-dark`, or `center-light`. Default: `center-dark`.
+  gradient_direction Optional `vertical`, `horizontal`, or `all`. Default: `horizontal`.
 
 Theme colors:
   primary, secondary, accent, success, info, danger, warning
@@ -24,14 +26,17 @@ Fixed colors:
 */}}
 {{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" .Params.color) -}}
 {{- $color := $colorLogic.color -}}
-{{- $gradient := .Params.gradient | default true -}}
+{{- $gradient := .Params.gradient -}}
+{{- if not (isset .Params "gradient") -}}
+  {{- $gradient = "center-dark" -}}
+{{- end -}}
+{{- $gradientDirection := .Params.gradient_direction | default "horizontal" -}}
+{{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict "color" $color "gradient" $gradient "gradient_direction" $gradientDirection) -}}
 
-{{- $backgroundClass := "" -}}
-{{- $backgroundStyle := "" -}}
-{{- if $gradient -}}
-  {{- $backgroundStyle = printf "background: linear-gradient(to right, var(%s), var(%s));" $colorLogic.dark_var $colorLogic.light_var | safeCSS -}}
-{{- else -}}
-  {{- $backgroundClass = $colorLogic.bg_class -}}
+{{- $backgroundClass := $colorLogic.bg_class -}}
+{{- $backgroundStyle := $gradientLogic.style -}}
+{{- if $gradientLogic.enabled -}}
+  {{- $backgroundClass = "" -}}
 {{- end -}}
 
 <section class="{{ $backgroundClass }} {{ $colorLogic.on_class }} text-center py-10" id="{{ .Params.id | default "banner" }}"{{ with $backgroundStyle }} style="{{ . }}"{{ end }}>

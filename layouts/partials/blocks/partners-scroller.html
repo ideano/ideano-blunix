@@ -5,6 +5,9 @@ Horizontally scrolling partner/logo list with responsive image handling.
 
 Usage:
   - block: partners-scroller
+    color: "primary"
+    gradient: "center-dark"
+    gradient_direction: "horizontal"
     partners:
       - title: "Partner One"
         img: "images/partner-one.svg"
@@ -16,15 +19,26 @@ Usage:
         url: "https://example.org"
 
 Parameters:
-  partners Array of partner objects:
+  color              Optional theme-aware or fixed background color. Default: `primary`.
+  gradient           Optional gradient mode. Default: `center-dark`.
+  gradient_direction Optional `vertical`, `horizontal`, or `all`. Default: `horizontal`.
+  partners           Array of partner objects:
             `img`, `alt`, `url`, and optional `title`.
 
 Notes:
   Local raster images are resized and given responsive `srcset`/WebP output.
   SVG and remote images are handled without Hugo raster resizing.
 */}}
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" .Params.color) -}}
+{{- $gradient := .Params.gradient -}}
+{{- if not (isset .Params "gradient") -}}
+  {{- $gradient = "center-dark" -}}
+{{- end -}}
+{{- $gradientDirection := .Params.gradient_direction | default "horizontal" -}}
+{{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict "color" $colorLogic.color "gradient" $gradient "gradient_direction" $gradientDirection) -}}
+
 <section class="scroll-mt-[130px] w-full">
-  <div class="scroller bg-primary" data-direction="left" data-speed="fast">
+  <div class="scroller {{ if not $gradientLogic.enabled }}{{ $colorLogic.bg_class }}{{ end }} {{ $colorLogic.on_class }}"{{ with $gradientLogic.style }} style="{{ . }}"{{ end }} data-direction="left" data-speed="fast">
     <div class="scroller__inner">
       {{ range .Params.partners }}
         <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">

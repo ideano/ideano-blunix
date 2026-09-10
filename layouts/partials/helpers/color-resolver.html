@@ -1,0 +1,32 @@
+{{- /*
+  Shared color selection logic.
+
+  Params:
+    color - Theme-aware or fixed color name. Defaults to "primary".
+
+  Returns a dict containing:
+    color         - resolved color name
+    is_theme      - true for theme-aware colors
+    prefix        - "theme" or "color" for CSS custom properties
+    on_class      - text class for the resolved background color
+    bg_class      - background utility class
+    border_class  - border utility class
+    dark_var      - dark CSS custom property name
+    light_var     - light CSS custom property name
+*/ -}}
+{{- $themeColors := slice "primary" "secondary" "accent" "success" "info" "danger" "warning" -}}
+{{- $color := .color | default "primary" -}}
+{{- $isThemeColor := in $themeColors $color -}}
+{{- $prefix := cond $isThemeColor "theme" "color" -}}
+{{- $onClass := cond $isThemeColor "text-on-primary" (printf "text-%s-on" $color) -}}
+
+{{- return (dict
+  "color" $color
+  "is_theme" $isThemeColor
+  "prefix" $prefix
+  "on_class" $onClass
+  "bg_class" (printf "bg-%s" $color)
+  "border_class" (printf "border-%s" $color)
+  "dark_var" (printf "--%s-%s-dark" $prefix $color)
+  "light_var" (printf "--%s-%s-light" $prefix $color)
+) -}}

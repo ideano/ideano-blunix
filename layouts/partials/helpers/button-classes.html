@@ -3,7 +3,7 @@
 
   Params:
     color        - "primary" | "secondary" | "success" | "info" | "danger" |
-                    "warning" | "light" | "dark" (theme colors, theme-colors.css) or any fixed
+                    "warning" | "accent" | "light" | "dark" (theme colors, theme-colors.css) or any fixed
                     color name (theme-fixed-colors.css). Available fixed
                     colors:
                       aliceblue, antiquewhite, aqua, aquamarine, azure, beige,
@@ -49,35 +49,30 @@
       <hover_color>-on text (independent colors, independent text colors).
 
   Theme colors only expose a single "-on" token (--theme-on-primary), so any
-  theme color (primary/secondary/success/info/danger/warning) uses the
+  theme color (primary/secondary/accent/success/info/danger/warning) uses the
   "text-on-primary" class. Fixed colors each expose their own "-on" token
   (--color-<name>-on), so they use "text-<name>-on".
 */ -}}
-{{- $themeColors := slice "primary" "secondary" "success" "info" "danger" "warning" -}}
-
 {{- $rawColor := .color -}}
-{{- $color := $rawColor | default "primary" -}}
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $rawColor) -}}
+{{- $color := $colorLogic.color -}}
 {{- $hoverColor := .hover_color -}}
 
 {{- /* hover_color only counts if color was explicitly given */ -}}
 {{- $useHoverColor := and $rawColor $hoverColor -}}
 
-{{- $isThemeColor := in $themeColors $color -}}
-{{- $onClass := cond $isThemeColor "text-on-primary" (printf "text-%s-on" $color) -}}
-
 {{- $classes := slice
-  (printf "bg-%s" $color)
-  (printf "border-%s" $color)
-  $onClass
+  $colorLogic.bg_class
+  $colorLogic.border_class
+  $colorLogic.on_class
 -}}
 
 {{- if $useHoverColor -}}
-  {{- $isHoverThemeColor := in $themeColors $hoverColor -}}
-  {{- $hoverOnClass := cond $isHoverThemeColor "hover:text-on-primary" (printf "hover:text-%s-on" $hoverColor) -}}
+  {{- $hoverColorLogic := partial "helpers/color-resolver.html" (dict "color" $hoverColor) -}}
   {{- $classes = $classes
-    | append (printf "hover:bg-%s" $hoverColor)
-    | append (printf "hover:border-%s" $hoverColor)
-    | append $hoverOnClass
+    | append (printf "hover:bg-%s" $hoverColorLogic.color)
+    | append (printf "hover:border-%s" $hoverColorLogic.color)
+    | append (printf "hover:%s" $hoverColorLogic.on_class)
   -}}
 {{- else -}}
   {{- $classes = $classes

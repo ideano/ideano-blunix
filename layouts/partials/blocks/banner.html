@@ -7,13 +7,33 @@ Usage:
   - block: banner
     id: "notice"
     text: "Important information"
+    color: "primary"
+    gradient: true
 
 Parameters:
-  id   Optional section ID. Default: `banner`.
-  text Banner text.
+  id       Optional section ID. Default: `banner`.
+  text     Banner text.
+  color    Optional theme-aware or fixed color. Default: `primary`.
+  gradient Optional horizontal dark-to-light gradient. Default: `true`.
 
+Theme colors:
+  primary, secondary, accent, success, info, danger, warning
+
+Fixed colors:
+  Any color exposed by theme-fixed-colors.css, such as `brown`, `aqua`, etc.
 */}}
-<section class="bg-primary-dark text-white text-center py-10" id="{{ .Params.id | default "banner" }}">
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" .Params.color) -}}
+{{- $color := $colorLogic.color -}}
+{{- $gradient := .Params.gradient | default true -}}
+
+{{- $backgroundClass := "" -}}
+{{- $backgroundStyle := "" -}}
+{{- if $gradient -}}
+  {{- $backgroundStyle = printf "background: linear-gradient(to right, var(%s), var(%s));" $colorLogic.dark_var $colorLogic.light_var | safeCSS -}}
+{{- else -}}
+  {{- $backgroundClass = $colorLogic.bg_class -}}
+{{- end -}}
+
+<section class="{{ $backgroundClass }} {{ $colorLogic.on_class }} text-center py-10" id="{{ .Params.id | default "banner" }}"{{ with $backgroundStyle }} style="{{ . }}"{{ end }}>
   <p class="text-2xl md:text-3xl xl:text-4xl mx-auto">{{ .Params.text }}</p>
 </section>
-

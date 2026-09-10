@@ -49,6 +49,7 @@ blocks:
   - block: banner
     id: services
     text: "$ discover --services"
+    color: secondary
 
   - block: text-image
     id: consulting
@@ -132,6 +133,8 @@ blocks:
   - block: banner
     id: values
     text: "$ cat company-values.txt"
+    color: accent
+    gradient: false
 
   - block: ethics-accordion
     id: ethics

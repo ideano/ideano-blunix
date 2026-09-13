@@ -48,7 +48,7 @@ The body is Markdown and is rendered with markdownify.
 
 <div class="my-8 mb-12 rounded-2xl border-2 {{ $colorLogic.border_class }} {{ $backgroundClass }} {{ $colorLogic.on_class }} px-5 py-5 shadow-sm md:px-6 md:py-6"{{ with $backgroundStyle }} style="{{ . }}"{{ end }}>
   <div class="mt-4 flex gap-3">
-    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl {{ printf "bg-%s-dark" $colorLogic.color }} {{ $colorLogic.on_class }} shadow-sm" aria-hidden="true">
+    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl {{ $colorLogic.on_class }} shadow-sm" aria-hidden="true" style="{{ printf "background: var(%s)" $colorLogic.accent_var | safeCSS }}">
       {{- if $isImage -}}
         <img src="{{ $icon | relURL }}" alt="" class="h-6 w-6 object-contain">
       {{- else -}}

@@ -12,29 +12,55 @@ Usage:
 Optional parameters:
   title: Custom title. Defaults to the translated "executive_summary" string.
   icon: Bootstrap Icon class (default: bi bi-lightbulb-fill) or an image path/URL.
+  color: Theme-aware or fixed color. Default: "primary".
+  gradient: false, "dark-to-light", "light-to-dark", "center-dark", or "center-light".
+           Default: "center-dark".
+  gradient_direction: "vertical", "horizontal", or "all". Default: "horizontal".
 
+The selected color controls the summary border, title, icon box, and background.
+The background gradient uses the shared gradient-resolver helper.
 The body is Markdown and is rendered with markdownify.
 */}}
 
 {{- $title := .Get "title" | default (i18n "executive_summary") -}}
 {{- $icon := .Get "icon" | default "bi bi-lightbulb-fill" -}}
+{{- $color := .Get "color" | default "primary" -}}
+{{- $gradient := .Get "gradient" -}}
+{{- if eq $gradient "" -}}
+  {{- $gradient = "center-dark" -}}
+{{- end -}}
+{{- $gradientDirection := .Get "gradient_direction" | default "horizontal" -}}
 {{- $isImage := findRE `(?i)\.(svg|png|webp|jpe?g|gif)(\?.*)?$` $icon -}}
 
-<div class="my-8 mb-12 rounded-2xl border-2 border-primary bg-primary-soft px-5 py-5 shadow-sm md:px-6 md:py-6">
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $color) -}}
+{{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict
+  "color" $colorLogic.color
+  "gradient" $gradient
+  "gradient_direction" $gradientDirection
+) -}}
+
+{{- $backgroundClass := $colorLogic.bg_class -}}
+{{- $backgroundStyle := "" -}}
+{{- if $gradientLogic.enabled -}}
+  {{- $backgroundClass = "" -}}
+  {{- $backgroundStyle = $gradientLogic.style -}}
+{{- end -}}
+
+<div class="my-8 mb-12 rounded-2xl border-2 {{ $colorLogic.border_class }} {{ $backgroundClass }} {{ $colorLogic.on_class }} px-5 py-5 shadow-sm md:px-6 md:py-6"{{ with $backgroundStyle }} style="{{ . }}"{{ end }}>
   <div class="mt-4 flex gap-3">
-    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary shadow-sm" aria-hidden="true">
+    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl {{ printf "bg-%s-dark" $colorLogic.color }} {{ $colorLogic.on_class }} shadow-sm" aria-hidden="true">
       {{- if $isImage -}}
         <img src="{{ $icon | relURL }}" alt="" class="h-6 w-6 object-contain">
       {{- else -}}
         <i class="{{ $icon }} text-lg"></i>
       {{- end -}}
     </span>
-    <h2 class="summary-title m-0 h-10 flex-1 flex items-center text-xl font-semibold text-primary md:text-2xl">
+    <h2 class="summary-title m-0 h-10 flex-1 flex items-center text-xl font-semibold {{ $colorLogic.on_class }} md:text-2xl">
       {{ $title }}
     </h2>
   </div>
 
-  <div class="prose max-w-none text-theme">
+  <div class="prose max-w-none {{ $colorLogic.on_class }}">
     {{ .Inner | markdownify }}
   </div>
 </div>

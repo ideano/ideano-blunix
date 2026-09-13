@@ -29,7 +29,7 @@ Infrastructure automation is the foundation of reliable, repeatable deployments.
 __Download the Linux Command Line Cheat Sheet__
 {{< /download-box >}}
 
-{{< summary title="In a Glance" icon="bi bi-airplane" >}}
+{{< summary title="In a Glance" icon="bi bi-airplane" gradient_direction="vertical" gradient="center-light" color="darkorchid" >}}
 Why we should automate, Ansilble role, Terraform capabilities, and much more! 
 {{< /summary >}}
 

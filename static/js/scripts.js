@@ -229,26 +229,89 @@ function topFunction() {
 //=========================================//
 const scrollers = document.querySelectorAll(".scroller");
 
-// If a user hasn't opted in for reduced motion, then we add the animation
+// If a user hasn't opted in for reduced motion, then we add the animation.
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   addAnimation();
 }
 
 function addAnimation() {
-  scrollers.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
+  scrollers.forEach((scroller, index) => {
+    scroller.setAttribute("data-animated", "true");
 
     const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
+    if (!scrollerInner) return;
 
-    scrollerContent.forEach((item) => {
+    // Duplicate the original items so the scroll can loop seamlessly.
+    const originalItems = Array.from(scrollerInner.children);
+    originalItems.forEach((item) => {
       const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
+      duplicatedItem.setAttribute("aria-hidden", "true");
       scrollerInner.appendChild(duplicatedItem);
     });
+
+    const updateAnimation = () => {
+      const rootFontSize =
+        parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const distance = scrollerInner.scrollWidth / 2 + rootFontSize * 0.5;
+      const speed = Math.max(1, parseFloat(scroller.dataset.speed) || 80);
+      const travelTime = distance / speed;
+      const displayTime = Math.max(
+        0,
+        parseFloat(scroller.dataset.displayTime) || 0,
+      );
+
+      // display_time is the minimum duration of a complete cycle. Any extra
+      // time is a pause AFTER the duplicated sequence has reached its seamless
+      // loop point, never at the beginning or between logos.
+      const cycleTime = Math.max(travelTime, displayTime);
+      const movePercent = cycleTime
+        ? Math.min(100, (travelTime / cycleTime) * 100)
+        : 100;
+
+      // Resolve the visual direction here instead of using animation-direction:
+      // reversing an animation also reverses where a pause appears.
+      const requestedDirection = scroller.dataset.direction || "left";
+      const isRTL = document.documentElement.dir === "rtl";
+      const movesRight =
+        (requestedDirection === "right" && !isRTL) ||
+        (requestedDirection === "left" && isRTL);
+      const target = movesRight
+        ? `calc(50% + 0.5rem)`
+        : `calc(-50% - 0.5rem)`;
+
+      const animationName = `partners-scroll-${index}`;
+      const existingStyle = document.getElementById(animationName);
+      if (existingStyle) existingStyle.remove();
+
+      const style = document.createElement("style");
+      style.id = animationName;
+      style.textContent = `
+        @keyframes ${animationName} {
+          0% { transform: translateX(0); }
+          ${movePercent}% { transform: translateX(${target}); }
+          100% { transform: translateX(${target}); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      scroller.style.setProperty("--_animation-name", animationName);
+      scroller.style.setProperty("--_animation-duration", `${cycleTime}s`);
+      scroller.style.setProperty(
+        "--_animation-delay",
+        scroller.dataset.startDelay || "0s",
+      );
+      scroller.style.setProperty("--_animation-direction", "normal");
+    };
+
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(updateAnimation);
+      observer.observe(scrollerInner);
+    }
+
+    updateAnimation();
   });
 }
-
+//=========================================//
 //=========================================//
 /*         07) Calculator Inputs           */
 //=========================================//

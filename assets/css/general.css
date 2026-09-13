@@ -175,13 +175,18 @@ html[dir="rtl"] .tns-visually-hidden {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6rem;
+  gap: 4rem;
 }
 .scroller[data-animated="true"] {
   overflow: hidden;
 }
 .scroller[data-animated="true"] .scroller__inner {
-  animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+  animation-name: var(--_animation-name, none);
+  animation-duration: var(--_animation-duration, 40s);
+  animation-timing-function: linear;
+  animation-delay: var(--_animation-delay, 0s);
+  animation-iteration-count: infinite;
+  animation-direction: var(--_animation-direction, normal);
   width: max-content;
   flex-wrap: nowrap;
 }
@@ -189,18 +194,7 @@ html[dir="rtl"] .tns-visually-hidden {
   --_animation-direction: reverse;
 }
 .scroller[data-direction="left"] {
-  --_animation-direction: forwards;
-}
-.scroller[data-speed="fast"] {
-  --_animation-duration: 20s;
-}
-.scroller[data-speed="slow"] {
-  --_animation-duration: 60s;
-}
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 0.5rem));
-  }
+  --_animation-direction: normal;
 }
 [id] {
   scroll-margin-top: 78px;

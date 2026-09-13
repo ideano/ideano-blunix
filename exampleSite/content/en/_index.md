@@ -16,6 +16,8 @@ blocks:
     color: darkblue
     gradient: center-light
     gradient_direction: vertical
+    display_time: 20
+    speed: 80
     partners:
       - url: "#"
         img: "images/partners/company-1.svg"

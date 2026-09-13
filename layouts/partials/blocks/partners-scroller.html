@@ -24,6 +24,10 @@ Parameters:
   gradient_direction Optional `vertical`, `horizontal`, or `all`. Default: `horizontal`.
   partners           Array of partner objects:
             `img`, `alt`, `url`, and optional `title`.
+  start_delay        Optional initial delay before scrolling starts. Examples: `0s`, `2s`, `500ms`. Default: `0s`.
+  speed              Optional scrolling speed in pixels per second. Default: `80`.
+  direction          Optional scrolling direction. Default: `left`.
+  display_time       Optional total time for one complete scrolling cycle, in seconds. If longer than the travel time implied by `speed`, the extra time is used as a pause before each cycle. Default: `0` (no extra pause).
 
 Notes:
   Local raster images are resized and given responsive `srcset`/WebP output.
@@ -38,7 +42,9 @@ Notes:
 {{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict "color" $colorLogic.color "gradient" $gradient "gradient_direction" $gradientDirection) -}}
 
 <section class="scroll-mt-[130px] w-full">
-  <div class="scroller {{ if not $gradientLogic.enabled }}{{ $colorLogic.bg_class }}{{ end }} {{ $colorLogic.on_class }}"{{ with $gradientLogic.style }} style="{{ . }}"{{ end }} data-direction="left" data-speed="fast">
+  <div class="scroller {{ if not $gradientLogic.enabled }}{{ $colorLogic.bg_class }}{{ end }} {{ $colorLogic.on_class }}"{{ with $gradientLogic.style }} style="{{ . }}"{{ end }} data-direction="{{ .Params.direction | default "left" }}" data-speed="{{ .Params.speed | default 80 }}"
+    data-start-delay="{{ .Params.start_delay | default "0s" }}"
+    data-display-time="{{ .Params.display_time | default 0 }}">
     <div class="scroller__inner">
       {{ range .Params.partners }}
         <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">

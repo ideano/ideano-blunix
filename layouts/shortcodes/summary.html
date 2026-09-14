@@ -60,7 +60,7 @@ The body is Markdown and is rendered with markdownify.
     </h2>
   </div>
 
-  <div class="prose max-w-none {{ $colorLogic.on_class }}">
+  <div class="{{ $colorLogic.on_class }}">
     {{ .Inner | markdownify }}
   </div>
 </div>

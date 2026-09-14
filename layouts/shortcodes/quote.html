@@ -9,7 +9,7 @@ Usage:
   {{< /quote >}}
 
 Parameters:
-  background
+  color
       Theme-aware or fixed background color. Defaults to "primary".
 
   gradient
@@ -29,7 +29,7 @@ Notes:
   - Gradient rendering is handled by the shared gradient resolver.
 */}}
 
-{{- $background := .Get "background" | default "primary" -}}
+{{- $color := .Get "color" | default "primary" -}}
 {{- $gradient := .Get "gradient" | default false -}}
 {{- if eq $gradient "" -}}
   {{- $gradient = false -}}
@@ -41,9 +41,9 @@ Notes:
   {{- $showQuote = $showQuote | lower | eq "true" -}}
 {{- end -}}
 
-{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $background) -}}
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $color) -}}
 {{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict
-  "color" $background
+  "color" $color
   "gradient" $gradient
   "gradient_direction" "horizontal"
 ) -}}

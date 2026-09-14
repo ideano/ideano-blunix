@@ -25,6 +25,8 @@ Infrastructure automation is the foundation of reliable, repeatable deployments.
     alt="Download linux cheatsheet"
     url="https://cheatography.com/davechild/cheat-sheets/linux-command-line/pdf/?last=1582977076"
     position="left"
+    color="secondary"
+    gradient="center-light"
 >}}
 __Download the Linux Command Line Cheat Sheet__
 {{< /download-box >}}

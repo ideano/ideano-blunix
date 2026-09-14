@@ -19,7 +19,7 @@ blocks:
     text: |
       We provide comprehensive consulting services to help your business thrive. From strategic planning to hands-on implementation, our team delivers results.
 
-      {{< quote >}}Our consultants bring years of experience across multiple industries and disciplines.{{< /quote >}}
+      {{< quote color="yellow" show_quote=false gradient="center-light" >}}Our consultants bring years of experience across multiple industries and disciplines.{{< /quote >}}
     image:
       src: "images/golden-gate.jpg"
       alt: "Professional consulting"

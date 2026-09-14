@@ -8,7 +8,7 @@ Usage:
     alt="Download file"
     url="/files/document.pdf"
     position="left"
-    background="primary"
+    color="primary"
     gradient="false"
     show_icon="true"
 >}}
@@ -22,7 +22,7 @@ Parameters:
 - alt: image alternative text; defaults to "Download"
 - url: download URL
 - position: left (default) or right
-- background: theme-aware or fixed color; defaults to "primary"
+- color: theme-aware or fixed color; defaults to "primary"
 - gradient: false (default), dark-to-light, light-to-dark, center-dark, or center-light
 - show_icon: whether to show the image/download icon; defaults to true
 
@@ -37,7 +37,7 @@ assets/images/
 {{- $alt := .Get "alt" | default "Download" -}}
 {{- $url := .Get "url" -}}
 {{- $position := .Get "position" | default "left" -}}
-{{- $background := .Get "background" | default "primary" -}}
+{{- $color := .Get "color" | default "primary" -}}
 {{- $gradient := .Get "gradient" | default false -}}
 {{- if eq $gradient "" -}}
   {{- $gradient = false -}}
@@ -49,9 +49,9 @@ assets/images/
   {{- $showIcon = $showIcon | lower | eq "true" -}}
 {{- end -}}
 
-{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $background) -}}
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $color) -}}
 {{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict
-  "color" $background
+  "color" $color
   "gradient" $gradient
   "gradient_direction" "horizontal"
 ) -}}

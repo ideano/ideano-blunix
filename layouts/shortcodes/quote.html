@@ -9,28 +9,55 @@ Usage:
   {{< /quote >}}
 
 Parameters:
-  .Inner
-      The quotation content. Required.
+  background
+      Theme-aware or fixed background color. Defaults to "primary".
 
-Named/positional parameters:
-  None.
+  gradient
+      Gradient style. Defaults to false. When false, the background is a
+      solid color. Supported values follow the shared gradient resolver:
+      false, "dark-to-light", "light-to-dark", "center-dark", "center-light".
+
+  show_quote
+      Whether to show the opening and closing quotation marks. Defaults to true.
 
 Input:
   Markdown or text placed between the shortcode tags.
 
-Output:
-  A styled quotation block with quotation marks, using Tailwind CSS
-  utility classes.
-
 Notes:
   - The shortcode processes .Inner with Hugo's markdownify function.
-  - No HTML list or column structure is generated.
+  - Background and text colors are resolved through the shared color resolver.
+  - Gradient rendering is handled by the shared gradient resolver.
 */}}
 
-<div class="my-8 rounded-2xl bg-surface px-6 py-6 md:px-8 md:py-8">
-  <div class="prose prose-lg max-w-none text-theme">
+{{- $background := .Get "background" | default "primary" -}}
+{{- $gradient := .Get "gradient" -}}
+{{- if eq $gradient "" -}}
+  {{- $gradient = false -}}
+{{- end -}}
+{{- $showQuote := .Get "show_quote" -}}
+{{- if eq $showQuote "" -}}
+  {{- $showQuote = true -}}
+{{- else -}}
+  {{- $showQuote = $showQuote | lower | eq "true" -}}
+{{- end -}}
+
+{{- $colorLogic := partial "helpers/color-resolver.html" (dict "color" $background) -}}
+{{- $gradientLogic := partial "helpers/gradient-resolver.html" (dict
+  "color" $background
+  "gradient" $gradient
+  "gradient_direction" "horizontal"
+) -}}
+
+<div class="my-8 rounded-2xl {{ $colorLogic.bg_class }} px-6 py-6 md:px-8 md:py-8 {{ $colorLogic.on_class }}"{{ if $gradientLogic.enabled }} style="{{ $gradientLogic.style }}"{{ end }}>
+  <div class="prose prose-lg max-w-none {{ $colorLogic.on_class }}">
     <p class="!mt-0 !mb-0">
-      <span aria-hidden="true" class="text-5xl leading-none align-middle">“</span>{{ .Inner | markdownify }}<span aria-hidden="true" class="text-5xl leading-none align-middle">”</span>
+      {{- if $showQuote -}}
+      <span aria-hidden="true" class="text-5xl leading-none align-middle">“</span>
+      {{- end -}}
+      {{ .Inner | markdownify }}
+      {{- if $showQuote -}}
+      <span aria-hidden="true" class="text-5xl leading-none align-middle">”</span>
+      {{- end -}}
     </p>
   </div>
 </div>

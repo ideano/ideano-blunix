@@ -25,7 +25,7 @@ The body is Markdown and is rendered with markdownify.
 {{- $title := .Get "title" | default (i18n "executive_summary") -}}
 {{- $icon := .Get "icon" | default "bi bi-lightbulb-fill" -}}
 {{- $color := .Get "color" | default "primary" -}}
-{{- $gradient := .Get "gradient" -}}
+{{- $gradient := .Get "gradient"  | default "center-dark" -}}
 {{- if eq $gradient "" -}}
   {{- $gradient = "center-dark" -}}
 {{- end -}}

@@ -30,11 +30,11 @@ Notes:
 */}}
 
 {{- $background := .Get "background" | default "primary" -}}
-{{- $gradient := .Get "gradient" -}}
+{{- $gradient := .Get "gradient" | default false -}}
 {{- if eq $gradient "" -}}
   {{- $gradient = false -}}
 {{- end -}}
-{{- $showQuote := .Get "show_quote" -}}
+{{- $showQuote := .Get "show_quote" | default true -}}
 {{- if eq $showQuote "" -}}
   {{- $showQuote = true -}}
 {{- else -}}

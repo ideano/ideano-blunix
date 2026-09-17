@@ -1,54 +1,67 @@
 {{/*
 text-image
 
-Text-and-image section with optional CTA buttons and configurable image side.
+Text-and-image section with configurable image position and visual variant.
 
 Usage:
   - block: text-image
-    id: "intro"
-    title: "Our Solution"
+    id: "solution"
+    title: "Our solution"
     text: "Markdown **content**."
     image:
       src: "images/solution.webp"
       alt: "Our solution"
-    image_left: true
+    image_position: "right"
+    variant: "default"
     buttons:
       - label: "Learn more"
         url: "/about/"
 
 Parameters:
-  id         Optional section ID. Default: `text-image`.
-  title      Section heading.
-  text       Markdown content.
-  image      Object containing `src` and `alt`.
-  image_left Optional boolean. `true` places the image on the left;
-             otherwise it is placed on the right.
-  buttons    Optional button configuration passed to `components/buttons.html`.
+  id             Optional section ID. Default: `text-image`.
+  title          Section heading.
+  text           Markdown content.
+  image          Object containing `src` and `alt`.
+  image_position Optional `left` or `right`. Default: `right`.
+  variant        Optional visual variant: `default` or `card`. Default: `default`.
+  buttons        Optional button configuration passed to `components/buttons.html`.
 
+Variants:
+  default  5/12 image + 7/12 content layout with a plain image.
+  card     1/2 image + 1/2 content layout with rounded corners and shadow.
 */}}
+{{ $imagePosition := .Params.image_position | default "right" }}
+{{ $variant := .Params.variant | default "default" }}
+
+{{ if eq $variant "card" }}
+<section class="relative z-10 overflow-hidden pb-16 md:pb-24" id="{{ .Params.id | default "text-image" }}">
+  <div class="relative container mt-16 gap-[30px] md:mt-24">
+    <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-2">
+      <div class="order-1 {{ if eq $imagePosition "right" }}md:order-2{{ else }}md:order-1{{ end }} relative">
+        {{ partial "components/image-responsive.html" (dict
+          "src" .Params.image.src
+          "alt" .Params.image.alt
+          "class" "rounded-lg shadow-md relative z-[1]"
+          "loading" "lazy"
+          "sizes" "(min-width: 768px) 550px, 100vw"
+          "widths" (slice 320 400 550 700 900 1100 1400)
+        ) }}
+      </div>
+      <div class="order-2 {{ if eq $imagePosition "right" }}lg:me-8 md:order-1{{ else }}lg:ms-8 md:order-2{{ end }}">
+        <h2 class="mb-4 text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
+        <div class="prose max-w-none prose-p:mb-4 prose-p:max-w-xl prose-p:text-2xl prose-p:leading-8 prose-p:text-theme-muted prose-h3:mb-4 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-8 prose-h3:md:leading-9 prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
+          {{ .Params.text | markdownify }}
+        </div>
+        {{ partial "components/buttons.html" (dict "Root" .Root "buttons" .Params.buttons) }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ else }}
 <section class="relative py-16 md:py-24" id="{{ .Params.id | default "text-image" }}">
   <div class="relative container">
     <div class="grid grid-cols-1 items-center gap-[30px] md:grid-cols-12">
-      {{ if .Params.image_left }}
-        <div class="md:col-span-6 lg:col-span-5">
-          <div class="grid grid-cols-12 items-center gap-6">
-            <div class="col-span-12">
-              <div class="grid-cols-0 grid gap-0">
-                {{ partial "components/image-responsive.html" (dict
-                  "src" .Params.image.src
-                  "alt" .Params.image.alt
-                  "class" "w-full"
-                  "loading" "lazy"
-                  "sizes" "(min-width: 768px) 500px, 100vw"
-                  "widths" (slice 320 400 500 640 800 1000 1200)
-                ) }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {{ end }}
-
-      <div class="{{ if not .Params.image_left }}order-2 md:order-1{{ end }} md:col-span-6 lg:col-span-7">
+      <div class="{{ if eq $imagePosition "right" }}order-2 md:order-1{{ else }}order-1 md:order-2{{ end }} md:col-span-6 lg:col-span-7">
         <div class="lg:ms-5">
           <h2 class="text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ .Params.title }}</h2>
           <div class="prose max-w-none prose-p:max-w-xl prose-p:text-2xl prose-p:text-theme-muted prose-h3:mt-6 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:leading-normal prose-h3:md:leading-normal prose-h3:font-semibold prose-a:text-primary prose-a:hover:text-primary-dark prose-a:font-semibold prose-a:underline hover:prose-a:no-underline">
@@ -58,24 +71,23 @@ Parameters:
         </div>
       </div>
 
-      {{ if not .Params.image_left }}
-        <div class="order-1 md:order-2 md:col-span-6 lg:col-span-5">
-          <div class="grid grid-cols-12 items-center gap-6">
-            <div class="col-span-12">
-              <div class="grid-cols-0 grid gap-0">
-                {{ partial "components/image-responsive.html" (dict
-                  "src" .Params.image.src
-                  "alt" .Params.image.alt
-                  "class" "w-full"
-                  "loading" "lazy"
-                  "sizes" "(min-width: 768px) 500px, 100vw"
-                  "widths" (slice 320 400 500 640 800 1000 1200)
-                ) }}
-              </div>
+      <div class="{{ if eq $imagePosition "right" }}order-1 md:order-2{{ else }}order-2 md:order-1{{ end }} md:col-span-6 lg:col-span-5">
+        <div class="grid grid-cols-12 items-center gap-6">
+          <div class="col-span-12">
+            <div class="grid-cols-0 grid gap-0">
+              {{ partial "components/image-responsive.html" (dict
+                "src" .Params.image.src
+                "alt" .Params.image.alt
+                "class" "w-full"
+                "loading" "lazy"
+                "sizes" "(min-width: 768px) 500px, 100vw"
+                "widths" (slice 320 400 500 640 800 1000 1200)
+              ) }}
             </div>
           </div>
         </div>
-      {{ end }}
+      </div>
     </div>
   </div>
 </section>
+{{ end }}

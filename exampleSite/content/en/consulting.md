@@ -13,7 +13,8 @@ blocks:
     contrast: "10%"
 
 
-  - block: text-image-bg
+  - block: text-image
+    variant: card
     id: intro
     title: "Professional Consulting"
     text: |

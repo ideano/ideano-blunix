@@ -586,3 +586,34 @@ MIT License - See [LICENSE](LICENSE) file for details.
 Developed and maintained by [Blunix GmbH](https://www.blunix.com)
 
 
+
+## Clients block
+
+The `clients` block displays client/brand logos with optional animation. Every
+logo opens an accessible modal with the client logo, name, description, and an
+optional website link.
+
+Supported animation modes are: `static`, `marquee`, `orbit`, `carousel`,
+`fade`, `shuffle`, `float`, `wave`, `stack`, `scatter`, `ticker`, `reveal`,
+`scroll`, `zoom`, `grid-pulse`, `radar`, `constellation`, and `featured`.
+
+Example:
+
+```yaml
+- block: clients
+  id: "clients"
+  title: "Our clients"
+  text: "Organizations we've had the opportunity to work with."
+  animation: "orbit"
+  clients:
+    - name: "Client One"
+      logo: "images/clients/client-one.svg"
+      description: "A short description of Client One."
+      url: "https://example.com"
+    - name: "Client Two"
+      logo: "images/clients/client-two.svg"
+      description: "A short description of Client Two."
+```
+
+The `animation` parameter defaults to `static`. Animation is automatically
+reduced when the visitor has `prefers-reduced-motion` enabled.

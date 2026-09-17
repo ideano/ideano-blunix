@@ -612,3 +612,223 @@ try {
     });
   });
 } catch (error) {}
+
+//=========================================//
+/*          Clients Block                  */
+//=========================================//
+(function () {
+  function createLogoElement(src, alt) {
+    if (!src) return null;
+    var img = document.createElement("img");
+    img.src = src;
+    img.alt = alt || "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.className = "clients-modal-image";
+    return img;
+  }
+
+  function initClientsBlock(block) {
+    var cards = Array.prototype.slice.call(block.querySelectorAll("[data-client-card]"));
+    var dataNode = block.querySelector("[data-clients-data]");
+    var stage = block.querySelector("[data-clients-stage]");
+    var animation = block.getAttribute("data-animation") || "static";
+    if (!dataNode || !stage || !cards.length) return;
+
+    var clients = [];
+    try { clients = JSON.parse(dataNode.textContent || "[]"); } catch (e) { return; }
+    if (!clients.length) return;
+
+    cards.forEach(function (card, index) {
+      card.style.setProperty("--client-index", index);
+      card.style.setProperty("--client-angle", (360 / clients.length) * index);
+    });
+
+    var modal = block.querySelector("[data-clients-modal]");
+    var dialog = block.querySelector("[data-modal-dialog]");
+    var modalLogo = block.querySelector("[data-modal-logo]");
+    var modalTitle = block.querySelector("[data-modal-title]");
+    var modalDescription = block.querySelector("[data-modal-description]");
+    var modalLink = block.querySelector("[data-modal-link]");
+    var lastFocused = null;
+
+    function openModal(index) {
+      var client = clients[index];
+      if (!client || !modal) return;
+      lastFocused = document.activeElement;
+      modalLogo.textContent = "";
+
+      // Use the already-rendered logo URL from the clicked card. This is
+      // important for Hugo image processing, where the final browser URL
+      // may differ from the original `client.logo` path.
+      var sourceCard = cards[index];
+      var sourceImage = sourceCard ? sourceCard.querySelector("img") : null;
+      var logoSrc = sourceImage ? (sourceImage.currentSrc || sourceImage.src) : client.logo;
+      var img = createLogoElement(logoSrc, client.name);
+      if (img) {
+        img.loading = "eager";
+        modalLogo.appendChild(img);
+      }
+
+      modalTitle.textContent = client.name || "Client";
+      // `description` is markdownified by Hugo before it is serialized into
+      // the JSON payload, so the modal receives ready-to-render HTML.
+      modalDescription.innerHTML = client.description || "";
+
+      var clientUrl = typeof client.url === "string" ? client.url.trim() : "";
+      if (clientUrl) {
+        modalLink.href = clientUrl;
+        modalLink.hidden = false;
+      } else {
+        modalLink.hidden = true;
+        modalLink.removeAttribute("href");
+      }
+      modal.hidden = false;
+      document.body.classList.add("clients-modal-open");
+      dialog.focus();
+    }
+
+    function closeModal() {
+      if (!modal || modal.hidden) return;
+      modal.hidden = true;
+      document.body.classList.remove("clients-modal-open");
+      if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        openModal(parseInt(card.getAttribute("data-client-index"), 10));
+      });
+    });
+
+    block.querySelectorAll("[data-modal-close]").forEach(function (button) {
+      button.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!modal || modal.hidden) return;
+      if (event.key === "Escape") closeModal();
+      if (event.key === "Tab") {
+        var focusable = modal.querySelectorAll("button:not([disabled]), a[href]:not([hidden])");
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    });
+
+    function setActive(index) {
+      cards.forEach(function (card, i) { card.classList.toggle("is-active", i === index); });
+    }
+
+    if (["carousel", "fade", "zoom"].indexOf(animation) !== -1) {
+      var current = Math.floor(Math.random() * clients.length);
+      setActive(current);
+      if (clients.length > 1) {
+        window.setInterval(function () { current = (current + 1) % clients.length; setActive(current); }, animation === "carousel" ? 4000 : 3500);
+      }
+    }
+
+    if (animation === "shuffle") {
+      var shuffleIndex = Math.floor(Math.random() * clients.length);
+      setActive(shuffleIndex);
+      window.setInterval(function () {
+        shuffleIndex = Math.floor(Math.random() * clients.length);
+        setActive(shuffleIndex);
+        var shuffled = cards.slice().sort(function () { return Math.random() - 0.5; });
+        shuffled.forEach(function (card) { stage.querySelector("[data-clients-track]").appendChild(card); });
+      }, 3000);
+    }
+
+    if (animation === "stack") {
+      var stackIndex = 0;
+      function positionStack() {
+        cards.forEach(function (card, i) {
+          var offset = (i - stackIndex + cards.length) % cards.length;
+          card.style.zIndex = String(cards.length - offset);
+          card.style.transform = "translate(" + (offset * 5) + "px," + (offset * -5) + "px) rotate(" + (offset * 1.5) + "deg)";
+          card.classList.toggle("is-active", offset === 0);
+        });
+      }
+      positionStack();
+      if (clients.length > 1) window.setInterval(function () { stackIndex = (stackIndex + 1) % clients.length; positionStack(); }, 2800);
+    }
+
+    if (animation === "scatter") {
+      function scatter() {
+        var width = Math.max(stage.clientWidth, 320);
+        var height = Math.max(stage.clientHeight, 300);
+        cards.forEach(function (card, i) {
+          var x = (Math.random() - .5) * Math.max(80, width - 180);
+          var y = (Math.random() - .5) * Math.max(60, height - 120);
+          var r = (Math.random() - .5) * 14;
+          card.style.setProperty("--scatter-x", x.toFixed(0));
+          card.style.setProperty("--scatter-y", y.toFixed(0));
+          card.style.setProperty("--scatter-r", r.toFixed(1));
+          card.style.setProperty("--client-index", i);
+        });
+      }
+      scatter();
+      window.setInterval(scatter, 5000);
+    }
+
+    if (animation === "grid-pulse" || animation === "radar") {
+      var pulseIndex = 0;
+      setActive(0);
+      window.setInterval(function () { pulseIndex = (pulseIndex + 1) % clients.length; setActive(pulseIndex); }, 900);
+    }
+
+    if (animation === "reveal" || animation === "scroll") {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          if (animation === "reveal") stage.classList.add("is-visible");
+          cards.forEach(function (card) { card.classList.add("is-visible"); });
+          if (animation === "scroll") observer.unobserve(entry.target);
+        });
+      }, { threshold: .15 });
+      observer.observe(stage);
+    }
+
+    if (animation === "featured") {
+      var featuredLogo = block.querySelector("[data-featured-logo]");
+      var featuredName = block.querySelector("[data-featured-name]");
+      var featuredDescription = block.querySelector("[data-featured-description]");
+      var featuredButton = block.querySelector("[data-featured-button]");
+      var featuredIndex = Math.floor(Math.random() * clients.length);
+      function updateFeatured(index) {
+        var client = clients[index];
+        featuredIndex = index;
+        featuredLogo.textContent = "";
+        var image = createLogoElement(client.logo, client.name);
+        if (image) featuredLogo.appendChild(image);
+        featuredName.textContent = client.name || "Client";
+        featuredDescription.innerHTML = client.description || "";
+        featuredButton.onclick = function () { openModal(featuredIndex); };
+        setActive(index);
+      }
+      updateFeatured(featuredIndex);
+      if (clients.length > 1) {
+        window.setInterval(function () { updateFeatured(Math.floor(Math.random() * clients.length)); }, 6000);
+      }
+    }
+
+    if (animation === "orbit" || animation === "constellation") {
+      // CSS handles the continuous motion. The random initial phase keeps
+      // multiple client blocks on the same page from feeling synchronized.
+      var phase = Math.floor(Math.random() * 360);
+      stage.style.setProperty("--clients-phase", phase + "deg");
+    }
+  }
+
+  function initAllClients() {
+    document.querySelectorAll("[data-clients-block]").forEach(initClientsBlock);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAllClients);
+  else initAllClients();
+})();

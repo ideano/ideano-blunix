@@ -1,46 +1,393 @@
-# Modifications 
-This theme is modified to support Farsi language (right to left and proper font), with added functionalities.
-To see how to use each feature, review content of exampleSite (config, menus, content, ...)
+# Hugo Theme Ideano
 
-## General
-* all references to iconscout and fontawsome uil- and fa- icons are removed to remove need for external dependencies. There is a local version of bootstrap-icons wich could be used with bi- .
-* Original theme used a pre-compiled style.css theme. This is good for end user, but because many tailwind classes and utilities are not inclueded in pre-compiled file, in layout and theme modifications many problems arises. So this theme is modified to use compileTailwind variable in params.toml file. If false (which is default), theme usese precompiled style.css file, but if true (for theme development), it uses tailwind and hugo to compile a tailwind.css class each time and uses it. To enable tailwind compilation, install nodejs and then use npm install command to install pre-requirements. Also use hugo --minify to build the production content for release.
-__IMPORTANT:__ always use: npm run build:css to create a new compiled version of style.css, if you had any modification to theme, so fixed version of style.css be available to end user.
+A flexible, responsive Hugo theme for professional, consulting, service, and business websites. The theme combines the original block-based block-based design with multilingual support, RTL support, reusable shortcodes, configurable visual themes, responsive images, analytics integrations, and interactive content blocks.
 
-## Farsi, Arabic and RTL
-* Added Iran flag, and IranSansX font.
-* Fixing different parts to support rtl (text arrangement, menus, scrollers, feature-grids, ...)
-* Fixing all menu url to pageRef, and all urls in layouts to use a url.html helper. If url starts with httpL//, ... this helper keeps url untouched, but if url is internal url (like /features/) translates path to be compatible with language. (so /features/ would be /fa/features/ in farsi and /ar/features in arabic automatically).
-* Displayed time for writing style content (blog, article, ...) converted to Jalali with a help of js function as page loads end, if language is farsi.
+This repository contains the original theme together with project-specific extensions and fixes, including Farsi/Arabic RTL support, additional blocks, themeable colors and fonts, analytics integrations, and the reusable **parties** components.
 
+## Highlights
 
-## Configurations
-* modified for hugo Hugo v0.156.0 deprecations. See https://discourse.gohugo.io/t/56732 . (like fixing languageName to label in config)
-* Site logo could be selected for each language seperately. 
-* Site meta (like keywords, author, ...) could be set for each language seperately. 
+- **Block-based pages** — Build pages by composing reusable blocks from front matter.
+- **Responsive design** — Mobile-first layouts with Tailwind CSS utilities.
+- **Multilingual and RTL support** — Language-specific content, logos, metadata, URLs, fonts, and RTL layout support.
+- **Writing sections** — Use one `writing` content type for blogs, articles, posts, and similar sections.
+- **Responsive images** — Hugo image resources are resized and served with responsive `srcset`/WebP output where applicable.
+- **Interactive parties components** — Display party/brand logos as a scrolling strip or animated showcase with accessible modals.
+- **Visual sub-themes** — Select color and font themes independently for each language/site configuration.
+- **Reusable shortcodes** — Quotes, image paragraphs, download boxes, summaries, columns, lists, and figures.
+- **Contact/map blocks** — OpenStreetMap, Google Maps iframe, or static location-image alternatives.
+- **SEO-oriented output** — Standard Hugo metadata plus OpenGraph/Twitter-card support from the theme templates.
+- **Optional analytics** — Google Analytics 4, Microsoft Clarity, Cloudflare Web Analytics, Plausible, Matomo, Umami, and Open Web Analytics.
+- **No runtime dependency on Node.js for users** — A compiled stylesheet is included for normal theme consumption.
 
-## Blocks
-All blocks have their parameters and example usage documented on top of their source file.
-* text-only block, which creates a full width block only with text (no image), usefull for descriptions.
-* address-osm block, which fetches location from open street maps and shows it to user. for contact pages.
-* address-googlemap block, which fetches location from google map and shows it to user. for contact pages. It uses iframe style, embedding google map code, to prevent need for google apikey and apikey problems like expiration.
-* address-image block, which shows location from an image (may be screenshot of user location from a map service) and shows it to user. for contact pages. Used when no reliance on external map service and api is desired (much faster load, loads in case of external service outage).
+## Requirements
 
-fixed for rtl
-* partner-scrollers could have optional title text, which if exits, shown beside logo when scrolling. (usefull for logos without title in them, or for translations.)
-* feature-grid items could have optional url, which links feature title to another page.
-* contacts are arranged in middle of page, so if they are less or more than 4, it would be visually more beautiful.
-* cta block fixed to show (looking for) element if actually more data is exist to show.
-* hero_breadcrumb uses explicit url specified by user. (not trying to inference it)
+For normal site usage, use a recent Hugo release compatible with the theme. The theme was updated for Hugo v0.156.0 deprecations.
 
-modified for added features
-* hero-breadcrumb accepts contrast parameter, which sets opacity level of contrast drop over picture, which makes reading texts easier on light images.
+For theme development or CSS recompilation:
 
-### Fixed Colors
+- Hugo
+- Node.js and npm
 
-The `color` and `hover_color` parameters for button accept any of the following fixed color names (in addition to the theme colors `primary`, `secondary`, `success`, `info`, `danger`, `warning`, `light`, and `dark`):
+The distributed `static/css/style.css` is already compiled, so Node.js/npm is not required merely to use the theme.
 
+## Installation
+
+### Hugo Module
+
+Initialize your site as a module if necessary:
+
+```bash
+hugo mod init github.com/<your-username>/<your-site>
 ```
+
+Add the theme to `hugo.toml`:
+
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/ideano/hugo-theme-ideano"
+```
+
+Then fetch it:
+
+```bash
+hugo mod get -u
+```
+
+When using Hugo Modules, do not also set `theme = "..."` for the imported theme.
+
+### Git submodule
+
+```bash
+git submodule add https://github.com/ideano/hugo-theme-ideano.git themes/hugo-theme-ideano
+```
+
+Then enable it:
+
+```toml
+theme = "hugo-theme-ideano"
+```
+
+### Local theme
+
+```bash
+mkdir -p themes
+git clone https://github.com/ideano/hugo-theme-ideano.git themes/hugo-theme-ideano
+```
+
+Then set:
+
+```toml
+theme = "hugo-theme-ideano"
+```
+
+If the site was cloned with the theme as a submodule:
+
+```bash
+git clone --recurse-submodules <your-site-repo>
+```
+
+or:
+
+```bash
+git submodule update --init --recursive
+```
+
+## Basic configuration
+
+A minimal site configuration can look like:
+
+```toml
+baseURL = "https://example.com/"
+locale = "en"
+title = "Your Company"
+```
+
+Site parameters live in `config/_default/params.toml`. For example:
+
+```toml
+logo = "/images/logo.svg"
+footer_logo = "/images/logo-full.svg"
+featured_image = "featured.webp"
+
+[[contact]]
+name = "contact@example.com"
+icon = "bi-envelope"
+link = "mailto:contact@example.com"
+
+[[contact]]
+name = "+1 234 567 890"
+icon = "bi-telephone"
+link = "tel:+1234567890"
+```
+
+See `exampleSite/` for a complete configuration and content example.
+
+## Multilingual and RTL sites
+
+Languages are configured in `config/_default/languages.toml`. Each language can have its own content directory, title, logo, metadata, visual color theme, and font theme.
+
+```toml
+[en]
+label = "English"
+locale = "en-us"
+contentDir = "content/en"
+title = "Your Company"
+weight = 1
+
+[fa]
+label = "فارسی"
+locale = "fa-ir"
+contentDir = "content/fa"
+title = "شرکت شما"
+weight = 2
+```
+
+The theme includes RTL fixes for navigation, text arrangement, scrollers, feature grids, and other components. Internal URLs are resolved through the theme's URL helpers so language prefixes are preserved automatically.
+
+For Farsi content, writing dates are converted to Jalali on page load.
+
+## Block-based page system
+
+Pages are assembled from reusable blocks in front matter. Each block has a `block` name and block-specific parameters.
+
+```yaml
+---
+title: "Services"
+description: "Professional services"
+
+blocks:
+  - block: hero-breadcrumb
+    title: "Services"
+    subtitle: "Expert solutions"
+    background: "images/services/hero.webp"
+    breadcrumb: "Services"
+
+  - block: text-image
+    title: "Custom solutions"
+    text: "We provide tailored services."
+    image:
+      src: "images/services/consulting.webp"
+      alt: "Consulting services"
+    reverse: false
+
+  - block: features-grid
+    title: "What we offer"
+    items:
+      - icon: "bi-server"
+        title: "Infrastructure"
+        description: "Scalable server solutions"
+      - icon: "bi-shield-check"
+        title: "Security"
+        description: "Enterprise-grade protection"
+
+  - block: cta
+    title: "Ready to get started?"
+    text: "Contact us today."
+    button:
+      text: "Get in touch"
+      link: "/contact/"
+---
+```
+
+Blocks render in the order they appear. Parameters not used by a block are ignored, so each block can be configured independently.
+
+### Available blocks
+
+| Block | Purpose |
+|---|---|
+| `hero` | Full-width hero section with image/background content |
+| `hero-breadcrumb` | Hero section with breadcrumb navigation and optional image contrast |
+| `banner` | Simple banner section |
+| `about` | About section with image and text |
+| `text-only` | Full-width text content block |
+| `text-image` | Text alongside an image |
+| `address-osm` | Location block using OpenStreetMap |
+| `address-googlemap` | Location block using an embedded Google Maps iframe |
+| `address-image` | Location block using a static map/location image |
+| `features-grid` | Feature/service grid with icons and optional links |
+| `process-timeline` | Process or workflow timeline |
+| `faq` | Accordion FAQ section |
+| `pricing-tabs` | Tabbed pricing presentation |
+| `ethics-accordion` | Expandable ethics/values content |
+| `parties-scroller` | Horizontally scrolling party/brand logos |
+| `parties-showcase` | Animated party/brand logo showcase with modal details |
+| `contact-standard` | Standard contact information section |
+| `cta` | Call-to-action section |
+
+The source file for each block documents its parameters and usage examples at the top of the file.
+
+## Parties
+
+The `parties-scroller` and `parties-showcase` blocks use the same party data model:
+
+```yaml
+parties:
+  - name: "Party One"
+    logo: "images/parties/party-one.svg"
+    description: "A short **Markdown** description."
+    alt: "Party One logo"
+    url: "https://example.com"
+  - name: "Party Two"
+    logo: "images/parties/party-two.webp"
+    description: "Another party description."
+    alt: "Party Two logo"
+```
+
+Every party uses the following fields:
+
+| Parameter | Required | Description |
+|---|---|---|
+| `name` | Recommended | Display name and fallback for `alt` |
+| `logo` | Yes | Local image path or remote image URL |
+| `description` | No | Description shown by the showcase modal; Markdown is rendered |
+| `alt` | No | Logo alternative text; defaults to `name` |
+| `url` | No | Website URL; the showcase only displays the website link when present |
+
+### `parties-scroller`
+
+A compact horizontal logo strip. It supports scrolling direction, speed, start delay, display time, background color, and gradients.
+
+```yaml
+- block: parties-scroller
+  color: "primary"
+  gradient: "center-dark"
+  gradient_direction: "horizontal"
+  direction: "left"
+  speed: 80
+  start_delay: "0s"
+  display_time: 0
+  parties:
+    - name: "Party One"
+      logo: "images/parties/party-one.svg"
+      description: "Description"
+      alt: "Party One logo"
+      url: "https://example.com"
+```
+
+### `parties-showcase`
+
+An interactive logo showcase. Clicking a logo opens an accessible modal containing the logo, name, Markdown-rendered description, and an optional website link.
+
+```yaml
+- block: parties-showcase
+  id: "parties"
+  title: "Our parties"
+  text: "Organizations we've had the opportunity to work with."
+  animation: "orbit"
+  parties:
+    - name: "Party One"
+      logo: "images/parties/party-one.svg"
+      description: "A short **Markdown** description."
+      alt: "Party One logo"
+      url: "https://example.com"
+```
+
+Supported animation modes:
+
+`static`, `marquee`, `orbit`, `carousel`, `fade`, `shuffle`, `float`, `wave`, `stack`, `scatter`, `ticker`, `reveal`, `scroll`, `zoom`, `grid-pulse`, `radar`, `constellation`, and `featured`.
+
+Animation automatically falls back to a static presentation when the visitor has `prefers-reduced-motion: reduce` enabled.
+
+## Shortcodes
+
+All custom shortcodes document their parameters at the top of their source file.
+
+### Quote
+
+Use `quote` to emphasize and box content. The shortcode body supports Markdown.
+
+### Imaged paragraph
+
+Use `imaged-paragraph` to place an image beside paragraph content. It supports configurable image size, title, title position, and image side.
+
+### Download box
+
+Use `download-box` to create a download link with an icon and styled content. Icons/images used by this shortcode should be placed under the site's `static/` directory so Hugo copies them to the generated site.
+
+### Summary
+
+Use `summary` for a summary box with an optional title and icon. The shortcode body supports Markdown.
+
+### Columns and list columns
+
+Use `columns` and `list-columns` for multi-column content layouts.
+
+### Figure
+
+The figure shortcode can be used for theme images. Images that must be copied unchanged to the generated site should be placed in the site's `static/` directory.
+
+## Visual sub-themes
+
+Colors and fonts are selected independently. Configure them per language/site in `config/_default/languages.toml`:
+
+```toml
+[en.params]
+theme-colors = "ruby"
+theme-fonts = "default"
+
+[fa.params]
+theme-colors = "aquamarine"
+theme-fonts = "iran-sans-x"
+```
+
+If omitted, both default to `default`.
+
+The generated `<html>` element exposes these choices as `data-theme-colors` and `data-theme-fonts`. The theme uses CSS custom properties and semantic utilities such as `bg-primary`, `text-primary`, `text-theme`, `bg-surface`, `border-primary`, `font-sans`, and `font-heading`.
+
+The repository includes color and font theme definitions under `assets/css/themes/`.
+
+### Theme-aware colors
+
+Button `color` and `hover_color` parameters accept the following theme-aware semantic colors. Their actual values come from the selected color theme:
+
+```text
+primary
+secondary
+accent
+success
+info
+danger
+warning
+light
+dark
+```
+
+The theme also provides semantic tokens for general page styling:
+
+```text
+background
+surface
+text
+text-muted
+border
+```
+
+Theme-aware variants include the following CSS custom properties and utilities where supported:
+
+```text
+primary:        --theme-primary, --theme-primary-dark, --theme-primary-light, --theme-primary-soft, --theme-on-primary
+secondary:      --theme-secondary, --theme-secondary-dark, --theme-secondary-light
+accent:         --theme-accent, --theme-accent-dark, --theme-accent-light
+success:        --theme-success, --theme-success-dark, --theme-success-light
+info:           --theme-info, --theme-info-dark, --theme-info-light
+danger:         --theme-danger, --theme-danger-dark, --theme-danger-light
+warning:        --theme-warning, --theme-warning-dark, --theme-warning-light
+light:          --theme-light
+dark:           --theme-dark
+background:     --theme-background
+surface:        --theme-surface
+text:           --theme-text, --theme-text-muted
+border:         --theme-border
+```
+
+For example, theme-aware utility classes include `bg-primary`, `bg-primary-dark`, `bg-primary-light`, `text-primary`, `text-primary-dark`, `text-primary-light`, `text-on-primary`, `border-primary`, `bg-secondary`, `text-success`, `bg-warning`, `border-danger`, `bg-background`, `bg-surface`, `text-theme`, `text-theme-muted`, and `border-theme`.
+
+### Fixed colors
+
+Button `color` and `hover_color` parameters also accept standard CSS named colors. These are fixed colors and do not change when the selected theme changes:
+
+```text
 aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black,
 blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse,
 chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue,
@@ -65,82 +412,27 @@ slateblue, slategray, snow, springgreen, steelblue, tan, teal, thistle,
 tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen
 ```
 
-**Note:** Each fixed color exposes its own `--color-<name>`, `--color-<name>-dark`, and `--color-<name>-on` CSS custom properties (defined in `theme-fixed-colors.css`), unlike theme colors which share a single `--theme-on-primary` token.
+Each fixed color exposes `--color-<name>`, `--color-<name>-dark`, and `--color-<name>-on` custom properties. Fixed colors are independent of the selected theme.
 
-**Caveat:** `light` and `dark` are flat theme colors with no `-dark`/`-light` variants of their own (e.g. there's no `--theme-light-dark` token). Using `color="light"` or `color="dark"` without an explicit `hover_color` will produce a broken `hover:bg-light-dark` / `hover:bg-dark-dark` class — always pair them with an explicit `hover_color` when used as a button color.
+**Important:** `light` and `dark` are flat theme-aware colors and do not have their own `-dark`/`-light` variants. When `color="light"` or `color="dark"` is used for a button, provide an explicit `hover_color` instead of relying on an automatically generated `*-dark` hover color.
 
-## Shortcodes
-All shortcodes have their parameters and example usage documented on top of their source file.
-* quote shortcode to box and bold some part of text. text inside could be markdown. If vscode shortcut key installed (see Tools), you could select text and press cmd+k then 1 to quote text. (see quote.html for all possible parameters.)
-* imaged-paragraph shortcode to add image to a paragraph. text inside could be markdown. Image size, title and title positon, left or right and many other parameters configurable. (see imaged-paragraph.html for all possible parameters.) 
-* download-box shortcode to add a download link with icon and a box around part of text. text inside could be markdown. icon image should be inside site static dir, not assets dir, else it would not copy to build output. (see download-box.html for all possible parameters.) 
-* summary shortcode to create a summary box with optional title and icon, and content between shortcode tags. Used usually at top of writings. (see summary.html for all possible parameters.)
-original figure shortcode of theme images also should be in static dir of site, not assets, else they will not copy to build output.
+## Analytics
 
-## Tools
-* create_favicons.sh to create favicon set from a master logo.png file.
-* vscode_snippets could be installed in vscode, to do repeated actions easier. For example, if quote shortcode shortcut key installed, user could select text and press key combination to quote text.
+Analytics are optional and configured under `[services]` in the site's parameters. A tracker is included only when its required identifier/token is configured.
 
-## writing syle content (blog, articles, posts)
-Orignial theme had a blog layout, but this theme has a writing layout which could be used for blog, articles, and other writing style content. This makes creating different sections, but with same layout simple.
-If you want to create a new writing style section, create a directory for it, and in _index.md of that dir, define cascade type writing to cascade type to all writings in that section, and sectionTitle you want. (for example create posts dir, and adjust _index.md inside it). See blog or articles in exampleSite. We use .Type variable (which should be "writing") to detect is content type. (Original theme used .Section to detect only "blog")
-* if writing section header image is absent, image/writing-list-background.png would be used as default.
-* if writing header image is absent, image/writing-single-background.png would be used as default.
+Supported integrations:
 
-## Visual sub-themes
+| Tracker | Required field | Optional field |
+|---|---|---|
+| Google Analytics 4 | `id` | — |
+| Microsoft Clarity | `id` | — |
+| Cloudflare Web Analytics | `token` | — |
+| Plausible | `domain` | `url` |
+| Matomo | `id` | `url` |
+| Umami | `id` | `url` |
+| Open Web Analytics | `id` | `url` |
 
-The theme includes a Tailwind CSS 4 design-token based sub-theme system. The visual theme is independent of RTL/LTR language direction.
-
-Set the theme in the language/site parameters:
-Color and font themes are selected independently per language. In `config/_default/languages.toml`:
-
-```toml
-[en.params]
-theme-colors = "ruby"
-theme-fonts = "default"
-
-[fa.params]
-theme-colors = "aquamarine"
-theme-fonts = "iran-sans-x"
-```
-
-If either value is omitted, it defaults to `default`. Some of upported color themes are `default`, `tanzanite`, and others. Supported font themes are `default`, `iran-sans-x`, `work-sans`, and `elegant`.
-
-The generated HTML exposes the selections independently as `data-theme-colors` and `data-theme-fonts`. Color definitions live in `assets/css/themes/theme-colorss.css`; font definitions live in `assets/css/themes/theme-fonts.css`.
-
-Theme colors and fonts selection is emitted as `data-theme-colors` and `data-theme-fonts` on the `<html>` element. Colors and fonts are CSS custom properties, so templates use semantic utilities such as `bg-primary`, `text-primary`, `text-theme`, `bg-surface`, `border-primary`, `font-sans`, and `font-heading`.
-
-To create a new theme, add a `[data-theme-colors="your-name"]` `[data-theme-fonts="your-name"]` block to `assets/css/themes/themes.css` and define the `--theme-*` variables. The distributed `static/css/style.css` already contains the compiled Tailwind CSS and theme utilities, so site users do not need Node.js or npm.
-
-For maintainers, `assets/css/tailwind.css` is the Tailwind CSS 4 source. Recompile the committed stylesheet with:
-
-```sh
-npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./static/css/style.css --minify
-```
-
-The repository's existing `static/css/style.css` remains precompiled for zero-build theme consumption.
-
-## Analytics Trackers
-
-The theme supports several optional analytics trackers. Each tracker is enabled independently by providing its required identifier or token. If the required field is empty or omitted, that tracker is not included in the generated pages.
-
-All tracker configuration is placed under `[services]`.
-
-### Supported trackers
-
-| Tracker | Required field | Optional field | Default server |
-|---|---|---|---|
-| Google Analytics 4 | `id` | — | Google |
-| Microsoft Clarity | `id` | — | Microsoft |
-| Cloudflare Web Analytics | `token` | — | Cloudflare |
-| Plausible | `domain` | `url` | `plausible.io` |
-| Matomo | `id` | `url` | Provider/server URL |
-| Umami | `id` | `url` | `analytics.umami.is` |
-| Open Web Analytics | `id` | `url` | — |
-
-### Configuration
-
-Add the required tracker configuration to your site's `params.toml`.
+Example:
 
 ```toml
 [services.google_analytics]
@@ -149,471 +441,161 @@ id = "G-XXXXXXXXXX"
 [services.microsoft_clarity]
 id = "XXXXXXXXXX"
 
-[services.cloudflare_web_analytics]
-token = "XXXXXXXXXX"
-
 [services.plausible]
 domain = "example.com"
 url = ""
 
-[services.matomo]
-id = "1"
-url = ""
-
-[services.umami]
-id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-url = ""
-
-[services.open_web_analytics]
-id = "XXXXXXXXXX"
-url = ""
-```
-
-### Optional trackers
-
-Every tracker is optional. You can enable any combination of trackers, or none of them.
-
-For example, to use only Google Analytics:
-
-```toml
-[services.google_analytics]
-id = "G-XXXXXXXXXX"
-```
-
-All other trackers remain disabled.
-
-### Self-hosted / on-premise servers
-
-**Plausible, Matomo, Umami, and Open Web Analytics** support an optional `url` parameter.
-
-When `url` is provided, the theme uses that URL as the analytics server instead of the service's default hosted/cloud server.
-
-For example:
-
-```toml
 [services.umami]
 id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 url = "https://analytics.example.com"
 ```
 
-If `url` is empty or omitted, the configured default hosted service is used.
+For Plausible, Matomo, Umami, and Open Web Analytics, `url` can point to a self-hosted/on-premise analytics server. Use the base server URL, not the script URL.
 
-The `url` value should be the **base URL of the analytics server**, without the tracker script filename or trailing path.
+All tracker rendering is centralized in `layouts/partials/trackers.html`.
 
-For example:
+## Writing-style content
 
-```toml
-url = "https://analytics.example.com"
-```
+The theme uses the content type `writing` for blog posts, articles, and other writing-oriented sections.
 
-not:
-
-```toml
-url = "https://analytics.example.com/script.js"
-```
-
-### Trackers without server URL configuration
-
-Google Analytics, Microsoft Clarity, and Cloudflare Web Analytics do not have a configurable `url` parameter. Their tracking scripts are loaded from the providers' official hosted endpoints.
-
-### Disabling a tracker
-
-To disable a tracker, simply remove its configuration or leave its required field empty:
-
-```toml
-[services.google_analytics]
-id = ""
-```
-
-An empty required field causes Hugo to omit the corresponding tracking code entirely.
-
-### Tracker implementation
-
-All analytics tracking code is centralized in:
-
-```text
-layouts/partials/trackers.html
-```
-
-The partial is included from the site's `<head>`. Each integration is conditionally rendered, so disabled trackers add no tracking JavaScript to the generated pages.
-
-
-# Hugo Theme Blunix (Original Readme)
-
-A professional, clean Hugo theme designed for consulting and service-based businesses. Features a flexible block-based page layout system, multilingual support, and modern responsive design.
-
-## Preview
-
-![Theme Screenshot](https://raw.githubusercontent.com/Blunix-GmbH/hugo-theme-blunix/main/images/screenshot.png)
-![Theme Thumbnail](https://raw.githubusercontent.com/Blunix-GmbH/hugo-theme-blunix/main/images/tn.png)
-
-## Features
-
-- **Block-based page builder** — Compose pages from reusable content blocks
-- **Multilingual support** — Built-in i18n with English and German translations
-- **Responsive design** — Mobile-first with Tailwind CSS
-- **SEO optimized** — OpenGraph, Twitter Cards, and semantic markup
-- **Service business focused** — Pricing tables, contact sections, and FAQ blocks
-- **Clean codebase** — Modular partials and well-organized templates
-
-## Prerequisites
-
-- **Hugo Extended** (v0.120.0 or later) — [Installation guide](https://gohugo.io/installation/)
-- **Go** (v1.21 or later) — Required for Hugo Modules — [Installation guide](https://go.dev/doc/install)
-
-No Node.js or npm required — CSS is pre-compiled.
-
-## Installation
-
-### As a Hugo Module (Recommended)
-
-Initialize your site as a Hugo Module (if not already):
-
-```bash
-hugo mod init github.com/<your-username>/<your-site>
-```
-
-Add the theme to your `hugo.toml` (or `config/_default/hugo.toml`):
-
-```toml
-[module]
-  [[module.imports]]
-    path = "github.com/Blunix-GmbH/hugo-theme-blunix"
-```
-
-Then download the module:
-
-```bash
-hugo mod get -u
-```
-
-> **Note:** When using Hugo Modules, you do **not** need to set `theme = "..."` in your config. The module import replaces that directive.
-
-### As a Git Submodule
-
-From your Hugo site root:
-
-```bash
-git submodule add https://github.com/Blunix-GmbH/hugo-theme-blunix.git themes/hugo-theme-blunix
-```
-
-Then activate the theme in your `config.toml` or `config/_default/config.toml`:
-
-```toml
-theme = "hugo-theme-blunix"
-```
-
-### As a Local Theme Folder (No Modules/Submodules)
-
-Copy or clone the theme directly into your site's `themes/` directory:
-
-```bash
-mkdir -p themes
-git clone https://github.com/Blunix-GmbH/hugo-theme-blunix.git themes/hugo-theme-blunix
-```
-
-Then set the theme in your config:
-
-```toml
-theme = "hugo-theme-blunix"
-```
-
-### Cloning a Site That Uses This Theme as a Submodule
-
-```bash
-git clone --recurse-submodules <your-site-repo>
-```
-
-Or if you've already cloned without submodules:
-
-```bash
-git submodule update --init --recursive
-```
-
-## Configuration
-
-### Basic Configuration
-
-Minimum required in `config/_default/config.toml`:
-
-```toml
-baseURL = 'https://example.com/'
-locale = 'en'
-title = 'Your Company Name'
-```
-
-### Parameters
-
-Configure site parameters in `config/_default/params.toml`:
-
-```toml
-logo = '/images/logo.svg'
-footer_logo = '/images/logo-full.svg'
-featured_image = 'featured.webp'
-
-[[contact]]
-name = "contact@example.com"
-icon = "fa-solid fa-envelope"
-link = "mailto:contact@example.com"
-
-[[contact]]
-name = "+1 234 567 890"
-icon = "fa-solid fa-phone"
-link = "tel:+1234567890"
-```
-
-### Multilingual Setup
-
-Configure languages in `config/_default/languages.toml`:
-
-```toml
-[en]
-label = "English"
-locale = "en-us"
-contentDir = "content/en"
-title = "Your Company"
-weight = 1
-
-[de]
-label = "Deutsch"
-locale = "de"
-contentDir = "content/de"
-title = "Ihr Unternehmen"
-weight = 2
-```
-
-See the `exampleSite/` directory for a complete working example.
-
-## Block-Based Page Layout
-
-Pages are composed from reusable "blocks" defined in front matter. The theme loops through the `blocks` array and renders each block partial.
-
-### How It Works
-
-1. Define blocks in your page's front matter under the `blocks` key
-2. Each block must have a `block` field matching a partial name in `layouts/partials/blocks/`
-3. Blocks render in the order they appear in the array
-4. Additional parameters are passed to the block partial
-
-### Example Page
+To create a writing section, create a directory and set `type: writing` through its `_index.md` cascade. You can also define a section title there.
 
 ```yaml
 ---
-title: "Our Services"
-description: "Professional consulting services"
-
-blocks:
-  - block: hero-breadcrumb
-    title: "Services"
-    subtitle: "Expert Solutions for Your Business"
-    background: "images/services/hero.webp"
-    breadcrumb: "Services"
-
-  - block: text-image
-    title: "Custom Solutions"
-    text: "We provide tailored consulting services..."
-    image:
-      src: "images/services/consulting.webp"
-      alt: "Consulting services"
-    reverse: false
-
-  - block: features-grid
-    title: "What We Offer"
-    items:
-      - icon: "fa-solid fa-server"
-        title: "Infrastructure"
-        description: "Scalable server solutions"
-      - icon: "fa-solid fa-shield"
-        title: "Security"
-        description: "Enterprise-grade protection"
-
-  - block: cta
-    title: "Ready to Get Started?"
-    text: "Contact us today for a consultation"
-    button:
-      text: "Get in Touch"
-      link: "/contact/"
+title: "Articles"
+cascade:
+  type: writing
+  sectionTitle: "Articles"
 ---
 ```
 
-## Available Blocks
+See the `blog` and `articles` examples in `exampleSite/` for complete examples.
 
-This streamlined theme build includes the following blocks:
+Writing sections use these default header images when no custom image is provided:
 
-- **`hero`** — Full-width hero section with image background
-- **`hero-breadcrumb`** — Hero with breadcrumb navigation
-- **`banner`** — Simple banner section
-- **`about`** — About section with image and text columns
-- **`text-image`** — Text alongside image (left/right configurable)
-- **`text-image-bg`** — Text with image and section background styling
-- **`features-grid`** — Grid of features with icons
-- **`process-timeline`** — Process steps timeline
-- **`faq`** — Accordion-style FAQ
-- **`pricing-tabs`** — Tabbed pricing tables
-- **`ethics-accordion`** — Expandable ethics/values section
-- **`partners-scroller`** — Scrolling partner logos
-- **`contact-standard`** — Contact information section
-- **`cta`** — Call-to-action section
+- `image/writing-list-background.png`
+- `image/writing-single-background.png`
 
-## Multilingual Support
+## Icons and external dependencies
 
-The theme includes translation files in `i18n/`:
+The modified theme removes the original Iconscout/Font Awesome dependency. A local Bootstrap Icons set is available and can be used with `bi-` icon names.
 
-- `en.yaml` — English
-- `de.yaml` — German
+For example:
 
-Use translations in templates:
-
-```go-html-template
-{{ i18n "read_more" }}
-{{ i18n "contact_us" }}
+```yaml
+icon: "bi-envelope"
 ```
 
-Add custom translations by extending these files in your site's `i18n/` directory.
+## Tailwind CSS and theme development
 
-## Theme Structure
+The theme ships with a precompiled `static/css/style.css`, so end users can build the site without Node.js/npm.
 
-```
-hugo-theme-blunix/
-├── archetypes/          # Content templates
-│   └── default.md
-├── assets/              # Assets for Hugo Pipes processing
-│   └── images/          # Theme images (logo, icons)
-├── exampleSite/         # Demo site
-│   ├── config/
-│   └── content/
-├── i18n/                # Translation files
-│   ├── en.yaml
-│   └── de.yaml
-├── layouts/
-│   ├── _default/        # Default templates
-│   │   ├── baseof.html
-│   │   ├── single.html
-│   │   ├── list.html
-│   │   └── _markup/     # Custom render hooks
-│   ├── blog/            # Blog-specific templates
-│   ├── partials/
-│   │   ├── blocks/      # Block components (14 blocks)
-│   │   ├── components/  # Reusable UI components
-│   │   ├── helpers/     # Helper partials
-│   │   ├── _funcs/      # Utility functions
-│   │   ├── head.html
-│   │   ├── header.html
-│   │   └── footer.html
-│   └── shortcodes/      # Custom shortcodes
-├── static/              # Static assets
-│   ├── css/             # Compiled CSS
-│   ├── js/              # JavaScript (Alpine.js, Prism.js)
-│   ├── fonts/           # Web fonts (Nunito, EB Garamond)
-│   ├── libs/            # Third-party libraries
-│   └── images/          # Static images
-├── go.mod               # Hugo Modules definition
-├── hugo.toml            # Module configuration
-├── theme.toml           # Theme metadata
-└── LICENSE
-```
-
-## Updating the Theme
-
-### Hugo Modules
+When modifying the theme's Tailwind classes, maintainers should rebuild the committed stylesheet. Install the project dependencies first, then use the repository's CSS build command:
 
 ```bash
-hugo mod get -u github.com/Blunix-GmbH/hugo-theme-blunix
+npm install
+npm run build:css
 ```
 
-To pin to a specific version:
+For production output:
 
 ```bash
-hugo mod get github.com/Blunix-GmbH/hugo-theme-blunix@v1.0.0
+hugo --minify
 ```
 
-### Git Submodule
-
-```bash
-git submodule update --remote --merge themes/hugo-theme-blunix
-git add themes/hugo-theme-blunix
-git commit -m "Update theme to latest version"
-```
+The Tailwind source is under `assets/css/`. Do not rely on an uncompiled development stylesheet being available to theme users; the committed `static/css/style.css` is the distributable stylesheet.
 
 ## Development
 
-### Running the Example Site
+Run the example site from the repository root:
 
 ```bash
 cd exampleSite
 hugo server --themesDir ../..
 ```
 
-### Production Build
+Then open the local Hugo server shown in the terminal.
+
+For a production build:
 
 ```bash
 hugo --minify
 ```
 
-Output goes to `public/` directory.
+Hugo writes the generated site to `public/`.
 
-## Customization
+## Customization and overrides
 
-### Override Templates
+Hugo's theme lookup system allows a site's own files to override files supplied by a theme. To customize a template, copy it to the same relative path under the site's `layouts/` directory.
 
-To customize a theme template, copy it from the theme's `layouts/` to your site's `layouts/` directory with the same path. Your version will take precedence.
+For example:
 
 ```bash
 mkdir -p layouts/partials
-cp themes/hugo-theme-blunix/layouts/partials/footer.html layouts/partials/footer.html
+cp themes/hugo-theme-ideano/layouts/partials/footer.html layouts/partials/footer.html
 ```
 
-### Override Styles
+The site's copy takes precedence over the theme copy.
 
-To customize styles, copy `static/css/style.css` to your site's `static/css/` directory and modify it. Your version will take precedence.
+The same approach can be used for blocks, partials, shortcodes, CSS, and other theme files where appropriate.
 
-### Add Custom Blocks
+To add a custom block, create a new partial under:
 
-Create new blocks in your site's `layouts/partials/blocks/` directory. They'll be available alongside theme blocks.
-
-## Linux Support
-
-For issues, questions, or contributions, please contact Blunix GmbH or open an issue in the theme repository.
-
-Author information: [Blunix Ansible Role - Apache2](https://github.com/Blunix-GmbH/ansible-role-apache2?tab=readme-ov-file#author-information)
-
-## License
-
-MIT License - See [LICENSE](LICENSE) file for details.
-
-## Credits
-
-Developed and maintained by [Blunix GmbH](https://www.blunix.com)
-
-
-
-## Clients block
-
-The `clients` block displays client/brand logos with optional animation. Every
-logo opens an accessible modal with the client logo, name, description, and an
-optional website link.
-
-Supported animation modes are: `static`, `marquee`, `orbit`, `carousel`,
-`fade`, `shuffle`, `float`, `wave`, `stack`, `scatter`, `ticker`, `reveal`,
-`scroll`, `zoom`, `grid-pulse`, `radar`, `constellation`, and `featured`.
-
-Example:
-
-```yaml
-- block: clients
-  id: "clients"
-  title: "Our clients"
-  text: "Organizations we've had the opportunity to work with."
-  animation: "orbit"
-  clients:
-    - name: "Client One"
-      logo: "images/clients/client-one.svg"
-      description: "A short description of Client One."
-      url: "https://example.com"
-    - name: "Client Two"
-      logo: "images/clients/client-two.svg"
-      description: "A short description of Client Two."
+```text
+layouts/partials/blocks/
 ```
 
-The `animation` parameter defaults to `static`. Animation is automatically
-reduced when the visitor has `prefers-reduced-motion` enabled.
+and reference its filename (without `.html`) in a page's `blocks` array.
+
+## Theme structure
+
+The main directories are:
+
+```text
+hugo-theme-ideano/
+├── archetypes/          # Content templates
+├── assets/              # Tailwind, CSS, images, and Hugo assets
+├── config/              # Theme/example configuration
+├── exampleSite/         # Working example site
+├── i18n/                # Translation files
+├── layouts/             # Page templates, partials, blocks, shortcodes
+├── static/              # Compiled CSS, JS, fonts, images, libraries
+├── tools/               # Helper scripts and editor snippets
+├── go.mod               # Hugo module definition
+├── theme.toml           # Theme metadata
+└── LICENSE
+```
+
+## Useful tools
+
+`tools/create_favicons.sh` creates a favicon set from a master `logo.png`.
+
+`tools/vscode_snippets.txt` contains optional VS Code snippets for frequently used theme content and shortcodes.
+
+## Updating the theme
+
+For Hugo Modules:
+
+```bash
+hugo mod get -u github.com/ideano/hugo-theme-ideano
+```
+
+To pin a specific version:
+
+```bash
+hugo mod get github.com/ideano/hugo-theme-ideano@v1.0.0
+```
+
+For a Git submodule:
+
+```bash
+git submodule update --remote --merge themes/hugo-theme-ideano
+git add themes/hugo-theme-ideano
+git commit -m "Update theme to latest version"
+```
+
+## License and credits
+
+MIT License — see [LICENSE](LICENSE).
+
+This theme is maintained by Ideano and contains the project-specific extensions and improvements documented above.

@@ -1,20 +1,22 @@
 {{/*
 partners-scroller
 
-Horizontally scrolling partner/logo list with responsive image handling.
+Horizontally scrolling party/logo list with responsive image handling.
 
 Usage:
   - block: partners-scroller
     color: "primary"
     gradient: "center-dark"
     gradient_direction: "horizontal"
-    partners:
-      - title: "Partner One"
-        img: "images/partner-one.svg"
+    parties:
+      - name: "Partner One"
+        logo: "images/party-one.svg"
+        description: "A short description of Party One."
         alt: "Partner One"
         url: "https://example.com"
-      - title: "Partner Two"
-        img: "images/partner-two.webp"
+      - name: "Party Two"
+        logo: "images/party-two.webp"
+        description: "A short description of Party Two."
         alt: "Partner Two"
         url: "https://example.org"
 
@@ -22,8 +24,8 @@ Parameters:
   color              Optional theme-aware or fixed background color. Default: `primary`.
   gradient           Optional gradient mode. Default: `center-dark`.
   gradient_direction Optional `vertical`, `horizontal`, or `all`. Default: `horizontal`.
-  partners           Array of partner objects:
-            `img`, `alt`, `url`, and optional `title`.
+  parties            Array of party objects. Each object supports:
+            `name`, `logo`, `description`, `alt`, and `url`.
   start_delay        Optional initial delay before scrolling starts. Examples: `0s`, `2s`, `500ms`. Default: `0s`.
   speed              Optional scrolling speed in pixels per second. Default: `80`.
   direction          Optional scrolling direction. Default: `left`.
@@ -46,10 +48,10 @@ Notes:
     data-start-delay="{{ .Params.start_delay | default "0s" }}"
     data-display-time="{{ .Params.display_time | default 0 }}">
     <div class="scroller__inner">
-      {{ range .Params.partners }}
+      {{ range .Params.parties }}
         <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
-        {{ $imgSrc := .img }}
-        {{ $imgAlt := .alt }}
+        {{ $imgSrc := .logo }}
+        {{ $imgAlt := .alt | default .name }}
         {{/* Strip leading slash for resources.GetMatch */}}
         {{ $imgPath := strings.TrimPrefix "/" $imgSrc }}
         {{ $isSvg := strings.HasSuffix $imgSrc ".svg" }}
@@ -127,7 +129,7 @@ Notes:
             <img src="{{ $imgSrc | relURL }}" alt="{{ $imgAlt }}" class="h-10 transition-all 200ms ease-in hover:grayscale-0" loading="lazy" />
           {{ end }}
         {{ end }}
-        {{ with .title }}
+        {{ with .name }}
           <span class="partners-scroller__title">{{ . }}</span>
         {{ end }}
       </a>

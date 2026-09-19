@@ -11,7 +11,7 @@ Usage:
     title: "Our clients"
     text: "Organizations we've had the opportunity to work with."
     animation: "orbit"
-    clients:
+    parties:
       - name: "Client One"
         logo: "images/clients/client-one.svg"
         description: "A short description of Client One."
@@ -45,11 +45,12 @@ Parameters:
              constellation Logos float around a central point.
              featured      Random client featured in a central panel.
 
-  clients    Array of client objects. Each object supports:
-             name          Client name (recommended/required).
+  parties    Array of party objects. Each object supports:
+             name          Party name (recommended/required).
              logo          Logo image path or remote URL (required).
-             description   Client description. Markdown is rendered in the modal.
-             url           Optional client website URL. If omitted, no website link is shown.
+             description   Party description. Markdown is rendered in the modal.
+             alt           Logo image alt text. Defaults to `name` when omitted.
+             url           Optional party website URL. If omitted, no website link is shown.
 
 Notes:
   - Local raster images use the theme's responsive image component.
@@ -65,9 +66,9 @@ Notes:
 {{- if not (in $validAnimations $animation) -}}
   {{- errorf "clients: animation must be one of %v, got %q" $validAnimations $animation -}}
 {{- end -}}
-{{- $clients := .Params.clients | default (slice) -}}
-{{- if eq (len $clients) 0 -}}
-  {{- warnf "clients block %q has no clients" $id -}}
+{{- $parties := .Params.parties | default (slice) -}}
+{{- if eq (len $parties) 0 -}}
+  {{- warnf "clients block %q has no parties" $id -}}
 {{- end -}}
 
 <section
@@ -104,11 +105,12 @@ Notes:
       {{- end -}}
 
       <div class="clients-track" data-clients-track>
-        {{- range $index, $client := $clients -}}
-          {{- $name := $client.name | default (printf "Client %d" (add $index 1)) -}}
-          {{- $logo := $client.logo | default "" -}}
-          {{- $description := $client.description | default "" -}}
-          {{- $url := $client.url | default "" -}}
+        {{- range $index, $party := $parties -}}
+          {{- $name := $party.name | default (printf "Client %d" (add $index 1)) -}}
+          {{- $logo := $party.logo | default "" -}}
+          {{- $description := $party.description | default "" -}}
+          {{- $alt := $party.alt | default $name -}}
+          {{- $url := $party.url | default "" -}}
           <button
             type="button"
             class="clients-card"
@@ -120,7 +122,7 @@ Notes:
               {{- if $logo -}}
                 {{ partial "components/image-responsive.html" (dict
                   "src" $logo
-                  "alt" $name
+                  "alt" $alt
                   "class" "clients-card__image"
                   "loading" "lazy"
                   "sizes" "(max-width: 767px) 40vw, 180px"
@@ -136,12 +138,12 @@ Notes:
 
       {{- if or (eq $animation "marquee") (eq $animation "ticker") -}}
         <div class="clients-track clients-track--clone" aria-hidden="true">
-          {{- range $index, $client := $clients -}}
+          {{- range $index, $party := $parties -}}
             <span class="clients-card clients-card--clone">
               <span class="clients-card__logo">
-                {{- if $client.logo -}}
+                {{- if $party.logo -}}
                   {{ partial "components/image-responsive.html" (dict
-                    "src" $client.logo
+                    "src" $party.logo
                     "alt" ""
                     "class" "clients-card__image"
                     "loading" "lazy"
@@ -176,18 +178,20 @@ Notes:
     </div>
   </div>
 
-  {{- $clientData := slice -}}
-  {{- range $index, $client := $clients -}}
-    {{- $name := $client.name | default (printf "Client %d" (add $index 1)) -}}
-    {{- $logo := $client.logo | default "" -}}
-    {{- $description := $client.description | default "" | markdownify -}}
-    {{- $url := $client.url | default "" -}}
-    {{- $clientData = $clientData | append (dict
+  {{- $partyData := slice -}}
+  {{- range $index, $party := $parties -}}
+    {{- $name := $party.name | default (printf "Client %d" (add $index 1)) -}}
+    {{- $logo := $party.logo | default "" -}}
+    {{- $description := $party.description | default "" | markdownify -}}
+    {{- $alt := $party.alt | default $name -}}
+    {{- $url := $party.url | default "" -}}
+    {{- $partyData = $partyData | append (dict
       "name" $name
       "logo" $logo
+      "alt" $alt
       "description" $description
       "url" $url
     ) -}}
   {{- end -}}
-  <script type="application/json" data-clients-data>{{ $clientData | jsonify | safeJS }}</script>
+  <script type="application/json" data-clients-data>{{ $partyData | jsonify | safeJS }}</script>
 </section>

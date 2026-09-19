@@ -1,23 +1,23 @@
 {{/*
-partners-scroller
+parties-scroller
 
 Horizontally scrolling party/logo list with responsive image handling.
 
 Usage:
-  - block: partners-scroller
+  - block: parties-scroller
     color: "primary"
     gradient: "center-dark"
     gradient_direction: "horizontal"
     parties:
-      - name: "Partner One"
+      - name: "Party One"
         logo: "images/party-one.svg"
         description: "A short description of Party One."
-        alt: "Partner One"
+        alt: "Party One"
         url: "https://example.com"
       - name: "Party Two"
         logo: "images/party-two.webp"
         description: "A short description of Party Two."
-        alt: "Partner Two"
+        alt: "Party Two"
         url: "https://example.org"
 
 Parameters:
@@ -130,7 +130,7 @@ Notes:
           {{ end }}
         {{ end }}
         {{ with .name }}
-          <span class="partners-scroller__title">{{ . }}</span>
+          <span class="parties-scroller__title">{{ . }}</span>
         {{ end }}
       </a>
       {{ end }}

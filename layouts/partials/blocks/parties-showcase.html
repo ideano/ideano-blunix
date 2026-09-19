@@ -1,27 +1,27 @@
 {{/*
-clients
+parties-showcase
 
-Animated client/brand logo showcase. Every client logo is clickable and opens
-an accessible modal containing the logo, client name, description, and an
+Animated party/brand logo showcase. Every party logo is clickable and opens
+an accessible modal containing the logo, party name, description, and an
 optional website link.
 
 Usage:
-  - block: clients
-    id: "clients"
-    title: "Our clients"
+  - block: parties-showcase
+    id: "parties"
+    title: "Our parties"
     text: "Organizations we've had the opportunity to work with."
     animation: "orbit"
     parties:
-      - name: "Client One"
-        logo: "images/clients/client-one.svg"
-        description: "A short description of Client One."
+      - name: "Party One"
+        logo: "images/parties/party-one.svg"
+        description: "A short description of Party One."
         url: "https://example.com"
-      - name: "Client Two"
-        logo: "images/clients/client-two.svg"
-        description: "A short description of Client Two."
+      - name: "Party Two"
+        logo: "images/parties/party-two.svg"
+        description: "A short description of Party Two."
 
 Parameters:
-  id         Optional section ID. Defaults to `clients`.
+  id         Optional section ID. Defaults to `parties`.
   title      Optional section heading.
   text       Optional Markdown introduction.
   animation  Optional presentation mode. Defaults to `static`.
@@ -30,7 +30,7 @@ Parameters:
              marquee       Continuous horizontal marquee.
              orbit         Logos travel around a circular orbit.
              carousel      One logo is featured at a time and slides.
-             fade          Logos cross-fade between clients.
+             fade          Logos cross-fade between parties.
              shuffle       Logos periodically shuffle positions/highlights.
              float         Logos gently float independently.
              wave          Logos move through a horizontal wave.
@@ -39,11 +39,11 @@ Parameters:
              ticker        Compact continuous logo ticker.
              reveal        Logos reveal sequentially when the block enters view.
              scroll        Logos animate into view as the user scrolls.
-             zoom          Logos gently zoom/fade as the active client changes.
+             zoom          Logos gently zoom/fade as the active party changes.
              grid-pulse    Static grid with a sequential highlight pulse.
              radar         Logos are highlighted by a rotating radar sweep.
              constellation Logos float around a central point.
-             featured      Random client featured in a central panel.
+             featured      Random party featured in a central panel.
 
   parties    Array of party objects. Each object supports:
              name          Party name (recommended/required).
@@ -57,29 +57,29 @@ Notes:
   - SVG and remote images are rendered directly.
   - Animation automatically falls back to a static presentation when
     `prefers-reduced-motion: reduce` is enabled.
-  - Clicking any logo opens the same client modal regardless of animation mode.
+  - Clicking any logo opens the same party modal regardless of animation mode.
 */}}
 
-{{- $id := .Params.id | default "clients" -}}
+{{- $id := .Params.id | default "parties" -}}
 {{- $animation := lower (.Params.animation | default "static") -}}
 {{- $validAnimations := slice "static" "marquee" "orbit" "carousel" "fade" "shuffle" "float" "wave" "stack" "scatter" "ticker" "reveal" "scroll" "zoom" "grid-pulse" "radar" "constellation" "featured" -}}
 {{- if not (in $validAnimations $animation) -}}
-  {{- errorf "clients: animation must be one of %v, got %q" $validAnimations $animation -}}
+  {{- errorf "parties: animation must be one of %v, got %q" $validAnimations $animation -}}
 {{- end -}}
 {{- $parties := .Params.parties | default (slice) -}}
 {{- if eq (len $parties) 0 -}}
-  {{- warnf "clients block %q has no parties" $id -}}
+  {{- warnf "parties block %q has no parties" $id -}}
 {{- end -}}
 
 <section
   id="{{ $id }}"
-  class="clients-section relative py-16 md:py-24"
-  data-clients-block
+  class="parties-section relative py-16 md:py-24"
+  data-parties-block
   data-animation="{{ $animation }}"
 >
   <div class="container">
     {{- if or .Params.title .Params.text -}}
-      <div class="clients-section__intro mb-10 text-center md:mb-14">
+      <div class="parties-section__intro mb-10 text-center md:mb-14">
         {{- with .Params.title -}}
           <h2 class="text-2xl leading-normal font-semibold md:text-4xl md:leading-normal">{{ . }}</h2>
         {{- end -}}
@@ -91,39 +91,39 @@ Notes:
       </div>
     {{- end -}}
 
-    <div class="clients-stage clients-stage--{{ $animation }}" data-clients-stage>
+    <div class="parties-stage parties-stage--{{ $animation }}" data-parties-stage>
       {{- if eq $animation "featured" -}}
-        <div class="clients-featured" data-clients-featured aria-live="polite">
-          <div class="clients-featured__logo" data-featured-logo></div>
-          <div class="clients-featured__content">
-            <p class="clients-featured__eyebrow">Featured client</p>
-            <h3 class="clients-featured__name" data-featured-name></h3>
-            <div class="clients-featured__description prose max-w-2xl prose-p:text-theme-muted" data-featured-description></div>
-            <button type="button" class="clients-featured__button" data-featured-button>View client</button>
+        <div class="parties-featured" data-parties-featured aria-live="polite">
+          <div class="parties-featured__logo" data-featured-logo></div>
+          <div class="parties-featured__content">
+            <p class="parties-featured__eyebrow">Featured party</p>
+            <h3 class="parties-featured__name" data-featured-name></h3>
+            <div class="parties-featured__description prose max-w-2xl prose-p:text-theme-muted" data-featured-description></div>
+            <button type="button" class="parties-featured__button" data-featured-button>View party</button>
           </div>
         </div>
       {{- end -}}
 
-      <div class="clients-track" data-clients-track>
+      <div class="parties-track" data-parties-track>
         {{- range $index, $party := $parties -}}
-          {{- $name := $party.name | default (printf "Client %d" (add $index 1)) -}}
+          {{- $name := $party.name | default (printf "Party %d" (add $index 1)) -}}
           {{- $logo := $party.logo | default "" -}}
           {{- $description := $party.description | default "" -}}
           {{- $alt := $party.alt | default $name -}}
           {{- $url := $party.url | default "" -}}
           <button
             type="button"
-            class="clients-card"
-            data-client-card
-            data-client-index="{{ $index }}"
+            class="parties-card"
+            data-party-card
+            data-party-index="{{ $index }}"
             aria-label="View {{ $name }}"
           >
-            <span class="clients-card__logo">
+            <span class="parties-card__logo">
               {{- if $logo -}}
                 {{ partial "components/image-responsive.html" (dict
                   "src" $logo
                   "alt" $alt
-                  "class" "clients-card__image"
+                  "class" "parties-card__image"
                   "loading" "lazy"
                   "sizes" "(max-width: 767px) 40vw, 180px"
                   "widths" (slice 160 240 320 480 640)
@@ -137,15 +137,15 @@ Notes:
       </div>
 
       {{- if or (eq $animation "marquee") (eq $animation "ticker") -}}
-        <div class="clients-track clients-track--clone" aria-hidden="true">
+        <div class="parties-track parties-track--clone" aria-hidden="true">
           {{- range $index, $party := $parties -}}
-            <span class="clients-card clients-card--clone">
-              <span class="clients-card__logo">
+            <span class="parties-card parties-card--clone">
+              <span class="parties-card__logo">
                 {{- if $party.logo -}}
                   {{ partial "components/image-responsive.html" (dict
                     "src" $party.logo
                     "alt" ""
-                    "class" "clients-card__image"
+                    "class" "parties-card__image"
                     "loading" "lazy"
                     "sizes" "180px"
                     "widths" (slice 160 240 320 480 640)
@@ -160,27 +160,27 @@ Notes:
     </div>
   </div>
 
-  <div class="clients-modal" data-clients-modal hidden>
-    <div class="clients-modal__backdrop" data-modal-close></div>
+  <div class="parties-modal" data-parties-modal hidden>
+    <div class="parties-modal__backdrop" data-modal-close></div>
     <div
-      class="clients-modal__dialog"
+      class="parties-modal__dialog"
       role="dialog"
       aria-modal="true"
       aria-labelledby="{{ $id }}-modal-title"
       tabindex="-1"
       data-modal-dialog
     >
-      <button type="button" class="clients-modal__close" aria-label="Close client details" data-modal-close>×</button>
-      <div class="clients-modal__logo" data-modal-logo></div>
-      <h3 id="{{ $id }}-modal-title" class="clients-modal__title" data-modal-title></h3>
-      <div class="clients-modal__description prose max-w-none" data-modal-description></div>
-      <a class="clients-modal__link" data-modal-link target="_blank" rel="noopener noreferrer" hidden>Visit website</a>
+      <button type="button" class="parties-modal__close" aria-label="Close party details" data-modal-close>×</button>
+      <div class="parties-modal__logo" data-modal-logo></div>
+      <h3 id="{{ $id }}-modal-title" class="parties-modal__title" data-modal-title></h3>
+      <div class="parties-modal__description prose max-w-none" data-modal-description></div>
+      <a class="parties-modal__link" data-modal-link target="_blank" rel="noopener noreferrer" hidden>Visit website</a>
     </div>
   </div>
 
   {{- $partyData := slice -}}
   {{- range $index, $party := $parties -}}
-    {{- $name := $party.name | default (printf "Client %d" (add $index 1)) -}}
+    {{- $name := $party.name | default (printf "Party %d" (add $index 1)) -}}
     {{- $logo := $party.logo | default "" -}}
     {{- $description := $party.description | default "" | markdownify -}}
     {{- $alt := $party.alt | default $name -}}
@@ -193,5 +193,5 @@ Notes:
       "url" $url
     ) -}}
   {{- end -}}
-  <script type="application/json" data-clients-data>{{ $partyData | jsonify | safeJS }}</script>
+  <script type="application/json" data-parties-data>{{ $partyData | jsonify | safeJS }}</script>
 </section>

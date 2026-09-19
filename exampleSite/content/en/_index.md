@@ -12,33 +12,69 @@ blocks:
       title: "Contact us"
       label: "Get Started Today"
 
-  - block: partners-scroller
+  - block: parties-scroller
     color: darkblue
     gradient: center-light
     gradient_direction: vertical
     display_time: 20
     speed: 80
-    partners:
+    parties:
       - url: "#"
-        img: "images/partners/company-1.svg"
-        title: "Company 1"
+        name: "Company 1"
+        logo: "images/partners/company-1.svg"
         alt: "TechCo"
       - url: "#"
-        img: "images/partners/company-2.svg"
-        title: "DataHub"
+        name: "DataHub"
+        logo: "images/partners/company-2.svg"
         alt: "DataHub"
       - url: "#"
-        img: "images/partners/company-3.svg"
+        logo: "images/partners/company-3.svg"
         alt: "CloudNet"
       - url: "#"
-        img: "images/partners/company-4.svg"
+        logo: "images/partners/company-4.svg"
         alt: "DevOps"
       - url: "#"
-        img: "images/partners/company-5.svg"
+        logo: "images/partners/company-5.svg"
         alt: "AppFlow"
       - url: "#"
-        img: "images/partners/company-6.svg"
+        logo: "images/partners/company-6.svg"
         alt: "SysCore"
+
+  - block: parties-showcase
+    id: "clients"
+    title: "Our Clients"
+    text: |
+      **Our Commitment**
+
+      We believe lasting relationships are built on more than delivery. Every client who works with us receives our full attention — clear communication, honest timelines, and work we would be proud to put our name on.
+
+      We listen before we build. We ask questions when something isn't clear, and we tell you directly when we think there's a better way. No surprises, no hidden costs, no promises we can't keep.
+
+      Your goals shape our priorities. When your project succeeds, we succeed. That is the standard we hold ourselves to, on every engagement, from the first conversation to long after handoff.
+    animation: "wave"
+    parties:
+      - name: "Client 1"
+        description: "A short description of Client One."
+        logo: "images/partners/company-1.svg"
+        alt: "TechCo"
+      - name: "DataHub"
+        logo: "images/partners/company-2.svg"
+        alt: "DataHub"
+      - name: "CloudNet"
+        logo: "images/partners/company-3.svg"
+        alt: "CloudNet"
+        url: "#"
+      - name: "DevOps"
+        description: |
+          DevOps is a big company.
+          And important one.
+        logo: "images/partners/company-4.svg"
+        alt: "DevOps"
+        url: "#"
+      - name: "AppFlow"
+        url: "#"
+        logo: "images/partners/company-5.svg"
+        alt: "AppFlow"
 
   - block: about
     id: introduction

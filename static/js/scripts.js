@@ -279,7 +279,7 @@ function addAnimation() {
         ? `calc(50% + 0.5rem)`
         : `calc(-50% - 0.5rem)`;
 
-      const animationName = `partners-scroll-${index}`;
+      const animationName = `parties-scroll-${index}`;
       const existingStyle = document.getElementById(animationName);
       if (existingStyle) existingStyle.remove();
 
@@ -614,7 +614,7 @@ try {
 } catch (error) {}
 
 //=========================================//
-/*          Clients Block                  */
+/*          Parties Block                  */
 //=========================================//
 (function () {
   function createLogoElement(src, alt) {
@@ -624,27 +624,27 @@ try {
     img.alt = alt || "";
     img.loading = "lazy";
     img.decoding = "async";
-    img.className = "clients-modal-image";
+    img.className = "parties-modal-image";
     return img;
   }
 
-  function initClientsBlock(block) {
-    var cards = Array.prototype.slice.call(block.querySelectorAll("[data-client-card]"));
-    var dataNode = block.querySelector("[data-clients-data]");
-    var stage = block.querySelector("[data-clients-stage]");
+  function initPartiesBlock(block) {
+    var cards = Array.prototype.slice.call(block.querySelectorAll("[data-party-card]"));
+    var dataNode = block.querySelector("[data-parties-data]");
+    var stage = block.querySelector("[data-parties-stage]");
     var animation = block.getAttribute("data-animation") || "static";
     if (!dataNode || !stage || !cards.length) return;
 
-    var clients = [];
-    try { clients = JSON.parse(dataNode.textContent || "[]"); } catch (e) { return; }
-    if (!clients.length) return;
+    var parties = [];
+    try { parties = JSON.parse(dataNode.textContent || "[]"); } catch (e) { return; }
+    if (!parties.length) return;
 
     cards.forEach(function (card, index) {
-      card.style.setProperty("--client-index", index);
-      card.style.setProperty("--client-angle", (360 / clients.length) * index);
+      card.style.setProperty("--party-index", index);
+      card.style.setProperty("--party-angle", (360 / parties.length) * index);
     });
 
-    var modal = block.querySelector("[data-clients-modal]");
+    var modal = block.querySelector("[data-parties-modal]");
     var dialog = block.querySelector("[data-modal-dialog]");
     var modalLogo = block.querySelector("[data-modal-logo]");
     var modalTitle = block.querySelector("[data-modal-title]");
@@ -653,51 +653,51 @@ try {
     var lastFocused = null;
 
     function openModal(index) {
-      var client = clients[index];
-      if (!client || !modal) return;
+      var party = parties[index];
+      if (!party || !modal) return;
       lastFocused = document.activeElement;
       modalLogo.textContent = "";
 
       // Use the already-rendered logo URL from the clicked card. This is
       // important for Hugo image processing, where the final browser URL
-      // may differ from the original `client.logo` path.
+      // may differ from the original `party.logo` path.
       var sourceCard = cards[index];
       var sourceImage = sourceCard ? sourceCard.querySelector("img") : null;
-      var logoSrc = sourceImage ? (sourceImage.currentSrc || sourceImage.src) : client.logo;
-      var img = createLogoElement(logoSrc, client.name);
+      var logoSrc = sourceImage ? (sourceImage.currentSrc || sourceImage.src) : party.logo;
+      var img = createLogoElement(logoSrc, party.name);
       if (img) {
         img.loading = "eager";
         modalLogo.appendChild(img);
       }
 
-      modalTitle.textContent = client.name || "Client";
+      modalTitle.textContent = party.name || "Party";
       // `description` is markdownified by Hugo before it is serialized into
       // the JSON payload, so the modal receives ready-to-render HTML.
-      modalDescription.innerHTML = client.description || "";
+      modalDescription.innerHTML = party.description || "";
 
-      var clientUrl = typeof client.url === "string" ? client.url.trim() : "";
-      if (clientUrl) {
-        modalLink.href = clientUrl;
+      var partyUrl = typeof party.url === "string" ? party.url.trim() : "";
+      if (partyUrl) {
+        modalLink.href = partyUrl;
         modalLink.hidden = false;
       } else {
         modalLink.hidden = true;
         modalLink.removeAttribute("href");
       }
       modal.hidden = false;
-      document.body.classList.add("clients-modal-open");
+      document.body.classList.add("parties-modal-open");
       dialog.focus();
     }
 
     function closeModal() {
       if (!modal || modal.hidden) return;
       modal.hidden = true;
-      document.body.classList.remove("clients-modal-open");
+      document.body.classList.remove("parties-modal-open");
       if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
     }
 
     cards.forEach(function (card) {
       card.addEventListener("click", function () {
-        openModal(parseInt(card.getAttribute("data-client-index"), 10));
+        openModal(parseInt(card.getAttribute("data-party-index"), 10));
       });
     });
 
@@ -726,21 +726,21 @@ try {
     }
 
     if (["carousel", "fade", "zoom"].indexOf(animation) !== -1) {
-      var current = Math.floor(Math.random() * clients.length);
+      var current = Math.floor(Math.random() * parties.length);
       setActive(current);
-      if (clients.length > 1) {
-        window.setInterval(function () { current = (current + 1) % clients.length; setActive(current); }, animation === "carousel" ? 4000 : 3500);
+      if (parties.length > 1) {
+        window.setInterval(function () { current = (current + 1) % parties.length; setActive(current); }, animation === "carousel" ? 4000 : 3500);
       }
     }
 
     if (animation === "shuffle") {
-      var shuffleIndex = Math.floor(Math.random() * clients.length);
+      var shuffleIndex = Math.floor(Math.random() * parties.length);
       setActive(shuffleIndex);
       window.setInterval(function () {
-        shuffleIndex = Math.floor(Math.random() * clients.length);
+        shuffleIndex = Math.floor(Math.random() * parties.length);
         setActive(shuffleIndex);
         var shuffled = cards.slice().sort(function () { return Math.random() - 0.5; });
-        shuffled.forEach(function (card) { stage.querySelector("[data-clients-track]").appendChild(card); });
+        shuffled.forEach(function (card) { stage.querySelector("[data-parties-track]").appendChild(card); });
       }, 3000);
     }
 
@@ -755,7 +755,7 @@ try {
         });
       }
       positionStack();
-      if (clients.length > 1) window.setInterval(function () { stackIndex = (stackIndex + 1) % clients.length; positionStack(); }, 2800);
+      if (parties.length > 1) window.setInterval(function () { stackIndex = (stackIndex + 1) % parties.length; positionStack(); }, 2800);
     }
 
     if (animation === "scatter") {
@@ -769,7 +769,7 @@ try {
           card.style.setProperty("--scatter-x", x.toFixed(0));
           card.style.setProperty("--scatter-y", y.toFixed(0));
           card.style.setProperty("--scatter-r", r.toFixed(1));
-          card.style.setProperty("--client-index", i);
+          card.style.setProperty("--party-index", i);
         });
       }
       scatter();
@@ -779,7 +779,7 @@ try {
     if (animation === "grid-pulse" || animation === "radar") {
       var pulseIndex = 0;
       setActive(0);
-      window.setInterval(function () { pulseIndex = (pulseIndex + 1) % clients.length; setActive(pulseIndex); }, 900);
+      window.setInterval(function () { pulseIndex = (pulseIndex + 1) % parties.length; setActive(pulseIndex); }, 900);
     }
 
     if (animation === "reveal" || animation === "scroll") {
@@ -799,36 +799,36 @@ try {
       var featuredName = block.querySelector("[data-featured-name]");
       var featuredDescription = block.querySelector("[data-featured-description]");
       var featuredButton = block.querySelector("[data-featured-button]");
-      var featuredIndex = Math.floor(Math.random() * clients.length);
+      var featuredIndex = Math.floor(Math.random() * parties.length);
       function updateFeatured(index) {
-        var client = clients[index];
+        var party = parties[index];
         featuredIndex = index;
         featuredLogo.textContent = "";
-        var image = createLogoElement(client.logo, client.name);
+        var image = createLogoElement(party.logo, party.name);
         if (image) featuredLogo.appendChild(image);
-        featuredName.textContent = client.name || "Client";
-        featuredDescription.innerHTML = client.description || "";
+        featuredName.textContent = party.name || "Party";
+        featuredDescription.innerHTML = party.description || "";
         featuredButton.onclick = function () { openModal(featuredIndex); };
         setActive(index);
       }
       updateFeatured(featuredIndex);
-      if (clients.length > 1) {
-        window.setInterval(function () { updateFeatured(Math.floor(Math.random() * clients.length)); }, 6000);
+      if (parties.length > 1) {
+        window.setInterval(function () { updateFeatured(Math.floor(Math.random() * parties.length)); }, 6000);
       }
     }
 
     if (animation === "orbit" || animation === "constellation") {
       // CSS handles the continuous motion. The random initial phase keeps
-      // multiple client blocks on the same page from feeling synchronized.
+      // multiple party blocks on the same page from feeling synchronized.
       var phase = Math.floor(Math.random() * 360);
-      stage.style.setProperty("--clients-phase", phase + "deg");
+      stage.style.setProperty("--parties-phase", phase + "deg");
     }
   }
 
-  function initAllClients() {
-    document.querySelectorAll("[data-clients-block]").forEach(initClientsBlock);
+  function initAllParties() {
+    document.querySelectorAll("[data-parties-block]").forEach(initPartiesBlock);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAllClients);
-  else initAllClients();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAllParties);
+  else initAllParties();
 })();
